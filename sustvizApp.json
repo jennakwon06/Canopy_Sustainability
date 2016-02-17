@@ -1,0 +1,150 @@
+{
+	"application": {
+		"title": "Visual Sustainability Browser",
+
+		"theme": "bootswatch-flatly",
+
+		"collections": [
+		],
+
+		"queries": [
+			{
+				"name": "current_user_data",
+				"collection": "users",
+				"filter": { "_id": "Meteor.userId()" },
+				"find_one": true
+			}
+		],
+
+		"public_zone": {
+			"navbar_class": "navbar-inverse navbar-fixed-top",
+
+			"pages": [
+				{
+					"name": "home_public",
+					"title": "",
+					"components": [
+						{
+							"name": "home_jumbotron",
+							"title": "Visual Sustainability Browser",
+							"type": "jumbotron",
+							"text": "<b> This is a browser that lets you view Fortune 500 companies' sustainability information.</b>",
+							"button_title": "Continue &raquo;",
+							"button_route": "login"
+						}
+					]
+				},
+				{ "name": "login", "template": "login" },
+				{ "name": "register", "template": "register" },
+				{ "name": "forgot_password", "template": "forgot_password" },
+				{ "name": "reset_password", "template": "reset_password", "route_params": ["resetPasswordToken"] }
+			],
+
+			"components": [
+				{
+					"name": "left_menu",
+					"type": "menu",
+					"class": "nav navbar-nav",
+					"dest_selector": "#menu",
+					"items": [
+						{ "title": "Home", "route": "home_public" },
+						{ "title": "About", "route": "home_public" }
+					]
+				},
+
+				{
+					"name": "right_menu",
+					"type": "menu",
+					"class": "nav navbar-nav navbar-right",
+					"dest_selector": "#menu",
+					"items": [
+						{ "title": "Register", "route": "register" },
+						{ "title": "Login", "route": "login" }
+					]
+				}
+			]
+		},
+
+		"private_zone": {
+			"navbar_class": "navbar-default navbar-fixed-top",
+
+			"pages": [
+				{ "name": "home_private", "title": "Welcome {{userFullName}}!" },
+
+				{ "name": "compare_panel", "title": "Compare your saved results!" },
+
+				{ "name": "user_settings",
+					"pages": [
+						{
+							"name": "profile",
+							"components": [
+								{
+									"name": "edit_form",
+									"type": "form",
+									"mode": "update",
+									"title": "Edit your profile",
+									"submit_route": "user_settings.profile",
+									"query_name": "current_user_data",
+									"query_params": [],
+									"fields": [
+										{ "name": "profile.name", "title": "Name", "required": true },
+										{ "name": "profile.email", "title": "E-mail", "type": "email", "required": true },
+										{ "name": "profile.facebook", "title": "Facebook URL" },
+										{ "name": "profile.google", "title": "Google+ URL" },
+										{ "name": "profile.twitter", "title": "Twitter ID" },
+										{ "name": "profile.website", "title": "Website URL" }
+									]
+								}
+							]
+						},
+
+						{ "name": "change_pass", "template": "change_pass" }
+					],
+
+					"components": [
+						{
+							"name": "side_menu",
+							"type": "menu",
+							"class": "nav nav-stacked nav-pills",
+							"items": [
+								{ "title": "Profile", "route": "user_settings.profile" },
+								{ "title": "Change password", "route": "user_settings.change_pass" }
+							]
+						}
+					]
+				},
+
+				{ "name": "logout", "template": "logout" }
+			],
+
+			"components": [
+				{
+					"name": "left_menu",
+					"type": "menu",
+					"class": "nav navbar-nav",
+					"dest_selector": "#menu",
+					"items": [
+						{ "title": "Home", "route": "home_private" },
+						{ "title": "Compare results", "route": "compare_panel" }
+					]
+				},
+
+				{
+					"name": "right_menu",
+					"type": "menu",
+					"class": "nav navbar-nav navbar-right",
+					"dest_selector": "#menu",
+					"items": [
+						{
+							"title": "{{userEmail}}",
+							"items": [
+								{ "title": "Settings", "route": "user_settings" },
+								{ "title": "Logout", "route": "logout" }
+							]
+						}
+					]
+				}
+			]
+		}
+	}
+}
