@@ -1,181 +1,209 @@
 <template name="HomePrivate">
-	<div class="page-container container" id="content">
+    <div class="page-container" id="content">
 
-		<div class="row" id="title_row">
-			<div class="col-md-12">
+			<div class="col-md-6" id="main_wrapper">
+
                 <div class="row">
-                    <h2 id="page_title" class="pull-left">
-                        Welcome {{userFullName}}!
-                    </h2>
+                    <!--<h2 id="page_title" class="pull-left">-->
+                        <!--&lt;!&ndash;Welcome {{userFullName}}!&ndash;&gt;-->
+                        <!--Filters-->
+                    <!--</h2>-->
+
+                    <div class="col-md-9">
+                        <h1> Filters </h1>
+                    </div>
+
+                    <div class="col-md-2" style="margin-top: 25px;">
+                        <button type="button" class="btn btn-success pull-right" id="applyFilterButton">Apply filters!</button>
+                    </div>
+
+
+
                     <div id="page_menu" class="pull-right"></div>
+
+
                 </div>
 
+
+
+                <div class="filter_container">
                     <!--http://www.jasny.net/bootstrap/getting-started/#download-->
 
-                <div class="row">
-                    <div id="risk_exposed_chart">
-                        <strong>Exposed Risk</strong>
-                        <a class="reset" href="javascript:riskExposedChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                    <div class="row">
+                        <div id="risk_exposed_chart">
+                            <strong>Exposed Risk</strong> fsz
+                            <a class="reset" href="javascript:riskExposedChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
 
-                        <div class="clearfix"></div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div id="cc_policy_impl_chart">
+                            <strong>Climate Change Policy Implemented</strong>
+                            <a class="reset" href="javascript:ccPolicyImplChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+
+                            <div class="clearfix"></div>
+                        </div>
                     </div>
 
-                    <div id="cc_policy_impl_chart">
-                        <strong>Climate Change Policy Implemented</strong>
-                        <a class="reset" href="javascript:ccPolicyImplChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                    <h3> CO2 Emissions </h3>
 
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-
-                <h3> CO2 Emissions </h3>
-
-                <div class="row">
-                    <div id="ghg-1-chart">
-                    <strong>GHG Scope 1 Emission</strong>
-                    <span class="reset" style="display: none;">range: <span class="filter"></span></span>
-                    <a class="reset" href="javascript:ghg1Chart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-
-                    <div class="clearfix"></div>
-                    </div>
-
-                    <div id="ghg-2-chart">
-                        <strong>GHG Scope 2 Emission</strong>
+                    <div class="row">
+                        <div id="ghg-1-chart">
+                        <strong>GHG Scope 1 Emission</strong>
                         <span class="reset" style="display: none;">range: <span class="filter"></span></span>
-                        <a class="reset" href="javascript:ghg2chart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                        <a class="reset" href="javascript:ghg1Chart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
 
                         <div class="clearfix"></div>
+                        </div>
+
+                        <div id="ghg-2-chart">
+                            <strong>GHG Scope 2 Emission</strong>
+                            <span class="reset" style="display: none;">range: <span class="filter"></span></span>
+                            <a class="reset" href="javascript:ghg2chart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div id="ghg-3-chart">
+                            <strong>GHG Scope 3 Emission</strong>
+                            <span class="reset" style="display: none;">range: <span class="filter"></span></span>
+                            <a class="reset" href="javascript:ghg3Chart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+
+                            <div class="clearfix"></div>
+                        </div>
                     </div>
 
-                    <div id="ghg-3-chart">
-                        <strong>GHG Scope 3 Emission</strong>
-                        <span class="reset" style="display: none;">range: <span class="filter"></span></span>
-                        <a class="reset" href="javascript:ghg3Chart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                    <h3> Water Footprint </h3>
 
-                        <div class="clearfix"></div>
+                    <h3> Waste Footprint </h3>
+
+                    <h3> Energy Footprint </h3>
+
+                    <div class="row">
+                        <h3> Industry </h3>
+
+                        <div id="industry_chart" style="overflow-y: scroll; height: 300px">
+                            <a class="reset" href="javascript:industryChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <h3> Sector </h3>
+
+                        <div id="sector_chart" style="overflow-y: scroll; height: 300px">
+                            <a class="reset" href="javascript:sectorChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                            <div class="clearfix"></div>
+                        </div>
                     </div>
+                    <script>
+                        var width = 500,
+                                height = 500;
+
+                        var projection = d3.geo.mercator()
+                                .translate([width / 2, height / 2])
+                                .scale((width - 1) / 2 / Math.PI);
+
+                        var zoom = d3.behavior.zoom()
+                                .scaleExtent([1, 8])
+                                .on("zoom", zoomed);
+
+                        var path = d3.geo.path()
+                                .projection(projection);
+
+                        d3.select("#main_wrapper").append("h3")
+                                .text("Location");
+
+                        var svg = d3.select("#main_wrapper").append("svg")
+                                .attr("width", width)
+                                .attr("height", height)
+                                .style("margin-top", 20)
+                                .append("g");
+
+
+                        var g = svg.append("g");
+
+                        svg.append("rect")
+                                .attr("class", "overlay")
+                                .attr("width", width)
+                                .attr("height", height);
+
+                        svg.call(zoom)
+                            .call(zoom.event);
+
+                        d3.json("/world-50m.json", function(error, world) {
+                            console.log(world);
+                            if (error) throw error;
+
+                            g.append("path")
+                                    .datum({type: "Sphere"})
+                                    .attr("class", "sphere")
+                                    .attr("d", path);
+
+                            g.append("path")
+                                    .datum(topojson.merge(world, world.objects.countries.geometries))
+                                    .attr("class", "land")
+                                    .attr("d", path);
+
+                            g.append("path")
+                                    .datum(topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; }))
+                                    .attr("class", "boundary")
+                                    .attr("d", path);
+                        });
+
+                        d3.csv("/envDataOnSP500", function(error, companies)  {
+                            g.selectAll("circle")
+                                    .data(companies)
+                                    .enter()
+                                    .append("circle")
+                                    .attr("cx", 40)
+                                    .attr("cy", 140)
+                                    .attr("r", 50)
+                                    .style("fill, red");
+                        });
+
+                        function zoomed() {
+                            g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+                        }
+
+                        d3.select(self.frameElement).style("height", height + "px");
+
+                    </script>
+
                 </div>
-
-                <h3> Water Footprint </h3>
-
-                <h3> Waste Footprint </h3>
-
-                <h3> Energy Footprint </h3>
-
-                <div class="row">
-                    <div id="industry_chart">
-                        <strong>Industry</strong>
-                        <a class="reset" href="javascript:industryChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-                        <div class="clearfix"></div>
-                    </div>
-
-                    <div id="sector_chart">
-                        <strong>Sector</strong>
-                        <a class="reset" href="javascript:sectorChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-
-
-                <!--<div class="row">-->
-                    <!--<div id="monthly-move-chart">-->
-                        <!--<strong>Monthly Index Abs Move & Volume/500,000 Chart</strong>-->
-                        <!--<span class="reset" style="display: none;">range: <span class="filter"></span></span>-->
-                        <!--<a class="reset" href="javascript:moveChart.filterAll();volumeChart.filterAll();dc.redrawAll();"-->
-                           <!--style="display: none;">reset</a>-->
-
-                        <!--<div class="clearfix"></div>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-                <!--<div class="row">-->
-                    <!--<div id="monthly-volume-chart">-->
-                    <!--</div>-->
-                    <!--<p class="muted pull-right" style="margin-right: 15px;">select a time range to zoom in</p>-->
-                <!--</div>-->
-
-                <!--<div class="row">-->
-                    <!--<div>-->
-                        <!--<div class="dc-data-count">-->
-                            <!--<span class="filter-count"></span> selected out of <span class="total-count"></span> records | <a-->
-                                <!--href="javascript:dc.filterAll(); dc.renderAll();">Reset All</a>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<table class="table table-hover dc-data-table">-->
-                    <!--</table>-->
-                <!--</div>-->
-
-
-            <script>
-                var width = 960,
-                        height = 960;
-
-                var projection = d3.geo.mercator()
-                        .translate([width / 2, height / 2])
-                        .scale((width - 1) / 2 / Math.PI);
-
-                var zoom = d3.behavior.zoom()
-                        .scaleExtent([1, 8])
-                        .on("zoom", zoomed);
-
-                var path = d3.geo.path()
-                        .projection(projection);
-
-                var svg = d3.select("body").append("svg")
-                        .attr("width", width)
-                        .attr("height", height)
-                        .append("g");
-
-                var g = svg.append("g");
-
-                svg.append("rect")
-                        .attr("class", "overlay")
-                        .attr("width", width)
-                        .attr("height", height);
-
-                svg.call(zoom)
-                    .call(zoom.event);
-
-                d3.json("/world-50m.json", function(error, world) {
-                    console.log(world);
-                    if (error) throw error;
-
-                    g.append("path")
-                            .datum({type: "Sphere"})
-                            .attr("class", "sphere")
-                            .attr("d", path);
-
-                    g.append("path")
-                            .datum(topojson.merge(world, world.objects.countries.geometries))
-                            .attr("class", "land")
-                            .attr("d", path);
-
-                    g.append("path")
-                            .datum(topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; }))
-                            .attr("class", "boundary")
-                            .attr("d", path);
-                });
-
-                d3.csv("/envDataOnSP500", function(error, companies)  {
-                    g.selectAll("circle")
-                            .data(companies)
-                            .enter()
-                            .append("circle")
-                            .attr("cx", 40)
-                            .attr("cy", 140)
-                            .attr("r", 50)
-                            .style("fill, red");
-                });
-
-                function zoomed() {
-                    g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-                }
-
-                d3.select(self.frameElement).style("height", height + "px");
-
-            </script>
             </div>
-        </div>
+
+            <div class="col-md-6">
+
+                <div class="row">
+                    <div class="col-md-9">
+                        <h1> Results </h1>
+                    </div>
+
+                    <div class="col-md-2" style="margin-top: 25px;">
+                        <button type="button" class="btn btn-success pull-right" id="saveResultButton">Save Results!</button>
+                    </div>
+
+
+
+
+                    <table class="table resultTable">
+                        <thead class="thead-inverse">
+                        <tr>
+                            <th>Company Name</th>
+                            <th>Industry</th>
+                            <th>Sector</th>
+                            <th>Country</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!--<tr>-->
+                            <!--<th scope="row">1</th>-->
+                            <!--<td>Mark</td>-->
+                            <!--<td>Otto</td>-->
+                            <!--<td>@mdo</td>-->
+                        <!--</tr>-->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
     </div>
 </template>
-

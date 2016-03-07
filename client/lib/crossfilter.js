@@ -534,7 +534,8 @@ function crossfilter() {
     remove: removeData,
     dimension: dimension,
     groupAll: groupAll,
-    size: size
+    size: size,
+    all: all
   };
 
   var data = [], // the records
@@ -563,6 +564,17 @@ function crossfilter() {
 
     return crossfilter;
   }
+
+  function all() {
+      var allData = [];
+        for (var i = 0; i < n; ++i) {
+          if (!filters[i]) {
+            allData.push(data[i]);
+          }
+        }
+      return allData;
+  }
+
 
   // Removes all records that match the current filters.
   function removeData() {

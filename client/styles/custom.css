@@ -27,3 +27,7 @@ svg {
     width: 700px;
     height: 500px;
 }
+
+#main_wrapper {
+    left: 20px;
+}

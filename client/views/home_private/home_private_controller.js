@@ -1,43 +1,43 @@
 this.HomePrivateController = RouteController.extend({
-	template: "HomePrivate",
-	
+    template: "HomePrivate",
 
-	yieldTemplates: {
-		/*YIELD_TEMPLATES*/
-	},
 
-	onBeforeAction: function() {
-		this.next();
-	},
+    yieldTemplates: {
+        /*YIELD_TEMPLATES*/
+    },
 
-	action: function() {
-		if(this.isReady()) { this.render(); } else { this.render("loading"); }
-		/*ACTION_FUNCTION*/
-	},
+    onBeforeAction: function() {
+        this.next();
+    },
 
-	isReady: function() {
-		
+    action: function() {
+        if(this.isReady()) { this.render(); } else { this.render("loading"); }
+        /*ACTION_FUNCTION*/
+    },
 
-		var subs = [
-		];
-		var ready = true;
-		_.each(subs, function(sub) {
-			if(!sub.ready())
-				ready = false;
-		});
-		return ready;
-	},
+    isReady: function() {
 
-	data: function() {
-		
 
-		return {
-			params: this.params || {}
-		};
-		/*DATA_FUNCTION*/
-	},
+        var subs = [
+        ];
+        var ready = true;
+        _.each(subs, function(sub) {
+            if(!sub.ready())
+                ready = false;
+        });
+        return ready;
+    },
 
-	onAfterAction: function() {
-		
-	}
+    data: function() {
+
+
+        return {
+            params: this.params || {}
+        };
+        /*DATA_FUNCTION*/
+    },
+
+    onAfterAction: function() {
+
+    }
 });
