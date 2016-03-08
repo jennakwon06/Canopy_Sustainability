@@ -1,0 +1,6 @@
+1. Link between two CSV files
+2. Scrape all PDFs for SP500
+3. Get company coordinates and project it onto the map. Make map clickable. Map clicking should also be a filter.
+4. Expandable screen that has all the filter. "Filter me!" button produces results. 70%, 30% screen. 70% goes away when it is clicked.
+5. Save filter function
+6. Scrollable filter bar

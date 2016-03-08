@@ -31,3 +31,16 @@ svg {
 #main_wrapper {
     left: 20px;
 }
+
+.resultsPanel {
+    height: 1800px;
+    overflow-y: scroll;
+}
+
+.resultsTable tbody tr:nth-child(odd) td {
+    background-color: lightgray;
+}
+
+.resultsTable tbody tr.highlight td {
+    background-color: lightskyblue;
+}
