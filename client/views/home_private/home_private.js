@@ -1,7 +1,3 @@
-Filters = new Mongo.Collection("userFilters");
-Results = new Mongo.Collection("userResults");
-
-
 Template.HomePrivate.rendered = function() {
     //$.getScript("/d3.js");
     //$.getScript("/crossfilter.js");
@@ -50,14 +46,22 @@ Template.HomePrivate.events({
 
             table.append(tr);
         }
+
+        //enable button
+        $('#saveResultButton').removeAttr("disabled");
     },
 
     'click #saveResultButton': function (e) {
         e.preventDefault();
 
-        Results.insert({
-            //@TODO insert to Mongo database
+        var resultsArr = [];
+
+        $(".clickableRow").each(function (i) {
+            resultsArr.push(this.id);
         });
+
+        console.log("inserting!");
+        Meteor.call('saveResults', resultsArr, Meteor.userId(), new Date());
     },
 
     // highlight table row clicked

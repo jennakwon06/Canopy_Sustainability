@@ -447,7 +447,6 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
         return d.name;
     });
 
-    console.log(companies.top(Infinity));
     globalFilter = companies;
 
     var all = sp500.groupAll();
@@ -586,7 +585,6 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
         .renderHorizontalGridLines(true)
         // Customize the filter displayed in the control span
         .filterPrinter(function (filters) {
-            console.log(companies.top(Infinity));
             var filter = filters[0], s = '';
             s += numberFormat(filter[0]) + '% -> ' + numberFormat(filter[1]) + '%';
             return s;
@@ -646,9 +644,8 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
             return d.value;
         })
         .elasticX(true)
-        .xAxis().ticks(4)
+        .xAxis().ticks(4);
 
-    console.log(sector.top(Infinity));
 
 
     //// Dimension by full date
