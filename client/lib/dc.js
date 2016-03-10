@@ -8243,9 +8243,12 @@
                 calculateAxisScale();
 
                 if (axisG.empty()) {
-                    axisG = _g.append('g').attr('class', 'axis');
+                    axisG = _g
+                        .append('g')
+                        .attr('class', 'axis')
+                        .style('position', 'fixed ! important');
                 }
-                axisG.attr('transform', 'translate(0, ' + _chart.margins().top + ')');
+                axisG.attr('transform', 'translate(0, 0)');
 
                 dc.transition(axisG, _chart.transitionDuration())
                     .call(_xAxis);
@@ -8256,11 +8259,12 @@
 
                 var finalHeight = calculateFinalHeight();
 
+                console.log(finalHeight);
+
                 _g = _chart.svg()
-                    .style("height", 930)
+                    .style("height", finalHeight)
                     .append('g')
                     .attr('transform', 'translate(' + _chart.margins().left + ',' + _chart.margins().top + ')');
-
 
                 drawChart();
 
@@ -8293,9 +8297,9 @@
             };
 
             //jenna: count total heights of elements
-
             function calculateFinalHeight() {
-                var numRows = _chart.data().length;
+                var numRows = (_chart.data().length + 1);
+                return numRows * _gap + numRows * _fixedBarHeight;
             }
 
             function drawGridLines () {
