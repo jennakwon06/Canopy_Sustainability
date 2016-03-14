@@ -406,8 +406,6 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
     //GHG Scope 1:Y
     //GHG Scope 1 Intensity per Sales
     //GHG Intens/Sls:Y
-
-
     data.forEach(function (d) {
         d.name = d["Name"];
         d.riskExp = d["Reg Risk Exp:Y"];
@@ -440,13 +438,21 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
         d.GHG1PerSales = d["GHG Scope 1 Intensity per Sales"];
     });
 
-    //### Create Crossfilter Dimensions and Groups. See the [crossfilter API](https://github.com/square/crossfilter/wiki/API-Reference) for reference.
+    /*
+     * Check if csv cell is empty
+     */
+    function isBlank(str) {
+        return (!str || /^\s*$/.test(str));
+    }
+
+    //### Create Crossfilter Dimensions and Groups. NOTE: BE CAREFUL OF HOW MANY DIMENSIONS YOU INSTANTIATE
     var sp500 = crossfilter(data);
 
     var companies = sp500.dimension(function (d) {
         return d.name;
     });
 
+    // USEFUL FOR FILLING TABLES
     globalFilter = companies;
 
     var all = sp500.groupAll();
@@ -457,7 +463,6 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
     });
     // Produce counts records in the dimension
     var riskExpGroup = riskExp.group();
-
 
     riskExposedChart /* dc.pieChart('#gain-loss-chart', 'chartGroup') */ // (_optional_) define chart width, `default = 200`
         .width(180)// (optional) define chart height, `default = 200`
@@ -475,7 +480,6 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
             }
             return label;
         });
-
 
     //@TODO PIE CHART FOR CLIMATE CHANGE POLICY EXPOSED
     var ccImplemented = sp500.dimension(function (d) {
@@ -501,124 +505,261 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
             return label;
         });
 
-    //@TODO GH1 BAR CHART
+    //BAR CHART
 
-    // IDEA : ALWAYS HAVE 20 BINS
+    // JENNA
+    // ALWAYS MAINTAIN 20 BINS
     // 20 BINS ARE CREATED WITH RANGES
     // USER SPECIFIED RANGERS FOR EMISSIONS VALUES FROM START TO FINISH
 
-    // MAYBE USE D3 TO DO THIS?
-    // ON THE RIGHT SIDE OF THE CHART, HAVE START: END: RENDER:
-
-    var GHG1 = sp500.dimension(function (d) {
-        return d.GHG1;
-    });
-
-    var binWidth = 20;
-
-    //http://learnjsdata.com/group_data.html
 
 
 
-    var GHG1Group = GHG1.group(function(d) {
-        console.log(d);
-        return Math.floor(d / binWidth) * binWidth}
-    ); //group values ... essentially define the values for the y axis of the chart
-
-    console.log(GHG1Group);
-
-
-    ghg1Chart /* dc.barChart('#volume-month-chart', 'chartGroup') */
-        .width(600)
-        .height(350)
-        .margins({top: 10, right: 20, bottom: 30, left: 20})
-        .dimension(GHG1)
-        .group(GHG1Group)
-        .elasticY(true)
-        // (_optional_) whether bar should be center to its x value. Not needed for ordinal chart, `default=false`
-        .centerBar(true)
-        // (_optional_) set gap between bars manually in px, `default=2`
-        .gap(1)
-        // (_optional_) set filter brush rounding
-        .round(dc.round.floor)
-        .alwaysUseRounding(true)
-        .x(d3.scale.ordinal().domain(data.map(function (d) {return d.GHG1})))
-        //.xUnits(dc.units.ordinal)
-        .renderHorizontalGridLines(true)
-        // Customize the filter displayed in the control span
-        .filterPrinter(function (filters) {
-            var filter = filters[0], s = '';
-            s += numberFormat(filter[0]) + '% -> ' + numberFormat(filter[1]) + '%';
-            return s;
+    //GHG1
+    (function() {
+        var GHG1 = sp500.dimension(function (d) {
+            if (!isBlank(d.GHG1)) {
+                return d.GHG1;
+            } else {
+                return 'Unknown';
+            }
         });
 
-    //GHG2 
-    var GHG2 = sp500.dimension(function (d) {
-        return d.GHG2;
-    });
-    var GHG2Group = GHG2.group();
+        var minMax = d3.extent(data, function (d) {
+            return +d.GHG1;
+        });
+        var min = minMax[0];
+        var max = minMax[1];
+        var binCount = 10;
+        var span = max - min;
+        var binWidth = span / binCount;
 
-    ghg2Chart /* dc.barChart('#volume-month-chart', 'chartGroup') */
-        .width(350)
-        .height(250)
-        .margins({top: 10, right: 20, bottom: 30, left: 20})
-        .dimension(companies)
-        .group(GHG2Group)
-        .elasticY(true)
-        // (_optional_) whether bar should be center to its x value. Not needed for ordinal chart, `default=false`
-        .centerBar(true)
-        // (_optional_) set gap between bars manually in px, `default=2`
-        .gap(1)
-        // (_optional_) set filter brush rounding
-        .round(dc.round.floor)
-        .alwaysUseRounding(true)
-        .x(d3.scale.ordinal().domain(data.map(function (d) {return d.name})))
-        .renderHorizontalGridLines(true)
-        // Customize the filter displayed in the control span
-        .filterPrinter(function (filters) {
-            var filter = filters[0], s = '';
-            s += numberFormat(filter[0]) + '% -> ' + numberFormat(filter[1]) + '%';
-            return s;
+        var GHG1bins = ["", 'Unknown'];
+
+        for (var i = 0; i <= binCount; i++) {
+            GHG1bins.push((Math.floor(span / binCount) * i).toString());
+        }
+
+        GHG1bins.push("");
+
+        var GHG1Group = GHG1.group(function (d) {
+            if (d == 'Unknown') {
+                return 'Unknown';
+            } else {
+                return GHG1bins[Math.ceil((+d * binCount) / max) + 2]; // add two because first two elems are "" and "Unknown"
+            } //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
         });
 
-    //GHG3 
-    var GHG3 = sp500.dimension(function (d) {
-        return d.GHG3;
-    });
-    var GHG3Group = GHG3.group();
+        ghg1Chart /* dc.barChart('#volume-month-chart', 'chartGroup') */
+            .width(600)
+            .height(350)
+            .margins({top: 10, right: 20, bottom: 40, left: 20})
+            .dimension(GHG1)
+            .group(GHG1Group)
+            .elasticY(true)
+            // (_optional_) whether bar should be center to its x value. Not needed for ordinal chart, `default=false`
+            .centerBar(true)
+            .gap(5)
+            // (_optional_) set gap between bars manually in px, `default=2`
+            // (_optional_) set filter brush rounding
+            .round(dc.round.floor)
+            .alwaysUseRounding(true)
+            .x(d3.scale.ordinal().domain(GHG1bins))
+            //.x(d3.scale.ordinal().domain(data.map(function (d) {return d.GHG1})))
+            .xUnits(dc.units.ordinal)
+            .renderHorizontalGridLines(true)
+            // Customize the filter displayed in the control span
+            .filterPrinter(function (filters) {
+                var filter = filters[0], s = '';
+                s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
+                return s;
+            })
+            .filterHandler(function (dimension, filter) {
+                var selectedRange = ghg1Chart.filter();
+                dimension.filter(function (d) {
+                    var range;
+                    var match = false;
+                    // Iterate over each selected range and return if 'd' is within the range.
+                    for (var i = 0; i < filter.length; i++) {
+                        range = filter[i];
+                        if (d >= range - .1 && d <= range) {
+                            match = true;
+                            break;
+                        }
+                    }
+                    return selectedRange != null ? match : true;
+                });
+                return filter;
+            });
+    }());
 
-    ghg3Chart /* dc.barChart('#volume-month-chart', 'chartGroup') */
-        .width(350)
-        .height(250)
-        .margins({top: 10, right: 20, bottom: 30, left: 20})
-        .dimension(companies)
-        .group(GHG3Group)
-        .elasticY(true)
-        // (_optional_) whether bar should be center to its x value. Not needed for ordinal chart, `default=false`
-        .centerBar(true)
-        // (_optional_) set gap between bars manually in px, `default=2`
-        .gap(1)
-        // (_optional_) set filter brush rounding
-        .round(dc.round.floor)
-        .alwaysUseRounding(true)
-        .x(d3.scale.ordinal().domain(data.map(function (d) {return d.name})))
-        .renderHorizontalGridLines(true)
-        // Customize the filter displayed in the control span
-        .filterPrinter(function (filters) {
-            var filter = filters[0], s = '';
-            s += numberFormat(filter[0]) + '% -> ' + numberFormat(filter[1]) + '%';
-            return s;
+    //GHG2
+    (function(){
+        var GHG2 = sp500.dimension(function (d) {
+            if (!isBlank(d.GHG2)) {
+                return d.GHG2;
+            } else {
+                return 'Unknown';
+            }
         });
 
+        var minMax = d3.extent(data, function (d) {
+            return +d.GHG2;
+        });
+        var min = minMax[0];
+        var max = minMax[1];
+        var binCount = 10;
+        var span = max - min;
+        var binWidth = span / binCount;
+
+        var GHG2bins = ["", 'Unknown'];
+
+        for (var i = 0; i <= binCount; i++) {
+            GHG2bins.push((Math.floor(span / binCount) * i).toString());
+        }
+
+        GHG2bins.push("");
+
+        var GHG2Group = GHG2.group(function (d) {
+            if (d == 'Unknown') {
+                return 'Unknown';
+            } else {
+                return GHG2bins[Math.ceil((+d * binCount) / max) + 2]; // add two because first two elems are "" and "Unknown"
+            } //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
+        });
+
+        ghg2Chart /* dc.barChart('#volume-month-chart', 'chartGroup') */
+            .width(600)
+            .height(350)
+            .margins({top: 10, right: 20, bottom: 40, left: 20})
+            .dimension(GHG2)
+            .group(GHG2Group)
+            .elasticY(true)
+            // (_optional_) whether bar should be center to its x value. Not needed for ordinal chart, `default=false`
+            .centerBar(true)
+            .gap(5)
+            // (_optional_) set gap between bars manually in px, `default=2`
+            // (_optional_) set filter brush rounding
+            .round(dc.round.floor)
+            .alwaysUseRounding(true)
+            .x(d3.scale.ordinal().domain(GHG2bins))
+            //.x(d3.scale.ordinal().domain(data.map(function (d) {return d.GHG2})))
+            .xUnits(dc.units.ordinal)
+            .renderHorizontalGridLines(true)
+            // Customize the filter displayed in the control span
+            .filterPrinter(function (filters) {
+                var filter = filters[0], s = '';
+                s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
+                return s;
+            })
+            .filterHandler(function (dimension, filter) {
+                var selectedRange = ghg2Chart.filter();
+                dimension.filter(function (d) {
+                    var range;
+                    var match = false;
+                    // Iterate over each selected range and return if 'd' is within the range.
+                    for (var i = 0; i < filter.length; i++) {
+                        range = filter[i];
+                        if (d >= range - .1 && d <= range) {
+                            match = true;
+                            break;
+                        }
+                    }
+                    return selectedRange != null ? match : true;
+                });
+                return filter;
+            });
+    }());
+
+    //GHG3
+    (function(){
+        var GHG3 = sp500.dimension(function (d) {
+            if (!isBlank(d.GHG3)) {
+                return d.GHG3;
+            } else {
+                return 'Unknown';
+            }
+        });
+
+        var minMax = d3.extent(data, function (d) {
+            return +d.GHG3;
+        });
+        var min = minMax[0];
+        var max = minMax[1];
+        var binCount = 10;
+        var span = max - min;
+        var binWidth = span / binCount;
+
+        var GHG3bins = ["", 'Unknown'];
+
+        for (var i = 0; i <= binCount; i++) {
+            GHG3bins.push((Math.floor(span / binCount) * i).toString());
+        }
+
+        GHG3bins.push("");
+
+        var GHG3Group = GHG3.group(function (d) {
+            if (d == 'Unknown') {
+                return 'Unknown';
+            } else {
+                return GHG3bins[Math.ceil((+d * binCount) / max) + 2]; // add two because first two elems are "" and "Unknown"
+            } //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
+        });
+
+        ghg3Chart /* dc.barChart('#volume-month-chart', 'chartGroup') */
+            .width(600)
+            .height(350)
+            .margins({top: 10, right: 20, bottom: 40, left: 20})
+            .dimension(GHG3)
+            .group(GHG3Group)
+            .elasticY(true)
+            // (_optional_) whether bar should be center to its x value. Not needed for ordinal chart, `default=false`
+            .centerBar(true)
+            .gap(5)
+            // (_optional_) set gap between bars manually in px, `default=2`
+            // (_optional_) set filter brush rounding
+            .round(dc.round.floor)
+            .alwaysUseRounding(true)
+            .x(d3.scale.ordinal().domain(GHG3bins))
+            //.x(d3.scale.ordinal().domain(data.map(function (d) {return d.GHG3})))
+            .xUnits(dc.units.ordinal)
+            .renderHorizontalGridLines(true)
+            // Customize the filter displayed in the control span
+            .filterPrinter(function (filters) {
+                var filter = filters[0], s = '';
+                s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
+                return s;
+            })
+            .filterHandler(function (dimension, filter) {
+                var selectedRange = ghg3Chart.filter();
+                dimension.filter(function (d) {
+                    var range;
+                    var match = false;
+                    // Iterate over each selected range and return if 'd' is within the range.
+                    for (var i = 0; i < filter.length; i++) {
+                        range = filter[i];
+                        if (d >= range - .1 && d <= range) {
+                            match = true;
+                            break;
+                        }
+                    }
+                    return selectedRange != null ? match : true;
+                });
+                return filter;
+            });
+    }());
+    
 
     // STACKED VAR CHARTS
     //// Counts per weekday
     var industry = sp500.dimension(function (d) {
         return d.industry;
-        //var name = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     });
 
     var industryGroup = industry.group();
+
+
+    //http://jsfiddle.net/4t8ovv63/
 
     industryChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
         .width(300)

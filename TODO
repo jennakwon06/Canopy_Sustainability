@@ -1,11 +1,21 @@
 PRIORITIES
+1. expandable / grouped filters / reset by group and all and individual
+
+2. adjustable row chart
+
+3. list view that's sortable?
+
+
+
+
 1. RESET ALL BUTTON
 
 
 1. Link between two CSV files
 2. Scrape all PDFs for SP500
 3. Get company coordinates and project it onto the map. Make map clickable. Map clicking should also be a filter.
-4. Scatter plots
+
+
 https://github.com/dc-js/dc.js/blob/master/web/examples/scatter-brushing.html
 5. Data Security
 https://www.meteor.com/tutorials/blaze/publish-and-subscribe

@@ -8259,8 +8259,6 @@
 
                 var finalHeight = calculateFinalHeight();
 
-                console.log(finalHeight);
-
                 _g = _chart.svg()
                     .style("height", finalHeight)
                     .append('g')
