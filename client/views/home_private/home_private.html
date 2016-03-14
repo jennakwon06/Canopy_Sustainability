@@ -26,154 +26,232 @@
 
 
 
-                <div class="filter_container">
-                    <!--http://www.jasny.net/bootstrap/getting-started/#download-->
-
-                    <div class="row">
-                        <div id="risk_exposed_chart">
-                            <strong>Exposed Risk</strong> fsz
-                            <a class="reset" href="javascript:riskExposedChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-
-                            <div class="clearfix"></div>
+                <div class="filter_container col-md-11" id="accordion">
+                    
+                    <!--GENERAL-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#" data-target="#collapseGeneral">
+                                   General
+                                </a><i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+                            </h4>
                         </div>
+                        <div id="collapseGeneral" class="panel-collapse collapse in">
+                            <div class="panel-body">
 
-                        <div id="cc_policy_impl_chart">
-                            <strong>Climate Change Policy Implemented</strong>
-                            <a class="reset" href="javascript:ccPolicyImplChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                                <div class="row">
+                                    <div class="col-md-6"><h3> Industry </h3></div>
+                                    <div class="col-md-6"><h3> Sector </h3></div>
+                                </div>
 
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
 
-                    <h3> CO2 Emissions </h3>
+                                <div class="col-md-6">
+                                    <div id="industry_chart" style="overflow-y: scroll; height: 300px">
+                                        <a class="reset" href="javascript:industryChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
 
-                    <div class="row">
-                        <div id="ghg-1-chart">
-                        <strong>GHG Scope 1 Emission</strong>
-                        <span class="reset" style="display: none;">range: <span class="filter"></span></span>
-                        <a class="reset" href="javascript:ghg1Chart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-
-                        <div class="clearfix"></div>
-                        </div>
-
-                        <div id="ghg-2-chart">
-                            <strong>GHG Scope 2 Emission</strong>
-                            <span class="reset" style="display: none;">range: <span class="filter"></span></span>
-                            <a class="reset" href="javascript:ghg2chart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-
-                            <div class="clearfix"></div>
-                        </div>
-
-                        <div id="ghg-3-chart">
-                            <strong>GHG Scope 3 Emission</strong>
-                            <span class="reset" style="display: none;">range: <span class="filter"></span></span>
-                            <a class="reset" href="javascript:ghg3Chart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-
-                    <h3> Water Footprint </h3>
-
-                    <h3> Waste Footprint </h3>
-
-                    <h3> Energy Footprint </h3>
-
-                    <div class="row">
-                        <div class="col-md-6"><h3> Industry </h3></div>
-                        <div class="col-md-6"><h3> Sector </h3></div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div id="industry_chart" style="overflow-y: scroll; height: 300px">
-                                <a class="reset" href="javascript:industryChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-                                <div class="clearfix"></div>
+                                <div class="col-md-6">
+                                    <div id="sector_chart" style="overflow-y: scroll; height: 300px">
+                                        <a class="reset" href="javascript:sectorChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="col-md-6">
-                            <div id="sector_chart" style="overflow-y: scroll; height: 300px">
-                                <a class="reset" href="javascript:sectorChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-
                     </div>
 
-                    <script>
-                        var width = 720,
-                                height = 500;
+                    <!--EMISSIONS-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#" data-target="#collapseEmissions">
+                                   Emissions
+                                </a><i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+                            </h4>
+                        </div>
+                        <div id="collapseEmissions" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div id="ghg-1-chart">
+                                    <strong>GHG Scope 1 Emission</strong>
+                                    <span class="reset" style="display: none;">range: <span class="filter"></span></span>
+                                    <a class="reset" href="javascript:ghg1Chart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
 
-                        var projection = d3.geo.mercator()
-                                .translate([width / 2, height / 2])
-                                .scale((width - 1) / 2 / Math.PI);
+                                    <div class="clearfix"></div>
+                                </div>
 
-                        var zoom = d3.behavior.zoom()
-                                .scaleExtent([1, 8])
-                                .on("zoom", zoomed);
+                                <div id="ghg-2-chart">
+                                    <strong>GHG Scope 2 Emission</strong>
+                                    <span class="reset" style="display: none;">range: <span class="filter"></span></span>
+                                    <a class="reset" href="javascript:ghg2chart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
 
-                        var path = d3.geo.path()
-                                .projection(projection);
+                                    <div class="clearfix"></div>
+                                </div>
 
-                        d3.select("#main_wrapper").append("h3")
-                                .text("Location");
+                                <div id="ghg-3-chart">
+                                    <strong>GHG Scope 3 Emission</strong>
+                                    <span class="reset" style="display: none;">range: <span class="filter"></span></span>
+                                    <a class="reset" href="javascript:ghg3Chart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
 
-                        var svg = d3.select("#main_wrapper").append("svg")
-                                .attr("width", width)
-                                .attr("height", height)
-                                .style("margin-top", 20)
-                                .append("g");
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--WATER-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#" data-target="#collapseWater">
+                                   Water
+                                </a><i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+                            </h4>
+                        </div>
+                        <div id="collapseWater" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Waste-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#" data-target="#collapseWaste">
+                                    Waste
+                                </a><i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+                            </h4>
+                        </div>
+                        <div id="collapseWaste" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Energy-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#" data-target="#collapseEnergy">
+                                    Energy
+                                </a><i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+                            </h4>
+                        </div>
+                        <div id="collapseEnergy" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--MISC-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#" data-target="#collapseMisc">
+                                    Misc
+                                </a><i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+                            </h4>
+                        </div>
+                        <div id="collapseMisc" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <div id="risk_exposed_chart">
+                                    <strong>Exposed Risk</strong> fsz
+                                    <a class="reset" href="javascript:riskExposedChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                <div id="cc_policy_impl_chart">
+                                    <strong>Climate Change Policy Implemented</strong>
+                                    <a class="reset" href="javascript:ccPolicyImplChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
 
-                        var g = svg.append("g");
+                    <!--// ignore for now-->
+                    <!--<script>-->
+                        <!--var width = 720,-->
+                                <!--height = 500;-->
 
-                        svg.append("rect")
-                                .attr("class", "overlay")
-                                .attr("width", width)
-                                .attr("height", height);
+                        <!--var projection = d3.geo.mercator()-->
+                                <!--.translate([width / 2, height / 2])-->
+                                <!--.scale((width - 1) / 2 / Math.PI);-->
 
-                        svg.call(zoom)
-                            .call(zoom.event);
+                        <!--var zoom = d3.behavior.zoom()-->
+                                <!--.scaleExtent([1, 8])-->
+                                <!--.on("zoom", zoomed);-->
 
-                        d3.json("/world-50m.json", function(error, world) {
-                            console.log(world);
-                            if (error) throw error;
+                        <!--var path = d3.geo.path()-->
+                                <!--.projection(projection);-->
 
-                            g.append("path")
-                                    .datum({type: "Sphere"})
-                                    .attr("class", "sphere")
-                                    .attr("d", path);
+                        <!--d3.select("#main_wrapper").append("h3")-->
+                                <!--.text("Location");-->
 
-                            g.append("path")
-                                    .datum(topojson.merge(world, world.objects.countries.geometries))
-                                    .attr("class", "land")
-                                    .attr("d", path);
+                        <!--var svg = d3.select("#main_wrapper").append("svg")-->
+                                <!--.attr("width", width)-->
+                                <!--.attr("height", height)-->
+                                <!--.style("margin-top", 20)-->
+                                <!--.append("g");-->
 
-                            g.append("path")
-                                    .datum(topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; }))
-                                    .attr("class", "boundary")
-                                    .attr("d", path);
-                        });
 
-                        d3.csv("/envDataOnSP500", function(error, companies)  {
-                            g.selectAll("circle")
-                                    .data(companies)
-                                    .enter()
-                                    .append("circle")
-                                    .attr("cx", 40)
-                                    .attr("cy", 140)
-                                    .attr("r", 50)
-                                    .style("fill, red");
-                        });
+                        <!--var g = svg.append("g");-->
 
-                        function zoomed() {
-                            g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-                        }
+                        <!--svg.append("rect")-->
+                                <!--.attr("class", "overlay")-->
+                                <!--.attr("width", width)-->
+                                <!--.attr("height", height);-->
 
-                        d3.select(self.frameElement).style("height", height + "px");
+                        <!--svg.call(zoom)-->
+                            <!--.call(zoom.event);-->
 
-                    </script>
+                        <!--d3.json("/world-50m.json", function(error, world) {-->
+                            <!--console.log(world);-->
+                            <!--if (error) throw error;-->
+
+                            <!--g.append("path")-->
+                                    <!--.datum({type: "Sphere"})-->
+                                    <!--.attr("class", "sphere")-->
+                                    <!--.attr("d", path);-->
+
+                            <!--g.append("path")-->
+                                    <!--.datum(topojson.merge(world, world.objects.countries.geometries))-->
+                                    <!--.attr("class", "land")-->
+                                    <!--.attr("d", path);-->
+
+                            <!--g.append("path")-->
+                                    <!--.datum(topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; }))-->
+                                    <!--.attr("class", "boundary")-->
+                                    <!--.attr("d", path);-->
+                        <!--});-->
+
+                        <!--d3.csv("/envDataOnSP500", function(error, companies)  {-->
+                            <!--g.selectAll("circle")-->
+                                    <!--.data(companies)-->
+                                    <!--.enter()-->
+                                    <!--.append("circle")-->
+                                    <!--.attr("cx", 40)-->
+                                    <!--.attr("cy", 140)-->
+                                    <!--.attr("r", 50)-->
+                                    <!--.style("fill, red");-->
+                        <!--});-->
+
+                        <!--function zoomed() {-->
+                            <!--g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");-->
+                        <!--}-->
+
+                        <!--d3.select(self.frameElement).style("height", height + "px");-->
+
+                    <!--</script>-->
 
                 </div>
             </div>

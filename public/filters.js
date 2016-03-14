@@ -501,19 +501,38 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
             return label;
         });
 
-    //@TODO EMISSION BAR  CHARTS
+    //@TODO GH1 BAR CHART
 
-    //GHG1 
+    // IDEA : ALWAYS HAVE 20 BINS
+    // 20 BINS ARE CREATED WITH RANGES
+    // USER SPECIFIED RANGERS FOR EMISSIONS VALUES FROM START TO FINISH
+
+    // MAYBE USE D3 TO DO THIS?
+    // ON THE RIGHT SIDE OF THE CHART, HAVE START: END: RENDER:
+
     var GHG1 = sp500.dimension(function (d) {
         return d.GHG1;
     });
-    var GHG1Group = GHG1.group();
-    
+
+    var binWidth = 20;
+
+    //http://learnjsdata.com/group_data.html
+
+
+
+    var GHG1Group = GHG1.group(function(d) {
+        console.log(d);
+        return Math.floor(d / binWidth) * binWidth}
+    ); //group values ... essentially define the values for the y axis of the chart
+
+    console.log(GHG1Group);
+
+
     ghg1Chart /* dc.barChart('#volume-month-chart', 'chartGroup') */
-        .width(350)
-        .height(250)
+        .width(600)
+        .height(350)
         .margins({top: 10, right: 20, bottom: 30, left: 20})
-        .dimension(companies)
+        .dimension(GHG1)
         .group(GHG1Group)
         .elasticY(true)
         // (_optional_) whether bar should be center to its x value. Not needed for ordinal chart, `default=false`
@@ -523,7 +542,8 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
         // (_optional_) set filter brush rounding
         .round(dc.round.floor)
         .alwaysUseRounding(true)
-        .x(d3.scale.ordinal().domain(data.map(function (d) {return d.name})))
+        .x(d3.scale.ordinal().domain(data.map(function (d) {return d.GHG1})))
+        //.xUnits(dc.units.ordinal)
         .renderHorizontalGridLines(true)
         // Customize the filter displayed in the control span
         .filterPrinter(function (filters) {

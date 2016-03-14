@@ -39,7 +39,6 @@
         /*jshint -W079*/
 
 
-
         var dc = {
             version: '2.0.0-beta.25',
             constants: {
@@ -237,7 +236,7 @@
             }
         };
 
-// See http://stackoverflow.com/a/20773846
+    // See http://stackoverflow.com/a/20773846
         dc.afterTransition = function (transition, callback) {
             if (transition.empty() || !transition.duration) {
                 callback.call(transition);
@@ -307,6 +306,7 @@
          * @type {{}}
          */
         dc.units.fp = {};
+
         /**
          * This function generates an argument for the {@link #dc.coordinateGridMixin Coordinate Grid Chart}
          * {@link #dc.coordinateGridMixin+xUnits .xUnits} function specifying that the x values are floating-point
@@ -9690,7 +9690,7 @@
             return _chart.anchor(parent, chartGroup);
         };
 
-// https://github.com/d3/d3-plugins/blob/master/box/box.js
+        // https://github.com/d3/d3-plugins/blob/master/box/box.js
         (function () {
 
             // Inspired by http://informationandvisualization.de/blog/box-plot
