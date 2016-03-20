@@ -12,15 +12,23 @@ var ghg1Chart = dc.barChart('#ghg-1-chart');
 var ghg2Chart = dc.barChart('#ghg-2-chart');
 var ghg3Chart = dc.barChart('#ghg-3-chart');
 
+var twwChart = dc.barChart('#tww-chart');
+var wastegeneratedChart = dc.barChart("#wasteGenerated-chart");
+
 //var quarterChart = dc.pieChart('#quarter-chart');
-var industryChart = dc.rowChart('#industry_chart');
-var sectorChart = dc.rowChart('#sector_chart');
+var industryChart = dc.scrollableRowChart('#industry_chart');
+var sectorChart = dc.scrollableRowChart('#sector_chart');
 
 //var moveChart = dc.lineChart('#monthly-move-chart');
 //var volumeChart = dc.barChart('#monthly-volume-chart');
 //var yearlyBubbleChart = dc.bubbleChart('#yearly-bubble-chart');
 //var nasdaqCount = dc.dataCount('.dc-data-count');
 //var nasdaqTable = dc.dataTable('.dc-data-table');
+
+var FULL_CHART_WIDTH = 400;
+var HALF_CHART_WIDTH = 170;
+var FULL_CHART_HEIGHT = 250;
+var HALF_CHART_HEIGHT = 140;
 
 var globalFilter;
 
@@ -42,7 +50,8 @@ var colorbrewer = {YlGn: {
     7: ["#ffffcc","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#0c2c84"],
     8: ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#0c2c84"],
     9: ["#ffffd9","#edf8b1","#c7e9b4","#7fcdbb","#41b6c4","#1d91c0","#225ea8","#253494","#081d58"]
-},GnBu: {
+},
+    GnBu: {
     3: ["#e0f3db","#a8ddb5","#43a2ca"],
     4: ["#f0f9e8","#bae4bc","#7bccc4","#2b8cbe"],
     5: ["#f0f9e8","#bae4bc","#7bccc4","#43a2ca","#0868ac"],
@@ -74,7 +83,8 @@ var colorbrewer = {YlGn: {
     7: ["#f1eef6","#d0d1e6","#a6bddb","#74a9cf","#3690c0","#0570b0","#034e7b"],
     8: ["#fff7fb","#ece7f2","#d0d1e6","#a6bddb","#74a9cf","#3690c0","#0570b0","#034e7b"],
     9: ["#fff7fb","#ece7f2","#d0d1e6","#a6bddb","#74a9cf","#3690c0","#0570b0","#045a8d","#023858"]
-},BuPu: {
+},
+    BuPu: {
     3: ["#e0ecf4","#9ebcda","#8856a7"],
     4: ["#edf8fb","#b3cde3","#8c96c6","#88419d"],
     5: ["#edf8fb","#b3cde3","#8c96c6","#8856a7","#810f7c"],
@@ -106,7 +116,8 @@ var colorbrewer = {YlGn: {
     7: ["#fef0d9","#fdd49e","#fdbb84","#fc8d59","#ef6548","#d7301f","#990000"],
     8: ["#fff7ec","#fee8c8","#fdd49e","#fdbb84","#fc8d59","#ef6548","#d7301f","#990000"],
     9: ["#fff7ec","#fee8c8","#fdd49e","#fdbb84","#fc8d59","#ef6548","#d7301f","#b30000","#7f0000"]
-},YlOrRd: {
+},
+    YlOrRd: {
     3: ["#ffeda0","#feb24c","#f03b20"],
     4: ["#ffffb2","#fecc5c","#fd8d3c","#e31a1c"],
     5: ["#ffffb2","#fecc5c","#fd8d3c","#f03b20","#bd0026"],
@@ -130,7 +141,8 @@ var colorbrewer = {YlGn: {
     7: ["#f2f0f7","#dadaeb","#bcbddc","#9e9ac8","#807dba","#6a51a3","#4a1486"],
     8: ["#fcfbfd","#efedf5","#dadaeb","#bcbddc","#9e9ac8","#807dba","#6a51a3","#4a1486"],
     9: ["#fcfbfd","#efedf5","#dadaeb","#bcbddc","#9e9ac8","#807dba","#6a51a3","#54278f","#3f007d"]
-},Blues: {
+},
+    Blues: {
     3: ["#deebf7","#9ecae1","#3182bd"],
     4: ["#eff3ff","#bdd7e7","#6baed6","#2171b5"],
     5: ["#eff3ff","#bdd7e7","#6baed6","#3182bd","#08519c"],
@@ -154,7 +166,8 @@ var colorbrewer = {YlGn: {
     7: ["#feedde","#fdd0a2","#fdae6b","#fd8d3c","#f16913","#d94801","#8c2d04"],
     8: ["#fff5eb","#fee6ce","#fdd0a2","#fdae6b","#fd8d3c","#f16913","#d94801","#8c2d04"],
     9: ["#fff5eb","#fee6ce","#fdd0a2","#fdae6b","#fd8d3c","#f16913","#d94801","#a63603","#7f2704"]
-},Reds: {
+},
+    Reds: {
     3: ["#fee0d2","#fc9272","#de2d26"],
     4: ["#fee5d9","#fcae91","#fb6a4a","#cb181d"],
     5: ["#fee5d9","#fcae91","#fb6a4a","#de2d26","#a50f15"],
@@ -180,7 +193,8 @@ var colorbrewer = {YlGn: {
     9: ["#b35806","#e08214","#fdb863","#fee0b6","#f7f7f7","#d8daeb","#b2abd2","#8073ac","#542788"],
     10: ["#7f3b08","#b35806","#e08214","#fdb863","#fee0b6","#d8daeb","#b2abd2","#8073ac","#542788","#2d004b"],
     11: ["#7f3b08","#b35806","#e08214","#fdb863","#fee0b6","#f7f7f7","#d8daeb","#b2abd2","#8073ac","#542788","#2d004b"]
-},BrBG: {
+},
+    BrBG: {
     3: ["#d8b365","#f5f5f5","#5ab4ac"],
     4: ["#a6611a","#dfc27d","#80cdc1","#018571"],
     5: ["#a6611a","#dfc27d","#f5f5f5","#80cdc1","#018571"],
@@ -448,83 +462,102 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
     //### Create Crossfilter Dimensions and Groups. NOTE: BE CAREFUL OF HOW MANY DIMENSIONS YOU INSTANTIATE
     var sp500 = crossfilter(data);
 
-    var companies = sp500.dimension(function (d) {
-        return d.name;
-    });
-
     // USEFUL FOR FILLING TABLES
-    globalFilter = companies;
+    globalFilter = sp500.dimension(function (d) {return d.name;});
 
     var all = sp500.groupAll();
-
-    //@TODO PIE CHART FOR RISK EXPOSED
-    var riskExp = sp500.dimension(function (d) {
-        return d.riskExp == "1" ? 'Yes' : 'No';
+    var GHG1 = sp500.dimension(function (d) {
+        if (!isBlank(d.GHG1)) {
+            return d.GHG1;
+        } else {
+            return 'Unknown';
+        }
     });
-    // Produce counts records in the dimension
-    var riskExpGroup = riskExp.group();
-
-    riskExposedChart /* dc.pieChart('#gain-loss-chart', 'chartGroup') */ // (_optional_) define chart width, `default = 200`
-        .width(180)// (optional) define chart height, `default = 200`
-        .height(180)// Define pie radius
-        .radius(80)// Set dimension
-        .dimension(riskExp)// Set group
-        .group(riskExpGroup)// (_optional_) by default pie chart will use `group.key` as its label but you can overwrite it with a closure.
-        .label(function (d) {
-            if (riskExposedChart.hasFilter() && !riskExposedChart.hasFilter(d.key)) {
-                return d.key + '(0%)';
-            }
-            var label = d.key;
-            if (all.value()) {
-                label += '(' + Math.floor(d.value / all.value() * 100) + '%)';
-            }
-            return label;
-        });
-
-    //@TODO PIE CHART FOR CLIMATE CHANGE POLICY EXPOSED
-    var ccImplemented = sp500.dimension(function (d) {
-        return d.ccImplemented == "1" ? 'Yes' : 'No';
+    var GHG2 = sp500.dimension(function (d) {
+        if (!isBlank(d.GHG2)) {
+            return d.GHG2;
+        } else {
+            return 'Unknown';
+        }
     });
-    // Produce counts records in the dimension
-    var ccImplementedGroup = ccImplemented.group();
+    var GHG3 = sp500.dimension(function (d) {
+        if (!isBlank(d.GHG3)) {
+            return d.GHG3;
+        } else {
+            return 'Unknown';
+        }
+    });
 
-    ccPolicyImplChart
-        .width(180)
-        .height(180)
-        .radius(80)
-        .dimension(ccImplemented)
-        .group(ccImplementedGroup)
-        .label(function (d) {
-            if (ccPolicyImplChart.hasFilter() && !ccPolicyImplChart.hasFilter(d.key)) {
-                return d.key + '(0%)';
-            }
-            var label = d.key;
-            if (all.value()) {
-                label += '(' + Math.floor(d.value / all.value() * 100) + '%)';
-            }
-            return label;
-        });
+    var tWW = sp500.dimension(function (d) {
+        if (!isBlank(d.totalWaterWithdrawl)) {
+            return d.totalWaterWithdrawl;
+        } else {
+            return 'Unknown';
+        }
+    });
+    var WG = sp500.dimension(function (d) {
+        if (!isBlank(d.wasteGeneratedPerAssets)) {
+            return d.wasteGeneratedPerAssets;
+        } else {
+            return 'Unknown';
+        }
+    });
 
-    //BAR CHART
-
-    // JENNA
-    // ALWAYS MAINTAIN 20 BINS
-    // 20 BINS ARE CREATED WITH RANGES
-    // USER SPECIFIED RANGERS FOR EMISSIONS VALUES FROM START TO FINISH
-
-
-
-
-    //GHG1
+    //Pie Chart - Risk exposed?
     (function() {
-        var GHG1 = sp500.dimension(function (d) {
-            if (!isBlank(d.GHG1)) {
-                return d.GHG1;
-            } else {
-                return 'Unknown';
-            }
+        var riskExp = sp500.dimension(function (d) {
+            return d.riskExp == "1" ? 'Yes' : 'No';
         });
+        // Produce counts records in the dimension
+        var riskExpGroup = riskExp.group();
 
+        riskExposedChart /* dc.pieChart('#gain-loss-chart', 'chartGroup') */ // (_optional_) define chart width, `default = 200`
+            .width(150)// (optional) define chart height, `default = 200`
+            .height(150)// Define pie radius
+            .radius(75)// Set dimension
+            .dimension(riskExp)// Set group
+            .group(riskExpGroup)// (_optional_) by default pie chart will use `group.key` as its label but you can overwrite it with a closure.
+            .label(function (d) {
+                if (riskExposedChart.hasFilter() && !riskExposedChart.hasFilter(d.key)) {
+                    return d.key + '(0%)';
+                }
+                var label = d.key;
+                if (all.value()) {
+                    label += '(' + Math.floor(d.value / all.value() * 100) + '%)';
+                }
+                return label;
+            });
+    }());
+
+    //Pie Chart - CC policy implemented?
+    (function() {
+        var ccImplemented = sp500.dimension(function (d) {
+            return d.ccImplemented == "1" ? 'Yes' : 'No';
+        });
+        // Produce counts records in the dimension
+        var ccImplementedGroup = ccImplemented.group();
+
+        ccPolicyImplChart
+            .width(150)// (optional) define chart height, `default = 200`
+            .height(150)// Define pie radius
+            .radius(75)// Set dimension
+            .dimension(ccImplemented)
+            .group(ccImplementedGroup)
+            .label(function (d) {
+                if (ccPolicyImplChart.hasFilter() && !ccPolicyImplChart.hasFilter(d.key)) {
+                    return d.key + '(0%)';
+                }
+                var label = d.key;
+                if (all.value()) {
+                    label += '(' + Math.floor(d.value / all.value() * 100) + '%)';
+                }
+                return label;
+            });
+
+    }());
+
+    //BAR CHART : GHG1
+    (function() {
         var minMax = d3.extent(data, function (d) {
             return +d.GHG1;
         });
@@ -550,9 +583,9 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
             } //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
         });
 
-        ghg1Chart /* dc.barChart('#volume-month-chart', 'chartGroup') */
-            .width(600)
-            .height(350)
+        ghg1Chart
+            .width(FULL_CHART_WIDTH)
+            .height(FULL_CHART_HEIGHT)
             .margins({top: 10, right: 20, bottom: 40, left: 20})
             .dimension(GHG1)
             .group(GHG1Group)
@@ -568,7 +601,7 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
             //.x(d3.scale.ordinal().domain(data.map(function (d) {return d.GHG1})))
             .xUnits(dc.units.ordinal)
             .renderHorizontalGridLines(true)
-            // Customize the filter displayed in the control span
+             //Customize the filter displayed in the control span
             .filterPrinter(function (filters) {
                 var filter = filters[0], s = '';
                 s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
@@ -591,18 +624,11 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
                 });
                 return filter;
             });
+
     }());
 
-    //GHG2
-    (function(){
-        var GHG2 = sp500.dimension(function (d) {
-            if (!isBlank(d.GHG2)) {
-                return d.GHG2;
-            } else {
-                return 'Unknown';
-            }
-        });
-
+    //BAR CHART: GHG2
+    (function() {
         var minMax = d3.extent(data, function (d) {
             return +d.GHG2;
         });
@@ -629,8 +655,8 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
         });
 
         ghg2Chart /* dc.barChart('#volume-month-chart', 'chartGroup') */
-            .width(600)
-            .height(350)
+            .width(FULL_CHART_WIDTH)
+            .height(FULL_CHART_HEIGHT)
             .margins({top: 10, right: 20, bottom: 40, left: 20})
             .dimension(GHG2)
             .group(GHG2Group)
@@ -646,7 +672,7 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
             //.x(d3.scale.ordinal().domain(data.map(function (d) {return d.GHG2})))
             .xUnits(dc.units.ordinal)
             .renderHorizontalGridLines(true)
-            // Customize the filter displayed in the control span
+             //Customize the filter displayed in the control span
             .filterPrinter(function (filters) {
                 var filter = filters[0], s = '';
                 s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
@@ -671,16 +697,8 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
             });
     }());
 
-    //GHG3
+    //BAR CHART: GHG3
     (function(){
-        var GHG3 = sp500.dimension(function (d) {
-            if (!isBlank(d.GHG3)) {
-                return d.GHG3;
-            } else {
-                return 'Unknown';
-            }
-        });
-
         var minMax = d3.extent(data, function (d) {
             return +d.GHG3;
         });
@@ -707,8 +725,8 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
         });
 
         ghg3Chart /* dc.barChart('#volume-month-chart', 'chartGroup') */
-            .width(600)
-            .height(350)
+            .width(FULL_CHART_WIDTH)
+            .height(FULL_CHART_HEIGHT)
             .margins({top: 10, right: 20, bottom: 40, left: 20})
             .dimension(GHG3)
             .group(GHG3Group)
@@ -724,7 +742,7 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
             //.x(d3.scale.ordinal().domain(data.map(function (d) {return d.GHG3})))
             .xUnits(dc.units.ordinal)
             .renderHorizontalGridLines(true)
-            // Customize the filter displayed in the control span
+             //Customize the filter displayed in the control span
             .filterPrinter(function (filters) {
                 var filter = filters[0], s = '';
                 s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
@@ -748,64 +766,207 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
                 return filter;
             });
     }());
-    
 
-    // STACKED VAR CHARTS
-    //// Counts per weekday
-    var industry = sp500.dimension(function (d) {
-        return d.industry;
-    });
+    //ROW CHART: INDUSTRY CHART
+    (function() {
+        var industry = sp500.dimension(function (d) {
+            return d.industry;
+        });
 
-    var industryGroup = industry.group();
-
-
-    //http://jsfiddle.net/4t8ovv63/
-
-    industryChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
-        .width(300)
-        .height(300)
-        .margins({top: 20, left: 10, right: 10, bottom: 20})
-        .group(industryGroup)
-        .dimension(industry)
-        // Assign colors to each value in the x scale domain
-        .ordinalColors(['#3182bd', '#6baed6', '#9ecae1'])
-        .label(function (d) {
-            return d.key;
-        })
-        // Title sets the row text
-        .title(function (d) {
-            return d.value;
-        })
-        .elasticX(true)
-        .xAxis().ticks(4);
+        var industryGroup = industry.group();
 
 
-    var sector = sp500.dimension(function (d) {
-        return d.sector;
-        //var name = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    });
+        //http://jsfiddle.net/4t8ovv63/
 
-    var numSectors = d3.map(data, function(d) { return d.sector; }).size();
+        industryChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
+            .width(HALF_CHART_WIDTH)
+            .height(HALF_CHART_HEIGHT)
+            .margins({top: 20, left: 10, right: 10, bottom: 20})
+            .group(industryGroup)
+            .dimension(industry)
+            // Assign colors to each value in the x scale domain
+            .ordinalColors(['#3182bd', '#6baed6', '#9ecae1'])
+            .label(function (d) {
+                return d.key;
+            })
+            // Title sets the row text
+            .title(function (d) {
+                return d.value;
+            })
+            .elasticX(true)
+            .controlsUseVisibility(true)
+            .xAxis().ticks(4);
+    }());
 
-    var sectorGroup = sector.group();
+    //ROW CHART: SECTOR CHART
+    (function() {
+        var sector = sp500.dimension(function (d) {
+            return d.sector;
+        });
 
-    sectorChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
-        .width(300)
-        .height(300)
-        .margins({top: 20, left: 10, right: 10, bottom: 20})
-        .group(sectorGroup)
-        .dimension(sector)
-        // Assign colors to each value in the x scale domain
-        .ordinalColors(['#3182bd', '#6baed6', '#9ecae1'])
-        .label(function (d) {
-            return d.key;
-        })
-        // Title sets the row text
-        .title(function (d) {
-            return d.value;
-        })
-        .elasticX(true)
-        .xAxis().ticks(4);
+        var numSectors = d3.map(data, function(d) { return d.sector; }).size();
+
+        var sectorGroup = sector.group();
+
+        sectorChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
+            .width(HALF_CHART_WIDTH)
+            .height(HALF_CHART_HEIGHT)
+            .margins({top: 20, left: 10, right: 10, bottom: 20})
+            .group(sectorGroup)
+            .dimension(sector)
+            // Assign colors to each value in the x scale domain
+            .ordinalColors(['#3182bd', '#6baed6', '#9ecae1'])
+            .label(function (d) {
+                return d.key;
+            })
+            // Title sets the row text
+            .title(function (d) {
+                return d.value;
+            })
+            .elasticX(true)
+            .controlsUseVisibility(true)
+            .xAxis().ticks(4);
+
+    }());
+
+    //BAR CHART: WATER WITHDRAWL
+    (function() {
+
+        var minMax = d3.extent(data, function (d) {
+            return +d.totalWaterWithdrawl;
+        });
+
+        var min = minMax[0];
+        var max = minMax[1];
+        console.log(max);
+        var binCount = 10;
+        var span = max - min;
+        var binWidth = span / binCount;
+
+        var tWWbins = ["", 'Unknown'];
+
+        for (var i = 0; i <= binCount; i++) {
+            tWWbins.push(((Math.floor(span / binCount) * i)).toString());
+            // A THOUSAND IS TO NORMALIZE THE VALUES & DO IT THROUGH xAxis STYLING?
+        }
+
+        tWWbins.push("");
+
+        var tWWGroup = tWW.group(function (d) {
+            if (d == 'Unknown') {
+                return 'Unknown';
+            } else {
+                return tWWbins[Math.floor((+d * binCount) / max) + 2]; // add two because first two elems are "" and "Unknown"
+            } //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
+        });
+
+        twwChart /* dc.barChart('#volume-month-chart', 'chartGroup') */
+            .width(FULL_CHART_WIDTH)
+            .height(FULL_CHART_HEIGHT)
+            .margins({top: 10, right: 20, bottom: 50, left: 20})
+            .dimension(tWW)
+            .group(tWWGroup)
+            .elasticY(true)
+            // (_optional_) whether bar should be center to its x value. Not needed for ordinal chart, `default=false`
+            .centerBar(true)
+            .gap(5)
+            .round(dc.round.floor)
+            .alwaysUseRounding(true)
+            .x(d3.scale.ordinal().domain(tWWbins))
+            .xUnits(dc.units.ordinal)
+            .renderHorizontalGridLines(true)
+            .filterPrinter(function (filters) {
+                var filter = filters[0], s = '';
+                s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
+                return s;
+            })
+            .filterHandler(function (dimension, filter) {
+                var selectedRange = twwChart.filter();
+                dimension.filter(function (d) {
+                    var range;
+                    var match = false;
+                    // Iterate over each selected range and return if 'd' is within the range.
+                    for (var i = 0; i < filter.length; i++) {
+                        range = filter[i];
+                        if (d >= range - .1 && d <= range) {
+                            match = true;
+                            break;
+                        }
+                    }
+                    return selectedRange != null ? match : true;
+                });
+                return filter;
+            });
+    }());
+
+    //BAR CHART: WASTE GENERATED
+    (function() {
+
+        var minMax = d3.extent(data, function (d) {
+            return +d.wasteGeneratedPerAssets;
+        });
+
+        var min = minMax[0];
+        var max = minMax[1];
+        console.log(max);
+        var binCount = 10;
+        var span = max - min;
+        var binWidth = span / binCount;
+
+        // BINNING
+        var wgBins = ["", 'Unknown'];
+        for (var i = 0; i <= binCount; i++) {
+            wgBins.push(((Math.floor(span / binCount) * i)).toString());
+            // A THOUSAND IS TO NORMALIZE THE VALUES & DO IT THROUGH xAxis STYLING?
+        }
+        wgBins.push("");
+        var wgGroup = WG.group(function (d) {
+            if (d == 'Unknown') {
+                return 'Unknown';
+            } else {
+                return wgBins[Math.floor((+d * binCount) / max) + 2]; // add two because first two elems are "" and "Unknown"
+            } //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
+        });
+
+        wastegeneratedChart /* dc.barChart('#volume-month-chart', 'chartGroup') */
+            .width(FULL_CHART_WIDTH)
+            .height(FULL_CHART_HEIGHT)
+            .margins({top: 10, right: 20, bottom: 40, left: 20})
+            .dimension(WG)
+            .group(wgGroup)
+            .elasticY(true)
+            // (_optional_) whether bar should be center to its x value. Not needed for ordinal chart, `default=false`
+            .centerBar(true)
+            .gap(5)
+            .round(dc.round.floor)
+            .alwaysUseRounding(true)
+            .x(d3.scale.ordinal().domain(wgBins))
+            .xUnits(dc.units.ordinal)
+            .renderHorizontalGridLines(true)
+            .filterPrinter(function (filters) {
+                var filter = filters[0], s = '';
+                s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
+                return s;
+            })
+            .filterHandler(function (dimension, filter) {
+                var selectedRange = wastegeneratedChart.filter();
+                dimension.filter(function (d) {
+                    var range;
+                    var match = false;
+                    // Iterate over each selected range and return if 'd' is within the range.
+                    for (var i = 0; i < filter.length; i++) {
+                        range = filter[i];
+                        if (d >= range - .1 && d <= range) {
+                            match = true;
+                            break;
+                        }
+                    }
+                    return selectedRange != null ? match : true;
+                });
+                return filter;
+            });
+    }());
+
 
 
 

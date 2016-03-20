@@ -8,6 +8,17 @@ Template.HomePrivate.rendered = function() {
 };
 
 Template.HomePrivate.events({
+    'click rect': function (e) {
+        $('.companiesCount').html(globalFilter.top(Infinity).length);
+        d
+    },
+
+    'click .glyphicon-remove': function(e) {
+        console.log("about to filter everything");
+        dc.redrawAll();
+        dc.filterAll();
+    },
+
     'click #applyFilterButton': function (e) {
         e.preventDefault();
         var results = globalFilter.top(Infinity);

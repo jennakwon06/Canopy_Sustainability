@@ -1,3 +1,69 @@
+#filterBar {
+    height:100vh;
+    width:35vw;
+    overflow-y: scroll;
+    display: inline-block;
+    padding-left: 15px;
+}
+
+#controlBar{
+    height:100vh;
+    width:3vw;
+    display: inline-block;
+    /*background-color:lightslategrey;*/
+    position: fixed;
+    background: lightslategrey; /* For browsers that do not support gradients */
+    /*background: -webkit-linear-gradient(right, lightslategrey , lightgrey); !* For Safari 5.1 to 6.0 *!*/
+    /*background: -o-linear-gradient(left, lightslategrey , lightgrey); !* For Opera 11.1 to 12.0 *!*/
+    /*background: -moz-linear-gradient(left, lightslategrey , lightgrey); !* For Firefox 3.6 to 15 *!*/
+    /*background: linear-gradient(to left, lightslategrey , lightgrey); !* Standard syntax *!*/
+}
+
+#resultBar {
+    height:100vh;
+    width:62vw;
+    display: inline-block;
+    overflow-y: scroll;
+    right: 0;
+    margin-left: 3vw;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+.controlIcons {
+    margin: auto;
+    width: 80%;
+}
+
+span.myGlyphicon {
+    font-size: 2em;
+    margin-top: 5px;
+}
+
+.container {
+    width: 100vw;
+}
+
+.resultStatus {
+
+}
+
+.clickable-panel {
+    background-color: #428bca;
+    fill-opacity: 0.6;
+}
+
+.clickable-panel:hover {
+    fill-opacity: 1.0;
+}
+
 svg {
     /*background: #eee;*/
 }
@@ -26,15 +92,6 @@ svg {
 .outer {
     width: 700px;
     height: 500px;
-}
-
-#main_wrapper {
-    left: 20px;
-}
-
-.resultsPanel {
-    height: 1800px;
-    overflow-y: scroll;
 }
 
 .resultsTable tbody tr:nth-child(odd) td {
