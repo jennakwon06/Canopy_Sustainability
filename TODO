@@ -1,5 +1,7 @@
 PRIORITIES
-1. expandable / grouped filters / reset by group and all and individual
+
+1. Fixed axis
+- Make a div and attach a svg to it?! how to make a div class in svg and how to actually place it?!
 
 2. adjustable row chart
 

@@ -29,10 +29,10 @@
                 <div class="filter_container" id="accordion">
 
                     <!--GENERAL-->
-                    <div class="panel panel-default">
+                    <div class="panelGeneral panel-default">
                         <div class="clickable-panel">
                             <div class="panel-heading">
-                                <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#accordion" data-target="#collapseGeneral">
+                                <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#panelGeneral" data-target="#collapseGeneral">
                                     <a>General</a>
                                     <i class="indicator glyphicon glyphicon-chevron-down pull-right"></i>
                                 </h4>
@@ -49,15 +49,25 @@
 
                                 <div class="col-md-6">
                                     <div id="industry_chart" style="overflow-y: scroll; height: 300px">
-                                        <a class="reset" href="javascript:industryChart.filterAll();dc.redrawAll();" style="visibility: hidden">reset</a>
                                         <div class="clearfix"></div>
+
+                                        <div>
+                                            <a class="reset" href="javascript:industryChart.filterAll();dc.redrawAll();"
+                                           style="visibility: hidden; position: absolute; height: 5px; right:0;"> reset</a>
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div id="sector_chart" style="overflow-y: scroll; height: 300px">
-                                        <a class="reset" href="javascript:sectorChart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>
                                         <div class="clearfix"></div>
+
+                                        <div>
+                                            <a class="reset" href="javascript:sectorChart.filterAll();dc.redrawAll();"
+                                               style="visibility: hidden; position: absolute; height: 5px; right:0;">
+                                                reset
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -65,11 +75,16 @@
                     </div>
 
                     <!--EMISSIONS-->
-                    <div class="panel panel-default">
+                    <div class="panelEmissions panel-default">
                         <div class="clickable-panel">
                             <div class="panel-heading">
-                                <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#accordion" data-target="#collapseEmissions">
+                                <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#panelEmissions" data-target="#collapseEmissions">
                                     <a> Emissions </a>
+
+                                    <!--RESET EMISSIONS ONLY-->
+                                    <a class="reset" href="javascript:ghg1Chart.filterAll();ghg2Chart.filterAll();ghg3Chart.filterAll();">Reset emissions</a>
+                                    <!--<div class="clearfix"></div>-->
+
                                     <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
                                 </h4>
                             </div>
@@ -82,7 +97,6 @@
                                     <strong>GHG Scope 1 Emission</strong>
                                     <span class="reset" style="display: none;">range: <span class="filter"></span></span>
                                     <a class="reset" href="javascript:ghg1Chart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-
                                     <div class="clearfix"></div>
                                 </div>
 
@@ -106,10 +120,10 @@
                     </div>
 
                     <!--WATER-->
-                    <div class="panel panel-default">
+                    <div class="panelWater panel-default">
                         <div class="clickable-panel">
                             <div class="panel-heading">
-                                <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#" data-target="#collapseWater">
+                                <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#panelWater" href="#" data-target="#collapseWater">
                                     <a> Water </a>
                                     <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
                                 </h4>
@@ -129,10 +143,10 @@
                     </div>
 
                     <!--Waste-->
-                    <div class="panel panel-default">
+                    <div class="panelWaste panel-default">
                         <div class="clickable-panel">
                             <div class="panel-heading">
-                                <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#accordion" data-target="#collapseWaste">
+                                <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#panelWaste" data-target="#collapseWaste">
                                     Waste
                                     <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
                                 </h4>
@@ -152,10 +166,10 @@
                     </div>
 
                     <!--Energy-->
-                    <div class="panel panel-default">
+                    <div class="panelEnergy panel-default">
                         <div class="clickable-panel">
                             <div class="panel-heading">
-                                <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#accordion" data-target="#collapseEnergy">
+                                <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#panelEnergy" data-target="#collapseEnergy">
                                     Energy
                                     <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
                                 </h4>
@@ -170,10 +184,10 @@
                     </div>
 
                     <!--MISC-->
-                    <div class="panel panel-default">
+                    <div class="panelMisc panel-default">
                         <div class="clickable-panel">
                             <div class="panel-heading">
-                                <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#accordion" data-target="#collapseMisc">
+                                <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#panelMisc" data-target="#collapseMisc">
                                         Misc
                                     <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
                                 </h4>
@@ -280,6 +294,9 @@
             <div id="controlBar">
                 <div class="controlIcons">
                     <h1 href="#" class="companiesCount" style="text-align: center; height: 50px; font-size: 18px" title="Company Counts"></h1>
+                    <span class="glyphicon glyphicon-arrow-left myGlyphicon" title="Collapse filters" id="collapseFilterButton"></span>
+
+
                     <span class="glyphicon glyphicon-circle-arrow-right myGlyphicon" title="Apply filters" id="applyFilterButton"></span>
                     <span class="glyphicon glyphicon-remove myGlyphicon" title="Reset all filters"></span>
                     <!--<span class="glyphicon glyphicon-check myGlyphicon" title="Apply filters"></span>-->
@@ -288,6 +305,15 @@
                     <span class="glyphicon glyphicon-save myGlyphicon" title="Save Results"></span>
                     <span class="glyphicon glyphicon-th-list myGlyphicon" title="Show list view"></span>
                     <span class="glyphicon glyphicon-map-marker myGlyphicon" title="Show map view"></span>
+                    <!--http://google.github.io/material-design-icons/-->
+                    <i class="material-icons md-dark md-36">
+                        <svg fill="#2c3e50" height="36" viewBox="0 0 24 24" width="36" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0h24v24H0z" fill="none"/>
+                            <circle cx="7.2" cy="14.4" r="3.2"/>
+                            <circle cx="14.8" cy="18" r="2"/>
+                            <circle cx="15.2" cy="8.8" r="4.8"/>
+                        </svg>
+                    </i>
 
 
 

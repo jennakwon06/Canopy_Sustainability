@@ -8245,32 +8245,20 @@ var testing;
             }
 
             function drawAxis () {
-                //var axisG = _g.select('g.axis');
-
-                //console.log(axisG);
+                var axisG = _g.select('g.axis');
 
                 calculateAxisScale();
 
-                var axisG = _g_axis
-                    .append('g')
-                    .attr('class', 'axis')
-                    .attr('class', 'axis')
-                    .style('position', 'fixed ! important');
-
-
-                //if (axisG.empty()) {
-                //    axisG = _g.select('g.axis')
-                //        .append('g')
-                //        .attr('class', 'axis')
-                //        .style('position', 'fixed ! important');
-                //}
+                if (axisG.empty()) {
+                    axisG = _g
+                        .append('g')
+                        .attr('class', 'axis')
+                        .style('display', 'none');
+                }
                 axisG.attr('transform', 'translate(0, 0)');
 
                 dc.transition(axisG, _chart.transitionDuration())
                     .call(_xAxis);
-
-                $(_div).append(axisG[0][0]);
-
             }
 
             _chart._doRender = function () {
@@ -8279,22 +8267,9 @@ var testing;
                 var finalHeight = calculateFinalHeight();
 
                 _g = _chart.svg()
-                    .style("height", finalHeight + 20)
-                    .attr('class', 'svg_container')
-                    .attr('transform', 'translate(' + _chart.margins().left + ',' + _chart.margins().top + ')');
-
-                _g_axis = _g.append('g');
-
-                _div = document.createElement("svg");
-                _div.setAttribute("style", "position: absolute; top: 0px; height:20px; width:260px;");
-                _div.setAttribute('transform', 'translate((0, 0)');
-
-                $(_g.property("parentElement")).append(_div);
-
-
-                _g_data = _g.append('g')
                     .style("height", finalHeight)
-                    .attr('class', 'data_container');
+                    .append('g')
+                    .attr('transform', 'translate(' + _chart.margins().left + ',' + _chart.margins().top + ')');
 
                 drawChart();
 
@@ -8354,7 +8329,7 @@ var testing;
                 drawAxis();
                 drawGridLines();
 
-                var rows = _g_data.selectAll('g.' + _rowCssClass)
+                var rows = _g.selectAll('g.' + _rowCssClass)
                     .data(_rowData);
 
                 createElements(rows);

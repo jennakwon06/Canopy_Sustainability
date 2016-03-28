@@ -12,6 +12,8 @@ var ghg1Chart = dc.barChart('#ghg-1-chart');
 var ghg2Chart = dc.barChart('#ghg-2-chart');
 var ghg3Chart = dc.barChart('#ghg-3-chart');
 
+
+
 var twwChart = dc.barChart('#tww-chart');
 var wastegeneratedChart = dc.barChart("#wasteGenerated-chart");
 

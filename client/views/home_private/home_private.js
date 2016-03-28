@@ -7,10 +7,120 @@ Template.HomePrivate.rendered = function() {
     $.getScript("/filters.js");
 };
 
+var i = 0;
+
 Template.HomePrivate.events({
+    // Reset all on buttons with
+    'click #resetEmissions' : function (e) {
+        ghg1Chart.filterAll();
+        ghg2Chart.filterAll();
+        ghg3Chart.filterAll();
+    },
+
+    //'click #resetEmissions' : function (e) {
+    //
+    //},
+
+    //'click #resetEmissions' : function (e) {
+    //
+    //},
+
+
+
+    //'click #resetEmissions' : function (e) {
+    //
+    //},
+    //'click #resetEmissions' : function (e) {
+    //
+    //},
+
+
+
+    'click #collapseFilterButton': function(e) {
+
+        //$('#filterBar').toggle(400);
+        //
+        //if (i % 2 == 0) {
+        //    $('#controlBar').css("left", "0px");
+        //    $('#resultBar').css("width", "96vw");
+        //} else {
+        //    $('#resultBar').css("width", "62vw");
+        //    $('#controlBar').removeAttr("style");
+        //}
+        //i++;
+        //console.log(i);
+        //
+        //
+
+
+        if (i % 2 == 0) {
+            $('#controlBar').animate({
+                left: "0px"
+            }, 20, function() {});
+
+            $('#filterBar').animate({
+                opacity: 0
+            }, 20, function() {});
+
+            $('#resultBar').css({"width" : "96vw","position" :"fixed"});
+            //$('#resultBar').css("position", "fixed");
+
+
+            //glyphicon-arrow-left
+
+            $(".glyphicon-arrow-left").addClass( "glyphicon-arrow-right");
+            $(".glyphicon-arrow-right").removeClass( "glyphicon-arrow-left");
+
+
+            //    $('#resultBar').css("width", "62vw");
+
+        } else {
+
+            $(".glyphicon-arrow-right").addClass( "glyphicon-arrow-left");
+            $(".glyphicon-arrow-left").removeClass( "glyphicon-arrow-right");
+
+
+            $('#resultBar').removeAttr("style");
+            $('#controlBar').removeAttr("style");
+
+            $('#filterBar').animate({
+                opacity: 1
+            }, 20, function() {
+
+            });
+            //$('#controlBar').animate({
+            //    left: "50px"
+            //}, 5000, function() {
+            //
+            //});
+            //
+            //$('#filterBar').animate({
+            //    display: "none"
+            //}, 5000, function() {
+            //
+            //});
+
+        }
+        i++;
+        console.log(i);
+
+
+        //console.log($('#controlBar').getAttribute());
+        //
+        //$('#filterBar').toggle("slide");
+        //$('#controlBar').toggle(
+        //    function () {
+        //        $("#controlBar").animate({"left": "20px", "display": "inline-block"}, 500);
+        //    },
+        //    function () {
+        //        $("#controlBar").animate({"left": "20px", "display": "inline-block"}, 500);
+        //    });
+    },
+
+
     'click rect': function (e) {
         $('.companiesCount').html(globalFilter.top(Infinity).length);
-        d
+
     },
 
     'click .glyphicon-remove': function(e) {
