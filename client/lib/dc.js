@@ -16,9 +16,6 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-
-var testing;
-
 (function() { function _dc(d3, crossfilter) {
         'use strict';
 
@@ -8177,21 +8174,17 @@ var testing;
         };
 
         /**
-         * Concrete row chart implementation.
+         * Added scroll on the concrete row chart implementation.
          *
          * Examples:
          * - {@link http://dc-js.github.com/dc.js/ Nasdaq 100 Index}
-         * @name rowChart
+         * @name scrollableRowchart
          * @memberof dc
          * @mixes dc.capMixin
          * @mixes dc.marginMixin
          * @mixes dc.colorMixin
          * @mixes dc.baseMixin
          * @example
-         * // create a row chart under #chart-container1 element using the default global chart group
-         * var chart1 = dc.rowChart('#chart-container1');
-         * // create a row chart under #chart-container2 element using chart group A
-         * var chart2 = dc.rowChart('#chart-container2', 'chartGroupA');
          * @param {String|node|d3.selection} parent - Any valid
          * {@link https://github.com/mbostock/d3/wiki/Selections#selecting-elements d3 single selector} specifying
          * a dom block element such as a div; or a dom element or d3 selection.
@@ -8337,6 +8330,7 @@ var testing;
                 updateElements(rows);
             }
 
+
             function createElements (rows) {
                 var rowEnter = rows.enter()
                     .append('g')
@@ -8412,7 +8406,10 @@ var testing;
                 if (_chart.renderTitleLabel()) {
                     rowEnter.append('text')
                         .attr('class', _titleRowCssClass)
-                        .on('click', onClick);
+                        .on('click', onClick)
+                        .text(function (d) {
+                            _chart.title()
+                        });
                 }
             }
 
@@ -8427,7 +8424,7 @@ var testing;
                             return _rowCssClass + ' _' + i;
                         })
                         .text(function (d) {
-                            return _chart.label()(d);
+                            return ( "(" + _chart.title()(d) + ") " + _chart.label()(d));
                         });
                     dc.transition(lab, _chart.transitionDuration())
                         .attr('transform', translateX);
@@ -8442,12 +8439,13 @@ var testing;
                             return _titleRowCssClass + ' _' + i ;
                         })
                         .text(function (d) {
-                            return _chart.title()(d);
+                            return ( "(" + _chart.title()(d) + ") " + _chart.label()(d));
                         });
                     dc.transition(titlelab, _chart.transitionDuration())
                         .attr('transform', translateX);
                 }
             }
+
 
             /**
              * Turn on/off Title label rendering (values) using SVG style of text-anchor 'end'
@@ -8617,6 +8615,25 @@ var testing;
             return _chart.anchor(parent, chartGroup);
         };
 
+        /**
+         * Concrete row chart implementation.
+         *
+         * Examples:
+         * - {@link http://dc-js.github.com/dc.js/ Nasdaq 100 Index}
+         * @name rowChart
+         * @memberof dc
+         * @mixes dc.capMixin
+         * @mixes dc.marginMixin
+         * @mixes dc.colorMixin
+         * @mixes dc.baseMixin
+         * @example
+         * @param {String|node|d3.selection} parent - Any valid
+         * {@link https://github.com/mbostock/d3/wiki/Selections#selecting-elements d3 single selector} specifying
+         * a dom block element such as a div; or a dom element or d3 selection.
+         * @param {String} [chartGroup] - The name of the chart group this chart instance should be placed in.
+         * Interaction with a chart will only trigger events and redraws within the chart's group.
+         * @return {dc.rowChart}
+         */
         dc.rowChart = function (parent, chartGroup) {
 
             var _g;
@@ -8814,7 +8831,10 @@ var testing;
                 if (_chart.renderTitleLabel()) {
                     rowEnter.append('text')
                         .attr('class', _titleRowCssClass)
-                        .on('click', onClick);
+                        .on('click', onClick)
+                        .text(function (d) {
+                            _chart.title()
+                        });
                 }
             }
 
@@ -8844,7 +8864,7 @@ var testing;
                             return _titleRowCssClass + ' _' + i ;
                         })
                         .text(function (d) {
-                            return _chart.title()(d);
+                            return _chart.label()(d);
                         });
                     dc.transition(titlelab, _chart.transitionDuration())
                         .attr('transform', translateX);

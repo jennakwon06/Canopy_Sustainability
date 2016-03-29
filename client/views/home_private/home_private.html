@@ -81,9 +81,6 @@
                                 <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#panelEmissions" data-target="#collapseEmissions">
                                     <a> Emissions </a>
 
-                                    <!--RESET EMISSIONS ONLY-->
-                                    <a class="reset" href="javascript:ghg1Chart.filterAll();ghg2Chart.filterAll();ghg3Chart.filterAll();">Reset emissions</a>
-                                    <!--<div class="clearfix"></div>-->
 
                                     <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
                                 </h4>
@@ -91,18 +88,18 @@
                         </div>
 
                         <div id="collapseEmissions" class="panel-collapse collapse in">
-                            <div class="panel-body">
-
+                            <div class="panel-body">>
                                 <div id="ghg-1-chart">
                                     <strong>GHG Scope 1 Emission</strong>
-                                    <span class="reset" style="display: none;">range: <span class="filter"></span></span>
+                                    <span class="reset" style="display: none;"></span>
                                     <a class="reset" href="javascript:ghg1Chart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
                                     <div class="clearfix"></div>
+
                                 </div>
 
                                 <div id="ghg-2-chart">
                                     <strong>GHG Scope 2 Emission</strong>
-                                    <span class="reset" style="display: none;">range: <span class="filter"></span></span>
+                                    <span class="reset" style="display: none;"></span>
                                     <a class="reset" href="javascript:ghg2Chart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>
 
                                     <div class="clearfix"></div>
@@ -110,9 +107,8 @@
 
                                 <div id="ghg-3-chart">
                                     <strong>GHG Scope 3 Emission</strong>
-                                    <span class="reset" style="display: none;">range: <span class="filter"></span></span>
+                                    <span class="reset" style="display: none;"></span>
                                     <a class="reset" href="javascript:ghg3Chart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>
-
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
@@ -134,7 +130,7 @@
                             <div class="panel-body">
                                 <div id="tww-chart">
                                     <strong>Amount of water discharged</strong>
-                                    <span class="reset" style="display: none;">range: <span class="filter"></span></span>
+                                    <span class="reset" style="display: none;"></span>
                                     <a class="reset" href="javascript:twwChart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>
                                     <div class="clearfix"></div>
                                 </div>
@@ -157,7 +153,7 @@
                             <div class="panel-body">
                                 <div id="wasteGenerated-chart">
                                     <strong>Amount of waste generated</strong>
-                                    <span class="reset" style="display: none;">range: <span class="filter"></span></span>
+                                    <span class="reset" style="display: none;"></span>
                                     <a class="reset" href="javascript:wastegeneratedChart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>
                                     <div class="clearfix"></div>
                                 </div>
@@ -197,7 +193,7 @@
                         <div id="collapseMisc" class="panel-collapse collapse in">
                             <div class="panel-body">
                                 <div id="risk_exposed_chart">
-                                    <strong>Exposed Risk</strong> fsz
+                                    <strong>Exposed Risk</strong>
                                     <a class="reset" href="javascript:riskExposedChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
 
                                     <div class="clearfix"></div>
@@ -212,82 +208,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!--// ignore for now-->
-                    <!--<script>-->
-                    <!--var width = 720,-->
-                    <!--height = 500;-->
-
-                    <!--var projection = d3.geo.mercator()-->
-                    <!--.translate([width / 2, height / 2])-->
-                    <!--.scale((width - 1) / 2 / Math.PI);-->
-
-                    <!--var zoom = d3.behavior.zoom()-->
-                    <!--.scaleExtent([1, 8])-->
-                    <!--.on("zoom", zoomed);-->
-
-                    <!--var path = d3.geo.path()-->
-                    <!--.projection(projection);-->
-
-                    <!--d3.select("#main_wrapper").append("h3")-->
-                    <!--.text("Location");-->
-
-                    <!--var svg = d3.select("#main_wrapper").append("svg")-->
-                    <!--.attr("width", width)-->
-                    <!--.attr("height", height)-->
-                    <!--.style("margin-top", 20)-->
-                    <!--.append("g");-->
-
-
-                    <!--var g = svg.append("g");-->
-
-                    <!--svg.append("rect")-->
-                    <!--.attr("class", "overlay")-->
-                    <!--.attr("width", width)-->
-                    <!--.attr("height", height);-->
-
-                    <!--svg.call(zoom)-->
-                    <!--.call(zoom.event);-->
-
-                    <!--d3.json("/world-50m.json", function(error, world) {-->
-                    <!--console.log(world);-->
-                    <!--if (error) throw error;-->
-
-                    <!--g.append("path")-->
-                    <!--.datum({type: "Sphere"})-->
-                    <!--.attr("class", "sphere")-->
-                    <!--.attr("d", path);-->
-
-                    <!--g.append("path")-->
-                    <!--.datum(topojson.merge(world, world.objects.countries.geometries))-->
-                    <!--.attr("class", "land")-->
-                    <!--.attr("d", path);-->
-
-                    <!--g.append("path")-->
-                    <!--.datum(topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; }))-->
-                    <!--.attr("class", "boundary")-->
-                    <!--.attr("d", path);-->
-                    <!--});-->
-
-                    <!--d3.csv("/envDataOnSP500", function(error, companies)  {-->
-                    <!--g.selectAll("circle")-->
-                    <!--.data(companies)-->
-                    <!--.enter()-->
-                    <!--.append("circle")-->
-                    <!--.attr("cx", 40)-->
-                    <!--.attr("cy", 140)-->
-                    <!--.attr("r", 50)-->
-                    <!--.style("fill, red");-->
-                    <!--});-->
-
-                    <!--function zoomed() {-->
-                    <!--g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");-->
-                    <!--}-->
-
-                    <!--d3.select(self.frameElement).style("height", height + "px");-->
-
-                    <!--</script>-->
-
                 </div>
             </div>
 
@@ -298,15 +218,15 @@
 
 
                     <span class="glyphicon glyphicon-circle-arrow-right myGlyphicon" title="Apply filters" id="applyFilterButton"></span>
-                    <span class="glyphicon glyphicon-remove myGlyphicon" title="Reset all filters"></span>
+                    <span class="glyphicon glyphicon-remove myGlyphicon" title="Reset all filters" id="resetAllFiltersButton"></span>
                     <!--<span class="glyphicon glyphicon-check myGlyphicon" title="Apply filters"></span>-->
                            <hr />
 
-                    <span class="glyphicon glyphicon-save myGlyphicon" title="Save Results"></span>
-                    <span class="glyphicon glyphicon-th-list myGlyphicon" title="Show list view"></span>
-                    <span class="glyphicon glyphicon-map-marker myGlyphicon" title="Show map view"></span>
+                    <span class="glyphicon glyphicon-save myGlyphicon disabled" title="Save Results" id="saveResultButton"></span>
+                    <span class="glyphicon glyphicon-th-list myGlyphicon" title="Show list view" id="resultListViewButton" ></span>
+                    <span class="glyphicon glyphicon-map-marker myGlyphicon" title="Show map view" id="resultMapViewButton"></span>
                     <!--http://google.github.io/material-design-icons/-->
-                    <i class="material-icons md-dark md-36">
+                    <i class="material-icons md-dark md-36 myGlyphicon" id="resultScatterPlotViewButton">
                         <svg fill="#2c3e50" height="36" viewBox="0 0 24 24" width="36" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0 0h24v24H0z" fill="none"/>
                             <circle cx="7.2" cy="14.4" r="3.2"/>
@@ -314,9 +234,6 @@
                             <circle cx="15.2" cy="8.8" r="4.8"/>
                         </svg>
                     </i>
-
-
-
                 </div>
             </div>
 
@@ -324,27 +241,37 @@
 
                 <div class="row resultStatus">
 
+                </div>
+
+                <div class="resultListView">
+                    <table class="table resultsTable">
+                        <thead class="thead-inverse">
+                        <tr>
+                            <th>Company Name</th>
+                            <th>Industry</th>
+                            <th>Sector</th>
+                            <th>Country</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="resultScatterPlotView" style="display: none">
+                    <h1> Scatter Plot View! </h1>
+
 
                 </div>
 
-                <table class="table resultsTable">
-                    <thead class="thead-inverse">
-                    <tr>
-                        <th>Company Name</th>
-                        <th>Industry</th>
-                        <th>Sector</th>
-                        <th>Country</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <!--<tr>-->
-                    <!--<th scope="row">1</th>-->
-                    <!--<td>Mark</td>-->
-                    <!--<td>Otto</td>-->
-                    <!--<td>@mdo</td>-->
-                    <!--</tr>-->
-                    </tbody>
-                </table>
+
+                <div class="resultMapView" style="display: none">
+                    <h1> Map View! </h1>
+                    <div id="worldMap">
+                    </div>
+                </div>
+
+
 
                 <!-- Modal -->
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

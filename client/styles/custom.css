@@ -29,6 +29,10 @@
     padding: 20px;
 }
 
+#resetEmissions:hover {
+    opacity: 0.5;
+}
+
 @font-face {
     font-family: 'Material Icons';
     font-style: normal;
@@ -103,6 +107,18 @@ span.myGlyphicon {
     margin-top: 5px;
 }
 
+
+span.myGlyphicon.disabled {
+    font-size: 2em;
+    margin-top: 5px;
+    opacity: 0.5;
+}
+
+
+span.myGlyphicon:hover {
+    opacity: 0.5;
+}
+
 .container {
     width: 100vw;
 }
@@ -139,7 +155,7 @@ svg {
 }
 
 .land {
-    fill: green;
+    fill: lightgrey;
 }
 
 .boundary {
@@ -166,4 +182,14 @@ svg {
 
 .resultsTable tbody tr.highlight td {
     background-color: lightskyblue;
+}
+
+
+.land
+{
+    fill: #CCCCCC;
+    fill-opacity: 1;
+    stroke:white;
+    stroke-opacity: 1;
+    stroke-width:0.5;
 }

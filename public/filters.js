@@ -12,8 +12,6 @@ var ghg1Chart = dc.barChart('#ghg-1-chart');
 var ghg2Chart = dc.barChart('#ghg-2-chart');
 var ghg3Chart = dc.barChart('#ghg-3-chart');
 
-
-
 var twwChart = dc.barChart('#tww-chart');
 var wastegeneratedChart = dc.barChart("#wasteGenerated-chart");
 
@@ -21,18 +19,13 @@ var wastegeneratedChart = dc.barChart("#wasteGenerated-chart");
 var industryChart = dc.scrollableRowChart('#industry_chart');
 var sectorChart = dc.scrollableRowChart('#sector_chart');
 
-//var moveChart = dc.lineChart('#monthly-move-chart');
-//var volumeChart = dc.barChart('#monthly-volume-chart');
-//var yearlyBubbleChart = dc.bubbleChart('#yearly-bubble-chart');
-//var nasdaqCount = dc.dataCount('.dc-data-count');
-//var nasdaqTable = dc.dataTable('.dc-data-table');
-
 var FULL_CHART_WIDTH = 400;
 var HALF_CHART_WIDTH = 170;
 var FULL_CHART_HEIGHT = 250;
 var HALF_CHART_HEIGHT = 140;
 
 var globalFilter;
+var sp500;
 
 
 // This product includes color specifications and designs developed by Cynthia Brewer (http://colorbrewer.org/).
@@ -462,7 +455,7 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
     }
 
     //### Create Crossfilter Dimensions and Groups. NOTE: BE CAREFUL OF HOW MANY DIMENSIONS YOU INSTANTIATE
-    var sp500 = crossfilter(data);
+    sp500 = crossfilter(data);
 
     // USEFUL FOR FILLING TABLES
     globalFilter = sp500.dimension(function (d) {return d.name;});

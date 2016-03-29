@@ -5,6 +5,8 @@ Template.HomePrivate.rendered = function() {
     //$.getScript("/colorbrewer.js");
 
     $.getScript("/filters.js");
+    $.getScript("/results.js");
+
 };
 
 var i = 0;
@@ -17,75 +19,31 @@ Template.HomePrivate.events({
         ghg3Chart.filterAll();
     },
 
-    //'click #resetEmissions' : function (e) {
-    //
-    //},
-
-    //'click #resetEmissions' : function (e) {
-    //
-    //},
-
-
-
-    //'click #resetEmissions' : function (e) {
-    //
-    //},
-    //'click #resetEmissions' : function (e) {
-    //
-    //},
-
-
-
     'click #collapseFilterButton': function(e) {
-
-        //$('#filterBar').toggle(400);
-        //
-        //if (i % 2 == 0) {
-        //    $('#controlBar').css("left", "0px");
-        //    $('#resultBar').css("width", "96vw");
-        //} else {
-        //    $('#resultBar').css("width", "62vw");
-        //    $('#controlBar').removeAttr("style");
-        //}
-        //i++;
-        //console.log(i);
-        //
-        //
-
-
         if (i % 2 == 0) {
             $('#controlBar').animate({
                 left: "0px"
-            }, 20, function() {});
+            }, 500, function() {});
 
             $('#filterBar').animate({
                 opacity: 0
-            }, 20, function() {});
+            }, 500, function() {});
 
             $('#resultBar').css({"width" : "96vw","position" :"fixed"});
-            //$('#resultBar').css("position", "fixed");
-
-
-            //glyphicon-arrow-left
 
             $(".glyphicon-arrow-left").addClass( "glyphicon-arrow-right");
             $(".glyphicon-arrow-right").removeClass( "glyphicon-arrow-left");
 
-
-            //    $('#resultBar').css("width", "62vw");
-
         } else {
-
             $(".glyphicon-arrow-right").addClass( "glyphicon-arrow-left");
             $(".glyphicon-arrow-left").removeClass( "glyphicon-arrow-right");
-
 
             $('#resultBar').removeAttr("style");
             $('#controlBar').removeAttr("style");
 
             $('#filterBar').animate({
                 opacity: 1
-            }, 20, function() {
+            }, 500, function() {
 
             });
             //$('#controlBar').animate({
@@ -99,32 +57,16 @@ Template.HomePrivate.events({
             //}, 5000, function() {
             //
             //});
-
         }
         i++;
-        console.log(i);
-
-
-        //console.log($('#controlBar').getAttribute());
-        //
-        //$('#filterBar').toggle("slide");
-        //$('#controlBar').toggle(
-        //    function () {
-        //        $("#controlBar").animate({"left": "20px", "display": "inline-block"}, 500);
-        //    },
-        //    function () {
-        //        $("#controlBar").animate({"left": "20px", "display": "inline-block"}, 500);
-        //    });
     },
-
 
     'click rect': function (e) {
         $('.companiesCount').html(globalFilter.top(Infinity).length);
 
     },
 
-    'click .glyphicon-remove': function(e) {
-        console.log("about to filter everything");
+    'click #resetAllFiltersButton': function(e) {
         dc.redrawAll();
         dc.filterAll();
     },
@@ -170,6 +112,8 @@ Template.HomePrivate.events({
 
         //enable button
         $('#saveResultButton').removeAttr("disabled");
+
+        drawBubbles(results);
     },
 
     'click #saveResultButton': function (e) {
@@ -198,8 +142,36 @@ Template.HomePrivate.events({
                 }
             }
         });
-    }
+    },
 
+    'click #resultListViewButton': function (e) {
+        $('.resultListView').attr("style", "display: block");
+
+        $('.resultMapView').attr("style", "display: none");
+
+        $('.resultScatterPlotView').attr("style", "display: none");
+
+    },
+
+    'click #resultMapViewButton': function (e) {
+
+        $('.resultListView').attr("style", "display: none");
+
+        $('.resultMapView').attr("style", "display: block");
+
+        $('.resultScatterPlotView').attr("style", "display: none");
+
+    },
+
+
+    'click #resultScatterPlotViewButton': function (e) {
+        $('.resultListView').attr("style", "display: none");
+
+        $('.resultMapView').attr("style", "display: none");
+
+        $('.resultScatterPlotView').attr("style", "display: block");
+
+    }
 });
 
 Template.HomePrivate.helpers({
