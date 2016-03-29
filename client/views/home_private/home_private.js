@@ -111,7 +111,11 @@ Template.HomePrivate.events({
         }
 
         //enable button
-        $('#saveResultButton').removeAttr("disabled");
+        $('#saveResultButton').removeClass("disabled");
+        $('#resultListViewButton').removeClass("disabled");
+        $('#resultMapViewButton').removeClass("disabled");
+        $('#resultScatterPlotViewButton').removeClass("disabled");
+
 
         drawBubbles(results);
     },
@@ -146,19 +150,14 @@ Template.HomePrivate.events({
 
     'click #resultListViewButton': function (e) {
         $('.resultListView').attr("style", "display: block");
-
         $('.resultMapView').attr("style", "display: none");
-
         $('.resultScatterPlotView').attr("style", "display: none");
 
     },
 
     'click #resultMapViewButton': function (e) {
-
         $('.resultListView').attr("style", "display: none");
-
         $('.resultMapView').attr("style", "display: block");
-
         $('.resultScatterPlotView').attr("style", "display: none");
 
     },
@@ -166,9 +165,7 @@ Template.HomePrivate.events({
 
     'click #resultScatterPlotViewButton': function (e) {
         $('.resultListView').attr("style", "display: none");
-
         $('.resultMapView').attr("style", "display: none");
-
         $('.resultScatterPlotView').attr("style", "display: block");
 
     }

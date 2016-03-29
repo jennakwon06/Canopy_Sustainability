@@ -31,6 +31,7 @@
 
 #resetEmissions:hover {
     opacity: 0.5;
+    cursor: pointer;
 }
 
 @font-face {
@@ -85,9 +86,6 @@
 .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
 
 
-
-
-
 hr {
     display: block;
     height: 1px;
@@ -112,11 +110,19 @@ span.myGlyphicon.disabled {
     font-size: 2em;
     margin-top: 5px;
     opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
 }
 
 
 span.myGlyphicon:hover {
     opacity: 0.5;
+    cursor: pointer;
+}
+
+.bubble:hover {
+    opacity: 0.5;
+    cursor: pointer;
 }
 
 .container {
@@ -133,9 +139,9 @@ span.myGlyphicon:hover {
 
 .panel-heading:hover {
     fill-opacity: 0.5;
+    cursor: pointer;
+
 }
-
-
 
 .clickable-panel {
     background-color: #428bca;
@@ -144,6 +150,8 @@ span.myGlyphicon:hover {
 
 .clickable-panel:hover {
     fill-opacity: 0.3;
+    cursor: pointer;
+
 }
 
 svg {
@@ -185,8 +193,7 @@ svg {
 }
 
 
-.land
-{
+.land {
     fill: #CCCCCC;
     fill-opacity: 1;
     stroke:white;

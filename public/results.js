@@ -100,46 +100,45 @@ function drawBubbles(results) {
             mapping[key] = 1;
         }
     }
-    console.log(mapping);
 
-    var array = [];
+    console.log("outside d3 call");
+    console.log(mapping);
 
     d3.csv("/countryMap.csv", function(error, mappings) {
 
-        console.log(mappings);
+        console.log("inside d3 call");
+        console.log(mapping);
 
-        for (i = 0; i < mapping.length; i++) {
+        console.log(Object.keys(mapping).length);
+
+        var array = [];
+
+        for (i = 0; i < Object.keys(mapping).length; i++) {
             var object = {country: undefined, count: undefined, id: undefined};
-            object.country = mapping.key;
-            object.count = mapping.value;
-            object.id = mappings["ISO3166-1-numeric"];
+            object.country = Object.keys(mapping)[0];
+            object.count = mapping[object.country];
+            for (var j = 0; j < mappings.length; j++) {
+                if (mappings[j]["ISO-3166-1-Alpha-2"] == mapping.key) {
+                    object.id = mappings[j]["ISO3166-1-numeric"]
+                }
+            }
             array.push(object);
         }
+
+
+        console.log("is my array initialized?");
+        console.log(array);
+
+        g.append("g")
+            .attr("class", "bubble")
+            .selectAll("circle")
+            .data(countries)
+            .enter()
+            .append("circle")
+            .attr("transform", function(d) {return "translate(" + path.centroid(d) + ")"; })
+            .attr("r", 10)
+            .style("fill, red");
     });
-
-    console.log(array);
-
-    // construct an array of objects that are like following
-    //[Object, Object, ....]
-    //Object {
-    // country: US
-    // count: ?
-    // id: ?
-
-    //filter the countries down to the ones that match results
-
-    //look up country in countryMap.svg
-
-
-    g.append("g")
-        .attr("class", "bubble")
-        .selectAll("circle")
-        .data(countries)
-        .enter()
-        .append("circle")
-        .attr("transform", function(d) {return "translate(" + path.centroid(d) + ")"; })
-        .attr("r", 10)
-        .style("fill, red");
 }
 
 function zoomed() {
