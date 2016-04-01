@@ -154,6 +154,10 @@ span.myGlyphicon:hover {
 
 }
 
+.clickableRow:hover {
+
+}
+
 svg {
     /*background: #eee;*/
 }
@@ -189,6 +193,10 @@ svg {
 }
 
 .resultsTable tbody tr.highlight td {
+    background-color: lightskyblue;
+}
+
+.clickableRow:hover {
     background-color: lightskyblue;
 }
 

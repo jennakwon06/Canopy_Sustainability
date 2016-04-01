@@ -5,7 +5,8 @@ Template.HomePrivate.rendered = function() {
     //$.getScript("/colorbrewer.js");
 
     $.getScript("/filters.js");
-    $.getScript("/results.js");
+    $.getScript("/worldmap.js");
+    $.getScript("/scatterplot.js");
 
 };
 
@@ -117,7 +118,8 @@ Template.HomePrivate.events({
         $('#resultScatterPlotViewButton').removeClass("disabled");
 
 
-        drawBubbles(results);
+        drawBubblesOnMap(results);
+        drawBubblesOnScatterPlot(results);
     },
 
     'click #saveResultButton': function (e) {
@@ -143,9 +145,20 @@ Template.HomePrivate.events({
             for (var i = 0; i < data.length; i++) {
                 if (data[i].Name == name) {
                     $(".modal-body").text(data[i].Name);
+
+                    d3.select(".list-group")
+                        .append("li")
+                        .attr("class", "modal-list-item list-group-item")
+                        .attr("value", d)
+                        .attr("id", d)
+                        .text(data[i].GR_name);
                 }
             }
         });
+    },
+
+    'click #closeModalButton': function (e) {
+        $('tbody > .clickableRow').removeClass('highlight');
     },
 
     'click #resultListViewButton': function (e) {

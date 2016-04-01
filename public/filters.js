@@ -447,6 +447,8 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
         d.GHG1PerSales = d["GHG Scope 1 Intensity per Sales"];
     });
 
+    console.log(data);
+
     /*
      * Check if csv cell is empty
      */
