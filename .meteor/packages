@@ -34,3 +34,12 @@ rajit:bootstrap3-datepicker
 mizzao:bootboxjs
 blaze-html-templates
 ecmascript
+cfs:standard-packages
+cfs:filesystem
+akasha:shelljs
+meteorhacks:npm
+
+
+
+
+npm-container

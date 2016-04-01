@@ -447,8 +447,6 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
         d.GHG1PerSales = d["GHG Scope 1 Intensity per Sales"];
     });
 
-    console.log(data);
-
     /*
      * Check if csv cell is empty
      */
@@ -835,7 +833,6 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
 
         var min = minMax[0];
         var max = minMax[1];
-        console.log(max);
         var binCount = 10;
         var span = max - min;
         var binWidth = span / binCount;
@@ -905,7 +902,6 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
 
         var min = minMax[0];
         var max = minMax[1];
-        console.log(max);
         var binCount = 10;
         var span = max - min;
         var binWidth = span / binCount;

@@ -10,7 +10,7 @@ function drawBubblesOnScatterPlot(results) {
     //    drawMap();
     //}
 
-    drawScatterPlot();
+//    drawScatterPlot();
 
 
     var margin = {top: 20, right: 20, bottom: 30, left: 40},
@@ -24,7 +24,7 @@ function drawBubblesOnScatterPlot(results) {
      * axis - sets up axis
      */
 
-    console.log(results);
+    //console.log(results);
     
 
 // setup x
@@ -92,6 +92,8 @@ function drawBubblesOnScatterPlot(results) {
         .attr("r", 3.5)
         .attr("cx", xMap)
         .attr("cy", yMap)
+        .attr("data-toggle", "modal")
+        .attr("data-target", "#myModal")
         .style("fill", function(d) { return color(cValue(d));})
         .on("mouseover", function(d) {
             tooltip.transition()

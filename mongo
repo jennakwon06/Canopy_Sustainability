@@ -1,0 +1,13 @@
+WORKFLOW
+1) Upload all files to mongodb
+2) Query for the files in mongodb
+
+
+Auth information
+
+---------------
+1) Set up server
+mongo ds025419.mlab.com:25419/heroku_dhmzqr91 -u jkwon47 -p rnjs078@
+
+2) Upload files with
+mongofiles put -d pdfs ./reports/Aetna\ Inc46af4.pdf --host ds025419.mlab.com:25419 -u jkwon47 -p rnjs078@ --authenticationDatabase heroku_dhmzqr91

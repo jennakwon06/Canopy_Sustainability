@@ -1,0 +1,10 @@
+test/
+tmp/
+.documentup.json
+.gitignore
+.jshintrc
+.lgtm
+.travis.yml
+.gitattributes
+appveyor.yml
+RELEASE.md

@@ -1,16 +1,23 @@
 Template.HomePrivate.rendered = function() {
-    //$.getScript("/d3.js");
-    //$.getScript("/crossfilter.js");
-    //$.getScript("/dc.js");
-    //$.getScript("/colorbrewer.js");
-
     $.getScript("/filters.js");
     $.getScript("/worldmap.js");
     $.getScript("/scatterplot.js");
-
 };
 
 var i = 0;
+
+var findPDFs = function(company) {
+
+
+    // Check if database is correctly set up
+    console.log(PDFs.find().count());
+    console.log(PDFs.find({}));
+
+    var regex = new RegExp('^' + company, 'i');
+
+    // @TODO use regex to find a file by name
+    return PDFs.find({}).fetch();
+};
 
 Template.HomePrivate.events({
     // Reset all on buttons with
@@ -47,21 +54,11 @@ Template.HomePrivate.events({
             }, 500, function() {
 
             });
-            //$('#controlBar').animate({
-            //    left: "50px"
-            //}, 5000, function() {
-            //
-            //});
-            //
-            //$('#filterBar').animate({
-            //    display: "none"
-            //}, 5000, function() {
-            //
-            //});
         }
         i++;
     },
 
+    // Update number counter button
     'click rect': function (e) {
         $('.companiesCount').html(globalFilter.top(Infinity).length);
 
@@ -75,14 +72,12 @@ Template.HomePrivate.events({
     'click #applyFilterButton': function (e) {
         e.preventDefault();
         var results = globalFilter.top(Infinity);
+
+        // @TODO Fill the list view
         var table = $(".resultsTable");
 
         //clear table
         $('.resultsTable > tbody').empty();
-
-        Filters.insert({
-            //insert filters? and the result companies?
-        });
 
         for (var i = results.length - 1; i >= 0; i--) {
             var tr = document.createElement('tr');
@@ -107,18 +102,28 @@ Template.HomePrivate.events({
             tr.appendChild(td3);
             tr.appendChild(td4);
             //tr.data(results[i]);
-
             table.append(tr);
         }
 
-        //enable button
+
+
+        // @TODO enable buttons
         $('#saveResultButton').removeClass("disabled");
         $('#resultListViewButton').removeClass("disabled");
         $('#resultMapViewButton').removeClass("disabled");
         $('#resultScatterPlotViewButton').removeClass("disabled");
 
+        // @TODO insert to database
+        Filters.insert({
+        });
 
+        //@TODO DRAW MAP
+        if (d3.select(".mapSvg").empty()) {
+            drawMap();
+        }
         drawBubblesOnMap(results);
+
+        //@TODO DRAW SCATTER PLOT
         drawBubblesOnScatterPlot(results);
     },
 
@@ -142,16 +147,31 @@ Template.HomePrivate.events({
         $(e.currentTarget).siblings().removeClass('highlight');
 
         d3.csv("/data/envDataOnSP500.csv", function(error, data) {
+
+            // clear prev resuits
+            $('.list-group').empty();
+
             for (var i = 0; i < data.length; i++) {
                 if (data[i].Name == name) {
-                    $(".modal-body").text(data[i].Name);
-
                     d3.select(".list-group")
                         .append("li")
                         .attr("class", "modal-list-item list-group-item")
-                        .attr("value", d)
-                        .attr("id", d)
+                        .attr("value", 10)
+                        .attr("id", 10)
                         .text(data[i].GR_name);
+
+
+                    // TODO FIND FILES BY NAME
+                    var path = "/reports/" + data[i].GR_name;
+
+                    // TODO SOLUTION 1) USE SHELLJS TO LIST FILES. NOT WORKING?
+                    var list = _ls("/reports");
+                    console.log(list);
+
+                    // TODO SOLUTION 2) USE MONGO DB
+                    console.log(findPDFs(data[i].GR_name));
+
+                    break;
                 }
             }
         });
@@ -181,9 +201,25 @@ Template.HomePrivate.events({
         $('.resultMapView').attr("style", "display: none");
         $('.resultScatterPlotView').attr("style", "display: block");
 
+    },
+
+    // @TODO   MAP STUFF
+
+    'click .bubble': function (e) {
+        d3.select(".list-group")
+            .append("li")
+            .attr("class", "modal-list-item list-group-item")
+            .attr("value", 10)
+            .attr("id", 10)
+            .text(data[i].GR_name);
     }
+
+
 });
 
 Template.HomePrivate.helpers({
+    pdfs: function () {
+        return PDFs.find(); // Where Images is an FS.Collection instance
+    }
 
 });

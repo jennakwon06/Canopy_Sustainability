@@ -1,0 +1,1048 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />    
+
+    <script type="text/javascript">
+        var acnPage = {};
+        
+        acnPage.Language = "en";    
+        var isNormal = "true";
+    </script>
+    
+    <title>Login</title>
+
+    <meta name="title" content="Login" />
+    <meta name="description" content="Login" />
+    <meta name="keywords" content="Login" />
+    <meta name="ROBOTS" content="NOFOLLOW,NOINDEX" />
+    <!--<meta name="canonical" content="https://acnprod.accenture.com/us-en/LoginPage?ru=%2fus-en%2fSecure%2fclient-index.aspx" />-->
+    <link rel="canonical" href="https://acnprod.accenture.com/us-en/LoginPage?ru=%2fus-en%2fSecure%2fclient-index.aspx" />
+    
+    
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:image" name="og:image" content="" />
+    <meta name="og:title" property="og:title" content="Login" />
+    <meta name="og:description" property="og:description" content="Login" />
+    <meta name="twitter:image:src" content=""/>
+    
+    <meta name="twitter:title" content="Login" />
+    <meta name="twitter:description" content="Login" />
+    
+<link href="/bundles/styles?v=YOWBZ_pcIuQKmE0AbhiuIVvEzR6iunqj166cEEnlpJE1" rel="stylesheet"/>    <link href="/Content/styles/dist/primary-color/cranberry-red.min.css" rel="stylesheet" />
+    <link href="/Content/styles/dist/active-color/cranberry-red.min.css" rel="stylesheet" />
+    
+    
+
+    
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="/bundles/prebodyjs?v=qNryyy3k7Gjihaw79zu1_7DpWRJSecwhXrVKyIPHF9k1"></script>
+    <script src="//s.delvenetworks.com/deployments/embed-code/embed-code-1.6.1/embed.js" type="text/javascript"></script>
+    
+    
+
+<script>
+    var digitalData = {"pageInstanceId":"prodcd-E6633F2A-FD61-4F6D-842A-B41E3E9A2272","version":"1.0","page":{"category":{"primaryCategory":"acn"},"pageInfo":{"pageId":"acn:page:loginpage","pageName":"Login","destinationUrl":"","referringUrl":"","author":"{F4E2A093-B75B-44A0-8EA4-B7B2215294FF}","issueDate":"2015-04-10T16:46:46","effectiveDate":null,"expiryDate":"0001-01-01T00:00:00","language":"en","geoRegion":"us-en","countryLanguage":"us-en","subfolder":"page","uniquePageName":"LoginPage","template":"{65827C74-03D3-4595-A103-F53C97EB88D9}","reportingSuiteIDs":"accnextacnprod,accnextcarprod,accnextglobprod"},"attributes":{"metadata":[{"category":{"primaryCategory":"m351"},"metadataInfo":{"metadataID":"m370","metadataName":"NA"}},{"category":{"primaryCategory":"m122"},"metadataInfo":{"metadataID":"m203","metadataName":"NA"}},{"category":{"primaryCategory":"m74"},"metadataInfo":{"metadataID":"m98","metadataName":"NA"}},{"category":{"primaryCategory":"m57"},"metadataInfo":{"metadataID":"m64","metadataName":"NA"}},{"category":{"primaryCategory":"m109"},"metadataInfo":{"metadataID":"m121","metadataName":"NA"}},{"category":{"primaryCategory":"m70"},"metadataInfo":{"metadataID":"m71","metadataName":"Global"}},{"category":{"primaryCategory":"m270"},"metadataInfo":{"metadataID":"m273","metadataName":"Other"}}]}},"product":null,"events":null,"component":[{"componentInfo":{"componentID":"c157","componentName":"CareersRegisterModule"}},{"componentInfo":{"componentID":"c131","componentName":"SocialSignInDefaultModule"}},{"componentInfo":{"componentID":"c70","componentName":"HeroArticleModule"}},{"componentInfo":{"componentID":"c169","componentName":"CareersSignInModule"}},{"componentInfo":{"componentID":"c101","componentName":"TwoSlicer"}},{"componentInfo":{"componentID":"c98","componentName":"OneSlicer"}},{"componentInfo":{"componentID":"c91","componentName":"Block"}},{"componentInfo":{"componentID":"c89","componentName":"TypeToSearch"}},{"componentInfo":{"componentID":"c58","componentName":"NavigationSettings"}},{"componentInfo":{"componentID":"c56","componentName":"Footer"}},{"componentInfo":{"componentID":"c57","componentName":"Menu"}},{"componentInfo":{"componentID":"c65","componentName":"CountrySelectorModule"}}],"user":{"Prejoiner":{"careerLevel":null,"careerLevelGroup":null,"careerTrack":null,"candidateId":null,"candidateStartDate":null,"geographicalUnit":null,"joiningCountry":null,"joinerTypes":null}},"privacy":{"accessCategories":[]}}
+</script>
+
+        <script src="//assets.adobedtm.com/ab9e1300887a3a7bf0bc27e349961a628daf3cfe/satelliteLib-4d57359bad9b64543801e70b6391e8db879b10d3.js"></script>
+    <script>var temp_jquery=jQuery;</script>
+   
+</head>
+<body data-spy="scroll" data-offset="0" data-target="#scrollspy">
+    
+    <script>jQuery=temp_jquery;</script>
+    <div id="ui-wrapper" class="">
+        
+<div id="block-header">
+    <!-- header -->
+    
+
+
+    <nav id="header-topnav" class="navbar navbar-default navbar-fixed-top">
+
+        <div class="navbar-header navbar-gp  sign-in-lg">
+
+                <a href="/us-en" class="acn-logo" title="Accenture" data-rel="856d2796-13ab-4036-9c60-87b846b6dea1" data-name="asset" data-linktype="navigationsettings:logo" tabindex="0">
+                    <img src="//acnprod.accenture.com/t20150523T054234__w__/us-en/_acnmedia/Accenture/Dev/ComponentImages/logo-accenture.png" alt="Accenture" />
+                </a>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse" id="ui-menu-nav-collapse">
+            <ul id="rightTopSection" class="nav navbar-nav navbar-right">
+
+
+<div id="welcome-screen-container">
+    <div style="width: 100%;">
+
+            <div id="coach-marks-screen" class="hide">
+                <section>
+                <div id="welcome-guide2">
+                    <span>
+                        </span>
+                    <span>Click the menu icon to display the main navigation.</span>
+                </div>
+                <div id="welcome-guide1">
+                    <span>
+                        </span>
+                    <span>Type anywhere at any time to use our smart search tool.</span>
+                </div>
+                <div id="coach-marks-welcome-screen">
+                    <input id="btnContinue" type="button" class="btn-primary rotis-bold ucase" value="Continue" />
+                </div>
+               </section>
+            </div>
+    </div>
+</div>
+                    <li id="search-container" class="">
+                        <div id="icon-type-to-search" class="search-bar search-trigger" role="button" aria-label="Type to search" tabindex="0">
+                            <label id="search-label-touch">Search</label>
+                            <label id="search-label-type">Type to search</label>
+                            <span class="acn-icon icon-search icon-md"></span>
+                        </div>
+                    </li>
+
+
+
+                    <li class="hidden-xs sign-in-lg">
+                        <!-- Button trigger location Modal -->
+                        
+                        
+                                 
+                                <img src="/Content/images/United States.jpg" alt="United States" title="United States" class="language-icon pull-right country-language-trigger" 
+                                    data-toggle="modal" data-rel="856d2796-13ab-4036-9c60-87b846b6dea1" data-name="asset" data-linktype="countryselectormodule:language" data-linkaction="country selector" />
+                    </li>
+
+                    <li>
+                        <a id="btnMainMenu" tabindex="0" class="menu-btn " style="cursor: pointer;"
+                               data-rel="856d2796-13ab-4036-9c60-87b846b6dea1" data-name="asset" title="MENU">
+                            <span class="acn-icon icon-nav-top-menu"></span>
+                            <span class="hidden-xs">
+                                MENU
+                            </span>
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </nav>
+    <span class="hide" id="navigation-settings-content" data-searchsection-option="Search Only"
+        data-searchwebsite-option="Search Entire Website" data-showfocused-section="True"
+        data-searchiconlabellaptop="Type to search" 
+        data-recommendedforyoulink=""
+        data-graceful-handling-error = "Apologies. We are currently experiencing technical issues with accenture.com. Please try again later.">
+    </span>
+
+
+
+
+
+    <!-- orientation -->
+
+
+</div>
+
+
+
+        <div id="main-menu" role="navigation" class="sidr right hide-menu">
+            <div class="menu-scroll">
+                <span id="menuClose" class="acn-icon icon-close" tabindex="0" style="cursor: pointer;" role="button" aria-label="Hide Statement"></span>
+
+                        <div id="primary-menu" class="list-group">
+                                    <a href="/us-en/strategy-index" class="list-group-item" title="Strategy"  role="button">
+                                        STRATEGY
+                                    </a>
+                                    <a href="/us-en/consulting-index" class="list-group-item" title="Consulting"  role="button">
+                                        CONSULTING
+                                    </a>
+                                    <a href="/us-en/digital-index" class="list-group-item" title="Digital"  role="button">
+                                        DIGITAL
+                                    </a>
+                                    <a href="/us-en/technology-index" class="list-group-item" title="Technology"  role="button">
+                                        TECHNOLOGY
+                                    </a>
+                                    <a href="/us-en/business-operations-index" class="list-group-item" title="Operations"  role="button">
+                                        OPERATIONS
+                                    </a>
+                                    <a href="/us-en/industries-index" class="list-group-item" title="Industries"  role="button">
+                                        INDUSTRIES
+                                    </a>
+                                    <a href="/us-en/careers" class="list-group-item" title="Careers"  role="button">
+                                        CAREERS
+                                    </a>
+                        </div>
+
+                    <div id="secondary-menu" class="list-group"> 
+                                        <a href="/us-en/company" class="list-group-item" title="About Accenture">
+                                            About Accenture
+                                        </a>
+                                        <a href="/us-en/company-corporate-citizenship-diversity" class="list-group-item" title="Corporate Citizenship">
+                                            Corporate Citizenship
+                                        </a>
+                                        <a href="/us-en/company-diversity" class="list-group-item" title="Inclusion and Diversity">
+                                            Inclusion and Diversity
+                                        </a>
+                                        <a href="http://investor.accenture.com/phoenix.zhtml?c=129731&amp;p=irol-irhome" class="list-group-item" title="Investor Relations">
+                                            Investor Relations
+                                        </a>
+                                        <a href="/us-en/company-leadership" class="list-group-item" title="Leadership">
+                                            Leadership
+                                        </a>
+                                        <a href="http://newsroom.accenture.com/index.cfm" class="list-group-item" title="Newsroom">
+                                            Newsroom
+                                        </a>
+                                        <a href="#" class="list-group-item" title="">
+                                            
+                                        </a>
+                                        <a href="#" class="list-group-item" title="">
+                                            
+                                        </a>
+                                        <a href="#" class="list-group-item" title="">
+                                            
+                                        </a>
+                                        <img class="language-icon country-language-trigger visible-xs" 
+                                                data-toggle="modal" data-rel="fadbbf25-0b05-4dfb-806a-0f26c19779ac" data-name="asset" data-linktype="countryselectormodule:language" data-linkaction="country selector" />
+
+                    </div>
+            </div>
+        </div>
+        
+        
+        
+    <span id='scroll-button' class='acn-icon icon-circle hidden-xs hidden-md hidden-lg hidden-sm' title="Scroll" aria-hidden="true"
+        data-linktype="nav/paginate">
+        
+            <span class='text scroll-text-laptop'>Scroll</span>
+                    <span class='text scroll-text-tablet'>Swipe</span>
+        <span class="icon-arrow-dropdown-jobs acn-icon" data-animation-time="10"></span>
+    </span>  
+
+        
+
+<div id="block-hero" class="ui-header color-container bg-color-active"
+    data-shape="rect"
+    data-shape-color="active">
+
+    <div class="hero-header">
+            <h2 class="page-identifier hidden-xs"></h2> 
+
+        <div id="toolbar-container" class="">
+            <div id="toolbar">
+                <table>
+                    <tr>
+                        <td>
+                            <div class="placeholder">
+                                
+                            </div>
+                            <div class="placeholder hide-toolbar-item">
+                                
+                            </div>
+                            <div class="placeholder">
+                                
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+
+    </div>
+    <!--[3/20/15] Merge 2/25 from Main Release Branch-->
+    <div class="hero-article">
+        
+        <div class="item active background parallax" data-background-image="" >
+            <section>    
+                <div class="hero-title-wrapper">
+                <div class="page-title">
+                <h1 class="top">Sign in to Accenture</h1>
+                    
+                </div>
+            </div>
+            </section>
+        </div>
+
+    </div>
+</div>
+
+        <div id="layout-wrapper" class="ui-layout-wrapper">
+            <div id="overflow-controller"></div>
+            
+        </div>
+        <div id="content-wrapper" class="ui-content-wrapper">
+            <section>
+            <!-- /.final. This file has been optimized & ready -->
+    <!-- Validates if background image is null/empty -->
+    <!-- Validates if background video is null/empty -->
+    <!-- Set shape color to default "White" if null/empty -->
+
+<!-- Merge Main Release: Changeset 724330 to 728897 -->
+<div id="block-block" class="ui-container   row"
+    data-shape="delta"
+    data-shape-color="white"
+    data-scroll-speed="1"
+    data-background-align=""
+    data-background-cover="False"
+    data-background-playerId=""
+    data-background-mediaId=""
+    data-background-playerForm=""
+    data-background-autoplay="False"
+    data-background-autoloop="False"
+    >
+
+
+    <div class="ui-content-box dock-shadow-box bg-color-white dock  bottom-block-spacing" style="padding: ">
+        <section class="container-block">
+
+
+            
+
+
+    <div class="col-sm-12"> 
+            <div class="col-sm-6"> 
+                
+
+<div class="col-sm-12 careersSignInContainer">
+    
+    <div class="col-sm-12 form-section">
+
+        <input type="hidden" id="sign-in-data" name="signInData" data-return-url="/us-en/Secure/client-index.aspx" data-is-onboarding="False"/>
+
+            <div id="SignInLinksPage" class="col-sm-12 signin-border"
+                    data-landingPageLink="/us-en"
+                    data-forgotPasswordLink="/us-en/forgot-my-password"
+                    data-emailAddress-string = "e-mail address"
+                    data-password-string = "password"
+                    data-submit-string = "Sign In"
+                    data-rememberEmail-string = "Remember Me"
+                    data-forgotPassword-string = "Forgot password?"
+                    data-IncorrectEmailFormat-string="The e-mail address format you entered is incorrect. Please use the format: user@domain.com."
+                    data-EmptyLoginEmailAddress-string="Please enter your e-mail address."
+                    data-EmptyLoginPassword-string="Please enter your password."
+                    data-InvalidClientUserLogin-string="The user name or password is incorrect."
+                >
+                            <section id="sectionSignInPage" class="col-sm-12">
+                <h2 class="corporate-black signin-heading" id="sign-in-heading">Sign in with e-mail and password</h2>
+
+                <div class="color-cranberry-red validation-container">
+                    <p class="vs-heading">Validation summary</p>
+                    <ul class="error-list">
+                        <li>Invalid username / password</li>
+                    </ul>
+                </div>
+            </section>
+
+            </div>
+                            <section class="social-sign-on" >
+                
+                <h2 class="font-black">Or sign in with LinkedIn</h2>
+                <div>
+                    
+
+
+
+    <div class="input-group social-single">
+        <span class="input-group-btn">
+            
+            <button id="linkedinButton" class="rotis btn btn-default gradient-button convertible sign-in-with-client" type="button"
+                    onclick="location.href = 'https://acnprod.accenture.com/CommonModules/SocialSignInModule/SignInProfile?signInType=DefaultSignIn&amp;network=LinkedIn'"
+                    data-rel="E6633F2A-FD61-4F6D-842A-B41E3E9A2272" data-name="asset" data-linktype="socialconnect:sign in/out">
+                    <img src ="//acnprod.accenture.com/t20150521T025232__w__/us-en/_acnmedia/Accenture/Dev/ComponentImages/sqr-linkedin.png" />
+                    <span class="corporate-black rotis-xbold social-sign-in-single">
+                    Sign in with
+                    LinkedIn
+                </span>
+            </button>
+        </span>
+    </div>
+
+
+
+<input id="PageItemGuid" name="PageItemGuid" type="hidden" value="e6633f2a-fd61-4f6d-842a-b41e3e9a2272" />
+<input id="DefaultRegistrationLink" name="DefaultRegistrationLink" type="hidden" value="https://www.accenture.com/us-en/Careers/Registration/register.aspx" />
+<input id="SSOErrorID" name="SSOErrorID" type="hidden" value="-1" />
+                </div>
+            </section>
+    </div>
+</div>
+
+
+            </div>        
+            <div class="col-sm-6"> 
+                
+<hr class ="visible-xs"/>
+<div class="col-sm-12 sign-in-register-module register-border">
+    <section class="form-section col-sm-12">
+        
+<div>
+<h2 id="reg-heading" class="font-black">
+Register for Accenture Careers
+</h2>
+<p class="signin-text">
+Personalize your Accenture career search and receive tailored career news, insights and job alerts.
+</p>
+<p>
+<a class="btn btn-primary register-link register-button track-careers-register-link" href="/us-en/Careers/Registration/register.aspx"><span style="color: #ffffff;">
+Register
+</span></a>
+</p>
+<p class="signin-text alreadyuser">
+</p>
+</div>            <div class="reg-spacer"></div>
+<h3 class="font-black register-heading-text">
+<span style="color: #aa1133;">Already applied to a job?</span></h3>
+<p class="register-body-text">
+If you have applied for a position in a location other than India, Philippines, Bangladesh and Sri Lanka and would like to access your existing job application, please click
+<a href="https://tas-accenture.taleo.net/careersection/10003/mysubmissions.ftl?lang=en&amp;location=200000678" target="_blank" title="Click here to access your existing job application.">here</a>.</p>            <div class="reg-spacer"></div>
+<div>
+<h3 class="font-black register-heading-text">
+Accenture Talent Connection
+</h3>
+<p class="register-body-text">
+Join our network of professionals interested in discovering more about the challenging and rewarding career opportunities offered by Accenture.
+</p>
+<p class="register-body-text">
+<a href="https://talentconnection.accenture.com/EN/Register" target="_blank" title="This opens a new window.">Register</a>
+or
+<a href="https://talentconnection.accenture.com/EN/Login" target="_blank" title="This opens a new window.">sign in</a>.
+</p>
+</div>
+    </section>
+</div>
+            </div>        
+    </div>
+
+
+
+
+    <div class="col-sm-12"> 
+            <div class="col-sm-12"> 
+                
+            </div>        
+    </div>
+
+
+        </section>
+    </div>
+</div>
+            
+
+
+<div id="block-footer" class="ui-container color-container row" data-shape="edge" data-shape-color="full-black" data-scroll-speed="1" data-background-video="">
+    <div class="ui-content-box inline not-printable visible-lg visible-md visible-sm">
+        <section class="container-block">
+            <div class="col-sm-12">
+
+<div>
+                <span id="footer-contacts">
+                                <label style="color:white; font-size:15px;">Local:&nbsp</label>
+                                <span>
+                                    
+                                    <a class="phone-LocalPhoneNumber" style="color:white; font-size:15px" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="footermodule:footer"></a>
+                                </span>
+                                <label style="color:white; font-size:15px;">Toll Free:&nbsp</label>
+                                <span>
+                                    
+                                    <a class="phone-TollFreeHotLine" style="color:white; font-size:15px" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="footermodule:footer"></a>
+                                </span>
+                </span>
+                <div class="social">
+                                <a class="acn-spr facebook" title="Follow us on Facebook" href="http://www.facebook.com/accenture" target="_blank" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="footermodule:exit"></a>
+                                <a class="acn-spr linkedin" title="Follow us on LinkedIn" href="http://www.linkedin.com/companies/accenture?trk=co_search_results&amp;amp;=.cps_1268665331437_1" target="_blank" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="footermodule:exit"></a>
+                                <a class="acn-spr twitter" title="Follow us on Twitter" href="http://twitter.com/Accenture" target="_blank" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="footermodule:exit"></a>
+                                <a class="acn-spr googleplus" title="Follow us on Google+" href="https://plus.google.com/112621826548261308809/posts" target="_blank" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="footermodule:exit"></a>
+                                <a class="acn-spr youtube" title="See Accenture on YouTube" href="http://www.youtube.com/accenture" target="_blank" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="footermodule:exit"></a>
+                                <a class="acn-spr accenture app" title="Accenture Mobile Apps" href="https://www.accenture.com/us-en/accenture-apps.aspx" target="_blank" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="footermodule:exit"></a>
+                </div>
+        <div>
+                <div class="footer-textlink">
+                            <span>
+                                
+                                <a style="color:white; font-size:15px;" href="/us-en/contact-us" title="Contact Us" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="footermodule:footer">Contact Us</a>&nbsp&nbsp
+
+                                                                                        </span>
+                            <span>
+                                
+                                <a style="color:white; font-size:15px;" href="/us-en/office-directory" title="Find a Location" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="footermodule:footer">Find a Location</a>&nbsp&nbsp
+
+                                                                                        </span>
+                </div>
+                <div class="footer-textlink">
+                            <span style="">
+                                
+                                <a style="color:white; font-size:15px;" href="/us-en/company" title="About Accenture" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="footermodule:footer">About Accenture</a>&nbsp&nbsp
+                                                                                        </span>
+                            <span style="">
+                                
+                                <a style="color:white; font-size:15px;" href="/us-en/site-map" title="Site Map" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="footermodule:footer">Site Map</a>&nbsp&nbsp
+                                                                                        </span>
+                            <span style="">
+                                
+                                <a style="color:white; font-size:15px;" href="/us-en/privacy-policy" title="Privacy &amp; Cookies" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="footermodule:footer">Privacy &amp; Cookies</a>&nbsp&nbsp
+                                                                                        </span>
+                            <span style="">
+                                
+                                <a style="color:white; font-size:15px;" href="/us-en/terms-of-use" title="Terms of Use" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="footermodule:footer">Terms of Use</a>&nbsp&nbsp
+                                                                                        </span>
+                            <span style="">
+                                
+                                <a style="color:white; font-size:15px;" href="/us-en/accessibility-statement" title="Accessibility Statement" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="footermodule:footer">Accessibility Statement</a>&nbsp&nbsp
+                                                                                        </span>
+                </div>
+        </div>
+                    <div id="disclaimer-cookiestatement" class="color-white" style="font-size:15px;">
+                        <p>
+<span>By using this site you agree that we can place cookies on your device. See </span>
+<a title="Privacy Policy" class="ui-link" href="/us-en/privacy-policy.aspx">Privacy &amp; Cookies</a>
+<span>for details.</span>
+</p>
+                    </div>
+                <div id="disclaimer-copyright" class="color-white" style="font-size:15px;">
+                    <p class="footer-copyright"><span>&copy;&nbsp</span><span>2016 </span><span>Accenture. All Rights Reserved.</span></p>
+                    <br />
+                </div>
+</div>
+
+            </div>
+        </section>
+    </div>
+    <div class="ui-content-box inline not-printable visible-xs">
+        <section class="container-block">
+            <div class="col-sm-12">
+
+
+
+
+<div>
+    <div>
+            <div>
+                <a href="/us-en/contact-us" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="mobilefooter-preview-mode:footer">
+                                    <img class="icons-links" src=//acnprod.accenture.com/t20150523T053742__w__/us-en/_acnmedia/Accenture/Dev/ComponentImages/icn-contact-footer-m.png />
+                        <span style="color:white; font-size:15px;">Contact Us</span>
+                </a>
+            </div>
+            <div>
+                <a href="/us-en/office-directory" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="mobilefooter-preview-mode:footer">
+                                    <img class="icons-links" src=//acnprod.accenture.com/t20150523T053750__w__/us-en/_acnmedia/Accenture/Dev/ComponentImages/icn-locate-footer-m.png />
+                        <span style="color:white; font-size:15px;">Find a Location</span>
+                </a>
+            </div>
+            <div class="mobile-footer-contacts">
+                        <div>
+                                    <label style="color:white; font-size:15px;">Local:&nbsp</label>
+                                    <span><a class="phone-LocalPhoneNumber" style="color:white; font-size:15px" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="mobilefooter-preview-mode:footer"></a></span>
+                        </div>
+                        <div>
+                                    <label style="color:white; font-size:15px;">Toll Free:&nbsp</label>
+                                    <span><a class="phone-TollFreeHotLine" style="color:white; font-size:15px" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="mobilefooter-preview-mode:footer"></a></span>
+                        </div>
+            </div>
+            <div class="social">
+                    <a class="acn-spr facebook" title="Follow us on Facebook" href="http://www.facebook.com/accenture" target="_blank" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="mobilefooter-preview-mode:exit"></a>
+                    <a class="acn-spr linkedin" title="Follow us on LinkedIn" href="http://www.linkedin.com/companies/accenture?trk=co_search_results&amp;amp;=.cps_1268665331437_1" target="_blank" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="mobilefooter-preview-mode:exit"></a>
+                    <a class="acn-spr twitter" title="Follow us on Twitter" href="http://twitter.com/Accenture" target="_blank" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="mobilefooter-preview-mode:exit"></a>
+                    <a class="acn-spr googleplus" title="Follow us on Google+" href="https://plus.google.com/112621826548261308809/posts" target="_blank" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="mobilefooter-preview-mode:exit"></a>
+                    <a class="acn-spr youtube" title="See Accenture on YouTube" href="http://www.youtube.com/accenture" target="_blank" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="mobilefooter-preview-mode:exit"></a>
+                    <a class="acn-spr accenture app" title="Accenture Mobile Apps" href="https://www.accenture.com/us-en/accenture-apps.aspx" target="_blank" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="mobilefooter-preview-mode:exit"></a>
+            </div>
+            <div id="footer-textlink">
+                    <ul id="mobile-textlink">
+                            <li><a href="/us-en/company" title ="About Accenture" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="mobilefooter-preview-mode:footer"><span style="color:; font-size:15px;">About Accenture</span></a></li>
+                            <li><a href="/us-en/site-map" title ="Site Map" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="mobilefooter-preview-mode:footer"><span style="color:; font-size:15px;">Site Map</span></a></li>
+                            <li><a href="/us-en/privacy-policy" title ="Privacy &amp; Cookies" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="mobilefooter-preview-mode:footer"><span style="color:; font-size:15px;">Privacy &amp; Cookies</span></a></li>
+                            <li><a href="/us-en/terms-of-use" title ="Terms of Use" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="mobilefooter-preview-mode:footer"><span style="color:; font-size:15px;">Terms of Use</span></a></li>
+                            <li><a href="/us-en/accessibility-statement" title ="Accessibility Statement" data-rel="b318285a-1e08-44fe-b4db-9dc8e625739d" data-name="asset" data-linktype="mobilefooter-preview-mode:footer"><span style="color:; font-size:15px;">Accessibility Statement</span></a></li>
+                    </ul>
+            </div>
+            <div id="disclaimer-cookiestatement" class="color-white" style="font-size:15px;">
+                <p>
+<span>By using this site you agree that we can place cookies on your device. See </span>
+<a title="Privacy Policy" class="ui-link" href="/us-en/privacy-policy.aspx">Privacy &amp; Cookies</a>
+<span>for details.</span>
+</p>
+            </div>
+            <div id="disclaimer-copyright" class="color-white" style="font-size:15px;">
+                <p class="footer-copyright"><span>&copy;&nbsp</span><span>2016 </span><span>Accenture. All Rights Reserved.</span></p>
+            </div>
+    </div>
+</div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+
+    <span class="hide" id="cookie-statement-content" data-disclaimer-location="Footer"></span>
+
+            
+<section id="locationSelector" class="row">
+    <div class="modal location-selector fade" id="countryLanguageSelectorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close acn-icon icon-close-light" data-dismiss="modal" aria-hidden="true" data-linktype="language"></button>
+                    <h4 class="modal-title overlayHeadline" id="myModalLabel">Select your location</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row hidden-xs" id="geo-group">
+                        <!-- Populated on .country-language-trigger click/tap -->
+                    </div>
+                    <div class="row" id="geo-country-group">
+                        <!-- Populated on .country-language-trigger click/tap -->
+                    </div>
+                    <!-- /row -->
+                </div>
+                <!-- /modal-body -->
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+</section>
+<script type="text/javascript">
+    var pageContext = '/sitecore/content/us-en/LoginPage';
+</script>
+            </section>
+        </div>
+        
+
+        
+
+        
+
+        
+    <!-- MODAL: Search -->
+    <div class="modal fade search-page" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <section>
+                <div class="modal-body">
+                    <div class="input-search-container row">
+                        
+                        <button type="button" class="close acn-icon icon-close-light" id="close-smart-search" data-dismiss="modal" aria-hidden="true"></button>
+
+                        <!-- Usability CR - CIO00759005  -->
+                        
+                        
+
+                        <!-- KEYWORDS SECTION  -->
+                        <form id="search-form">
+                            <input name="keywords" id="keywords" type="text" />
+                        </form>
+
+                        <!-- WHERE TO SEARCH OPTION SECTION-->
+                        <div class="search-suggestions">
+                            <ul>
+                                <li class="search-scope font-bold" id="searchsection">
+                                    <i class="option" id="option-section" onclick="SearchSection();" title="Search Section"></i><span id="SearchSectionOption"></span></li>
+                                <li class="search-scope font-bold">
+                                    <i class="option" id="option-newsroom" onclick="SearchNewsroom();" title="Search Newsroom"></i><span id="SearchNewsroom"></span></li>
+                                <li class="search-scope font-bold">
+                                    <i class="option selected" id='option-website' onclick="SearchWebsite();" title="Search Entire Website"></i><span id="SearchWebsiteOption"></span></li>
+                            </ul>
+                            <!-- DID YOU MEAN SECTION -->
+                            <div id="did-you-mean-section">
+                                <h3 class="top-nav-bar corporate-white"></h3>
+                                <p id="search-instead-keyword" class="search-instead corporate-white"></p>
+                            </div>
+
+                            <!-- NO RESULT FOUND SECTION  -->
+                            <div id="no-result-section">
+                                <h3 class="top-nav-bar corporate-white">No results found</h3>
+                                <p class="search-instead corporate-white">
+                                    
+                                    We were unable to find a match for "$searchstring." Try searching again by using different or more general keywords and check for spelling errors.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="search-hidden-container row" tabindex="0">
+                        <!-- ACTIONABLE SECTION -->
+                        <div id="actionable-section" class="search-container"></div>
+                        <!-- HIGHLIGHTED TOPICS SECTION -->
+                        <div id="highlighted-topic-section" class="search-container"></div>
+
+                        <!-- SUGGESTED TOPICS SECTION -->
+                        <div id="suggested-topic-section" class="search-container"></div>
+
+                        <!-- SOCIAL OPTIN SECTION -->
+
+                        <div id="social-optin-section" class="color-container bg-color-dark-gray search-container media">
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading collapsed" data-toggle="collapse" data-parent="media-categories" data-target="#media-categories">
+                                    <a data-linktype="customized - stay connected">
+                                        <h3 class="panel-title"></h3>
+                                    </a>
+                                </div>
+
+                                <div id="media-categories" class="panel-collapse collapse collapse">
+                                    <div class="panel-body">
+                                        <hr />
+                                        <div class="search-stayconnected col-sm-6">
+                                            <div class="search-media-app-container">
+                                                <div class="search-header-container">
+                                                    <h3 class="search-title"></h3>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <div class="social">
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="search-download-app col-sm-6">
+                                            <div class="search-media-app-container">
+                                                <div class="search-header-container">
+                                                    <h3 class="search-title"></h3>
+                                                </div>
+                                                <div class="mobile-apps">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-12">
+                                            
+                                            <div class="search-media-app-container hide" id="searchOptIn">
+
+
+
+        <span id="optinmodule-formcontent" class="hide" data-optin-formid="searchemailoptinForm" data-optin-countrysite=""></span>
+                <div id="searchmodule-email-alerts-optin" class="module" style="display: none"></div>
+
+
+            <span id="searchoptinmodule-captcha-content" class="hidden"
+                  data-optin-captchaid="xx0UnjjKUKa1eMDjD4bA_RegCID"
+                  data-optin-captchainstance="ee20a9c6125f4728ad9f560a1cd26e3d"
+                  data-optin-userinputclientid="xx0UnjjKUKa1eMDjD4bA_RegCCode"
+                 data-optin-emailalert="203"></span>
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- RESULT/RECOMMENDED CONTENTS SECTION -->
+                        <div id="recommended-contents-section" class="search-container">
+                            <div class="search-header-container hidden-xs">
+                                <div class="col-sm-8">
+                                    <h3 id="recommended-header-content" class="search-title">RECOMMENDED CONTENT</h3>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h3 id="search-header-filters" class="search-title-filter collapse">FILTER RESULTS</h3>
+                                </div>
+                            </div>
+                            <div id="search-filters-container" class="collapse">
+                                <div class="panel panel-default search-panel">
+                                    <div class="panel-heading collapsed" data-toggle="collapse" data-parent="#search-filters" data-target="#search-filter-panel">
+                                        <h3 id='search-filter-header-xs' class="search-title visible-xs">FILTER RESULTS</h3>
+                                    </div>
+                                    <div id="search-filter-panel" class="panel-collapse bg-color-lighter-gray">
+                                        <!-- FILTERS WILL BE POPULATED HERE -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="recommended-content" class="related-content-results packery-container clamp clamp-container">
+                                <!-- RECOMMENDED RESULTS WILL BE POPULATED HERE -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+        
+
+        
+
+
+        
+    <!-- MODAL: Sign In Popup -->
+
+
+
+
+<div id="popover-bg" onclick="$( '#sign-in-link' ).trigger( 'click' );"></div>
+
+<div id="loginPopoverContainer" style=display:none;>
+        <div id="loginPopoverContent" class="col-xs-12">
+                <div id="SignInLinksPopOver" class="col-sm-12" data-landingPageLink="/us-en"
+                    data-forgotPasswordLink="/us-en/forgot-my-password"
+                    data-emailAddress-string = "e-mail address"
+                    data-password-string = "password"
+                    data-submit-string = "Sign In"
+                    data-rememberEmail-string = "Remember Me"
+                    data-forgotPassword-string = "Forgot password?"
+                     data-IncorrectEmailFormat-string="The e-mail address format you entered is incorrect. Please use the format: user@domain.com."
+                    data-EmptyLoginEmailAddress-string="Please enter your e-mail address."
+                    data-EmptyLoginPassword-string="Please enter your password."
+                    data-InvalidClientUserLogin-string="The user name or password is incorrect."
+                    >
+                    <span id="signInClose" class="acn-icon icon-close alignrightmost" tabindex="0" style="padding-top: 5px;cursor:pointer" role="button" 
+        onclick="$( '#sign-in-link' ).trigger( 'click' );" ></span>
+                                    <div class="col-sm-6 col-xs-12">
+                        <div class="loginpanel hide-authenticated">
+                            
+<hr class ="visible-xs"/>
+<div class="col-sm-12 sign-in-register-module register-border">
+    <section class="form-section col-sm-12">
+        
+<div>
+<h2 id="reg-heading" class="font-black">
+Register for Accenture Careers
+</h2>
+<p class="signin-text">
+Personalize your Accenture career search and receive tailored career news, insights and job alerts.
+</p>
+<p>
+<a class="btn btn-primary register-link register-button track-careers-register-link" href="/us-en/Careers/Registration/register.aspx"><span style="color: #ffffff;">
+Register
+</span></a>
+</p>
+<p class="signin-text alreadyuser">
+</p>
+</div>            <div class="reg-spacer"></div>
+<h3 class="font-black register-heading-text">
+<span style="color: #aa1133;">Already applied to a job?</span></h3>
+<p class="register-body-text">
+If you have applied for a position in a location other than India, Philippines, Bangladesh and Sri Lanka and would like to access your existing job application, please click
+<a href="https://tas-accenture.taleo.net/careersection/10003/mysubmissions.ftl?lang=en&amp;location=200000678" target="_blank" title="Click here to access your existing job application.">here</a>.</p>            <div class="reg-spacer"></div>
+<div>
+<h3 class="font-black register-heading-text">
+Accenture Talent Connection
+</h3>
+<p class="register-body-text">
+Join our network of professionals interested in discovering more about the challenging and rewarding career opportunities offered by Accenture.
+</p>
+<p class="register-body-text">
+<a href="https://talentconnection.accenture.com/EN/Register" target="_blank" title="This opens a new window.">Register</a>
+or
+<a href="https://talentconnection.accenture.com/EN/Login" target="_blank" title="This opens a new window.">sign in</a>.
+</p>
+</div>
+    </section>
+</div> 
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="loginpanel hide-authenticated">
+                            
+
+<div class="col-sm-12 careersSignInContainer">
+    
+    <div class="col-sm-12 form-section">
+
+        <input type="hidden" id="sign-in-data" name="signInData" data-return-url="/us-en/Secure/client-index.aspx" data-is-onboarding="False"/>
+
+            <div id="SignInLinksPage" class="col-sm-12 signin-border"
+                    data-landingPageLink="/us-en"
+                    data-forgotPasswordLink="/us-en/forgot-my-password"
+                    data-emailAddress-string = "e-mail address"
+                    data-password-string = "password"
+                    data-submit-string = "Sign In"
+                    data-rememberEmail-string = "Remember Me"
+                    data-forgotPassword-string = "Forgot password?"
+                    data-IncorrectEmailFormat-string="The e-mail address format you entered is incorrect. Please use the format: user@domain.com."
+                    data-EmptyLoginEmailAddress-string="Please enter your e-mail address."
+                    data-EmptyLoginPassword-string="Please enter your password."
+                    data-InvalidClientUserLogin-string="The user name or password is incorrect."
+                >
+                            <section id="sectionSignInPage" class="col-sm-12">
+                <h2 class="corporate-black signin-heading" id="sign-in-heading">Sign in with e-mail and password</h2>
+
+                <div class="color-cranberry-red validation-container">
+                    <p class="vs-heading">Validation summary</p>
+                    <ul class="error-list">
+                        <li>Invalid username / password</li>
+                    </ul>
+                </div>
+            </section>
+
+            </div>
+                            <section class="social-sign-on" >
+                
+                <h2 class="font-black">Or sign in with LinkedIn</h2>
+                <div>
+                    
+                </div>
+            </section>
+    </div>
+</div>
+
+ 
+                            <div class="col-sm-12" >
+                                
+
+
+
+    <div class="input-group social-single">
+        <span class="input-group-btn">
+            
+            <button id="linkedinButton" class="rotis btn btn-default gradient-button convertible sign-in-with-client" type="button"
+                    onclick="location.href = 'https://acnprod.accenture.com/CommonModules/SocialSignInModule/SignInProfile?signInType=DefaultSignIn&amp;network=LinkedIn'"
+                    data-rel="E6633F2A-FD61-4F6D-842A-B41E3E9A2272" data-name="asset" data-linktype="socialconnect:sign in/out">
+                    <img src ="//acnprod.accenture.com/t20150521T025232__w__/us-en/_acnmedia/Accenture/Dev/ComponentImages/sqr-linkedin.png" />
+                    <span class="corporate-black rotis-xbold social-sign-in-single">
+                    Sign in with
+                    LinkedIn
+                </span>
+            </button>
+        </span>
+    </div>
+
+
+
+<input id="PageItemGuid" name="PageItemGuid" type="hidden" value="e6633f2a-fd61-4f6d-842a-b41e3e9a2272" />
+<input id="DefaultRegistrationLink" name="DefaultRegistrationLink" type="hidden" value="https://www.accenture.com/us-en/Careers/Registration/register.aspx" />
+<input id="SSOErrorID" name="SSOErrorID" type="hidden" value="-1" /> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+</div>
+
+<input type="hidden" id="signInPopupData" name="signInPopupData" 
+    data-signout-landingpage=""
+     />
+        
+
+
+            
+
+    <!-- MODAL: SOCIAL DUPLICATE SSO-->
+    <div data-backdrop="static" id="SocialMediaModal" class="modal fade in unsubscribe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close acn-icon icon-close-light" data-dismiss="modal" aria-hidden="true"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="confirm">
+                        
+                        <p class="text-center">There is already a separate, active account tied to your  profile. Please continue registration for this program without your  profile </p>
+                        <div class="text-center">
+                            <button id="btnContinueProfile" type="button" class="btn btn-primary" data-dismiss="modal">Continue</button>
+                            <button type="button" class="btn btn-primary cancelClose" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!-- MODAL: SOCIAL BEING USED BY CLIENT USER OR BY CAREER USER -->
+    <div data-backdrop="static" id="SocialEmailModal" class="modal fade in unsubscribe" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close acn-icon icon-close-light" data-dismiss="modal" aria-hidden="true"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="confirm">
+                        
+                        
+                        
+                        <p class="text-center">There is already a separate, active account tied to your  profile. Please continue registration for this program without your  profile</p>
+                        <div class="text-center">
+                            <button id="btnContinueRegistration" type="button" class="btn btn-primary" >Continue</button>
+                            <button type="button" class="btn btn-primary cancelClose" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+        
+
+        <div class="modal fade row" id="disconnectSocialSite" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close acn-icon icon-close-light" data-dismiss="modal" aria-hidden="true" title="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="confirm">
+                    <p class="text-center corporate-black module-headline">Are you sure you want to disconnect with 
+account?
+                    </p>
+                    <div class="text-center">
+                        <button id="showClientEditModal" class="btn btn-primary btn-cta">
+Yes
+                        </button>
+                        <button class="btn btn-primary btn-cta" onclick="$('#disconnectSocialSite').modal('hide')">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </div>
+    
+    <script type="text/javascript">
+var ComponentRegistry = {OptimizeImages:1,NavigationModule:1,SearchModule:1,DownArrowScroll:1,Block:1,SocialSignIn:1,FooterModule:1,signInModal:1,searchModal:1,BootstrapValidator:1,ComingSoon:1,SignIn:1,socialError:1,DisconnectSocialSite:1}
+</script>
+    <script type="text/javascript">
+             var searchcountrysite = "us-en";
+             var searchcountry = "USA";
+             var searchlanguage = "en";
+             var disableSmartSearch = "False";
+             var jobSearchUrl = "/us-en/careers/jobsearch";
+
+             
+             // Temporary fix for rendering issue
+             var disableWelcomeOverlay = "True";
+             // Dictionary object for Smart Prompt - Smart Suggestions
+             var smartPrompt = {
+                 didYouMean: 'Did you mean $keyword?',
+                 noResultFoundSearchString: 'We were unable to find a match for "$searchstring." Try searching again by using different or more general keywords and check for spelling errors.',
+                 showResults: 'Showing Results for ',
+                 searchInstead: 'Search instead for ',
+             };
+             
+             $(function () {
+                 $('body').append($('#welcome-screen-container').html());
+                 $('#welcome-screen-container').remove();
+                 //showCoachMark();
+                 $('#btnContinue').on('click', function () {
+                     closeCoachMark();
+                     $('#coach-marks-screen').modal('hide');
+                     //Bug #212935
+                     $('#header-topnav').css('z-index', '9999');
+                 });
+             })
+        </script>
+
+
+    
+
+    <script type="text/javascript" src="/bundles/postbodyjs?v=P_hobOwgMo5LCTRsCbp0vzBT5E2C8NmlRTPiB3dwlyI1"></script>
+<script type="text/javascript" src="/bundles/bootstrapvalidator?v=DEcYxhkq7IrmgjFEQjfA3w_5J5By9lerstY2lLmluG81"></script>    <noscript>
+  <div id="desktop-noscript" style="display:block">
+   <img src="https://somni.accenture.com/b/ss/accnextacnprod,accnextcarprod,accnextglobprod/1/JS-1.4--NS/012bdfe98d/?pageName=acn:page:loginpage&amp;c58=acn:page:loginpage&amp;v58=D%3Dc58&amp;events=event20%2Cevent21" height="1" width="1" border="0" alt="" />
+  </div>
+</noscript>        <script type="text/javascript">_satellite.pageBottom();</script>
+</body>
+</html>

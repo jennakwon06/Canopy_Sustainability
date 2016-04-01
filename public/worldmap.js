@@ -32,17 +32,9 @@ function drawMap() {
 
     var g = svg.append("g");
 
-    svg.append("rect")
-        .attr("class", "overlay")
-        .attr("width", width)
-        .attr("height", height);
 
     svg.call(zoom)
         .call(zoom.event);
-
-    var radius = d3.scale.sqrt()
-        .domain([0, 1e6])
-        .range([0, 15]);
 
 
     //var legend = svg.append("g")
@@ -88,11 +80,6 @@ function drawMap() {
 
 function drawBubblesOnMap(results) {
 
-    if (d3.select(".mapSvg").empty()) {
-        drawMap();
-    }
-
-
     var mapping = {};
 
     for (var i = 0; i < results.length; i++) {
@@ -105,50 +92,34 @@ function drawBubblesOnMap(results) {
     }
 
     d3.csv("/countryMap.csv", function(error, mappings) {
-
-        console.log("mappings");
-        console.log(mappings);
-
         var array = [];
 
+        console.log("whats my mapping");
+        console.log(mapping);
         for (i = 0; i < Object.keys(mapping).length; i++) {
-            var object = {country: undefined, count: undefined, id: undefined};
-            object.country = Object.keys(mapping)[0];
-            object.count = mapping[object.country]; //look up value
             for (var j = 0; j < mappings.length; j++) {
-                if (mappings[j]["ISO3166-1-Alpha-2"] === object.country) {
-                    console.log(mappings[j]);
-                    console.log(mappings[j]["ISO3166-1-Alpha-2"]);
-                    console.log(object.country);
-                    console.log(typeof(object.country));
-                    console.log(mappings[j]["ISO3166-1-Alpha-2"] === object.country);
+                if (mappings[j]["ISO3166-1-Alpha-2"] === Object.keys(mapping)[i]) {
+                    var object = {country: undefined, count: undefined, id: undefined};
+                    object.country = Object.keys(mapping)[i];
+                    object.count = mapping[object.country]; //look up value
                     object.id = mappings[j]["ISO3166-1-numeric"];
-
+                    array.push(object);
                 }
-
-                //if (mappings[j]["ISO3166-1-Alpha-2"] == mapping.key) {
-                //    console.log(mappings[j]);
-                //    console.log(mappings[j]["ISO3166-1-Alpha-2"]);
-                //    console.log(object.country);
-                //    console.log(mappings[j]["ISO3166-1-Alpha-2"] === mapping.key);
-                //    object.id = mappings[j]["ISO3166-1-numeric"];
-                //    break;
-                //}
             }
-            array.push(object);
         }
+        console.log("whats my array");
+        console.log(array)
 
+        var radius = d3.scale.sqrt()
+            .domain([0, 1e6])
+            .range([0, 15]);
 
-        console.log("is my array initialized?");
-        console.log(array);
-
-        console.log(countries);
 
         d3.select(".mapSvg g").append("g")
             .attr("class", "bubble")
             .selectAll("circle")
             .data(countries)
-            .enter()
+            .enter() //A LOT OF EMPTY CIRCLE TAGS ARE GENERATED - CA THIS BE BETTER ?
             .append("circle")
             .filter(function(d) {
                 for (var i = 0; i < array.length; i++) {
@@ -158,12 +129,19 @@ function drawBubblesOnMap(results) {
                 }
                 return false;
             })
+            .attr("data-toggle", "modal")
+            .attr("data-target", "#mapModal")
             .attr("countryId", function(d) {
                 return d.id;
             })
             .attr("transform", function(d) {return "translate(" + path.centroid(d) + ")"; })
-            .attr("r", 10)
-            .style("fill, red");
+            .attr("r", function(d) {
+                for (var i = 0; i < array.length; i++) {
+                    if (array[i].id == d.id) {
+                        return radius(array[i].count);
+                    }
+                }
+            });
     });
 }
 

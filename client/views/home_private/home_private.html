@@ -3,27 +3,6 @@
 
         <div id="page_menu" class="pull-right"></div>
 
-        <!--<div class="row" style="position:relative; background-color:lightgray">-->
-
-            <!--<div class="col-md-4">-->
-                <!--<h1> Showing results for ~ Companies </h1>-->
-             <!--</div>-->
-
-            <!--<div class="col-md-2">-->
-                <!--<button type="button" class="btn btn-success pull-right" id="applyFilterButton">-->
-                    <!--Apply filters!-->
-                <!--</button>-->
-            <!--</div>-->
-
-
-            <!--<div class="col-md-2">-->
-                <!--<button type="button" class="btn btn-success pull-right" disabled="disabled" id="saveResultButton">-->
-                    <!--Save Results!-->
-                <!--</button>-->
-            <!--</div>-->
-
-        <!--</div>-->
-
         <div class="row">
             <div id="filterBar" >
                 <div class="filter_container" id="accordion">
@@ -80,8 +59,6 @@
                             <div class="panel-heading">
                                 <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#panelEmissions" data-target="#collapseEmissions">
                                     <a> Emissions </a>
-
-
                                     <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
                                 </h4>
                             </div>
@@ -90,26 +67,25 @@
                         <div id="collapseEmissions" class="panel-collapse collapse in">
                             <div class="panel-body">>
                                 <div id="ghg-1-chart">
+                                    <div class="clearfix"></div>
                                     <strong>GHG Scope 1 Emission</strong>
                                     <span class="reset" style="display: none;"></span>
-                                    <a class="reset" href="javascript:ghg1Chart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-                                    <div class="clearfix"></div>
+                                    <a class="reset" href="javascript:ghg1Chart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>
 
                                 </div>
 
                                 <div id="ghg-2-chart">
+                                    <div class="clearfix"></div>
                                     <strong>GHG Scope 2 Emission</strong>
                                     <span class="reset" style="display: none;"></span>
                                     <a class="reset" href="javascript:ghg2Chart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>
-
-                                    <div class="clearfix"></div>
                                 </div>
 
                                 <div id="ghg-3-chart">
+                                    <div class="clearfix"></div>
                                     <strong>GHG Scope 3 Emission</strong>
                                     <span class="reset" style="display: none;"></span>
                                     <a class="reset" href="javascript:ghg3Chart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>
-                                    <div class="clearfix"></div>
                                 </div>
                             </div>
                         </div>
@@ -282,7 +258,23 @@
                             </div>
                             <div class="modal-body">
                                 <ul class="modal-list list-group">
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" id="closeModalButton" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel">View location information </h4>
+                            </div>
+                            <div class="modal-body">
+                                <ul class="modal-list list-group">
                                 </ul>
                             </div>
                             <div class="modal-footer">
