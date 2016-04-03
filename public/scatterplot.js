@@ -2,7 +2,7 @@
 function drawScatterPlot(results) {
 
     //clear previous
-    $(".scatterPlotSVG").empty();
+    d3.select(".scatterPlotSVG").remove();
 
     var margin = {top: 20, right: 20, bottom: 30, left: 40},
         width = 800 - margin.left - margin.right,
