@@ -32,7 +32,6 @@ function drawMap() {
 
     var g = svg.append("g");
 
-
     svg.call(zoom)
         .call(zoom.event);
 
@@ -94,8 +93,6 @@ function drawBubblesOnMap(results) {
     d3.csv("/countryMap.csv", function(error, mappings) {
         var array = [];
 
-        console.log("whats my mapping");
-        console.log(mapping);
         for (i = 0; i < Object.keys(mapping).length; i++) {
             for (var j = 0; j < mappings.length; j++) {
                 if (mappings[j]["ISO3166-1-Alpha-2"] === Object.keys(mapping)[i]) {
@@ -107,17 +104,18 @@ function drawBubblesOnMap(results) {
                 }
             }
         }
-        console.log("whats my array");
-        console.log(array)
 
         var radius = d3.scale.sqrt()
             .domain([0, 1e6])
             .range([0, 15]);
 
+        var cValue = function(d) { return d.id;},
+            color = d3.scale.category10();
 
         d3.select(".mapSvg g").append("g")
             .attr("class", "bubble")
             .selectAll("circle")
+            .attr("class", "mapCircle")
             .data(countries)
             .enter() //A LOT OF EMPTY CIRCLE TAGS ARE GENERATED - CA THIS BE BETTER ?
             .append("circle")
@@ -137,11 +135,15 @@ function drawBubblesOnMap(results) {
             .attr("transform", function(d) {return "translate(" + path.centroid(d) + ")"; })
             .attr("r", function(d) {
                 for (var i = 0; i < array.length; i++) {
+                    console.log(array[i].count);
                     if (array[i].id == d.id) {
-                        return radius(array[i].count);
+                        return (radius(array[i].count) * 150);
                     }
                 }
-            });
+            })
+            .style("fill", function(d) {
+                return color(cValue(d));})
+        ;
     });
 }
 

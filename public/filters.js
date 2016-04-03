@@ -560,7 +560,6 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
         var max = minMax[1];
         var binCount = 10;
         var span = max - min;
-        var binWidth = span / binCount;
 
         var GHG1bins = ["", 'Unknown'];
 

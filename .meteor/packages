@@ -36,6 +36,4 @@ blaze-html-templates
 ecmascript
 cfs:standard-packages
 cfs:filesystem
-
-
 izzilab:shelljs

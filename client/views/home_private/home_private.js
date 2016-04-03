@@ -2,12 +2,13 @@ Template.HomePrivate.rendered = function() {
     $.getScript("/filters.js");
     $.getScript("/worldmap.js");
     $.getScript("/scatterplot.js");
+
+    Meteor.subscribe('userFilters');
+    Meteor.subscribe('userResults');
+    Meteor.subscribe('fs.files');
 };
 
 var i = 0;
-
-console.log(PDFs);
-console.log(PDFs.find().fetch());
 
 
 
@@ -63,6 +64,7 @@ Template.HomePrivate.events({
 
     // Update number counter button
     'click rect': function (e) {
+        $('.companiesCount').empty();
         $('.companiesCount').html(globalFilter.top(Infinity).length);
 
     },
@@ -70,9 +72,16 @@ Template.HomePrivate.events({
     'click #resetAllFiltersButton': function(e) {
         dc.redrawAll();
         dc.filterAll();
+        $('.companiesCount').html(globalFilter.top(Infinity).length);
     },
 
     'click #applyFilterButton': function (e) {
+        console.log('checking database connection')
+        console.log(Filters.find().count());
+        console.log(Results.find().count());
+        console.log(PDFs.find().count());
+
+
         e.preventDefault();
         var results = globalFilter.top(Infinity);
 
@@ -127,7 +136,7 @@ Template.HomePrivate.events({
         drawBubblesOnMap(results);
 
         //@TODO DRAW SCATTER PLOT
-        drawBubblesOnScatterPlot(results);
+        drawScatterPlot(results);
     },
 
     'click #saveResultButton': function (e) {
@@ -146,9 +155,6 @@ Template.HomePrivate.events({
     // highlight table row clicked
     'click .clickableRow': function (e) {
 
-        //var shell = Meteor.require("shelljs");
-
-        //var shell2 = Meteor.require("shelljs/global")
         var name = $(e.currentTarget).attr('id');
         $(e.currentTarget).addClass('highlight');
         $(e.currentTarget).siblings().removeClass('highlight');
@@ -168,19 +174,11 @@ Template.HomePrivate.events({
                         .text(data[i].GR_name);
 
 
-                    // TODO FIND FILES BY NAME
-                    var path = "/reports/" + data[i].GR_name;
-                    //
+                    // TOOD TRY USING SHELLJS AND FS
+                    //var path = "/reports/" + data[i].GR_name;
                     //var files = fs.readdirSync('/report/');
                     //console.log(files);
-
-                    // TODO SOLUTION 1) USE SHELLJS TO LIST FILES. NOT WORKING? THROWS ERROR "CAN'T FIND VARIABLE SHELL"
-                    var list = shell("/reports");
-
-
-                    console.log(list);
-
-                    //// TODO SOLUTION 2) USE MONGO DB
+                    // TODO SOLUTION 2) USE MONGO DB
                     //console.log(findPDFs(data[i].GR_name));
 
                     break;
@@ -216,7 +214,6 @@ Template.HomePrivate.events({
     },
 
     // @TODO   MAP STUFF
-
     'click .bubble': function (e) {
         d3.select(".list-group")
             .append("li")

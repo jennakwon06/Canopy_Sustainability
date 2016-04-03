@@ -1,17 +1,8 @@
-console.log("outside function closure");
+//@TODO refactor to take in different x and y axis values
+function drawScatterPlot(results) {
 
-function drawScatterPlot() {
-
-}
-
-function drawBubblesOnScatterPlot(results) {
-
-    //if (d3.select(".mapSvg").empty()) {
-    //    drawMap();
-    //}
-
-//    drawScatterPlot();
-
+    //clear previous
+    $(".scatterPlotSVG").empty();
 
     var margin = {top: 20, right: 20, bottom: 30, left: 40},
         width = 800 - margin.left - margin.right,
@@ -24,29 +15,28 @@ function drawBubblesOnScatterPlot(results) {
      * axis - sets up axis
      */
 
-    //console.log(results);
-    
 
-// setup x
+    // setup x
     var xValue = function(d) { return +d.GHG1;}, // data -> value
         xScale = d3.scale.linear().range([0, width]), // value -> display
         xMap = function(d) { return xScale(xValue(d));}, // data -> display
         xAxis = d3.svg.axis().scale(xScale).orient("bottom");
 
-// setup y
+    // setup y
     var yValue = function(d) { return +d.GHG1;}, // data -> value
         yScale = d3.scale.linear().range([height, 0]), // value -> display
         yMap = function(d) { return yScale(yValue(d));}, // data -> display
         yAxis = d3.svg.axis().scale(yScale).orient("left");
 
-// setup fill color
+    // setup fill color
     var cValue = function(d) { return d.name;},
         color = d3.scale.category10();
 
-// add the graph canvas to the body of the webpage
+    // add the graph canvas to the body of the webpage
     var svg = d3.select(".resultScatterPlotView").append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
+        .attr("class", "scatterPlotSVG")
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 

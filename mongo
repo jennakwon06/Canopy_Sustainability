@@ -10,7 +10,7 @@ Auth information
 mongo ds025419.mlab.com:25419/heroku_dhmzqr91 -u jkwon47 -p rnjs078@
 
 2) Upload files with
-mongofiles put -d pdfs ./reports/Aetna\ Inc46af4.pdf --host ds025419.mlab.com:25419 -u jkwon47 -p rnjs078@ --authenticationDatabase heroku_dhmzqr91
+mongofiles put -d meteor ./reports/Aetna\ Inc46af4.pdf --host 127.0.0.1:3001
 
 
 

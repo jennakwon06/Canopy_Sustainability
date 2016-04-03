@@ -43,9 +43,7 @@
 
                                         <div>
                                             <a class="reset" href="javascript:sectorChart.filterAll();dc.redrawAll();"
-                                               style="visibility: hidden; position: absolute; height: 5px; right:0;">
-                                                reset
-                                            </a>
+                                               style="visibility: hidden; position: absolute; height: 5px; right:0;">reset</a>
                                         </div>
                                     </div>
                                 </div>
@@ -65,27 +63,31 @@
                         </div>
 
                         <div id="collapseEmissions" class="panel-collapse collapse in">
-                            <div class="panel-body">>
+                            <div class="panel-body">
                                 <div id="ghg-1-chart">
-                                    <div class="clearfix"></div>
                                     <strong>GHG Scope 1 Emission</strong>
-                                    <span class="reset" style="display: none;"></span>
-                                    <a class="reset" href="javascript:ghg1Chart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>
 
+                                    <!--<div class="clearfix"></div>-->
+                                    <!--<div class="reset" style="display: none;">-->
+                                        <!--<a class="reset" href="javascript:ghg1Chart.filterAll();dc.redrawAll();"-->
+                                           <!--style="visibility: hidden; position: absolute; height: 5px; right:0;">reset</a>-->
+                                    <!--</div>-->
                                 </div>
 
                                 <div id="ghg-2-chart">
-                                    <div class="clearfix"></div>
                                     <strong>GHG Scope 2 Emission</strong>
-                                    <span class="reset" style="display: none;"></span>
-                                    <a class="reset" href="javascript:ghg2Chart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>
+                                    <!--<div class="clearfix"></div>-->
+                                    <!--<span class="reset" style="display: none;">-->
+                                        <!--<a class="reset" href="javascript:ghg2Chart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>-->
+                                    <!--</span>-->
                                 </div>
 
                                 <div id="ghg-3-chart">
-                                    <div class="clearfix"></div>
                                     <strong>GHG Scope 3 Emission</strong>
-                                    <span class="reset" style="display: none;"></span>
-                                    <a class="reset" href="javascript:ghg3Chart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>
+                                    <!--<div class="clearfix"></div>-->
+                                    <!--<span class="reset" style="display: none;">-->
+                                        <!--<a class="reset" href="javascript:ghg3Chart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>-->
+                                    <!--</span>-->
                                 </div>
                             </div>
                         </div>
@@ -106,9 +108,10 @@
                             <div class="panel-body">
                                 <div id="tww-chart">
                                     <strong>Amount of water discharged</strong>
-                                    <span class="reset" style="display: none;"></span>
-                                    <a class="reset" href="javascript:twwChart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>
-                                    <div class="clearfix"></div>
+
+                                    <!--<span class="reset" style="display: none;"></span>-->
+                                    <!--<a class="reset" href="javascript:twwChart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>-->
+                                    <!--<div class="clearfix"></div>-->
                                 </div>
                             </div>
                         </div>
@@ -129,9 +132,9 @@
                             <div class="panel-body">
                                 <div id="wasteGenerated-chart">
                                     <strong>Amount of waste generated</strong>
-                                    <span class="reset" style="display: none;"></span>
-                                    <a class="reset" href="javascript:wastegeneratedChart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>
-                                    <div class="clearfix"></div>
+                                    <!--<span class="reset" style="display: none;"></span>-->
+                                    <!--<a class="reset" href="javascript:wastegeneratedChart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>-->
+                                    <!--<div class="clearfix"></div>-->
                                 </div>
                             </div>
                         </div>
@@ -171,14 +174,12 @@
                                 <div id="risk_exposed_chart">
                                     <strong>Exposed Risk</strong>
                                     <a class="reset" href="javascript:riskExposedChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-
                                     <div class="clearfix"></div>
                                 </div>
 
                                 <div id="cc_policy_impl_chart">
                                     <strong>Climate Change Policy Implemented</strong>
                                     <a class="reset" href="javascript:ccPolicyImplChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
@@ -189,7 +190,8 @@
 
             <div id="controlBar">
                 <div class="controlIcons">
-                    <h1 href="#" class="companiesCount" style="text-align: center; height: 50px; font-size: 18px" title="Company Counts"></h1>
+                    <!--@TODO factor out 504 and make it dynamic-->
+                    <h1 href="#" class="companiesCount" style="text-align: center; height: 50px; font-size: 18px" title="Company Counts">504</h1>
                     <span class="glyphicon glyphicon-arrow-left myGlyphicon" title="Collapse filters" id="collapseFilterButton"></span>
 
 
