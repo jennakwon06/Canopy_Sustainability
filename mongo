@@ -11,3 +11,29 @@ mongo ds025419.mlab.com:25419/heroku_dhmzqr91 -u jkwon47 -p rnjs078@
 
 2) Upload files with
 mongofiles put -d pdfs ./reports/Aetna\ Inc46af4.pdf --host ds025419.mlab.com:25419 -u jkwon47 -p rnjs078@ --authenticationDatabase heroku_dhmzqr91
+
+
+
+Connected with
+mongod --port 25419 --dbpath /data/db --noauth
+mongo --port 25419 --host ds025419.mlab.com
+
+db.createUser( { user: "master",
+          pwd: "password",
+          roles: ["root"]
+
+ } )
+
+
+// only available for dedicated plans, apparently. :O :(
+ db.createUser(
+ {
+     user: "master",
+     pwd: "password",
+     roles: [
+               { role: "userAdminAnyDatabase", db: "admin" },
+               { role: "readWriteAnyDatabase", db: "admin" },
+               { role: "dbAdminAnyDatabase", db: "admin" },
+               { role: "clusterAdmin", db: "admin" }
+            ]
+ })

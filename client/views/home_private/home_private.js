@@ -6,6 +6,12 @@ Template.HomePrivate.rendered = function() {
 
 var i = 0;
 
+//PDFs = Meteor.subscribe('fs.files');
+
+console.log(PDFs);
+console.log(PDFs.find().fetch());
+
+
 var findPDFs = function(company) {
 
 
@@ -163,9 +169,12 @@ Template.HomePrivate.events({
 
                     // TODO FIND FILES BY NAME
                     var path = "/reports/" + data[i].GR_name;
+                    //
+                    //var files = fs.readdirSync('/report/');
+                    //console.log(files);
 
-                    // TODO SOLUTION 1) USE SHELLJS TO LIST FILES. NOT WORKING?
-                    var list = _ls("/reports");
+                    // TODO SOLUTION 1) USE SHELLJS TO LIST FILES. NOT WORKING? THROWS ERROR "CAN'T FIND VARIABLE SHELL"
+                    var list = shell.ls("/reports");
                     console.log(list);
 
                     // TODO SOLUTION 2) USE MONGO DB

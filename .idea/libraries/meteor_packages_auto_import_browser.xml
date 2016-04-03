@@ -65,6 +65,7 @@
         <item url="file://$USER_HOME$/.meteor/packages/cfs_reactive-list/0.0.9/web.browser/packages/cfs:reactive-list.js" />
         <item url="file://$USER_HOME$/.meteor/packages/ddp-common/1.2.2/web.browser/namespace.js" />
         <item url="file://$USER_HOME$/.meteor/packages/iron_router/1.0.12/web.browser/lib/route.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/izzilab_shelljs/0.0.3/web.browser/packages/izzilab_shelljs.js" />
         <item url="file://$USER_HOME$/.meteor/packages/http/1.1.1/web.browser/deprecated.js" />
         <item url="file://$USER_HOME$/.meteor/packages/cfs_power-queue/0.9.11/web.browser/packages/cfs:power-queue.js" />
         <item url="file://$USER_HOME$/.meteor/packages/ddp-common/1.2.2/web.browser/utils.js" />
@@ -253,6 +254,7 @@
       <root url="file://$USER_HOME$/.meteor/packages/cfs_reactive-list/0.0.9/web.browser/packages/cfs:reactive-list.js" />
       <root url="file://$USER_HOME$/.meteor/packages/ddp-common/1.2.2/web.browser/namespace.js" />
       <root url="file://$USER_HOME$/.meteor/packages/iron_router/1.0.12/web.browser/lib/route.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/izzilab_shelljs/0.0.3/web.browser/packages/izzilab_shelljs.js" />
       <root url="file://$USER_HOME$/.meteor/packages/http/1.1.1/web.browser/deprecated.js" />
       <root url="file://$USER_HOME$/.meteor/packages/cfs_power-queue/0.9.11/web.browser/packages/cfs:power-queue.js" />
       <root url="file://$USER_HOME$/.meteor/packages/ddp-common/1.2.2/web.browser/utils.js" />

@@ -2,319 +2,153 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ecb22e18-2595-4b9d-9b37-b6b50df87b24" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/3M Co38d1f.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/3M Coc9329.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/3M Cod04b2.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/AGL Resources Ince960c.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/AT&amp;T Inc2eae7.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/AT&amp;T Inc752c5.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/AbbVie Incbd965.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Abbott Laboratories00b3f.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Abbott Laboratories345d4.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Abbott Laboratories4aaec.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Abbott Laboratories5a20a.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Abbott Laboratoriesa9a85.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Abbott Laboratoriesc3e6a.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Abbott Laboratoriesdb60c.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Accenture PLC83324.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Accenture PLC9cfa3.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Accenture PLCLogin.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Adobe Systems Inc5fe4a.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Aetna Inc46af4.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Aflac Inc8b6f3.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Agilent Technologies Inc25ddf.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Air Products &amp; Chemicals Inc1d6f1.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Airgas Ince73b5.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Akamai Technologies Inca3957.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Alcoa Inc8244c.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Allergan plc2babe.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Alliance Data Systems Corp44a0b.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Altria Group Incfa827.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/American Airlines Group IncAAL-2.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/American Electric Power Co Incfc5a1.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/American Express Cofc5bf.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/American International Group Incdd872.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/American Tower Corpc66f5.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Amgen Inc5f14c.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Anadarko Petroleum Corpfa89d.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Apache Corpc31da.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Apartment Investment &amp; Management Co0ac15.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Apple Inc208c0.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Apple Inc92789.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Applied Materials Incc6c49.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Archer-Daniels-Midland Coc906b.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Autodesk Inc3daba.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/AvalonBay Communities Inca3fe8.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Avery Dennison Corp28306.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Baker Hughes Inc25627.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Ball Corp11dc9.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Ball CorpBall_.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Bank of America Corpb77c2.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Baxter International Incde4df.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Becton Dickinson and Co0ebe0.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Becton Dickinson and CoGRI-I.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Best Buy Co Inc4e5a7.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Biogen Incb87b0.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Boston Scientific Corp18352.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Bristol-Myers Squibb Co2cce2.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Broadcom Ltd66751.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Brown-Forman Corp52fdc.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Brown-Forman CorpB-F20.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/CA Incc8fe9.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/CBRE Group Inc0ff37.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/CBS Corp276ba.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/CF Industries Holdings Incc9fb7.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/CMS Energy Corp38949.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/CONSOL Energy Inc69413.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/CSX Corp94856.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/CVS Health Corpa33be.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Cabot Oil &amp; Gas Corp55aa3.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Cameron International Corp3562f.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Campbell Soup Co02486.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Capital One Financial Corp2a6cd.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Cardinal Health Inc4758d.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Caterpillar Inc82df5.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Celgene Corpb6054.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/CenturyLink Ince462d.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Chesapeake Energy Corp61dae.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Chevron Corpa53f8.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Chubb Ltd7e50d.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Church &amp; Dwight Co Inc738bb.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Cigna Corp54f60.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Cincinnati Financial Corp4ef4e.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Cintas Corpfe098.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Cisco Systems Inca396a.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Citigroup Inc5d71f.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Citizens Financial Group Incbb429.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Citrix Systems Inc12e3d.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Coach Inca0829.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Coca-Cola Enterprises Inc73e82.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Coca-Cola Enterprises IncCCE_G.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Cognizant Technology Solutions Corp3527c.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Colgate-Palmolive Co5b5d6.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Comerica Incd90f2.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/ConAgra Foods Inc01f33.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/ConocoPhillips4be0b.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Consolidated Edison Inca6888.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Constellation Brands Incac628.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Corning Inccae75.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Costco Wholesale Corp1a215.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Cummins Inc29205.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/DENTSPLY International Inc59dce.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/DTE Energy Co5a8f6.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/DaVita HealthCare Partners Inc39d89.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Delphi Automotive PLC29d58.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Delta Air Lines Inc3e9f8.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Devon Energy Corp6a8f7.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Discover Financial Services18352.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Discover Financial Services38d1f.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Discover Financial Services4e3b9.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Discover Financial Services62f84.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Discover Financial ServicesGRIGu.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Discover Financial Servicesc9329.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Discover Financial Servicese3cff.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Discover Financial Servicesed6f8.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Discovery Communications Inca5f32.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Discovery Communications Ince75a1.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Dr Pepper Snapple Group Inc6e06f.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Duke Energy Corp079d6.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/EQT Corp735b9.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Eastman Chemical Co00455.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Eaton Corp PLC3b652.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Ecolab Inc0C1A8.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Ecolab Incdf6b2.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Edison Internationala6888.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Edwards Lifesciences Corp582c1.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Eli Lilly &amp; Co30e34.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Emerson Electric Cof6876.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Entergy Corp48f5d.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Equity Residential6d141.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Exelon Corpd18f4.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Exelon Corpnewsr.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/F5 Networks Inc10ff6.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/FMC Corp203b9.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Fifth Third Bancorpad576.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/FirstEnergy Corpb0182.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Flowserve Corpde25d.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Ford Motor Co9e358.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Freeport-McMoRan Inc9b0a1.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Garmin Ltd0c0ea.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/General Dynamics Corpfad2b.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/General Electric Co3b8ae.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/General Growth Properties Inc52080.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/General Mills Inc56276.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/General Motors Co6f46c.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Gilead Sciences Inc9fa9c.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/H&amp;R Block Incc27ca.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/HCP Incf704e.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Halliburton Co50393.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Harley-Davidson Incf3a82.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Hess Corp4fe45.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Hewlett Packard Enterprise Co4c7f9.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Honeywell International Incc26d4.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Hormel Foods Corp0130f.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Humana Inc494ab.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Illinois Tool Works Inca9107.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Ingersoll-Rand PLCd9ef6.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Intel Corp3487d.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Intercontinental Exchange Inc2014_.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Intercontinental Exchange Inca3e6b.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/International Flavors &amp; Fragrances Incb5da0.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/International Paper Co28016.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/International Paper CoIPA00.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Iron Mountain Inc58f99.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/JPMorgan Chase &amp; Co32676.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Jacobs Engineering Group Inc3d981.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Johnson &amp; Johnsonb0e85.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Johnson Controls Inceb04f.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Kansas City Southern28379.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Kellogg Co76ec0.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Kellogg CoKello.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Keurig Green Mountain Incb8c55.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/KeyCorp3bbb6.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Kimberly-Clark Corp20d1d.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Kimco Realty Corpf3f01.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Kohl's Corp4b59b.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Lam Research Corp1af06.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Legg Mason Inc56ff0.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Lowe's Cos IncLowes.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Lowe's Cos Incfe4ab.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Marsh &amp; McLennan Cos Inc5cf97.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Martin Marietta Materials Incfe8e8.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/McDonald's Corp2014%.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/McDonald's Corp2fe67.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/McGraw Hill Financial Incb9784.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Medtronic PLC72da0.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Microsoft Corp7d2b8.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Mohawk Industries Incf22bd.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Molson Coors Brewing Co2ef25.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Monsanto Co06132.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Monsanto Co189fe.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Monsanto Co51183.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Monsanto Cod53d3.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Moody's Corp97bfd.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Morgan Stanleyb43ec.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Motorola Solutions Inc0aa51.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Murphy Oil Corp2015%.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Murphy Oil Corp2c283.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Mylan NVa2de8.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/NIKE Incfc908.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/NRG Energy Inc2014-.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Newell Rubbermaid Inc5b1a4.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Newfield Exploration CoCRRep.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Newfield Exploration Cod6ea3.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Newmont Mining Corp4d44b.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/NextEra Energy Inc0a0d9.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/NextEra Energy Incgri-i.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/NiSource Inc85cc5.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Noble Energy Inc0421c.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Northern Trust Corpecd5a.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Northrop Grumman Corp4c406.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Nucor Corpdec37.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Omnicom Group Incda8d9.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Owens-Illinois Incdb275.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/PG&amp;E Corp1f41a.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/PG&amp;E Corp2b5ef.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/PG&amp;E Corp8fb18.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/PG&amp;E Corpc248f.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/PG&amp;E Corpe0964.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/PPL Corp51fdd.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/PVH Corpcd2f5.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/PVH Corpcsr_g.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Patterson Cos Incc64bf.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Pentair PLC9b75c.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/PepsiCo Inc0b29f.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/PepsiCo Inc23155.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/PepsiCo Inc2ec45.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/PepsiCo Inc4d57e.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/PepsiCo Inc8fcb6.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/PerkinElmer Incfff22.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Perrigo Co PLCac1cc.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Pfizer Inc45b5e.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Phillips 6630453.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Phillips 66f8568.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Pinnacle West Capital Corpa57df.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Praxair Inc3d5dc.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Praxair Inc5f3e5.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Prologis Incde5bc.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Prudential Financial Inc76eaa.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/PulteGroup Incad2f8.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/QUALCOMM Inc80ccb.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Quest Diagnostics Inc0c644.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Raytheon Cod2dc1.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Republic Services Inc449f8.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Reynolds American Ince9015.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Robert Half International Inc460de.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Rockwell Collins Inca6475.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Royal Caribbean Cruises Ltd568c0.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Ryder System Inc8764d.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/SCANA Corp9be9b.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/SL Green Realty Corp6e3dd.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Schlumberger Ltdcac28.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Seagate Technology PLC79c2c.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Sealed Air Corp1922c.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Sempra Energy7565b.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Sempra EnergySempr.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Simon Property Group Inc13f57.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Skyworks Solutions Ince2e64.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Southwest Airlines Coc882f.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Southwestern Energy CoSWN_C.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Southwestern Energy Cod4d1c.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Staples Inc5dbf7.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Starbucks Corp49b9d.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Starwood Hotels &amp; Resorts Worldwide Inc5887a.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/State Street Corp18352.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/State Street Corp62f84.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Stericycle Ince1a5f.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Symantec Corpf6c3f.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Sysco Corpce002.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/T Rowe Price Group Inc6d652.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/TE Connectivity Ltd16e12.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/TECO Energy Inca2279.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/TECO Energy Incdfe94.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Target Corp45c5a.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Target Corpd29ae.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Tenet Healthcare Corpa89e4.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Teradata Corp997bb.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Texas Instruments Inc6ae3b.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Textron Inc20b3b.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Thermo Fisher Scientific Inc019e9.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Tiffany &amp; Co24d87.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Time Warner Incac266.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Total System Services Inc44811.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Tyco International Plc8d6e9.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Union Pacific Corpc9f31.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/UnitedHealth Group Inc6eb8c.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Valero Energy Corpc1686.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Varian Medical Systems Inc43ca6.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Varian Medical Systems IncVaria.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Ventas Inc69139.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Verisk Analytics Inca5251.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Verizon Communications Inc1efad.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Viacom Inc93612.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Wal-Mart Stores Inc3ed3d.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Wal-Mart Stores Incdb812.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Wells Fargo &amp; Co9175e.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Weyerhaeuser Coe8d9f.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Whirlpool Corp2193d.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Wynn Resorts Ltde3a8d.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Xcel Energy Incd9868.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/Xerox Corp324d1.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/eBay Inc7c584.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reports/test.pdf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/both/collections/filestores.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/envDataOnSP500.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/envDataOnSP500.xlsx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/.documentup.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/.gitattributes" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/.jshintrc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/.lgtm" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/RELEASE.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/appveyor.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/src/head.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/src/sort.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/src/tail.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/cat.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/cd.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/chmod.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/common.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/config.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/cp.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/dirs.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/echo.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/env.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/exec.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/find.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/global.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/grep.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/head.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/ln.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/ls.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/make.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/mkdir.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/mv.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/pipe.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/popd.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/pushd.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/pwd.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/a.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/badlink" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/cat/file1" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/cat/file2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/chmod/a/b/c/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/chmod/b/a/b/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/chmod/c/a/b/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/chmod/file1" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/chmod/xdir/deep/file" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/chmod/xdir/file" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/cp-mode-bits/executable" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/cp/a" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/cp/b" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/cp/dir_a/z" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/cp/dir_b/dir_b_a/dir_b_a_a/z" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/exec/slow.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/external/node_script.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/file1" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/file1.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/file1.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/file2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/file2.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/file2.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/find/.hidden" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/find/a" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/find/b" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/find/broken_link" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/find/dir1/a_dir1" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/find/dir1/dir11/a_dir11" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/find/dir2/a_dir1" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/grep/file" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/head/file1.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/head/file2.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/head/shortfile1" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/head/shortfile2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/issue44/main.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/link" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/ls/.hidden_dir/nada" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/ls/.hidden_file" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/ls/a_dir/.hidden_dir/nada" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/ls/a_dir/b_dir/z" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/ls/a_dir/nada" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/ls/file1" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/ls/file1.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/ls/file2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/ls/file2.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/ls/filename(with)[chars$]^that.must+be-escaped" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/pushd/a/dummy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/pushd/b/c/dummy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/rm/a_dir/a_file" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/rm/link_to_a_dir" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/shjs/a-file.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/shjs/coffeescript.coffee" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/shjs/exit-0.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/shjs/exit-codes.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/shjs/stdout-stderr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/sort/file1" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/sort/file2" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/sort/sorted" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/resources/sort/sortedDashN" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/rm.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/sed.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/set.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/shjs.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/sort.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/tail.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/tempdir.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/to.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/toEnd.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/touch.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/utils/utils.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/shelljs/test/which.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_browser.xml" afterPath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_browser.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/packages" afterPath="$PROJECT_DIR$/.meteor/packages" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/versions" afterPath="$PROJECT_DIR$/.meteor/versions" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/home_private/home_private.html" afterPath="$PROJECT_DIR$/client/views/home_private/home_private.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/both/collections/filestores.js" afterPath="$PROJECT_DIR$/both/collections/filestores.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/home_private/home_private.js" afterPath="$PROJECT_DIR$/client/views/home_private/home_private.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/data/envDataOnSP500.csv" afterPath="$PROJECT_DIR$/public/data/envDataOnSP500.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/filters.js" afterPath="$PROJECT_DIR$/public/filters.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/scatterplot.js" afterPath="$PROJECT_DIR$/public/scatterplot.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/worldmap.js" afterPath="$PROJECT_DIR$/public/worldmap.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/databaseSetup.js" afterPath="$PROJECT_DIR$/lib/databaseSetup.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mongo" afterPath="$PROJECT_DIR$/mongo" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/file-system/file-system.js" afterPath="$PROJECT_DIR$/node_modules/file-system/file-system.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/fs/package.json" afterPath="$PROJECT_DIR$/node_modules/fs/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/.npmignore" afterPath="$PROJECT_DIR$/node_modules/shelljs/.npmignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/README.md" afterPath="$PROJECT_DIR$/node_modules/shelljs/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/bin/shjs" afterPath="$PROJECT_DIR$/node_modules/shelljs/bin/shjs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/global.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/global.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/package.json" afterPath="$PROJECT_DIR$/node_modules/shelljs/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/scripts/generate-docs.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/scripts/generate-docs.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/scripts/run-tests.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/scripts/run-tests.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/shell.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/shell.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/src/cat.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/src/cat.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/src/cd.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/src/cd.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/src/chmod.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/src/chmod.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/src/common.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/src/common.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/src/cp.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/src/cp.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/src/echo.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/src/echo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/src/exec.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/src/exec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/src/find.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/src/find.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/src/grep.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/src/grep.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/src/ln.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/src/ln.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/src/ls.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/src/ls.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/src/mkdir.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/src/mkdir.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/src/mv.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/src/mv.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/src/pwd.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/src/pwd.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/src/rm.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/src/rm.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/src/sed.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/src/sed.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/src/set.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/src/set.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/src/to.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/src/to.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/src/toEnd.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/src/toEnd.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/src/touch.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/src/touch.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/shelljs/src/which.js" afterPath="$PROJECT_DIR$/node_modules/shelljs/src/which.js" />
     </list>
     <ignored path="sustVizApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -335,37 +169,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="home_private.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/home_private/home_private.js">
+      <file leaf-file-name="TODO" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TODO">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="172" column="0" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
-              <folding>
-                <element signature="e#554#654#0" expanded="false" />
-                <element signature="e#704#1580#0" expanded="false" />
-                <element signature="e#1779#1834#0" expanded="false" />
-                <element signature="e#1882#3689#0" expanded="false" />
-                <element signature="e#3736#4012#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mongo" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mongo">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.22613065">
-              <caret line="9" column="68" selection-start-line="9" selection-start-column="68" selection-end-line="9" selection-end-column="68" />
+              <caret line="0" column="9" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shell.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/shelljs/shell.js">
+      <file leaf-file-name="mongo" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mongo">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home_private.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/views/home_private/home_private.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="119" column="45" selection-start-line="119" selection-start-column="45" selection-end-line="119" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="filestores.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/both/collections/filestores.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -373,21 +211,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dc.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/lib/dc.js">
+      <file leaf-file-name="databaseSetup.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/databaseSetup.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="touch.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/shelljs/test/touch.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.8467742">
+              <caret line="21" column="27" selection-start-line="18" selection-start-column="3" selection-end-line="21" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -438,7 +266,6 @@
         <option value="$PROJECT_DIR$/client/lib/crossfilter.js" />
         <option value="$PROJECT_DIR$/client/views/layout/layout.html" />
         <option value="$PROJECT_DIR$/databaseSetup.js" />
-        <option value="$PROJECT_DIR$/lib/databaseSetup.js" />
         <option value="$PROJECT_DIR$/client/views/compare_panel/compare_panel.html" />
         <option value="$PROJECT_DIR$/client/views/compare_panel/compare_panel.js" />
         <option value="$PROJECT_DIR$/client/styles/framework/bootstrap3/custom.bootstrap.less" />
@@ -451,15 +278,18 @@
         <option value="$PROJECT_DIR$/envDataOnSP500.csv" />
         <option value="$PROJECT_DIR$/public/filters.js" />
         <option value="$PROJECT_DIR$/public/scatterplot.js" />
-        <option value="$PROJECT_DIR$/both/collections/filestores.js" />
         <option value="$PROJECT_DIR$/public/data/._envDataOnSP500.csv" />
         <option value="$PROJECT_DIR$/public/data/envDataOnSP500.csv" />
         <option value="$PROJECT_DIR$/public/worldmap.js" />
         <option value="$PROJECT_DIR$/uploadToDatabase..sh" />
         <option value="$PROJECT_DIR$/node_modules/d3/src/end.js" />
         <option value="$PROJECT_DIR$/client/views/home_private/home_private.html" />
-        <option value="$PROJECT_DIR$/client/views/home_private/home_private.js" />
+        <option value="$PROJECT_DIR$/node_modules/file-system/file-system.js" />
+        <option value="$PROJECT_DIR$/node_modules/shelljs/shell.js" />
         <option value="$PROJECT_DIR$/mongo" />
+        <option value="$PROJECT_DIR$/both/collections/filestores.js" />
+        <option value="$PROJECT_DIR$/client/views/home_private/home_private.js" />
+        <option value="$PROJECT_DIR$/lib/databaseSetup.js" />
       </list>
     </option>
   </component>
@@ -469,10 +299,10 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="32" />
-    <option name="y" value="109" />
-    <option name="width" value="1409" />
-    <option name="height" value="694" />
+    <option name="x" value="9" />
+    <option name="y" value="211" />
+    <option name="width" value="1440" />
+    <option name="height" value="678" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -500,6 +330,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -528,7 +359,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="node_modules" />
+              <option name="myItemId" value="server" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -542,25 +373,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="node_modules" />
+              <option name="myItemId" value="server" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="shelljs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sustvizApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sustvizApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -574,61 +391,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sustvizApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sustvizApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home_public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sustvizApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sustvizApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home_private" />
+              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -729,25 +497,25 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="32" y="109" width="1409" height="694" extended-state="0" />
+    <frame x="9" y="211" width="1440" height="678" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4038325" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3951389" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34318554" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.232" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -786,41 +554,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/styles/colorbrewer.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/styles/framework/bootstrap3/custom.bootstrap.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.034168564">
-          <caret line="599" column="1" selection-start-line="599" selection-start-column="1" selection-end-line="599" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/styles/styles/styles.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03640777">
-          <caret line="86" column="5" selection-start-line="86" selection-start-column="1" selection-end-line="86" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.meteor/packages/promise/0.5.1/web.browser/.npm/package/node_modules/meteor-promise/promise.bundle.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6241901">
-          <caret line="735" column="4" selection-start-line="735" selection-start-column="4" selection-end-line="735" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/HTML5.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.2018347">
-          <caret line="2146" column="25" selection-start-line="2146" selection-start-column="19" selection-end-line="2146" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/styles/filter_toggle.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.30701753">
@@ -846,13 +579,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TODO">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5090909">
-          <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -940,13 +666,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.meteor/packages/ddp-client/1.2.1/web.browser/livedata_connection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="937" column="26" selection-start-line="937" selection-start-column="26" selection-end-line="937" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/countryMap.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6360424">
@@ -965,7 +684,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="169" selection-start-line="19" selection-start-column="169" selection-end-line="19" selection-end-column="169" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -976,26 +694,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/both/collections/filestores.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.meteor/packages/cfs_collection/0.5.5/web.browser/packages/cfs_collection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.279732">
-          <caret line="352" column="17" selection-start-line="352" selection-start-column="17" selection-end-line="352" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.meteor/packages">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="38" column="7" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1003,7 +705,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1018,7 +719,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="42" selection-start-line="0" selection-start-column="42" selection-end-line="0" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1026,14 +726,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="835" column="0" selection-start-line="835" selection-start-column="0" selection-end-line="835" selection-end-column="0" />
-          <folding>
-            <element signature="e#971#1463#0" expanded="false" />
-            <element signature="e#25867#26965#0" expanded="false" />
-            <element signature="e#30728#33482#0" expanded="false" />
-            <element signature="e#33525#36279#0" expanded="false" />
-            <element signature="e#36333#37237#0" expanded="false" />
-            <element signature="e#37289#38219#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1041,7 +733,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="26" column="27" selection-start-line="26" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1049,15 +740,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.5">
           <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/shelljs/test/touch.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="4" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1065,38 +747,187 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/d3/CONTRIBUTING.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/d3/d3.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/crossfilter/crossfilter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/file-system/file-system.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="15.0">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/fs/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.25">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/meteor-node-stubs/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/fs/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/shelljs/global.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/shelljs/shell.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/object_utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.7645631">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/controllers/router.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07281554">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/d3/d3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/string_utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47330096">
+          <caret line="13" column="20" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TODO">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="9" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.meteor/packages/ddp-client/1.2.1/web.browser/livedata_connection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.5513785">
+          <caret line="479" column="2" selection-start-line="479" selection-start-column="2" selection-end-line="479" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.meteor/packages/matb33_collection-hooks/0.8.1/web.browser/collection-hooks.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="242" column="2" selection-start-line="242" selection-start-column="2" selection-end-line="242" selection-end-column="2" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/views/home_private/home_private.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="172" column="0" selection-start-line="172" selection-start-column="0" selection-end-line="172" selection-end-column="0" />
-          <folding>
-            <element signature="e#554#654#0" expanded="false" />
-            <element signature="e#704#1580#0" expanded="false" />
-            <element signature="e#1779#1834#0" expanded="false" />
-            <element signature="e#1882#3689#0" expanded="false" />
-            <element signature="e#3736#4012#0" expanded="false" />
-          </folding>
+          <caret line="119" column="45" selection-start-line="119" selection-start-column="45" selection-end-line="119" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mongo">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22613065">
-          <caret line="9" column="68" selection-start-line="9" selection-start-column="68" selection-end-line="9" selection-end-column="68" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.meteor/packages/cfs_collection/0.5.5/web.browser/packages/cfs_collection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.766129">
+          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/both/collections/filestores.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/databaseSetup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8467742">
+          <caret line="21" column="27" selection-start-line="18" selection-start-column="3" selection-end-line="21" selection-end-column="27" />
           <folding />
         </state>
       </provider>
