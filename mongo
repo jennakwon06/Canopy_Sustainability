@@ -37,3 +37,14 @@ db.createUser( { user: "master",
                { role: "clusterAdmin", db: "admin" }
             ]
  })
+
+
+ mongofiles put -d meteor ../reports/Aetna\ Inc46af4.pdf --host 127.0.0.1:3001
+
+
+ MONGOLAB_URI: mongodb://heroku_dhmzqr91:qulsq1mk2m1noc5cd3hknk11h8@ds025419.mlab.com:25419/heroku_dhmzqr91
+
+ MONGO_URL:    mongodb://127.0.0.1:3001/meteor
+ ROOT_URL:     https://sustvizapp.herokuapp.com
+
+

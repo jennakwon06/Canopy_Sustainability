@@ -2,69 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ecb22e18-2595-4b9d-9b37-b6b50df87b24" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/both/collections/filestores.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/.documentup.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/.gitattributes" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/.jshintrc" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/.lgtm" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/.travis.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/MAINTAINERS" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/RELEASE.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/appveyor.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/bin/shjs" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/global.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/make.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/scripts/generate-docs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/scripts/run-tests.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/shell.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/cat.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/cd.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/chmod.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/common.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/cp.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/dirs.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/echo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/error.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/exec.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/find.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/grep.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/head.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/ln.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/ls.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/mkdir.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/mv.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/popd.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/pushd.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/pwd.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/rm.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/sed.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/set.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/sort.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/tail.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/tempdir.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/to.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/toEnd.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/touch.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/lib/shelljs/src/which.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ic_bubble_chart_black_24px.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/packages.json" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_browser.xml" afterPath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_browser.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/packages" afterPath="$PROJECT_DIR$/.meteor/packages" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TODO" afterPath="$PROJECT_DIR$/TODO" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/styles/custom.css" afterPath="$PROJECT_DIR$/client/styles/custom.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/home_private/home_private.html" afterPath="$PROJECT_DIR$/client/views/home_private/home_private.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/home_private/home_private.js" afterPath="$PROJECT_DIR$/client/views/home_private/home_private.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/databaseSetup.js" afterPath="$PROJECT_DIR$/lib/databaseSetup.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/versions" afterPath="$PROJECT_DIR$/.meteor/versions" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mongo" afterPath="$PROJECT_DIR$/mongo" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/filters.js" afterPath="$PROJECT_DIR$/public/filters.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/scatterplot.js" afterPath="$PROJECT_DIR$/public/scatterplot.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/worldmap.js" afterPath="$PROJECT_DIR$/public/worldmap.js" />
     </list>
     <ignored path="sustVizApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -85,88 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="info.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.meteor/local/shell/info.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.625">
-              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="METEOR-PORT" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.meteor/local/db/METEOR-PORT">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mongo" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mongo">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home_private.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/views/home_private/home_private.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37738618">
-              <caret line="67" column="25" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home_private.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/home_private/home_private.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.6470588">
-              <caret line="85" column="54" selection-start-line="85" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-              <folding>
-                <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#div#2;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="custom.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/styles/custom.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.7647057">
-              <caret line="161" column="20" selection-start-line="161" selection-start-column="20" selection-end-line="161" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="filters.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/filters.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.74074">
-              <caret line="594" column="83" selection-start-line="594" selection-start-column="0" selection-end-line="595" selection-end-column="0" />
-              <folding>
-                <element signature="e#971#1463#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="worldmap.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/worldmap.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-61.88889">
-              <caret line="120" column="29" selection-start-line="120" selection-start-column="29" selection-end-line="120" selection-end-column="29" />
+            <state vertical-scroll-proportion="-5.5555553">
+              <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -174,21 +39,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scatterplot.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/scatterplot.js">
+      <file leaf-file-name="mongo" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/mongo">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.666667">
-              <caret line="38" column="39" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.6691176">
+              <caret line="46" column="23" selection-start-line="46" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="databaseSetup.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/databaseSetup.js">
+      <file leaf-file-name="scatterplot.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/scatterplot.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+            <state vertical-scroll-proportion="1.6666666">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -255,14 +120,14 @@
         <option value="$PROJECT_DIR$/.meteor/packages" />
         <option value="$PROJECT_DIR$/TODO" />
         <option value="$PROJECT_DIR$/.meteor/local/db/METEOR-PORT" />
-        <option value="$PROJECT_DIR$/mongo" />
         <option value="$PROJECT_DIR$/lib/databaseSetup.js" />
-        <option value="$PROJECT_DIR$/public/scatterplot.js" />
         <option value="$PROJECT_DIR$/public/worldmap.js" />
-        <option value="$PROJECT_DIR$/client/views/home_private/home_private.js" />
         <option value="$PROJECT_DIR$/public/filters.js" />
         <option value="$PROJECT_DIR$/client/styles/custom.css" />
         <option value="$PROJECT_DIR$/client/views/home_private/home_private.html" />
+        <option value="$PROJECT_DIR$/client/views/home_private/home_private.js" />
+        <option value="$PROJECT_DIR$/public/scatterplot.js" />
+        <option value="$PROJECT_DIR$/mongo" />
       </list>
     </option>
   </component>
@@ -272,8 +137,8 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1383" />
-    <option name="y" value="25" />
+    <option name="x" value="-22" />
+    <option name="y" value="24" />
     <option name="width" value="1469" />
     <option name="height" value="805" />
   </component>
@@ -528,13 +393,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1383" y="25" width="1469" height="805" extended-state="0" />
+    <frame x="-22" y="24" width="1469" height="805" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3635126" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40794224" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4076087" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -646,13 +511,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.meteor/release">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.025252525">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.meteor/packages/sha/1.0.4/web.browser/sha256.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -717,20 +575,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.meteor/versions">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3317757">
-          <caret line="60" column="13" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.meteor/platforms">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.062240664">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/lib/d3.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7">
@@ -772,14 +616,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.meteor/packages">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.148149">
-          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -863,26 +699,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mongo">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/databaseSetup.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/scatterplot.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.666667">
-          <caret line="38" column="39" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -900,38 +720,94 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/styles/custom.css">
+    <entry file="file://$PROJECT_DIR$/public/scatterplot.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.7647057">
-          <caret line="161" column="20" selection-start-line="161" selection-start-column="20" selection-end-line="161" selection-end-column="20" />
+        <state vertical-scroll-proportion="1.6666666">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.meteor/.id">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.meteor/packages">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8370044">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.meteor/platforms">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.042372882">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.meteor/release">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.021186441">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.meteor/versions">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34508076">
+          <caret line="60" column="13" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/filters.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.74074">
-          <caret line="594" column="83" selection-start-line="594" selection-start-column="0" selection-end-line="595" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.9060206">
+          <caret line="556" column="27" selection-start-line="556" selection-start-column="27" selection-end-line="556" selection-end-column="27" />
           <folding>
             <element signature="e#971#1463#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/styles/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5251142">
+          <caret line="161" column="20" selection-start-line="161" selection-start-column="20" selection-end-line="161" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/home_private/home_private.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="125" column="29" selection-start-line="125" selection-start-column="18" selection-end-line="125" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/worldmap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-61.88889">
-          <caret line="120" column="29" selection-start-line="120" selection-start-column="29" selection-end-line="120" selection-end-column="29" />
+        <state vertical-scroll-proportion="-5.5555553">
+          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/home_private/home_private.js">
+    <entry file="file://$PROJECT_DIR$/mongo">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37738618">
-          <caret line="67" column="25" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.6691176">
+          <caret line="46" column="23" selection-start-line="46" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
           <folding />
         </state>
       </provider>
