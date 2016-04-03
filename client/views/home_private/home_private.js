@@ -6,15 +6,12 @@ Template.HomePrivate.rendered = function() {
 
 var i = 0;
 
-//PDFs = Meteor.subscribe('fs.files');
-
 console.log(PDFs);
 console.log(PDFs.find().fetch());
 
 
+
 var findPDFs = function(company) {
-
-
     // Check if database is correctly set up
     console.log(PDFs.find().count());
     console.log(PDFs.find({}));
@@ -148,6 +145,10 @@ Template.HomePrivate.events({
 
     // highlight table row clicked
     'click .clickableRow': function (e) {
+
+        //var shell = Meteor.require("shelljs");
+
+        //var shell2 = Meteor.require("shelljs/global")
         var name = $(e.currentTarget).attr('id');
         $(e.currentTarget).addClass('highlight');
         $(e.currentTarget).siblings().removeClass('highlight');
@@ -174,11 +175,13 @@ Template.HomePrivate.events({
                     //console.log(files);
 
                     // TODO SOLUTION 1) USE SHELLJS TO LIST FILES. NOT WORKING? THROWS ERROR "CAN'T FIND VARIABLE SHELL"
-                    var list = shell.ls("/reports");
+                    var list = shell("/reports");
+
+
                     console.log(list);
 
-                    // TODO SOLUTION 2) USE MONGO DB
-                    console.log(findPDFs(data[i].GR_name));
+                    //// TODO SOLUTION 2) USE MONGO DB
+                    //console.log(findPDFs(data[i].GR_name));
 
                     break;
                 }

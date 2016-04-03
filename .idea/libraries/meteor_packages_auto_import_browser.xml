@@ -182,9 +182,7 @@
         <item url="file://$USER_HOME$/.meteor/packages/blaze-tools/1.0.4/web.browser/preamble.js" />
         <item url="file://$USER_HOME$/.meteor/packages/es5-shim/4.1.14/web.browser/.npm/package/node_modules/es5-shim/es5-sham.js" />
         <item url="file://$USER_HOME$/.meteor/packages/es5-shim/4.1.14/web.browser/.npm/package/node_modules/es5-shim/es5-shim.js" />
-        <item url="file://$USER_HOME$/.meteor/packages/meteorhacks_npm/1.5.0/web.browser/packages/meteorhacks_npm.js" />
         <item url="file://$USER_HOME$/.meteor/packages/mrt_moment/2.8.1/web.browser/packages/mrt:moment.js" />
-        <item url="file://$USER_HOME$/.meteor/packages/meteorhacks_async/1.0.0/web.browser/packages/meteorhacks:async.js" />
         <item url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.7/web.browser/pre.js" />
         <item url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.7/web.browser/post.js" />
         <item url="file://$USER_HOME$/.meteor/packages/natestrauser_font-awesome/4.4.0/web.browser/packages/natestrauser_font-awesome.js" />
@@ -371,9 +369,7 @@
       <root url="file://$USER_HOME$/.meteor/packages/blaze-tools/1.0.4/web.browser/preamble.js" />
       <root url="file://$USER_HOME$/.meteor/packages/es5-shim/4.1.14/web.browser/.npm/package/node_modules/es5-shim/es5-sham.js" />
       <root url="file://$USER_HOME$/.meteor/packages/es5-shim/4.1.14/web.browser/.npm/package/node_modules/es5-shim/es5-shim.js" />
-      <root url="file://$USER_HOME$/.meteor/packages/meteorhacks_npm/1.5.0/web.browser/packages/meteorhacks_npm.js" />
       <root url="file://$USER_HOME$/.meteor/packages/mrt_moment/2.8.1/web.browser/packages/mrt:moment.js" />
-      <root url="file://$USER_HOME$/.meteor/packages/meteorhacks_async/1.0.0/web.browser/packages/meteorhacks:async.js" />
       <root url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.7/web.browser/pre.js" />
       <root url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.7/web.browser/post.js" />
       <root url="file://$USER_HOME$/.meteor/packages/natestrauser_font-awesome/4.4.0/web.browser/packages/natestrauser_font-awesome.js" />

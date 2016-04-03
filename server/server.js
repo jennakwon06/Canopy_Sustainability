@@ -109,10 +109,15 @@ Meteor.startup(function() {
 		}
 	}
 
+
+
+
+
 	
 });
 
 Meteor.methods({
+
 	"createUserAccount": function(options) {
 		if(!Users.isAdmin(Meteor.userId())) {
 			throw new Meteor.Error(403, "Access denied.");
