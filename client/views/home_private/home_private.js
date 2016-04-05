@@ -245,6 +245,11 @@ Template.HomePrivate.events({
         fillTable(globalFilter.top(Infinity).sort(function(a,b) {
             return a.country.localeCompare(b.country);
         }))
+    },
+
+    'click #submitDropdown' : function(e) {
+    //    get values selected for x and y 
+
     }
 });
 

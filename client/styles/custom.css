@@ -216,3 +216,9 @@ svg {
 .glyphicon-chevron-down:hover {
     opacity: 0.5;
 }
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
