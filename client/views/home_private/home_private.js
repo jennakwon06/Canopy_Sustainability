@@ -22,7 +22,6 @@ var findPDFs = function(company) {
 };
 
 var fillTable = function(results){
-    console.log(results);
     var table = $(".resultsTable");
 
     //clear table
@@ -226,29 +225,26 @@ Template.HomePrivate.events({
     },
 
     'click #sortByCompanyButton': function(e) {
-        console.log("clicked button")
-        console.log(globalFilter.top(Infinity))
-        fillTable(globalFilter.top(Infinity).sort())
+        fillTable(globalFilter.top(Infinity).reverse())
     },
 
     'click #sortByIndustryButton': function(e) {
-        console.log("clicked button")
         fillTable(globalFilter.top(Infinity).sort(function(a,b) {
-            return a.industry - b.industry
+            return a.industry.localeCompare(b.industry);
         }))
 
     },
 
     'click #sortBySectorButton': function(e) {
-        console.log("clicked button")
-        fillTable(globalFilter.top(Infinity).sort("sector"))
-
+        fillTable(globalFilter.top(Infinity).sort(function(a,b) {
+            return a.sector.localeCompare(b.sector);
+        }))
     },
 
     'click #sortByCountryButton': function(e) {
-        console.log("clicked button")
-        console.log(globalFilter.top(Infinity))
-        fillTable(globalFilter.top(Infinity).sort("country"))
+        fillTable(globalFilter.top(Infinity).sort(function(a,b) {
+            return a.country.localeCompare(b.country);
+        }))
     }
 });
 
