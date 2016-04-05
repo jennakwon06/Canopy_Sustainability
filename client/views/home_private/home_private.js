@@ -119,25 +119,19 @@ Template.HomePrivate.events({
 
         fillTable(results.reverse());
 
-        // @TODO enable buttons
+        drawBubblesOnMap(results);
+
+        drawScatterPlot(results);
+
         $('#saveResultButton').removeClass("disabled");
         $('#resultListViewButton').removeClass("disabled");
         $('#resultMapViewButton').removeClass("disabled");
         $('#resultScatterPlotViewButton').removeClass("disabled");
 
-        // @TODO insert to database
         Filters.insert({
         });
 
-        //@TODO DRAW MAP
-        if (d3.select(".mapSvg").empty()) {
-            drawMap();
-        }
 
-        drawBubblesOnMap(results);
-
-        //@TODO DRAW SCATTER PLOT
-        drawScatterPlot(results);
     },
 
     'click #saveResultButton': function (e) {
@@ -248,7 +242,7 @@ Template.HomePrivate.events({
     },
 
     'click #submitDropdown' : function(e) {
-    //    get values selected for x and y 
+    //    http://www.w3schools.com/jsref/coll_select_options.asp
 
     }
 });

@@ -550,18 +550,26 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
         }
 
         var GHG1Group = GHG1.group(function (d) {
-            if (typeof d == 'undefined') {
-                return 'Unknown';
-            } else {
-                return GHG1bins[Math.ceil((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
-            } //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
+            //if ((!d || /^\s*$/.test(d))) {
+            //    return 'Unknown';
+            //} else {
+            console.log("binning");
+            return GHG1bins[Math.floor((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
+            //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
         });
+        //
+        //var GHG2Group = GHG2.group(function (d) {
+        //    if (typeof d == 'undefined') {
+        //        return 'Unknown';
+        //    } else {
+        //        return GHG2bins[Math.ceil((+d * binCount) / max) + 2]; // add two because first two elems are "" and "Unknown"
+        //    } //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
+        //});
 
-        var yAxisBins = [];
         //var yMax = Math.max(null, GHG1Group);
         //console.log(yMax);
-        console.log(GHG1Group);
-
+        console.log("GHG1Group");
+        console.log(GHG1Group.top(Infinity));
 
         //var interval = yMax / binCount;
 
@@ -576,16 +584,14 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
             .dimension(GHG1)
             .group(GHG1Group)
             .elasticY(true)
-            // (_optional_) whether bar should be center to its x value. Not needed for ordinal chart, `default=false`
             .centerBar(true)
+            // (_optional_) whether bar should be center to its x value. Not needed for ordinal chart, `default=false`
             .gap(5)
             // (_optional_) set gap between bars manually in px, `default=2`
             // (_optional_) set filter brush rounding
             .round(dc.round.floor)
             .alwaysUseRounding(true)
             .x(d3.scale.ordinal().domain(GHG1bins))
-            //.y(d3.scale.ordinal().domain(yAxisBins))
-            //.x(d3.scale.ordinal().domain(data.map(function (d) {return d.GHG1})))
             .xUnits(dc.units.ordinal)
             .renderHorizontalGridLines(true)
              //Customize the filter displayed in the control span
@@ -611,8 +617,6 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
                 });
                 return filter;
             });
-
-        console.log(ghg1Chart);
 
         //ghg1Chart.xAxis()
         //    .attr("y", 0)
@@ -648,6 +652,9 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
             } //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
         });
 
+        console.log("GHG2Group");
+        console.log(GHG2Group.top(Infinity));
+
         ghg2Chart /* dc.barChart('#volume-month-chart', 'chartGroup') */
             .width(FULL_CHART_WIDTH)
             .height(FULL_CHART_HEIGHT)
@@ -655,15 +662,11 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
             .dimension(GHG2)
             .group(GHG2Group)
             .elasticY(true)
-            // (_optional_) whether bar should be center to its x value. Not needed for ordinal chart, `default=false`
             .centerBar(true)
             .gap(5)
-            // (_optional_) set gap between bars manually in px, `default=2`
-            // (_optional_) set filter brush rounding
             .round(dc.round.floor)
             .alwaysUseRounding(true)
             .x(d3.scale.ordinal().domain(GHG2bins))
-            //.x(d3.scale.ordinal().domain(data.map(function (d) {return d.GHG2})))
             .xUnits(dc.units.ordinal)
             .renderHorizontalGridLines(true)
              //Customize the filter displayed in the control span
@@ -723,7 +726,6 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
             .dimension(GHG3)
             .group(GHG3Group)
             .elasticY(true)
-            // (_optional_) whether bar should be center to its x value. Not needed for ordinal chart, `default=false`
             .centerBar(true)
             .gap(5)
             // (_optional_) set gap between bars manually in px, `default=2`
@@ -859,7 +861,6 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
             .dimension(tWW)
             .group(tWWGroup)
             .elasticY(true)
-            // (_optional_) whether bar should be center to its x value. Not needed for ordinal chart, `default=false`
             .centerBar(true)
             .gap(5)
             .round(dc.round.floor)
@@ -926,7 +927,6 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
             .dimension(WG)
             .group(wgGroup)
             .elasticY(true)
-            // (_optional_) whether bar should be center to its x value. Not needed for ordinal chart, `default=false`
             .centerBar(true)
             .gap(5)
             .round(dc.round.floor)
@@ -1354,7 +1354,7 @@ function rotateLabels() {
         .attr("dx", "-.8em")
         .attr("dy", ".15em")
         .attr("transform", function(d) {
-            return "rotate(-65)"
+            return "translate(30,0) rotate(-65)"
         });
 }
 

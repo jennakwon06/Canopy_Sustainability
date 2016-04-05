@@ -6,6 +6,9 @@
 // and then, the radius is changed with respect to the count.
 var countries;
 var path;
+var mappings;
+
+drawMap()
 
 function drawMap() {
     var width = 960,
@@ -75,6 +78,11 @@ function drawMap() {
         countries = topojson.feature(world, world.objects.countries).features;
         // example json file with featuers https://raw.githubusercontent.com/mbostock/d3/5b981a18db32938206b3579248c47205ecc94123/test/data/us-counties.json
     });
+
+
+    d3.csv("/countryMap.csv", function(error, map) {
+        mappings = map;
+    });
 }
 
 function drawBubblesOnMap(results) {
@@ -90,61 +98,59 @@ function drawBubblesOnMap(results) {
         }
     }
 
-    d3.csv("/countryMap.csv", function(error, mappings) {
-        var array = [];
+    var array = [];
 
-        for (i = 0; i < Object.keys(mapping).length; i++) {
-            for (var j = 0; j < mappings.length; j++) {
-                if (mappings[j]["ISO3166-1-Alpha-2"] === Object.keys(mapping)[i]) {
-                    var object = {country: undefined, count: undefined, id: undefined};
-                    object.country = Object.keys(mapping)[i];
-                    object.count = mapping[object.country]; //look up value
-                    object.id = mappings[j]["ISO3166-1-numeric"];
-                    array.push(object);
-                }
+    for (i = 0; i < Object.keys(mapping).length; i++) {
+        for (var j = 0; j < mappings.length; j++) {
+            if (mappings[j]["ISO3166-1-Alpha-2"] === Object.keys(mapping)[i]) {
+                var object = {country: undefined, count: undefined, id: undefined};
+                object.country = Object.keys(mapping)[i];
+                object.count = mapping[object.country]; //look up value
+                object.id = mappings[j]["ISO3166-1-numeric"];
+                array.push(object);
             }
         }
+    }
 
-        var radius = d3.scale.sqrt()
-            .domain([0, 1e6])
-            .range([0, 15]);
+    var radius = d3.scale.sqrt()
+        .domain([0, 1e6])
+        .range([0, 15]);
 
-        var cValue = function(d) { return d.id;},
-            color = d3.scale.category10();
+    var cValue = function(d) { return d.id;},
+        color = d3.scale.category10();
 
-        d3.select(".mapSvg g").append("g")
-            .attr("class", "bubble")
-            .selectAll("circle")
-            .attr("class", "mapCircle")
-            .data(countries)
-            .enter() //A LOT OF EMPTY CIRCLE TAGS ARE GENERATED - CA THIS BE BETTER ?
-            .append("circle")
-            .filter(function(d) {
-                for (var i = 0; i < array.length; i++) {
-                    if (array[i].id == d.id) {
-                        return true;
-                    }
+    d3.select(".mapSvg g").append("g")
+        .attr("class", "bubble")
+        .selectAll("circle")
+        .attr("class", "mapCircle")
+        .data(countries)
+        .enter() //A LOT OF EMPTY CIRCLE TAGS ARE GENERATED - CA THIS BE BETTER ?
+        .append("circle")
+        .filter(function(d) {
+            for (var i = 0; i < array.length; i++) {
+                if (array[i].id == d.id) {
+                    return true;
                 }
-                return false;
-            })
-            .attr("data-toggle", "modal")
-            .attr("data-target", "#mapModal")
-            .attr("countryId", function(d) {
-                return d.id;
-            })
-            .attr("transform", function(d) {return "translate(" + path.centroid(d) + ")"; })
-            .attr("r", function(d) {
-                for (var i = 0; i < array.length; i++) {
-                    console.log(array[i].count);
-                    if (array[i].id == d.id) {
-                        return (radius(array[i].count) * 150);
-                    }
+            }
+            return false;
+        })
+        .attr("data-toggle", "modal")
+        .attr("data-target", "#mapModal")
+        .attr("countryId", function(d) {
+            return d.id;
+        })
+        .attr("transform", function(d) {return "translate(" + path.centroid(d) + ")"; })
+        .attr("r", function(d) {
+            for (var i = 0; i < array.length; i++) {
+                console.log(array[i].count);
+                if (array[i].id == d.id) {
+                    return (radius(array[i].count) * 150);
                 }
-            })
-            .style("fill", function(d) {
-                return color(cValue(d));})
+            }
+        })
+        .style("fill", function(d) {
+            return color(cValue(d));})
         ;
-    });
 }
 
 function zoomed() {

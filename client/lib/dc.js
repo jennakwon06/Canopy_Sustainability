@@ -3203,8 +3203,6 @@
                     _yAxis.orient('right');
                 }
 
-                console.log(_y);
-                console.log(_yAxis);
 
                 _chart._renderHorizontalGridLinesForAxis(g, _y, _yAxis);
             };
