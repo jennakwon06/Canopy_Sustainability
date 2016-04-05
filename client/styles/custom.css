@@ -212,3 +212,7 @@ svg {
     stroke-opacity: 1;
     stroke-width:0.5;
 }
+
+.glyphicon-chevron-down:hover {
+    opacity: 0.5;
+}

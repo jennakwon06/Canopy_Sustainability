@@ -10,8 +10,6 @@ Template.HomePrivate.rendered = function() {
 
 var i = 0;
 
-
-
 var findPDFs = function(company) {
     // Check if database is correctly set up
     console.log(PDFs.find().count());
@@ -21,6 +19,40 @@ var findPDFs = function(company) {
 
     // @TODO use regex to find a file by name
     return PDFs.find({}).fetch();
+};
+
+var fillTable = function(results){
+    console.log(results);
+    var table = $(".resultsTable");
+
+    //clear table
+    $('.resultsTable > tbody').empty();
+
+    for (var i = 0; i <= results.length - 1; i++) {
+        var tr = document.createElement('tr');
+
+        tr.className += "clickableRow";
+        tr.id += results[i].Name;
+        tr.setAttribute("data-toggle", "modal");
+        tr.setAttribute("data-target", "#myModal");
+
+        var td1 = document.createElement('td');
+        var td2 = document.createElement('td');
+        var td3 = document.createElement('td');
+        var td4 = document.createElement('td');
+
+        td1.appendChild(document.createTextNode(results[i].Name));
+        td2.appendChild(document.createTextNode(results[i].industry));
+        td3.appendChild(document.createTextNode(results[i].sector));
+        td4.appendChild(document.createTextNode(results[i].country));
+
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        tr.appendChild(td4);
+        //tr.data(results[i]);
+        table.append(tr);
+    }
 };
 
 Template.HomePrivate.events({
@@ -83,41 +115,10 @@ Template.HomePrivate.events({
 
 
         e.preventDefault();
+
         var results = globalFilter.top(Infinity);
 
-        // @TODO Fill the list view
-        var table = $(".resultsTable");
-
-        //clear table
-        $('.resultsTable > tbody').empty();
-
-        for (var i = results.length - 1; i >= 0; i--) {
-            var tr = document.createElement('tr');
-
-            tr.className += "clickableRow";
-            tr.id += results[i].Name;
-            tr.setAttribute("data-toggle", "modal");
-            tr.setAttribute("data-target", "#myModal");
-
-            var td1 = document.createElement('td');
-            var td2 = document.createElement('td');
-            var td3 = document.createElement('td');
-            var td4 = document.createElement('td');
-
-            td1.appendChild(document.createTextNode(results[i].Name));
-            td2.appendChild(document.createTextNode(results[i].industry));
-            td3.appendChild(document.createTextNode(results[i].sector));
-            td4.appendChild(document.createTextNode(results[i].country));
-
-            tr.appendChild(td1);
-            tr.appendChild(td2);
-            tr.appendChild(td3);
-            tr.appendChild(td4);
-            //tr.data(results[i]);
-            table.append(tr);
-        }
-
-
+        fillTable(results.reverse());
 
         // @TODO enable buttons
         $('#saveResultButton').removeClass("disabled");
@@ -133,6 +134,7 @@ Template.HomePrivate.events({
         if (d3.select(".mapSvg").empty()) {
             drawMap();
         }
+
         drawBubblesOnMap(results);
 
         //@TODO DRAW SCATTER PLOT
@@ -221,9 +223,33 @@ Template.HomePrivate.events({
             .attr("value", 10)
             .attr("id", 10)
             .text(data[i].GR_name);
+    },
+
+    'click #sortByCompanyButton': function(e) {
+        console.log("clicked button")
+        console.log(globalFilter.top(Infinity))
+        fillTable(globalFilter.top(Infinity).sort())
+    },
+
+    'click #sortByIndustryButton': function(e) {
+        console.log("clicked button")
+        fillTable(globalFilter.top(Infinity).sort(function(a,b) {
+            return a.industry - b.industry
+        }))
+
+    },
+
+    'click #sortBySectorButton': function(e) {
+        console.log("clicked button")
+        fillTable(globalFilter.top(Infinity).sort("sector"))
+
+    },
+
+    'click #sortByCountryButton': function(e) {
+        console.log("clicked button")
+        console.log(globalFilter.top(Infinity))
+        fillTable(globalFilter.top(Infinity).sort("country"))
     }
-
-
 });
 
 Template.HomePrivate.helpers({

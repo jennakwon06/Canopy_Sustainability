@@ -461,41 +461,23 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
     globalFilter = sp500.dimension(function (d) {return d.name;});
 
     var all = sp500.groupAll();
+
     var GHG1 = sp500.dimension(function (d) {
-        if (!isBlank(d.GHG1)) {
-            return d.GHG1;
-        } else {
-            return 'Unknown';
-        }
+        return d.GHG1;
     });
     var GHG2 = sp500.dimension(function (d) {
-        if (!isBlank(d.GHG2)) {
-            return d.GHG2;
-        } else {
-            return 'Unknown';
-        }
+        return d.GHG2;
     });
     var GHG3 = sp500.dimension(function (d) {
-        if (!isBlank(d.GHG3)) {
-            return d.GHG3;
-        } else {
-            return 'Unknown';
-        }
+        return d.GHG3;
     });
 
     var tWW = sp500.dimension(function (d) {
-        if (!isBlank(d.totalWaterWithdrawl)) {
-            return d.totalWaterWithdrawl;
-        } else {
-            return 'Unknown';
-        }
+        return d.totalWaterWithdrawl;
     });
+
     var WG = sp500.dimension(function (d) {
-        if (!isBlank(d.wasteGeneratedPerAssets)) {
-            return d.wasteGeneratedPerAssets;
-        } else {
-            return 'Unknown';
-        }
+        return d.wasteGeneratedPerAssets;
     });
 
     //Pie Chart - Risk exposed?
@@ -561,21 +543,31 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
         var binCount = 10;
         var span = max - min;
 
-        var GHG1bins = ["", 'Unknown'];
+        var GHG1bins = ['Unknown'];
 
         for (var i = 0; i <= binCount; i++) {
             GHG1bins.push((Math.floor(span / binCount) * i).toString());
         }
 
-        GHG1bins.push("");
-
         var GHG1Group = GHG1.group(function (d) {
-            if (d == 'Unknown') {
+            if (typeof d == 'undefined') {
                 return 'Unknown';
             } else {
-                return GHG1bins[Math.ceil((+d * binCount) / max) + 2]; // add two because first two elems are "" and "Unknown"
+                return GHG1bins[Math.ceil((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
             } //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
         });
+
+        var yAxisBins = [];
+        //var yMax = Math.max(null, GHG1Group);
+        //console.log(yMax);
+        console.log(GHG1Group);
+
+
+        //var interval = yMax / binCount;
+
+        //for (i = 1; i <= binCount + 1; i++) {
+        //    yAxisBins.push(i * interval)
+        //}
 
         ghg1Chart
             .width(FULL_CHART_WIDTH)
@@ -592,6 +584,7 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
             .round(dc.round.floor)
             .alwaysUseRounding(true)
             .x(d3.scale.ordinal().domain(GHG1bins))
+            //.y(d3.scale.ordinal().domain(yAxisBins))
             //.x(d3.scale.ordinal().domain(data.map(function (d) {return d.GHG1})))
             .xUnits(dc.units.ordinal)
             .renderHorizontalGridLines(true)
@@ -619,6 +612,15 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
                 return filter;
             });
 
+        console.log(ghg1Chart);
+
+        //ghg1Chart.xAxis()
+        //    .attr("y", 0)
+        //    .attr("x", 9)
+        //    .attr("dy", ".35em")
+        //    .attr("transform", "rotate(90)")
+        //    .style("text-anchor", "start");
+
     }());
 
     //BAR CHART: GHG2
@@ -632,19 +634,17 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
         var span = max - min;
         var binWidth = span / binCount;
 
-        var GHG2bins = ["", 'Unknown'];
+        var GHG2bins = ['Unknown'];
 
         for (var i = 0; i <= binCount; i++) {
             GHG2bins.push((Math.floor(span / binCount) * i).toString());
         }
 
-        GHG2bins.push("");
-
         var GHG2Group = GHG2.group(function (d) {
-            if (d == 'Unknown') {
+            if (typeof d == 'undefined') {
                 return 'Unknown';
             } else {
-                return GHG2bins[Math.ceil((+d * binCount) / max) + 2]; // add two because first two elems are "" and "Unknown"
+                return GHG2bins[Math.ceil((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
             } //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
         });
 
@@ -702,19 +702,17 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
         var span = max - min;
         var binWidth = span / binCount;
 
-        var GHG3bins = ["", 'Unknown'];
+        var GHG3bins = ['Unknown'];
 
         for (var i = 0; i <= binCount; i++) {
             GHG3bins.push((Math.floor(span / binCount) * i).toString());
         }
 
-        GHG3bins.push("");
-
         var GHG3Group = GHG3.group(function (d) {
-            if (d == 'Unknown') {
+            if (typeof d == 'undefined') {
                 return 'Unknown';
             } else {
-                return GHG3bins[Math.ceil((+d * binCount) / max) + 2]; // add two because first two elems are "" and "Unknown"
+                return GHG3bins[Math.ceil((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
             } //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
         });
 
@@ -759,6 +757,10 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
                 });
                 return filter;
             });
+
+        ghg3Chart.xAxis()
+
+
     }());
 
     //ROW CHART: INDUSTRY CHART
@@ -768,7 +770,6 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
         });
 
         var industryGroup = industry.group();
-
 
         //http://jsfiddle.net/4t8ovv63/
 
@@ -836,20 +837,18 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
         var span = max - min;
         var binWidth = span / binCount;
 
-        var tWWbins = ["", 'Unknown'];
+        var tWWbins = ['Unknown'];
 
         for (var i = 0; i <= binCount; i++) {
             tWWbins.push(((Math.floor(span / binCount) * i)).toString());
             // A THOUSAND IS TO NORMALIZE THE VALUES & DO IT THROUGH xAxis STYLING?
         }
 
-        tWWbins.push("");
-
         var tWWGroup = tWW.group(function (d) {
-            if (d == 'Unknown') {
+            if (typeof d == 'undefined') {
                 return 'Unknown';
             } else {
-                return tWWbins[Math.floor((+d * binCount) / max) + 2]; // add two because first two elems are "" and "Unknown"
+                return tWWbins[Math.floor((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
             } //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
         });
 
@@ -906,17 +905,17 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
         var binWidth = span / binCount;
 
         // BINNING
-        var wgBins = ["", 'Unknown'];
+        var wgBins = ['Unknown'];
         for (var i = 0; i <= binCount; i++) {
             wgBins.push(((Math.floor(span / binCount) * i)).toString());
             // A THOUSAND IS TO NORMALIZE THE VALUES & DO IT THROUGH xAxis STYLING?
         }
-        wgBins.push("");
+
         var wgGroup = WG.group(function (d) {
-            if (d == 'Unknown') {
+            if (typeof d == 'undefined') {
                 return 'Unknown';
             } else {
-                return wgBins[Math.floor((+d * binCount) / max) + 2]; // add two because first two elems are "" and "Unknown"
+                return wgBins[Math.floor((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
             } //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
         });
 
@@ -958,9 +957,6 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
                 return filter;
             });
     }());
-
-
-
 
     //// Dimension by full date
     //var dateDimension = sp500.dimension(function (d) {
@@ -1052,9 +1048,6 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
     // on other charts within the same chart group.
     // <br>API: [Pie Chart](https://github.com/dc-js/dc.js/blob/master/web/docs/api-latest.md#pie-chart)
 
-
-
-
     //#### Row Chart
 
     // Create a row chart and use the given css selector as anchor. You can also specify
@@ -1080,11 +1073,7 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
     //    .elasticX(true)
     //    .xAxis().ticks(4);
 
-
     // Customize axes
-    //ghg1Chart.xAxis().tickFormat(
-    //    function (v) { return v + '%'; });
-    //ghg1Chart.yAxis().ticks(5);
 
     //#### Stacked Area Chart
 
@@ -1356,7 +1345,18 @@ d3.csv('/data/envDataOnSP500.csv', function (data) {
      dc.redrawAll('group');
      */
 
+    rotateLabels();
+
 });
+
+function rotateLabels() {
+    d3.selectAll(".axis.x").selectAll(".tick text").style("text-anchor", "end")
+        .attr("dx", "-.8em")
+        .attr("dy", ".15em")
+        .attr("transform", function(d) {
+            return "rotate(-65)"
+        });
+}
 
 //#### Versions
 

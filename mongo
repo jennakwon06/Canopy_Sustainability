@@ -10,8 +10,11 @@ Auth information
 mongo ds025419.mlab.com:25419/heroku_dhmzqr91 -u jkwon47 -p rnjs078@
 
 2) Upload files with
-mongofiles put -d meteor ./reports/Aetna\ Inc46af4.pdf --host 127.0.0.1:3001
+mongofiles put -d heroku_dhmzqr91 ./reports/Aetna\ Inc46af4.pdf --host ds025419.mlab.com:25419 -u jkwon47 -p rnjs078@ --authenticationDatabase heroku_dhmzqr91
 
+mongofiles put -d heroku_dhmzqr91 /Volumes/JENNA_USB\ 2/sustViz/sustvizApp/reports/Aetna\ Inc46af4.pdf  --host ds025419.mlab.com:25419 -u jkwon47 -p rnjs078@ --authenticationDatabase heroku_dhmzqr91
+
+mongo
 
 
 Connected with
@@ -38,13 +41,12 @@ db.createUser( { user: "master",
             ]
  })
 
-
  mongofiles put -d meteor ../reports/Aetna\ Inc46af4.pdf --host 127.0.0.1:3001
 
 
  MONGOLAB_URI: mongodb://heroku_dhmzqr91:qulsq1mk2m1noc5cd3hknk11h8@ds025419.mlab.com:25419/heroku_dhmzqr91
 
- MONGO_URL:    mongodb://127.0.0.1:3001/meteor
+ MONGO_URL:    mongodb://heroku_dhmzqr91:qulsq1mk2m1noc5cd3hknk11h8@ds025419.mlab.com:25419/heroku_dhmzqr91
  ROOT_URL:     https://sustvizapp.herokuapp.com
 
 
