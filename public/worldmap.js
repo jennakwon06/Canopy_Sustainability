@@ -87,6 +87,9 @@ function drawMap() {
 
 function drawBubblesOnMap(results) {
 
+    d3.select(".bubble").remove();
+
+
     var mapping = {};
 
     for (var i = 0; i < results.length; i++) {

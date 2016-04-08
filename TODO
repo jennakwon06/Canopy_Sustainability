@@ -1,9 +1,3 @@
-
-5. Data Security
-https://www.meteor.com/tutorials/blaze/publish-and-subscribe
-6. Better map
-http://datamaps.github.io/
-http://jsbin.com/nutawiboci/1/edit?html,output
-
-THIS EXAMPLE IS GOOD 
-https://github.com/dc-js/dc.js/blob/develop/web/vc/index.html
+1. Map Coordinates based on cities
+2. Scatter Plot - select axes
+    - Select option will be the best

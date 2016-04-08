@@ -115,13 +115,13 @@ Template.HomePrivate.events({
 
         e.preventDefault();
 
-        var results = globalFilter.top(Infinity);
+        //var results = globalFilter.top(Infinity);
 
-        fillTable(results.reverse());
+        fillTable(globalFilter.top(Infinity).reverse());
 
-        drawBubblesOnMap(results);
+        drawBubblesOnMap(globalFilter.top(Infinity));
 
-        drawScatterPlot(results);
+        drawScatterPlot(globalFilter.top(Infinity));
 
         $('#saveResultButton').removeClass("disabled");
         $('#resultListViewButton').removeClass("disabled");
