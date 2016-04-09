@@ -67,9 +67,7 @@
                                 <div class="col-md-12">
                                     <strong>GHG Scope 1 Emission</strong>
                                 </div>
-                                <div id="ghg-1-chart"></div>
-
-
+                                <div id="ghg1Chart"></div>
 
                                 <!--<div class="clearfix"></div>-->
                                     <!--<div class="reset" style="display: none;">-->
@@ -80,7 +78,7 @@
                                 <div class="col-md-12">
                                     <strong>GHG Scope 2 Emission</strong>
                                 </div>
-                                <div id="ghg-2-chart">
+                                <div id="ghg2Chart">
 
                                     <!--<div class="clearfix"></div>-->
                                     <!--<span class="reset" style="display: none;">-->
@@ -91,7 +89,7 @@
                                 <div class="col-md-12">
                                     <strong>GHG Scope 3 Emission</strong>
                                 </div>
-                                <div id="ghg-3-chart">
+                                <div id="ghg3Chart">
                                     <!--<div class="clearfix"></div>-->
                                     <!--<span class="reset" style="display: none;">-->
                                         <!--<a class="reset" href="javascript:ghg3Chart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>-->
@@ -113,18 +111,42 @@
                         </div>
 
                         <div id="collapseWater" class="panel-collapse collapse in">
+
                             <div class="panel-body">
+
                                 <div class="col-md-12">
-                                    <strong>Amount of water discharged</strong>
+                                    <strong>Water Intensity Per Sales</strong>
                                 </div>
-                                <div id="tww-chart">
+                                <div id="waterIntensityPerSalesChart">
 
                                     <!--<span class="reset" style="display: none;"></span>-->
                                     <!--<a class="reset" href="javascript:twwChart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>-->
                                     <!--<div class="clearfix"></div>-->
                                 </div>
+
+                                <div class="col-md-12">
+                                    <strong>Total Water Withdrawl</strong>
+                                </div>
+                                <div id="totalWaterWithdrawlChart">
+
+                                    <!--<span class="reset" style="display: none;"></span>-->
+                                    <!--<a class="reset" href="javascript:twwChart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>-->
+                                    <!--<div class="clearfix"></div>-->
+                                </div>
+
+                                <div class="col-md-12">
+                                    <strong>Total Water Discharged</strong>
+                                </div>
+                                <div id="totalWaterDischargedChart">
+
+                                    <!--<div class="clearfix"></div>-->
+                                    <!--<span class="reset" style="display: none;">-->
+                                    <!--<a class="reset" href="javascript:ghg2Chart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>-->
+                                    <!--</span>-->
+                                </div>
                             </div>
                         </div>
+
                     </div>
 
                     <!--Waste-->
@@ -140,15 +162,27 @@
 
                         <div id="collapseWaste" class="panel-collapse collapse in">
                             <div class="panel-body">
+
                                 <div class="col-md-12">
-                                    <strong>Amount of waste discharged</strong>
+                                    <strong>Waste Intensity Per Sales</strong>
+                                </div>
+                                <div id="wasteIntensityPerSalesChart">
                                 </div>
 
-                                <div id="wasteGenerated-chart">
-                                    <!--<span class="reset" style="display: none;"></span>-->
-                                    <!--<a class="reset" href="javascript:wastegeneratedChart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>-->
-                                    <!--<div class="clearfix"></div>-->
+
+                                <div class="col-md-12">
+                                    <strong>Waste Generated Per Assets</strong>
                                 </div>
+                                <div id="totalWasteGeneratedChart">
+                                </div>
+
+
+                                <div class="col-md-12">
+                                    <strong>Waste Sent to Landfill</strong>
+                                </div>
+                                <div id="wasteSentToLandfillChart">
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -166,8 +200,16 @@
 
                         <div id="collapseEnergy" class="panel-collapse collapse in">
                             <div class="panel-body">
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+
+                                <div class="col-md-12">
+                                    <strong>Energy Intensity Per Sales</strong>
+                                </div>
+                                <div id="energyIntensityPerSalesChart">
+                                </div>
+
                             </div>
+
+
                         </div>
                     </div>
 
@@ -184,13 +226,13 @@
 
                         <div id="collapseMisc" class="panel-collapse collapse in">
                             <div class="panel-body">
-                                <div id="risk_exposed_chart">
+                                <div id="riskExposedChart">
                                     <strong>Exposed Risk</strong>
                                     <a class="reset" href="javascript:riskExposedChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
                                     <div class="clearfix"></div>
                                 </div>
 
-                                <div id="cc_policy_impl_chart">
+                                <div id="ccPolicyImplChart">
                                     <strong>Climate Change Policy Implemented</strong>
                                     <a class="reset" href="javascript:ccPolicyImplChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
                                     <div class="clearfix"></div>
@@ -268,15 +310,33 @@
                                 <option value="GHG1">GHG1</option>
                                 <option value="GHG2">GHG2</option>
                                 <option value="GHG3">GHG3</option>
+                                <option value="revenue">Revenue</option>
+                                <option value="price">Price</option>
+                                <option value="waterIntensityPersales">Water Intensity Per Sales</option>
+                                <option value="totalWaterWithdrawl">Total Water Withdrawl</option>
+                                <option value="totalWaterDischarged">Total Water Discharged</option>
+                                <option value="wasteSentToLandfill">Waste Sent To Landfill</option>
+                                <option value="wasteIntensityPerSales">Waste Intensity Per Sales</option>
+                                <option value="wasteGeneratedPerAssets">Waste Generated Per Assets</option>
+                                <option value="energyIntensityPerSales">Energy Intensity Per Sales</option>
                             </select>
-
 
                             <select id="yaxisMeasure" onchange="changeY()">
                                 <option value="">-- y axis --</option>
                                 <option value="GHG1">GHG1</option>
                                 <option value="GHG2">GHG2</option>
                                 <option value="GHG3">GHG3</option>
+                                <option value="revenue">Revenue</option>
+                                <option value="price">Price</option>
+                                <option value="waterIntensityPersales">Water Intensity Per Sales</option>
+                                <option value="totalWaterWithdrawl">Total Water Withdrawl</option>
+                                <option value="totalWaterDischarged">Total Water Discharged</option>
+                                <option value="wasteSentToLandfill">Waste Sent To Landfill</option>
+                                <option value="wasteIntensityPerSales">Waste Intensity Per Sales</option>
+                                <option value="wasteGeneratedPerAssets">Waste Generated Per Assets</option>
+                                <option value="energyIntensityPerSales">Energy Intensity Per Sales</option>
                             </select>
+
                         </div>
                     </row>
 

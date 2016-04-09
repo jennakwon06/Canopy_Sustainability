@@ -75,6 +75,8 @@ function drawMap() {
             .attr("class", "boundary")
             .attr("d", path);
 
+        console.log(world)
+
         countries = topojson.feature(world, world.objects.countries).features;
         // example json file with featuers https://raw.githubusercontent.com/mbostock/d3/5b981a18db32938206b3579248c47205ecc94123/test/data/us-counties.json
     });
@@ -154,6 +156,27 @@ function drawBubblesOnMap(results) {
         .style("fill", function(d) {
             return color(cValue(d));})
         ;
+
+//loading cities
+    //// load and display the cities
+    //d3.csv("cities.csv", function(error, data) {
+    //    g.selectAll("circle")
+    //        .data(data)
+    //        .enter()
+    //        .append("a")
+    //        .attr("xlink:href", function(d) {
+    //            return "https://www.google.com/search?q="+d.city;}
+    //        )
+    //        .append("circle")
+    //        .attr("cx", function(d) {
+    //            return projection([d.lon, d.lat])[0];
+    //        })
+    //        .attr("cy", function(d) {
+    //            return projection([d.lon, d.lat])[1];
+    //        })
+    //        .attr("r", 5)
+    //        .style("fill", "red");
+    //});
 }
 
 function zoomed() {
