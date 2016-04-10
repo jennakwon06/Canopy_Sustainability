@@ -8,7 +8,7 @@ var countries;
 var path;
 var mappings;
 
-drawMap()
+drawMap();
 
 function drawMap() {
     var width = 960,
@@ -144,7 +144,10 @@ function drawBubblesOnMap(results) {
         .attr("countryId", function(d) {
             return d.id;
         })
-        .attr("transform", function(d) {return "translate(" + path.centroid(d) + ")"; })
+        .attr("transform", function(d) {
+            console.log(d)
+            console.log(path.centroid(d));
+            return "translate(" + projection([-33.7, 84.3]) + ")"; })
         .attr("r", function(d) {
             for (var i = 0; i < array.length; i++) {
                 console.log(array[i].count);

@@ -107,7 +107,7 @@ Template.HomePrivate.events({
     },
 
     'click #applyFilterButton': function (e) {
-        console.log('checking database connection')
+        console.log('checking database connection');
         console.log(Filters.find().count());
         console.log(Results.find().count());
         console.log(PDFs.find().count());
