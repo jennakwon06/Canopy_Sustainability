@@ -287,8 +287,6 @@ d3.csv('/data/master.csv', function (data) {
             }
         });
 
-        console.log("GHG2Group");
-        console.log(GHG2Group.top(Infinity));
 
         ghg2Chart /* dc.barChart('#volume-month-chart', 'chartGroup') */
             .width(FULL_CHART_WIDTH)

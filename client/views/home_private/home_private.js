@@ -112,6 +112,10 @@ Template.HomePrivate.events({
         console.log(Results.find().count());
         console.log(PDFs.find().count());
 
+        $('#saveResultButton').removeClass("disabled");
+        $('#resultListViewButton').removeClass("disabled");
+        $('#resultMapViewButton').removeClass("disabled");
+        $('#resultScatterPlotViewButton').removeClass("disabled");
 
         e.preventDefault();
 
@@ -122,11 +126,6 @@ Template.HomePrivate.events({
         drawBubblesOnMap(globalFilter.top(Infinity));
 
         drawScatterPlot(globalFilter.top(Infinity));
-
-        $('#saveResultButton').removeClass("disabled");
-        $('#resultListViewButton').removeClass("disabled");
-        $('#resultMapViewButton').removeClass("disabled");
-        $('#resultScatterPlotViewButton').removeClass("disabled");
 
         Filters.insert({
         });
@@ -143,7 +142,6 @@ Template.HomePrivate.events({
             resultsArr.push(this.id);
         });
 
-        console.log("inserting!");
         Meteor.call('saveResults', resultsArr, Meteor.userId(), new Date());
     },
 

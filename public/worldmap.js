@@ -7,6 +7,7 @@
 var countries;
 var path;
 var mappings;
+var projection;
 
 drawMap();
 
@@ -14,9 +15,7 @@ function drawMap() {
     var width = 960,
         height = 500;
 
-    var projection = d3.geo.mercator()
-        .translate([width / 2, height / 2])
-        .scale((width - 1) / 2 / Math.PI);
+    projection = d3.geo.mercator();;
 
 //http://bl.ocks.org/mbostock/3681006
 // Different zoom example
@@ -75,7 +74,7 @@ function drawMap() {
             .attr("class", "boundary")
             .attr("d", path);
 
-        console.log(world)
+        console.log(world);
 
         countries = topojson.feature(world, world.objects.countries).features;
         // example json file with featuers https://raw.githubusercontent.com/mbostock/d3/5b981a18db32938206b3579248c47205ecc94123/test/data/us-counties.json
@@ -90,7 +89,6 @@ function drawMap() {
 function drawBubblesOnMap(results) {
 
     d3.select(".bubble").remove();
-
 
     var mapping = {};
 
@@ -133,11 +131,18 @@ function drawBubblesOnMap(results) {
         .append("circle")
         .filter(function(d) {
             for (var i = 0; i < array.length; i++) {
-                if (array[i].id == d.id) {
+                if (array[i].id == 840) {
                     return true;
                 }
+                return false;
             }
-            return false;
+            //
+            //for (var i = 0; i < array.length; i++) {
+            //    if (array[i].id == d.id) {
+            //        return true;
+            //    }
+            //}
+            //return false;
         })
         .attr("data-toggle", "modal")
         .attr("data-target", "#mapModal")
@@ -145,12 +150,9 @@ function drawBubblesOnMap(results) {
             return d.id;
         })
         .attr("transform", function(d) {
-            console.log(d)
-            console.log(path.centroid(d));
-            return "translate(" + projection([-33.7, 84.3]) + ")"; })
+            return "translate(" + projection([-84.338, 33.7]) + ")"; })
         .attr("r", function(d) {
             for (var i = 0; i < array.length; i++) {
-                console.log(array[i].count);
                 if (array[i].id == d.id) {
                     return (radius(array[i].count) * 150);
                 }
