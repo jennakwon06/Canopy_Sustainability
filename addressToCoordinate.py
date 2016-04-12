@@ -1,22 +1,25 @@
 import csv
-import pandas as pd
+import time
+# import pandas as pd
 from geopy.geocoders import Nominatim
 
 geolocator = Nominatim()
 
-with open('public/data/master.csv', 'rb') as csvfile:
-     reader = csv.reader(csvfile, delimiter=',')
-     for row in reader:
-     	location  = geolocator.geocode(row[2])
-     	print row[2]
-     	print 'printing coordinates'
-     	print((location.latitude, location.longitude))
+with open('public/data/master.csv', 'rb') as csvinput:
+    with open('public/data/master_latlong.csv', 'w') as csvoutput:
+        writer = csv.writer(csvoutput, lineterminator='\n')
+        reader = csv.reader(csvinput)
 
+        all = []
+        row = next(reader)
+        row.append('latitude')
+        row.append('longitude')
+        all.append(row)
 
-# http://pandas.pydata.org/pandas-docs/stable/indexing.html
+        for row in reader:
+            location = geolocator.geocode(row[2])
+            row.append(location.latitude)
+            row.append(location.longitude)
+            all.append(row)
 
-# import pandas as pd
-# df = pd.read_csv(csv_file)
-# saved_column = df.column_name #you can also use df['column_name']
-
-# http://stackoverflow.com/questions/17530542/how-to-add-pandas-data-to-an-existing-csv-file
+        writer.writerows(all)
