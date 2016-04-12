@@ -138,17 +138,17 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
 
     objects.append("svg:line")
         .classed("axisLine hAxisLine", true)
-        .attr("x1", 0)
-        .attr("y1", 0)
+        .attr("x1", -20)
+        .attr("y1", -20)
         .attr("x2", width)
-        .attr("y2", 0)
+        .attr("y2", -20)
         .attr("transform", "translate(0," + height + ")");
 
     objects.append("svg:line")
         .classed("axisLine vAxisLine", true)
-        .attr("x1", 0)
-        .attr("y1", 0)
-        .attr("x2", 0)
+        .attr("x1", -20)
+        .attr("y1", -20)
+        .attr("x2", -20)
         .attr("y2", height);
 
     if (xAxisVal !== undefined && yAxisVal !== undefined
