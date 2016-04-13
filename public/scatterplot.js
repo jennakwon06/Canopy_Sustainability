@@ -98,7 +98,7 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
         svg.select(".x.axis").call(xAxis);
         svg.select(".y.axis").call(yAxis);
 
-        svg.selectAll(".dot")
+        svg.selectAll(".scatterPlotCircle")
             .attr("transform", transform);
     }
 
@@ -138,7 +138,7 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
 
     objects.append("svg:line")
         .classed("axisLine hAxisLine", true)
-        .attr("x1", -20)
+        .attr("x1", 0)
         .attr("y1", -20)
         .attr("x2", width)
         .attr("y2", -20)
@@ -153,10 +153,10 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
 
     if (xAxisVal !== undefined && yAxisVal !== undefined
         && !isBlank(xAxisVal) && !isBlank(yAxisVal)) {
-        objects.selectAll(".dot")
+        objects.selectAll(".scatterPlotCircle")
             .data(results)
             .enter().append("circle")
-            .attr("class", "dot")
+            .attr("class", "scatterPlotCircle")
             .attr("r", 3.5)
             //.attr("cx", xMap)
             //.attr("cy", yMap)

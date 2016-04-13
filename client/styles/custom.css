@@ -120,7 +120,20 @@ span.myGlyphicon:hover {
     cursor: pointer;
 }
 
-.bubble:hover {
+.mapCircle {
+    opacity: 0.75;
+    stroke: #fff;
+    stroke-width: .5px;
+}
+
+.mapCircle:hover {
+    opacity: 0.5;
+    cursor: pointer;
+    stroke: black;
+    stroke-width: 1px;
+}
+
+.scatterPlotCircle:hover {
     opacity: 0.5;
     cursor: pointer;
 }
@@ -251,7 +264,7 @@ svg {
     stroke-width: 2px;
 }
 
-.dot {
+.scatterPlotCircle:hover {
     fill-opacity: .5;
 }
 

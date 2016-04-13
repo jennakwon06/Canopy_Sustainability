@@ -125,22 +125,33 @@ function drawBubblesOnMap(results) {
     var cValue = function(d) { return d.address;},
         color = d3.scale.category10();
 
+    //svg.append("g")
+    //    .attr("class", "bubble")
+    //    .selectAll("circle")
+    //    .data(topojson.feature(us, us.objects.counties).features
+    //        .sort(function(a, b) { return b.properties.population - a.properties.population; }))
+    //    .enter().append("circle")
+    //    .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+    //    .attr("r", function(d) { return radius(d.properties.population); });
+
     d3.select(".mapSvg g").append("g")
         .attr("class", "bubble")
         .selectAll("circle")
-        .attr("class", "mapCircle")
         .data(arrayOfLocations)
+        .sort(function(a,b) {
+            return b.count - a.count;}) //@SORT BUBBLES BY SIZE
         .enter() //A LOT OF EMPTY CIRCLE TAGS ARE GENERATED - CA THIS BE BETTER ?
         .append("circle")
         .attr("data-toggle", "modal")
-        .attr("data-target", "#mapModal")
+        .attr("data-target", "#myModal")
+        .attr("class", "mapCircle")
         .attr("locationName", function(d) {
             return d.address;
         })
         .attr("transform", function(d) {
             return "translate(" + projection([d.longitude, d.latitude]) + ")"; })
         .attr("r", function(d) {
-            return (radius(d.count) * 200);
+            return (radius(d.count) * 150);
         })
         .style("fill", function(d) {
             return color(cValue(d));})

@@ -55,11 +55,31 @@ var fillTable = function(results){
 };
 
 Template.HomePrivate.events({
-    // Reset all on buttons with
+//<!------ CONTROL BAR ---->
     'click #resetEmissions' : function (e) {
         ghg1Chart.filterAll();
         ghg2Chart.filterAll();
         ghg3Chart.filterAll();
+    },
+
+    // Switch between views
+    'click #resultListViewButton': function (e) {
+        $('.resultListView').attr("style", "display: block");
+        $('.resultMapView').attr("style", "display: none");
+        $('.resultScatterPlotView').attr("style", "display: none");
+
+    },
+    'click #resultMapViewButton': function (e) {
+        $('.resultListView').attr("style", "display: none");
+        $('.resultMapView').attr("style", "display: block");
+        $('.resultScatterPlotView').attr("style", "display: none");
+
+    },
+    'click #resultScatterPlotViewButton': function (e) {
+        $('.resultListView').attr("style", "display: none");
+        $('.resultMapView').attr("style", "display: none");
+        $('.resultScatterPlotView').attr("style", "display: block");
+
     },
 
     'click #collapseFilterButton': function(e) {
@@ -119,18 +139,12 @@ Template.HomePrivate.events({
 
         e.preventDefault();
 
-        //var results = globalFilter.top(Infinity);
-
         fillTable(globalFilter.top(Infinity).reverse());
-
         drawBubblesOnMap(globalFilter.top(Infinity));
-
         drawScatterPlot(globalFilter.top(Infinity));
 
         Filters.insert({
         });
-
-
     },
 
     'click #saveResultButton': function (e) {
@@ -145,7 +159,8 @@ Template.HomePrivate.events({
         Meteor.call('saveResults', resultsArr, Meteor.userId(), new Date());
     },
 
-    // highlight table row clicked
+//<!----- LIST VIEW ---->
+
     'click .clickableRow': function (e) {
 
         var name = $(e.currentTarget).attr('id');
@@ -180,42 +195,6 @@ Template.HomePrivate.events({
         });
     },
 
-    'click #closeModalButton': function (e) {
-        $('tbody > .clickableRow').removeClass('highlight');
-    },
-
-    'click #resultListViewButton': function (e) {
-        $('.resultListView').attr("style", "display: block");
-        $('.resultMapView').attr("style", "display: none");
-        $('.resultScatterPlotView').attr("style", "display: none");
-
-    },
-
-    'click #resultMapViewButton': function (e) {
-        $('.resultListView').attr("style", "display: none");
-        $('.resultMapView').attr("style", "display: block");
-        $('.resultScatterPlotView').attr("style", "display: none");
-
-    },
-
-
-    'click #resultScatterPlotViewButton': function (e) {
-        $('.resultListView').attr("style", "display: none");
-        $('.resultMapView').attr("style", "display: none");
-        $('.resultScatterPlotView').attr("style", "display: block");
-
-    },
-
-    // @TODO   MAP STUFF
-    'click .bubble': function (e) {
-        d3.select(".list-group")
-            .append("li")
-            .attr("class", "modal-list-item list-group-item")
-            .attr("value", 10)
-            .attr("id", 10)
-            .text(data[i].GR_name);
-    },
-
     'click #sortByCompanyButton': function(e) {
         fillTable(globalFilter.top(Infinity).reverse())
     },
@@ -238,6 +217,25 @@ Template.HomePrivate.events({
             return a.country.localeCompare(b.country);
         }))
     },
+
+
+    'click #closeModalButton': function (e) {
+        $('tbody > .clickableRow').removeClass('highlight');
+    },
+
+// @TODO MAP STUFF
+    'click .mapCircle': function (e) {
+        d3.select(".list-group")
+            .append("li")
+            .attr("class", "modal-list-item list-group-item")
+            .attr("value", 10)
+            .attr("id", 10);
+    },
+
+
+// @TODO SCATTER PLOT STUFF - BIND DATA TO EACH BUBBLE! 
+
+
 
     'click #submitDropdown' : function(e) {
     //    http://www.w3schools.com/jsref/coll_select_options.asp
