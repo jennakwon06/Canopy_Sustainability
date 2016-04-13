@@ -4,9 +4,7 @@
 // for example, us : 278, canada : 23, etc.
 // then, it draws the only the countries that appear in the map through filtering
 // and then, the radius is changed with respect to the count.
-var countries;
 var path;
-var mappings;
 var projection;
 
 drawMap();
@@ -15,10 +13,8 @@ function drawMap() {
     var width = 960,
         height = 500;
 
-    projection = d3.geo.mercator();;
+    projection = d3.geo.mercator();
 
-//http://bl.ocks.org/mbostock/3681006
-// Different zoom example
     var zoom = d3.behavior.zoom()
         .scaleExtent([1, 8])
         .on("zoom", zoomed);
@@ -74,114 +70,81 @@ function drawMap() {
             .attr("class", "boundary")
             .attr("d", path);
 
-        console.log(world);
-
-        countries = topojson.feature(world, world.objects.countries).features;
+        //countries = topojson.feature(world, world.objects.countries).features;
         // example json file with featuers https://raw.githubusercontent.com/mbostock/d3/5b981a18db32938206b3579248c47205ecc94123/test/data/us-counties.json
     });
 
 
-    d3.csv("/countryMap.csv", function(error, map) {
-        mappings = map;
-    });
+    //d3.csv("/countryMap.csv", function(error, map) {
+    //    mappings = map;
+    //});
 }
 
 function drawBubblesOnMap(results) {
-
     d3.select(".bubble").remove();
 
-    var mapping = {};
+    var arrayOfLocations = [];
 
     for (var i = 0; i < results.length; i++) {
-        var key = results[i].country;
-        if (key in mapping) {
-            mapping[key] += 1;
-        } else {
-            mapping[key] = 1;
+        var temp = {
+            "address": "",
+            "count": 0,
+            "latitude": 0,
+            "longitude": 0,
+            "companies": []
+        };
+
+        temp.address = results[i].address;
+        temp.latitude = results[i].latitude;
+        temp.longitude = results[i].longitude;
+        temp.count = 1;
+        temp.companies.push(results[i]);
+        arrayOfLocations.push(temp);
+    }
+
+    arrayOfLocations.sort(function(a,b) {
+        return (a.address > b.address) ? 1 : ((b.address > a.address) ? -1 : 0);} ); //SORT BY ADDRESS
+
+    for (i = arrayOfLocations.length - 1; i > 0; i--) {
+        if (arrayOfLocations[i - 1].address == arrayOfLocations[i].address) {
+            arrayOfLocations[i - 1].count += arrayOfLocations[i].count;
+            arrayOfLocations[i - 1].companies.push.apply(arrayOfLocations[i - 1].companies, arrayOfLocations[i].companies);
+            arrayOfLocations[i] = null;
         }
     }
 
-    var array = [];
+    arrayOfLocations = arrayOfLocations.filter(Boolean);
 
-    for (i = 0; i < Object.keys(mapping).length; i++) {
-        for (var j = 0; j < mappings.length; j++) {
-            if (mappings[j]["ISO3166-1-Alpha-2"] === Object.keys(mapping)[i]) {
-                var object = {country: undefined, count: undefined, id: undefined};
-                object.country = Object.keys(mapping)[i];
-                object.count = mapping[object.country]; //look up value
-                object.id = mappings[j]["ISO3166-1-numeric"];
-                array.push(object);
-            }
-        }
-    }
+    console.log("is null filtered?");
+    console.log(arrayOfLocations);
 
     var radius = d3.scale.sqrt()
         .domain([0, 1e6])
         .range([0, 15]);
 
-    var cValue = function(d) { return d.id;},
+    var cValue = function(d) { return d.address;},
         color = d3.scale.category10();
 
     d3.select(".mapSvg g").append("g")
         .attr("class", "bubble")
         .selectAll("circle")
         .attr("class", "mapCircle")
-        .data(countries)
+        .data(arrayOfLocations)
         .enter() //A LOT OF EMPTY CIRCLE TAGS ARE GENERATED - CA THIS BE BETTER ?
         .append("circle")
-        .filter(function(d) {
-            for (var i = 0; i < array.length; i++) {
-                if (array[i].id == 840) {
-                    return true;
-                }
-                return false;
-            }
-            //
-            //for (var i = 0; i < array.length; i++) {
-            //    if (array[i].id == d.id) {
-            //        return true;
-            //    }
-            //}
-            //return false;
-        })
         .attr("data-toggle", "modal")
         .attr("data-target", "#mapModal")
-        .attr("countryId", function(d) {
-            return d.id;
+        .attr("locationName", function(d) {
+            return d.address;
         })
         .attr("transform", function(d) {
-            return "translate(" + projection([-84.338, 33.7]) + ")"; })
+            return "translate(" + projection([d.longitude, d.latitude]) + ")"; })
         .attr("r", function(d) {
-            for (var i = 0; i < array.length; i++) {
-                if (array[i].id == d.id) {
-                    return (radius(array[i].count) * 150);
-                }
-            }
+            return (radius(d.count) * 200);
         })
         .style("fill", function(d) {
             return color(cValue(d));})
         ;
-
-//loading cities
-    //// load and display the cities
-    //d3.csv("cities.csv", function(error, data) {
-    //    g.selectAll("circle")
-    //        .data(data)
-    //        .enter()
-    //        .append("a")
-    //        .attr("xlink:href", function(d) {
-    //            return "https://www.google.com/search?q="+d.city;}
-    //        )
-    //        .append("circle")
-    //        .attr("cx", function(d) {
-    //            return projection([d.lon, d.lat])[0];
-    //        })
-    //        .attr("cy", function(d) {
-    //            return projection([d.lon, d.lat])[1];
-    //        })
-    //        .attr("r", 5)
-    //        .style("fill", "red");
-    //});
 }
 
 function zoomed() {

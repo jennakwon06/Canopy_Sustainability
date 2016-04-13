@@ -117,6 +117,11 @@ d3.csv('/data/master.csv', function (data) {
         d.GHG3 = d["GHG Scope 3:Y"];
         d.GHG2 = d["GHG Scope 2:Y"];
         d.GHG1 = d["GHG Scope 1:Y"];
+
+        d.latitude = d["latitude"];
+        d.longitude = d["longitude"];
+        d.address = d["address"];
+
     });
 
     //### Create Crossfilter Dimensions and Groups. NOTE: BE CAREFUL OF HOW MANY DIMENSIONS YOU INSTANTIATE
