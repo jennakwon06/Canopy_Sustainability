@@ -178,6 +178,15 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
+            })
+            .on("click", function(d) {
+                console.log("ayo");
+                d3.select(".list-group")
+                    .append("li")
+                    .attr("class", "modal-list-item list-group-item")
+                    .attr("value", 10)
+                    .attr("id", 10)
+                    .text("FROM SCATTER PLOT");
             });
     }
 }

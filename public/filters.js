@@ -7,29 +7,29 @@
 var industryChart = dc.scrollableRowChart('#industry_chart');
 var sectorChart = dc.scrollableRowChart('#sector_chart');
 
-var ghg1Chart = dc.barChart('#ghg1Chart');
+//var ghg1Chart = dc.barChart('#ghg1Chart');
 var ghg2Chart = dc.barChart('#ghg2Chart');
 var ghg3Chart = dc.barChart('#ghg3Chart');
 
 //WATER
-var waterIntensityPerSalesChart = dc.barChart('#waterIntensityPerSalesChart');
-var totalWaterWithdrawlChart = dc.barChart('#totalWaterWithdrawlChart');
-var totalWaterDischargedChart = dc.barChart('#totalWaterDischargedChart');
-
-// WASTE
-var wasteIntensityPerSalesChart = dc.barChart("#wasteIntensityPerSalesChart");
-var wasteGeneratedPerAssetsChart = dc.barChart("#wasteGeneratedPerAssets");
-var wasteSentToLandfillChart = dc.barChart("#wasteSentToLandfillChart");
-
-// ENERGY
-var energyIntensityPerSalesChart = dc.barChart("#energyIntensityPerSalesChart");
-
-var riskExposedChart = dc.pieChart('#riskExposedChart');
-var ccPolicyImplChart = dc.pieChart('#ccPolicyImplChart');
+//var waterIntensityPerSalesChart = dc.barChart('#waterIntensityPerSalesChart');
+//var totalWaterWithdrawlChart = dc.barChart('#totalWaterWithdrawlChart');
+//var totalWaterDischargedChart = dc.barChart('#totalWaterDischargedChart');
+//
+//// WASTE
+//var wasteIntensityPerSalesChart = dc.barChart("#wasteIntensityPerSalesChart");
+//var wasteGeneratedPerAssetsChart = dc.barChart("#wasteGeneratedPerAssets");
+//var wasteSentToLandfillChart = dc.barChart("#wasteSentToLandfillChart");
+//
+//// ENERGY
+//var energyIntensityPerSalesChart = dc.barChart("#energyIntensityPerSalesChart");
+//
+//var riskExposedChart = dc.pieChart('#riskExposedChart');
+//var ccPolicyImplChart = dc.pieChart('#ccPolicyImplChart');
 
 //GLOBAL VARIABLES
 var FULL_CHART_WIDTH = 400;
-var HALF_CHART_WIDTH = 170;
+var HALF_CHART_WIDTH = 210;
 var FULL_CHART_HEIGHT = 250;
 var HALF_CHART_HEIGHT = 140;
 
@@ -137,8 +137,7 @@ d3.csv('/data/master.csv', function (data) {
     var sector = sp500.dimension(function (d) {return d.sector;});
 
     // EMISSIONS
-    var GHG1 = sp500.dimension(function (d) {return d.GHG1;});
-    var GHG2 = sp500.dimension(function (d) {return d.GHG2;});
+
     var GHG3 = sp500.dimension(function (d) {return d.GHG3;});
 
     // WATER
@@ -164,7 +163,7 @@ d3.csv('/data/master.csv', function (data) {
         industryChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
             .width(HALF_CHART_WIDTH)
             .height(HALF_CHART_HEIGHT)
-            .margins({top: 20, left: 10, right: 10, bottom: 20})
+            .margins({top: 0, left: 0, right: 10, bottom: 10})
             .group(industryGroup)
             .dimension(industry)
             // Assign colors to each value in the x scale domain
@@ -185,10 +184,12 @@ d3.csv('/data/master.csv', function (data) {
     (function() {
         var sectorGroup = sector.group();
 
+        console.log(sectorGroup.all());
+
         sectorChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
             .width(HALF_CHART_WIDTH)
             .height(HALF_CHART_HEIGHT)
-            .margins({top: 20, left: 10, right: 10, bottom: 20})
+            .margins({top: 0, left: 0, right: 10, bottom: 10})
             .group(sectorGroup)
             .dimension(sector)
             // Assign colors to each value in the x scale domain
@@ -207,694 +208,883 @@ d3.csv('/data/master.csv', function (data) {
     }());
 
     //BAR CHART: GHG1
-    (function() {
-        var minMax = d3.extent(data, function (d) {
-            return +d.GHG1;
-        });
-        var min = minMax[0];
-        var max = minMax[1];
-        var binCount = 10;
-        var span = max - min;
-
-        var GHG1bins = ['Unknown'];
-
-        for (var i = 0; i <= binCount; i++) {
-            GHG1bins.push((Math.floor(span / binCount) * i).toString());
-        }
-
-        var GHG1Group = GHG1.group(function (d) {
-            if (typeof d == 'undefined') {
-                return 'Unknown';
-            } else {
-                return GHG1bins[Math.ceil((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
-            }
-        });
-
-        ghg1Chart
-            .width(FULL_CHART_WIDTH)
-            .height(FULL_CHART_HEIGHT)
-            .margins({top: 10, right: 20, bottom: 40, left: 20})
-            .dimension(GHG1)
-            .group(GHG1Group)
-            .elasticY(true)
-            .centerBar(true)
-            .gap(5)
-            .round(dc.round.floor)
-            .alwaysUseRounding(true)
-            .x(d3.scale.ordinal().domain(GHG1bins))
-            .xUnits(dc.units.ordinal)
-            .renderHorizontalGridLines(true)
-            .filterPrinter(function (filters) {
-                var filter = filters[0], s = '';
-                s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
-                return s;
-            })
-            .filterHandler(function (dimension, filter) {
-                var selectedRange = ghg1Chart.filter();
-                dimension.filter(function (d) {
-                    var range;
-                    var match = false;
-                    // Iterate over each selected range and return if 'd' is within the range.
-                    for (var i = 0; i < filter.length; i++) {
-                        range = filter[i];
-                        if (d >= range - .1 && d <= range) {
-                            match = true;
-                            break;
-                        }
-                    }
-                    return selectedRange != null ? match : true;
-                });
-                return filter;
-            });
-    }());
+    //(function() {
+    //
+    //    var GHG1 = sp500.dimension(function (d) {return d.GHG1;});
+    //
+    //    var minMax = d3.extent(data, function (d) {
+    //        return +d.GHG1;
+    //    });
+    //    var min = minMax[0];
+    //    var max = minMax[1];
+    //    var binCount = 10;
+    //    var span = max - min;
+    //
+    //    var GHG1bins = ['Unknown'];
+    //
+    //    for (var i = 0; i <= binCount; i++) {
+    //        GHG1bins.push((Math.floor(span / binCount) * i).toString());
+    //    }
+    //
+    //    console.log(GHG1bins);
+    //
+    //    var GHG1Group = GHG1.group(function(d) {
+    //        if (!d) {
+    //            //console.log("where am I 1");
+    //            return 'Unknown';
+    //        } else {
+    //            console.log("where am I 2");
+    //            //console.log(d);
+    //            console.log(GHG1bins[Math.ceil((+d * binCount) / max) + 1]);
+    //            return +GHG1bins[Math.ceil((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
+    //        }
+    //    });
+    //
+    //
+    //    console.log(GHG1Group.all());
+    //
+    //    ghg1Chart
+    //        .width(FULL_CHART_WIDTH)
+    //        .margins({top: 10, right: 20, bottom: 40, left: 40})
+    //        .height(FULL_CHART_HEIGHT)
+    //        .x(d3.scale.ordinal().domain(GHG1bins))
+    //        .xUnits(dc.units.ordinal)
+    //        .dimension(GHG1bins)
+    //        .group(GHG1Group)
+    //        .centerBar(true)
+    //        .gap(5)
+    //        .filterHandler(function (dimension, filter) {
+    //            var selectedRange = ghg2Chart.filter();
+    //            console.log(selectedRange);
+    //
+    //            dimension.filter(function (d) {
+    //                var range;
+    //                var match = false;
+    //                // Iterate over each selected range and return if 'd' is within the range.
+    //                for (var i = 0; i < filter.length; i++) {
+    //                    range = filter[i];
+    //                    console.log(range);
+    //                    if (d >= range - .1 && d <= range) {
+    //                        match = true;
+    //                        console.log("match is true");
+    //                        break;
+    //                    }
+    //                }
+    //                return selectedRange != null ? match : true;
+    //            });
+    //            return filter;
+    //        });
+    //
+    //}());
 
     //BAR CHART: GHG2
-    (function() {
-        var minMax = d3.extent(data, function (d) {
-            return +d.GHG2;
-        });
-        var min = minMax[0];
-        var max = minMax[1];
-        var binCount = 10;
-        var span = max - min;
+    //(function() {
+    //
+    //    var GHG2 = sp500.dimension(function (d) {return +d.GHG2;});
+    //
+    //    console.log("my dimension");
+    //    console.log(GHG2);
+    //
+    //
+    //    var minMax = d3.extent(data, function (d) {
+    //        return +d.GHG2;
+    //    });
+    //    var min = minMax[0];
+    //    var max = minMax[1];
+    //    var binCount = 50;
+    //    var span = max - min;
+    //
+    //    var width = span / binCount;
+    //
+    //    var GHG2bins = ['Unknown'];
+    //
+    //    for (var i = 0; i <= binCount; i++) {
+    //        GHG2bins.push((Math.floor(width) * i).toString());
+    //    }
+    //
+    //    console.log("my bin")
+    //    console.log(GHG2bins);
+    //
+    //    var mapping = {
+    //        "key": "Unknown",
+    //        "value": 0
+    //    };
+    //
+    //    var GHG2Group = GHG2.group(function (d) {
+    //        if (d == 0) {
+    //            return "0"
+    //        } else if (d) {
+    //            return GHG2bins[Math.ceil((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
+    //        } else {
+    //            console.log("I JUST WANT UNKNOWN VALUES");
+    //            return GHG2bins[0];
+    //            //mapping["value"] += 1;
+    //        }
+    //    });
+    //
+    //    //GHG2Group.add("Unknown", 248);
+    //
+    //    console.log(GHG2Group.all());
+    //
+    //    ghg2Chart /* dc.barChart('#volume-month-chart', 'chartGroup') */
+    //        .width(FULL_CHART_WIDTH)
+    //        .height(FULL_CHART_HEIGHT)
+    //        .margins({top: 10, right: 20, bottom: 40, left: 20})
+    //        .dimension(GHG2)
+    //        .group(GHG2Group)
+    //        .centerBar(true)
+    //        .elasticY(true)
+    //        .gap(5)
+    //        .round(dc.round.floor)
+    //        .alwaysUseRounding(true)
+    //        .x(d3.scale.ordinal().domain(GHG2bins))
+    //        .xUnits(dc.units.ordinal)
+    //        .renderHorizontalGridLines(true)
+    //         //Customize the filter displayed in the control span
+    //        .filterHandler(function (dimension, filter) {
+    //            var selectedRange = ghg2Chart.filter();
+    //            //console.log("what is my selcted range");
+    //            //console.log(selectedRange);
+    //
+    //            dimension.filter(function (d) {
+    //                var range;
+    //                var match = false;
+    //                // Iterate over each selected range and return if 'd' is within the range.
+    //                //console.log("what is my filter length");
+    //                console.log(filter.length);
+    //                for (var i = 0; i < filter.length; i++) {
+    //                    range = filter[i];
+    //                    //console.log("what is my range in my for loop");
+    //                    //console.log(range);
+    //                    if (d >= range - width && d <= range + width) {
+    //                        match = true;
+    //                        //console.log("match is true");
+    //                        break;
+    //                    }
+    //                }
+    //                return selectedRange != null ? match : true;
+    //            });
+    //            return filter;
+    //        });
+    //}());
+    //
+    ////BAR CHART: GHG3
+    //(function(){
+    //    var minMax = d3.extent(data, function (d) {
+    //        return +d.GHG3;
+    //    });
+    //    var min = minMax[0];
+    //    var max = minMax[1];
+    //    var binCount = 10;
+    //    var span = max - min;
+    //    var GHG3bins = ['Unknown'];
+    //
+    //    for (var i = 0; i <= binCount; i++) {
+    //        GHG3bins.push((Math.floor(span / binCount) * i).toString());
+    //    }
+    //
+    //    var GHG3Group = GHG3.group(function (d) {
+    //        if (typeof d == 'undefined') {
+    //            return 'Unknown';
+    //        } else {
+    //            return GHG3bins[Math.ceil((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
+    //        }
+    //    });
+    //
+    //    ghg3Chart /* dc.barChart('#volume-month-chart', 'chartGroup') */
+    //        .width(FULL_CHART_WIDTH)
+    //        .height(FULL_CHART_HEIGHT)
+    //        .margins({top: 10, right: 20, bottom: 40, left: 15})
+    //        .dimension(GHG3)
+    //        .group(GHG3Group)
+    //        .elasticY(true)
+    //        .centerBar(true)
+    //        .gap(5)
+    //        // (_optional_) set gap between bars manually in px, `default=2`
+    //        // (_optional_) set filter brush rounding
+    //        .round(dc.round.floor)
+    //        .alwaysUseRounding(true)
+    //        .x(d3.scale.ordinal().domain(GHG3bins))
+    //        //.x(d3.scale.ordinal().domain(data.map(function (d) {return d.GHG3})))
+    //        .xUnits(dc.units.ordinal)
+    //        .renderHorizontalGridLines(true)
+    //         //Customize the filter displayed in the control span
+    //        .filterPrinter(function (filters) {
+    //            var filter = filters[0], s = '';
+    //            s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
+    //            return s;
+    //        })
+    //        .filterHandler(function (dimension, filter) {
+    //            var selectedRange = ghg3Chart.filter();
+    //            dimension.filter(function (d) {
+    //                var range;
+    //                var match = false;
+    //                // Iterate over each selected range and return if 'd' is within the range.
+    //                for (var i = 0; i < filter.length; i++) {
+    //                    range = filter[i];
+    //                    if (d >= range - .1 && d <= range) {
+    //                        match = true;
+    //                        break;
+    //                    }
+    //                }
+    //                return selectedRange != null ? match : true;
+    //            });
+    //            return filter;
+    //        });
+    //}());
 
-        var GHG2bins = ['Unknown'];
+    ////BAR CHART: WATER INTENSITY PER SALES
+    //(function() {
+    //    var minMax = d3.extent(data, function (d) {
+    //        return +d.waterIntensityPersales;
+    //    });
+    //
+    //    var min = minMax[0];
+    //    var max = minMax[1];
+    //    var binCount = 10;
+    //    var span = max - min;
+    //
+    //    // BINNING
+    //    var waterIntensityBins = ['Unknown'];
+    //    for (var i = 0; i <= binCount; i++) {
+    //        waterIntensityBins.push(((Math.floor(span / binCount) * i)).toString());
+    //    }
+    //
+    //    var waterIntensityGroup = waterIntensityPerSales.group(function (d) {
+    //        if (typeof d == 'undefined') {
+    //            return 'Unknown';
+    //        } else {
+    //            return waterIntensityBins[Math.floor((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
+    //        } //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
+    //    });
+    //
+    //    waterIntensityPerSalesChart /* dc.barChart('#volume-month-chart', 'chartGroup') */
+    //        .width(FULL_CHART_WIDTH)
+    //        .height(FULL_CHART_HEIGHT)
+    //        .margins({top: 10, right: 20, bottom: 40, left: 40})
+    //        .dimension(waterIntensityPerSales)
+    //        .group(waterIntensityGroup)
+    //        .elasticY(true)
+    //        .centerBar(true)    //(function() {
+    //
+    //    var GHG2 = sp500.dimension(function (d) {return +d.GHG2;});
+    //
+    //    console.log("my dimension");
+    //    console.log(GHG2);
+    //
+    //
+    //    var minMax = d3.extent(data, function (d) {
+    //        return +d.GHG2;
+    //    });
+    //    var min = minMax[0];
+    //    var max = minMax[1];
+    //    var binCount = 50;
+    //    var span = max - min;
+    //
+    //    var width = span / binCount;
+    //
+    //    var GHG2bins = ['Unknown'];
+    //
+    //    for (var i = 0; i <= binCount; i++) {
+    //        GHG2bins.push((Math.floor(width) * i).toString());
+    //    }
+    //
+    //    console.log("my bin")
+    //    console.log(GHG2bins);
+    //
+    //    var mapping = {
+    //        "key": "Unknown",
+    //        "value": 0
+    //    };
+    //
+    //    var GHG2Group = GHG2.group(function (d) {
+    //        if (d == 0) {
+    //            return "0"
+    //        } else if (d) {
+    //            return GHG2bins[Math.ceil((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
+    //        } else {
+    //            console.log("I JUST WANT UNKNOWN VALUES");
+    //            return GHG2bins[0];
+    //            //mapping["value"] += 1;
+    //        }
+    //    });
+    //
+    //    //GHG2Group.add("Unknown", 248);
+    //
+    //    console.log(GHG2Group.all());
+    //
+    //    ghg2Chart /* dc.barChart('#volume-month-chart', 'chartGroup') */
+    //        .width(FULL_CHART_WIDTH)
+    //        .height(FULL_CHART_HEIGHT)
+    //        .margins({top: 10, right: 20, bottom: 40, left: 20})
+    //        .dimension(GHG2)
+    //        .group(GHG2Group)
+    //        .centerBar(true)
+    //        .elasticY(true)
+    //        .gap(5)
+    //        .round(dc.round.floor)
+    //        .alwaysUseRounding(true)
+    //        .x(d3.scale.ordinal().domain(GHG2bins))
+    //        .xUnits(dc.units.ordinal)
+    //        .renderHorizontalGridLines(true)
+    //         //Customize the filter displayed in the control span
+    //        .filterHandler(function (dimension, filter) {
+    //            var selectedRange = ghg2Chart.filter();
+    //            //console.log("what is my selcted range");
+    //            //console.log(selectedRange);
+    //
+    //            dimension.filter(function (d) {
+    //                var range;
+    //                var match = false;
+    //                // Iterate over each selected range and return if 'd' is within the range.
+    //                //console.log("what is my filter length");
+    //                console.log(filter.length);
+    //                for (var i = 0; i < filter.length; i++) {
+    //                    range = filter[i];
+    //                    //console.log("what is my range in my for loop");
+    //                    //console.log(range);
+    //                    if (d >= range - width && d <= range + width) {
+    //                        match = true;
+    //                        //console.log("match is true");
+    //                        break;
+    //                    }
+    //                }
+    //                return selectedRange != null ? match : true;
+    //            });
+    //            return filter;
+    //        });
+    //}());
+    //
+    ////BAR CHART: GHG3
+    //(function(){
+    //    var minMax = d3.extent(data, function (d) {
+    //        return +d.GHG3;
+    //    });
+    //    var min = minMax[0];
+    //    var max = minMax[1];
+    //    var binCount = 10;
+    //    var span = max - min;
+    //    var GHG3bins = ['Unknown'];
+    //
+    //    for (var i = 0; i <= binCount; i++) {
+    //        GHG3bins.push((Math.floor(span / binCount) * i).toString());
+    //    }
+    //
+    //    var GHG3Group = GHG3.group(function (d) {
+    //        if (typeof d == 'undefined') {
+    //            return 'Unknown';
+    //        } else {
+    //            return GHG3bins[Math.ceil((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
+    //        }
+    //    });
+    //
+    //    ghg3Chart /* dc.barChart('#volume-month-chart', 'chartGroup') */
+    //        .width(FULL_CHART_WIDTH)
+    //        .height(FULL_CHART_HEIGHT)
+    //        .margins({top: 10, right: 20, bottom: 40, left: 15})
+    //        .dimension(GHG3)
+    //        .group(GHG3Group)
+    //        .elasticY(true)
+    //        .centerBar(true)
+    //        .gap(5)
+    //        // (_optional_) set gap between bars manually in px, `default=2`
+    //        // (_optional_) set filter brush rounding
+    //        .round(dc.round.floor)
+    //        .alwaysUseRounding(true)
+    //        .x(d3.scale.ordinal().domain(GHG3bins))
+    //        //.x(d3.scale.ordinal().domain(data.map(function (d) {return d.GHG3})))
+    //        .xUnits(dc.units.ordinal)
+    //        .renderHorizontalGridLines(true)
+    //         //Customize the filter displayed in the control span
+    //        .filterPrinter(function (filters) {
+    //            var filter = filters[0], s = '';
+    //            s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
+    //            return s;
+    //        })
+    //        .filterHandler(function (dimension, filter) {
+    //            var selectedRange = ghg3Chart.filter();
+    //            dimension.filter(function (d) {
+    //                var range;
+    //                var match = false;
+    //                // Iterate over each selected range and return if 'd' is within the range.
+    //                for (var i = 0; i < filter.length; i++) {
+    //                    range = filter[i];
+    //                    if (d >= range - .1 && d <= range) {
+    //                        match = true;
+    //                        break;
+    //                    }
+    //                }
+    //                return selectedRange != null ? match : true;
+    //            });
+    //            return filter;
+    //        });
+    //}());
 
-        for (var i = 0; i <= binCount; i++) {
-            GHG2bins.push((Math.floor(span / binCount) * i).toString());
-        }
-
-        var GHG2Group = GHG2.group(function (d) {
-            if (typeof d == 'undefined') {
-                return 'Unknown';
-            } else {
-                return GHG2bins[Math.ceil((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
-            }
-        });
-
-
-        ghg2Chart /* dc.barChart('#volume-month-chart', 'chartGroup') */
-            .width(FULL_CHART_WIDTH)
-            .height(FULL_CHART_HEIGHT)
-            .margins({top: 10, right: 20, bottom: 40, left: 20})
-            .dimension(GHG2)
-            .group(GHG2Group)
-            .elasticY(true)
-            .centerBar(true)
-            .gap(5)
-            .round(dc.round.floor)
-            .alwaysUseRounding(true)
-            .x(d3.scale.ordinal().domain(GHG2bins))
-            .xUnits(dc.units.ordinal)
-            .renderHorizontalGridLines(true)
-             //Customize the filter displayed in the control span
-            .filterPrinter(function (filters) {
-                var filter = filters[0], s = '';
-                s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
-                return s;
-            })
-            .filterHandler(function (dimension, filter) {
-                var selectedRange = ghg2Chart.filter();
-                dimension.filter(function (d) {
-                    var range;
-                    var match = false;
-                    // Iterate over each selected range and return if 'd' is within the range.
-                    for (var i = 0; i < filter.length; i++) {
-                        range = filter[i];
-                        if (d >= range - .1 && d <= range) {
-                            match = true;
-                            break;
-                        }
-                    }
-                    return selectedRange != null ? match : true;
-                });
-                return filter;
-            });
-    }());
-
-    //BAR CHART: GHG3
-    (function(){
-        var minMax = d3.extent(data, function (d) {
-            return +d.GHG3;
-        });
-        var min = minMax[0];
-        var max = minMax[1];
-        var binCount = 10;
-        var span = max - min;
-        var GHG3bins = ['Unknown'];
-
-        for (var i = 0; i <= binCount; i++) {
-            GHG3bins.push((Math.floor(span / binCount) * i).toString());
-        }
-
-        var GHG3Group = GHG3.group(function (d) {
-            if (typeof d == 'undefined') {
-                return 'Unknown';
-            } else {
-                return GHG3bins[Math.ceil((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
-            }
-        });
-
-        ghg3Chart /* dc.barChart('#volume-month-chart', 'chartGroup') */
-            .width(FULL_CHART_WIDTH)
-            .height(FULL_CHART_HEIGHT)
-            .margins({top: 10, right: 20, bottom: 40, left: 20})
-            .dimension(GHG3)
-            .group(GHG3Group)
-            .elasticY(true)
-            .centerBar(true)
-            .gap(5)
-            // (_optional_) set gap between bars manually in px, `default=2`
-            // (_optional_) set filter brush rounding
-            .round(dc.round.floor)
-            .alwaysUseRounding(true)
-            .x(d3.scale.ordinal().domain(GHG3bins))
-            //.x(d3.scale.ordinal().domain(data.map(function (d) {return d.GHG3})))
-            .xUnits(dc.units.ordinal)
-            .renderHorizontalGridLines(true)
-             //Customize the filter displayed in the control span
-            .filterPrinter(function (filters) {
-                var filter = filters[0], s = '';
-                s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
-                return s;
-            })
-            .filterHandler(function (dimension, filter) {
-                var selectedRange = ghg3Chart.filter();
-                dimension.filter(function (d) {
-                    var range;
-                    var match = false;
-                    // Iterate over each selected range and return if 'd' is within the range.
-                    for (var i = 0; i < filter.length; i++) {
-                        range = filter[i];
-                        if (d >= range - .1 && d <= range) {
-                            match = true;
-                            break;
-                        }
-                    }
-                    return selectedRange != null ? match : true;
-                });
-                return filter;
-            });
-    }());
-
-    //BAR CHART: WATER INTENSITY PER SALES
-    (function() {
-        var minMax = d3.extent(data, function (d) {
-            return +d.waterIntensityPersales;
-        });
-
-        var min = minMax[0];
-        var max = minMax[1];
-        var binCount = 10;
-        var span = max - min;
-
-        // BINNING
-        var waterIntensityBins = ['Unknown'];
-        for (var i = 0; i <= binCount; i++) {
-            waterIntensityBins.push(((Math.floor(span / binCount) * i)).toString());
-        }
-
-        var waterIntensityGroup = waterIntensityPerSales.group(function (d) {
-            if (typeof d == 'undefined') {
-                return 'Unknown';
-            } else {
-                return waterIntensityBins[Math.floor((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
-            } //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
-        });
-
-        waterIntensityPerSalesChart /* dc.barChart('#volume-month-chart', 'chartGroup') */
-            .width(FULL_CHART_WIDTH)
-            .height(FULL_CHART_HEIGHT)
-            .margins({top: 10, right: 20, bottom: 40, left: 20})
-            .dimension(waterIntensityPerSales)
-            .group(waterIntensityGroup)
-            .elasticY(true)
-            .centerBar(true)
-            .gap(5)
-            .round(dc.round.floor)
-            .alwaysUseRounding(true)
-            .x(d3.scale.ordinal().domain(waterIntensityBins))
-            .xUnits(dc.units.ordinal)
-            .renderHorizontalGridLines(true)
-            .filterPrinter(function (filters) {
-                var filter = filters[0], s = '';
-                s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
-                return s;
-            })
-            .filterHandler(function (dimension, filter) {
-                var selectedRange = waterIntensityPerSalesChart.filter();
-                dimension.filter(function (d) {
-                    var range;
-                    var match = false;
-                    // Iterate over each selected range and return if 'd' is within the range.
-                    for (var i = 0; i < filter.length; i++) {
-                        range = filter[i];
-                        if (d >= range - .1 && d <= range) {
-                            match = true;
-                            break;
-                        }
-                    }
-                    return selectedRange != null ? match : true;
-                });
-                return filter;
-            });
-    }());
-
-    //BAR CHART: WATER WITHDRAWL
-    (function() {
-
-        var minMax = d3.extent(data, function (d) {
-            return +d.totalWaterWithdrawl;
-        });
-
-        var min = minMax[0];
-        var max = minMax[1];
-        var binCount = 10;
-        var span = max - min;
-
-        var tWWbins = ['Unknown'];
-
-        for (var i = 0; i <= binCount; i++) {
-            tWWbins.push(((Math.floor(span / binCount) * i)).toString());
-        }
-
-        var tWWGroup = totalWaterWithdrawl.group(function (d) {
-            if (typeof d == 'undefined') {
-                return 'Unknown';
-            } else {
-                return tWWbins[Math.floor((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
-            } //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
-        });
-
-        totalWaterWithdrawlChart /* dc.barChart('#volume-month-chart', 'chartGroup') */
-            .width(FULL_CHART_WIDTH)
-            .height(FULL_CHART_HEIGHT)
-            .margins({top: 10, right: 20, bottom: 50, left: 20})
-            .dimension(totalWaterWithdrawl)
-            .group(tWWGroup)
-            .elasticY(true)
-            .centerBar(true)
-            .gap(5)
-            .round(dc.round.floor)
-            .alwaysUseRounding(true)
-            .x(d3.scale.ordinal().domain(tWWbins))
-            .xUnits(dc.units.ordinal)
-            .renderHorizontalGridLines(true)
-            .filterPrinter(function (filters) {
-                var filter = filters[0], s = '';
-                s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
-                return s;
-            })
-            .filterHandler(function (dimension, filter) {
-                var selectedRange = totalWaterWithdrawlChart.filter();
-                dimension.filter(function (d) {
-                    var range;
-                    var match = false;
-                    // Iterate over each selected range and return if 'd' is within the range.
-                    for (var i = 0; i < filter.length; i++) {
-                        range = filter[i];
-                        if (d >= range - .1 && d <= range) {
-                            match = true;
-                            break;
-                        }
-                    }
-                    return selectedRange != null ? match : true;
-                });
-                return filter;
-            });
-    }());
-
-    //BAR CHART: WATER DISCHARGED
-    (function() {
-        var minMax = d3.extent(data, function (d) {
-            return +d.totalWaterDischarged;
-        });
-
-        var min = minMax[0];
-        var max = minMax[1];
-        var binCount = 10;
-        var span = max - min;
-
-        var tWDbins = ['Unknown'];
-
-        for (var i = 0; i <= binCount; i++) {
-            tWDbins.push(((Math.floor(span / binCount) * i)).toString());
-        }
-
-        var totalWaterDischargedGroup = totalWaterDischarged.group(function (d) {
-            if (typeof d == 'undefined') {
-                return 'Unknown';
-            } else {
-                return tWDbins[Math.floor((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
-            }
-        });
-
-        totalWaterDischargedChart /* dc.barChart('#volume-month-chart', 'chartGroup') */
-            .width(FULL_CHART_WIDTH)
-            .height(FULL_CHART_HEIGHT)
-            .margins({top: 10, right: 20, bottom: 50, left: 20})
-            .dimension(totalWaterDischarged)
-            .group(totalWaterDischargedGroup)
-            .elasticY(true)
-            .centerBar(true)
-            .gap(5)
-            .round(dc.round.floor)
-            .alwaysUseRounding(true)
-            .x(d3.scale.ordinal().domain(tWDbins))
-            .xUnits(dc.units.ordinal)
-            .renderHorizontalGridLines(true)
-            .filterPrinter(function (filters) {
-                var filter = filters[0], s = '';
-                s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
-                return s;
-            })
-            .filterHandler(function (dimension, filter) {
-                var selectedRange = totalWaterDischargedChart.filter();
-                dimension.filter(function (d) {
-                    var range;
-                    var match = false;
-                    // Iterate over each selected range and return if 'd' is within the range.
-                    for (var i = 0; i < filter.length; i++) {
-                        range = filter[i];
-                        if (d >= range - .1 && d <= range) {
-                            match = true;
-                            break;
-                        }
-                    }
-                    return selectedRange != null ? match : true;
-                });
-                return filter;
-            });
-    }());
-
-    //BAR CHART: WASTE INTENSITY PER SALES
-    (function() {
-
-        var minMax = d3.extent(data, function (d) {
-            return +d.wasteIntensityPerSales;
-        });
-
-        var min = minMax[0];
-        var max = minMax[1];
-        var binCount = 10;
-        var span = max - min;
-
-        var wasteIntensityBins = ['Unknown'];
-        for (var i = 0; i <= binCount; i++) {
-            wasteIntensityBins.push(((Math.floor(span / binCount) * i)).toString());
-        }
-
-        var wasteIntensityGroup = wasteIntensityPerSales.group(function (d) {
-            if (typeof d == 'undefined') {
-                return 'Unknown';
-            } else {
-                return wasteIntensityBins[Math.floor((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
-            }
-        });
-
-        wasteIntensityPerSalesChart /* dc.barChart('#volume-month-chart', 'chartGroup') */
-            .width(FULL_CHART_WIDTH)
-            .height(FULL_CHART_HEIGHT)
-            .margins({top: 10, right: 20, bottom: 40, left: 20})
-            .dimension(wasteIntensityPerSales)
-            .group(wasteIntensityGroup)
-            .elasticY(true)
-            .centerBar(true)
-            .gap(5)
-            .round(dc.round.floor)
-            .alwaysUseRounding(true)
-            .x(d3.scale.ordinal().domain(wasteIntensityBins))
-            .xUnits(dc.units.ordinal)
-            .renderHorizontalGridLines(true)
-            .filterPrinter(function (filters) {
-                var filter = filters[0], s = '';
-                s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
-                return s;
-            })
-            .filterHandler(function (dimension, filter) {
-                var selectedRange = wasteIntensityPerSalesChart.filter();
-                dimension.filter(function (d) {
-                    var range;
-                    var match = false;
-                    // Iterate over each selected range and return if 'd' is within the range.
-                    for (var i = 0; i < filter.length; i++) {
-                        range = filter[i];
-                        if (d >= range - .1 && d <= range) {
-                            match = true;
-                            break;
-                        }
-                    }
-                    return selectedRange != null ? match : true;
-                });
-                return filter;
-            });
-    }());
-
-    //BAR CHART: WASTE SENT TO LANDFILL
-    (function() {
-
-        var minMax = d3.extent(data, function (d) {
-            return +d.wasteSentToLandfill;
-        });
-
-        var min = minMax[0];
-        var max = minMax[1];
-        var binCount = 10;
-        var span = max - min;
-
-        // BINNING
-        var bins = ['Unknown'];
-        for (var i = 0; i <= binCount; i++) {
-            bins.push(((Math.floor(span / binCount) * i)).toString());
-        }
-
-        var wasteIntensityGroup = wasteSentToLandfill.group(function (d) {
-            if (typeof d == 'undefined') {
-                return 'Unknown';
-            } else {
-                return bins[Math.floor((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
-            } //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
-        });
-
-        wasteSentToLandfillChart /* dc.barChart('#volume-month-chart', 'chartGroup') */
-            .width(FULL_CHART_WIDTH)
-            .height(FULL_CHART_HEIGHT)
-            .margins({top: 10, right: 20, bottom: 40, left: 20})
-            .dimension(wasteSentToLandfill)
-            .group(wasteIntensityGroup)
-            .elasticY(true)
-            .centerBar(true)
-            .gap(5)
-            .round(dc.round.floor)
-            .alwaysUseRounding(true)
-            .x(d3.scale.ordinal().domain(bins))
-            .xUnits(dc.units.ordinal)
-            .renderHorizontalGridLines(true)
-            .filterPrinter(function (filters) {
-                var filter = filters[0], s = '';
-                s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
-                return s;
-            })
-            .filterHandler(function (dimension, filter) {
-                var selectedRange = wasteSentToLandfillChart.filter();
-                dimension.filter(function (d) {
-                    var range;
-                    var match = false;
-                    // Iterate over each selected range and return if 'd' is within the range.
-                    for (var i = 0; i < filter.length; i++) {
-                        range = filter[i];
-                        if (d >= range - .1 && d <= range) {
-                            match = true;
-                            break;
-                        }
-                    }
-                    return selectedRange != null ? match : true;
-                });
-                return filter;
-            });
-    }());
-
-    //BAR CHART: WASTE GENERATED PER ASSETS
-    (function() {
-
-        var minMax = d3.extent(data, function (d) {
-            return +d.wasteGeneratedPerAssets;
-        });
-
-        var min = minMax[0];
-        var max = minMax[1];
-        var binCount = 10;
-        var span = max - min;
-
-        // BINNING
-        var bins = ['Unknown'];
-        for (var i = 0; i <= binCount; i++) {
-            bins.push(((Math.floor(span / binCount) * i)).toString());
-        }
-
-        var wgGroup = wasteGeneratedPerAssets.group(function (d) {
-            if (typeof d == 'undefined') {
-                return 'Unknown';
-            } else {
-                return bins[Math.floor((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
-            } //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
-        });
-
-        wasteGeneratedPerAssetsChart /* dc.barChart('#volume-month-chart', 'chartGroup') */
-            .width(FULL_CHART_WIDTH)
-            .height(FULL_CHART_HEIGHT)
-            .margins({top: 10, right: 20, bottom: 40, left: 20})
-            .dimension(wasteGeneratedPerAssets)
-            .group(wgGroup)
-            .elasticY(true)
-            .centerBar(true)
-            .gap(5)
-            .round(dc.round.floor)
-            .alwaysUseRounding(true)
-            .x(d3.scale.ordinal().domain(bins))
-            .xUnits(dc.units.ordinal)
-            .renderHorizontalGridLines(true)
-            .filterPrinter(function (filters) {
-                var filter = filters[0], s = '';
-                s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
-                return s;
-            })
-            .filterHandler(function (dimension, filter) {
-                var selectedRange = wasteGeneratedPerAssetsChart.filter();
-                dimension.filter(function (d) {
-                    var range;
-                    var match = false;
-                    // Iterate over each selected range and return if 'd' is within the range.
-                    for (var i = 0; i < filter.length; i++) {
-                        range = filter[i];
-                        if (d >= range - .1 && d <= range) {
-                            match = true;
-                            break;
-                        }
-                    }
-                    return selectedRange != null ? match : true;
-                });
-                return filter;
-            });
-    }());
-
-    //BAR CHART: ENERGY INTENSITY PER SALES
-    (function() {
-
-        var minMax = d3.extent(data, function (d) {
-            return +d.energyIntensityPerSales;
-        });
-
-        var min = minMax[0];
-        var max = minMax[1];
-        var binCount = 10;
-        var span = max - min;
-
-        // BINNING
-        var bins = ['Unknown'];
-        for (var i = 0; i <= binCount; i++) {
-            bins.push(((Math.floor(span / binCount) * i)).toString());
-        }
-
-        var group = energyIntensityPerSales.group(function (d) {
-            if (typeof d == 'undefined') {
-                return 'Unknown';
-            } else {
-                return bins[Math.floor((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
-            } //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
-        });
-
-        energyIntensityPerSalesChart /* dc.barChart('#volume-month-chart', 'chartGroup') */
-            .width(FULL_CHART_WIDTH)
-            .height(FULL_CHART_HEIGHT)
-            .margins({top: 10, right: 20, bottom: 40, left: 20})
-            .dimension(energyIntensityPerSales)
-            .group(group)
-            .elasticY(true)
-            .centerBar(true)
-            .gap(5)
-            .round(dc.round.floor)
-            .alwaysUseRounding(true)
-            .x(d3.scale.ordinal().domain(bins))
-            .xUnits(dc.units.ordinal)
-            .renderHorizontalGridLines(true)
-            .filterPrinter(function (filters) {
-                var filter = filters[0], s = '';
-                s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
-                return s;
-            })
-            .filterHandler(function (dimension, filter) {
-                var selectedRange = energyIntensityPerSalesChart.filter();
-                dimension.filter(function (d) {
-                    var range;
-                    var match = false;
-                    // Iterate over each selected range and return if 'd' is within the range.
-                    for (var i = 0; i < filter.length; i++) {
-                        range = filter[i];
-                        if (d >= range - .1 && d <= range) {
-                            match = true;
-                            break;
-                        }
-                    }
-                    return selectedRange != null ? match : true;
-                });
-                return filter;
-            });
-    }());
-
-    //Pie Chart: RISK EXPOSED
-    (function() {
-        // Produce counts records in the dimension
-        var riskExpGroup = riskExp.group();
-
-        riskExposedChart /* dc.pieChart('#gain-loss-chart', 'chartGroup') */ // (_optional_) define chart width, `default = 200`
-            .width(150)// (optional) define chart height, `default = 200`
-            .height(150)// Define pie radius
-            .radius(75)// Set dimension
-            .dimension(riskExp)// Set group
-            .group(riskExpGroup)// (_optional_) by default pie chart will use `group.key` as its label but you can overwrite it with a closure.
-            .label(function (d) {
-                if (riskExposedChart.hasFilter() && !riskExposedChart.hasFilter(d.key)) {
-                    return d.key + '(0%)';
-                }
-                var label = d.key;
-                if (all.value()) {
-                    label += '(' + Math.floor(d.value / all.value() * 100) + '%)';
-                }
-                return label;
-            });
-    }());
-
-    //Pie Chart: CC policy implemented?
-    (function() {
-        // Produce counts records in the dimension
-        var ccImplementedGroup = ccImplemented.group();
-
-        ccPolicyImplChart
-            .width(150)// (optional) define chart height, `default = 200`
-            .height(150)// Define pie radius
-            .radius(75)// Set dimension
-            .dimension(ccImplemented)
-            .group(ccImplementedGroup)
-            .label(function (d) {
-                if (ccPolicyImplChart.hasFilter() && !ccPolicyImplChart.hasFilter(d.key)) {
-                    return d.key + '(0%)';
-                }
-                var label = d.key;
-                if (all.value()) {
-                    label += '(' + Math.floor(d.value / all.value() * 100) + '%)';
-                }
-                return label;
-            });
-
-    }());
-
+    //        .gap(5)
+    //        .round(dc.round.floor)
+    //        .alwaysUseRounding(true)
+    //        .x(d3.scale.ordinal().domain(waterIntensityBins))
+    //        .xUnits(dc.units.ordinal)
+    //        .renderHorizontalGridLines(true)
+    //        .filterPrinter(function (filters) {
+    //            var filter = filters[0], s = '';
+    //            s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
+    //            return s;
+    //        })
+    //        //.filterHandler(function (dimension, filter) {
+    //        //    var selectedRange = waterIntensityPerSalesChart.filter();
+    //        //    dimension.filter(function (d) {
+    //        //        var range;
+    //        //        var match = false;
+    //        //        // Iterate over each selected range and return if 'd' is within the range.
+    //        //        for (var i = 0; i < filter.length; i++) {
+    //        //            range = filter[i];
+    //        //            if (d >= range - .1 && d <= range) {
+    //        //                match = true;
+    //        //                break;
+    //        //            }
+    //        //        }
+    //        //        return selectedRange != null ? match : true;
+    //        //    });
+    //        //    return filter;
+    //        //});
+    //}());
+    //
+    ////BAR CHART: WATER WITHDRAWL
+    //(function() {
+    //
+    //    var minMax = d3.extent(data, function (d) {
+    //        return +d.totalWaterWithdrawl;
+    //    });
+    //
+    //    var min = minMax[0];
+    //    var max = minMax[1];
+    //    var binCount = 10;
+    //    var span = max - min;
+    //
+    //    var tWWbins = ['Unknown'];
+    //
+    //    for (var i = 0; i <= binCount; i++) {
+    //        tWWbins.push(((Math.floor(span / binCount) * i)).toString());
+    //    }
+    //
+    //    var tWWGroup = totalWaterWithdrawl.group(function (d) {
+    //        if (typeof d == 'undefined') {
+    //            return 'Unknown';
+    //        } else {
+    //            return tWWbins[Math.floor((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
+    //        } //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
+    //    });
+    //
+    //    totalWaterWithdrawlChart /* dc.barChart('#volume-month-chart', 'chartGroup') */
+    //        .width(FULL_CHART_WIDTH)
+    //        .height(FULL_CHART_HEIGHT)
+    //        .margins({top: 10, right: 20, bottom: 50, left: 40})
+    //        .dimension(totalWaterWithdrawl)
+    //        .group(tWWGroup)
+    //        .elasticY(true)
+    //        .centerBar(true)
+    //        .gap(5)
+    //        .round(dc.round.floor)
+    //        .alwaysUseRounding(true)
+    //        .x(d3.scale.ordinal().domain(tWWbins))
+    //        .xUnits(dc.units.ordinal)
+    //        .renderHorizontalGridLines(true)
+    //        .filterPrinter(function (filters) {
+    //            var filter = filters[0], s = '';
+    //            s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
+    //            return s;
+    //        })
+    //        //.filterHandler(function (dimension, filter) {
+    //        //    var selectedRange = totalWaterWithdrawlChart.filter();
+    //        //    dimension.filter(function (d) {
+    //        //        var range;
+    //        //        var match = false;
+    //        //        // Iterate over each selected range and return if 'd' is within the range.
+    //        //        for (var i = 0; i < filter.length; i++) {
+    //        //            range = filter[i];
+    //        //            if (d >= range - .1 && d <= range) {
+    //        //                match = true;
+    //        //                break;
+    //        //            }
+    //        //        }
+    //        //        return selectedRange != null ? match : true;
+    //        //    });
+    //        //    return filter;
+    //        //});
+    //}());
+    //
+    ////BAR CHART: WATER DISCHARGED
+    //(function() {
+    //    var minMax = d3.extent(data, function (d) {
+    //        return +d.totalWaterDischarged;
+    //    });
+    //
+    //    var min = minMax[0];
+    //    var max = minMax[1];
+    //    var binCount = 10;
+    //    var span = max - min;
+    //
+    //    var tWDbins = ['Unknown'];
+    //
+    //    for (var i = 0; i <= binCount; i++) {
+    //        tWDbins.push(((Math.floor(span / binCount) * i)).toString());
+    //    }
+    //
+    //    var totalWaterDischargedGroup = totalWaterDischarged.group(function (d) {
+    //        if (typeof d == 'undefined') {
+    //            return 'Unknown';
+    //        } else {
+    //            return tWDbins[Math.floor((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
+    //        }
+    //    });
+    //
+    //    totalWaterDischargedChart /* dc.barChart('#volume-month-chart', 'chartGroup') */
+    //        .width(FULL_CHART_WIDTH)
+    //        .height(FULL_CHART_HEIGHT)
+    //        .margins({top: 10, right: 20, bottom: 50, left: 40})
+    //        .dimension(totalWaterDischarged)
+    //        .group(totalWaterDischargedGroup)
+    //        .elasticY(true)
+    //        .centerBar(true)
+    //        .gap(5)
+    //        .round(dc.round.floor)
+    //        .alwaysUseRounding(true)
+    //        .x(d3.scale.ordinal().domain(tWDbins))
+    //        .xUnits(dc.units.ordinal)
+    //        .renderHorizontalGridLines(true)
+    //        .filterPrinter(function (filters) {
+    //            var filter = filters[0], s = '';
+    //            s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
+    //            return s;
+    //        })
+    //        //.filterHandler(function (dimension, filter) {
+    //        //    var selectedRange = totalWaterDischargedChart.filter();
+    //        //    dimension.filter(function (d) {
+    //        //        var range;
+    //        //        var match = false;
+    //        //        // Iterate over each selected range and return if 'd' is within the range.
+    //        //        for (var i = 0; i < filter.length; i++) {
+    //        //            range = filter[i];
+    //        //            if (d >= range - .1 && d <= range) {
+    //        //                match = true;
+    //        //                break;
+    //        //            }
+    //        //        }
+    //        //        return selectedRange != null ? match : true;
+    //        //    });
+    //        //    return filter;
+    //        //});
+    //}());
+    //
+    ////BAR CHART: WASTE INTENSITY PER SALES
+    //(function() {
+    //
+    //    var minMax = d3.extent(data, function (d) {
+    //        return +d.wasteIntensityPerSales;
+    //    });
+    //
+    //    var min = minMax[0];
+    //    var max = minMax[1];
+    //    var binCount = 10;
+    //    var span = max - min;
+    //
+    //    var wasteIntensityBins = ['Unknown'];
+    //    for (var i = 0; i <= binCount; i++) {
+    //        wasteIntensityBins.push(((Math.floor(span / binCount) * i)).toString());
+    //    }
+    //
+    //    var wasteIntensityGroup = wasteIntensityPerSales.group(function (d) {
+    //        if (typeof d == 'undefined') {
+    //            return 'Unknown';
+    //        } else {
+    //            return wasteIntensityBins[Math.floor((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
+    //        }
+    //    });
+    //
+    //    wasteIntensityPerSalesChart /* dc.barChart('#volume-month-chart', 'chartGroup') */
+    //        .width(FULL_CHART_WIDTH)
+    //        .height(FULL_CHART_HEIGHT)
+    //        .margins({top: 10, right: 20, bottom: 40, left: 40})
+    //        .dimension(wasteIntensityPerSales)
+    //        .group(wasteIntensityGroup)
+    //        .elasticY(true)
+    //        .centerBar(true)
+    //        .gap(5)
+    //        .round(dc.round.floor)
+    //        .alwaysUseRounding(true)
+    //        .x(d3.scale.ordinal().domain(wasteIntensityBins))
+    //        .xUnits(dc.units.ordinal)
+    //        .renderHorizontalGridLines(true)
+    //        .filterPrinter(function (filters) {
+    //            var filter = filters[0], s = '';
+    //            s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
+    //            return s;
+    //        })
+    //        //.filterHandler(function (dimension, filter) {
+    //        //    var selectedRange = wasteIntensityPerSalesChart.filter();
+    //        //    dimension.filter(function (d) {
+    //        //        var range;
+    //        //        var match = false;
+    //        //        // Iterate over each selected range and return if 'd' is within the range.
+    //        //        for (var i = 0; i < filter.length; i++) {
+    //        //            range = filter[i];
+    //        //            if (d >= range - .1 && d <= range) {
+    //        //                match = true;
+    //        //                break;
+    //        //            }
+    //        //        }
+    //        //        return selectedRange != null ? match : true;
+    //        //    });
+    //        //    return filter;
+    //        //});
+    //}());
+    //
+    ////BAR CHART: WASTE SENT TO LANDFILL
+    //(function() {
+    //
+    //    var minMax = d3.extent(data, function (d) {
+    //        return +d.wasteSentToLandfill;
+    //    });
+    //
+    //    var min = minMax[0];
+    //    var max = minMax[1];
+    //    var binCount = 10;
+    //    var span = max - min;
+    //
+    //    // BINNING
+    //    var bins = ['Unknown'];
+    //    for (var i = 0; i <= binCount; i++) {
+    //        bins.push(((Math.floor(span / binCount) * i)).toString());
+    //    }
+    //
+    //    var wasteIntensityGroup = wasteSentToLandfill.group(function (d) {
+    //        if (typeof d == 'undefined') {
+    //            return 'Unknown';
+    //        } else {
+    //            return bins[Math.floor((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
+    //        } //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
+    //    });
+    //
+    //    wasteSentToLandfillChart /* dc.barChart('#volume-month-chart', 'chartGroup') */
+    //        .width(FULL_CHART_WIDTH)
+    //        .height(FULL_CHART_HEIGHT)
+    //        .margins({top: 10, right: 20, bottom: 40, left: 40})
+    //        .dimension(wasteSentToLandfill)
+    //        .group(wasteIntensityGroup)
+    //        .elasticY(true)
+    //        .centerBar(true)
+    //        .gap(5)
+    //        .round(dc.round.floor)
+    //        .alwaysUseRounding(true)
+    //        .x(d3.scale.ordinal().domain(bins))
+    //        .xUnits(dc.units.ordinal)
+    //        .renderHorizontalGridLines(true)
+    //        .filterPrinter(function (filters) {
+    //            var filter = filters[0], s = '';
+    //            s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
+    //            return s;
+    //        })
+    //        //.filterHandler(function (dimension, filter) {
+    //        //    var selectedRange = wasteSentToLandfillChart.filter();
+    //        //    dimension.filter(function (d) {
+    //        //        var range;
+    //        //        var match = false;
+    //        //        // Iterate over each selected range and return if 'd' is within the range.
+    //        //        for (var i = 0; i < filter.length; i++) {
+    //        //            range = filter[i];
+    //        //            if (d >= range - .1 && d <= range) {
+    //        //                match = true;
+    //        //                break;
+    //        //            }
+    //        //        }
+    //        //        return selectedRange != null ? match : true;
+    //        //    });
+    //        //    return filter;
+    //        //});
+    //}());
+    //
+    ////BAR CHART: WASTE GENERATED PER ASSETS
+    //(function() {
+    //
+    //    var minMax = d3.extent(data, function (d) {
+    //        return +d.wasteGeneratedPerAssets;
+    //    });
+    //
+    //    var min = minMax[0];
+    //    var max = minMax[1];
+    //    var binCount = 10;
+    //    var span = max - min;
+    //
+    //    // BINNING
+    //    var bins = ['Unknown'];
+    //    for (var i = 0; i <= binCount; i++) {
+    //        bins.push(((Math.floor(span / binCount) * i)).toString());
+    //    }
+    //
+    //    var wgGroup = wasteGeneratedPerAssets.group(function (d) {
+    //        if (typeof d == 'undefined') {
+    //            return 'Unknown';
+    //        } else {
+    //            return bins[Math.floor((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
+    //        } //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
+    //    });
+    //
+    //    wasteGeneratedPerAssetsChart /* dc.barChart('#volume-month-chart', 'chartGroup') */
+    //        .width(FULL_CHART_WIDTH)
+    //        .height(FULL_CHART_HEIGHT)
+    //        .margins({top: 10, right: 20, bottom: 40, left: 40})
+    //        .dimension(wasteGeneratedPerAssets)
+    //        .group(wgGroup)
+    //        .elasticY(true)
+    //        .centerBar(true)
+    //        .gap(5)
+    //        .round(dc.round.floor)
+    //        .alwaysUseRounding(true)
+    //        .x(d3.scale.ordinal().domain(bins))
+    //        .xUnits(dc.units.ordinal)
+    //        .renderHorizontalGridLines(true)
+    //        .filterPrinter(function (filters) {
+    //            var filter = filters[0], s = '';
+    //            s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
+    //            return s;
+    //        })
+    //        //.filterHandler(function (dimension, filter) {
+    //        //    var selectedRange = wasteGeneratedPerAssetsChart.filter();
+    //        //    dimension.filter(function (d) {
+    //        //        var range;
+    //        //        var match = false;
+    //        //        // Iterate over each selected range and return if 'd' is within the range.
+    //        //        for (var i = 0; i < filter.length; i++) {
+    //        //            range = filter[i];
+    //        //            if (d >= range - .1 && d <= range) {
+    //        //                match = true;
+    //        //                break;
+    //        //            }
+    //        //        }
+    //        //        return selectedRange != null ? match : true;
+    //        //    });
+    //        //    return filter;
+    //        //});
+    //}());
+    //
+    ////BAR CHART: ENERGY INTENSITY PER SALES
+    //(function() {
+    //
+    //    var minMax = d3.extent(data, function (d) {
+    //        return +d.energyIntensityPerSales;
+    //    });
+    //
+    //    var min = minMax[0];
+    //    var max = minMax[1];
+    //    var binCount = 10;
+    //    var span = max - min;
+    //
+    //    // BINNING
+    //    var bins = ['Unknown'];
+    //    for (var i = 0; i <= binCount; i++) {
+    //        bins.push(((Math.floor(span / binCount) * i)).toString());
+    //    }
+    //
+    //    var group = energyIntensityPerSales.group(function (d) {
+    //        if (typeof d == 'undefined') {
+    //            return 'Unknown';
+    //        } else {
+    //            return bins[Math.floor((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
+    //        } //return min + (max - min) * Math.floor(barCount * (d - min) / span) / barCount;
+    //    });
+    //
+    //    energyIntensityPerSalesChart /* dc.barChart('#volume-month-chart', 'chartGroup') */
+    //        .width(FULL_CHART_WIDTH)
+    //        .height(FULL_CHART_HEIGHT)
+    //        .margins({top: 10, right: 20, bottom: 40, left: 40})
+    //        .dimension(energyIntensityPerSales)
+    //        .group(group)
+    //        .elasticY(true)
+    //        .centerBar(true)
+    //        .gap(5)
+    //        .round(dc.round.floor)
+    //        .alwaysUseRounding(true)
+    //        .x(d3.scale.ordinal().domain(bins))
+    //        .xUnits(dc.units.ordinal)
+    //        .renderHorizontalGridLines(true)
+    //        .filterPrinter(function (filters) {
+    //            var filter = filters[0], s = '';
+    //            s += numberFormat(filter[0]) + ' -> ' + numberFormat(filter[1]);
+    //            return s;
+    //        })
+    //        //.filterHandler(function (dimension, filter) {
+    //        //    var selectedRange = energyIntensityPerSalesChart.filter();
+    //        //    dimension.filter(function (d) {
+    //        //        var range;
+    //        //        var match = false;
+    //        //        // Iterate over each selected range and return if 'd' is within the range.
+    //        //        for (var i = 0; i < filter.length; i++) {
+    //        //            range = filter[i];
+    //        //            if (d >= range - .1 && d <= range) {
+    //        //                match = true;
+    //        //                break;
+    //        //            }
+    //        //        }
+    //        //        return selectedRange != null ? match : true;
+    //        //    });
+    //        //    return filter;
+    //        //});
+    //}());
+    //
+    ////Pie Chart: RISK EXPOSED
+    //(function() {
+    //    // Produce counts records in the dimension
+    //    var riskExpGroup = riskExp.group();
+    //
+    //    riskExposedChart /* dc.pieChart('#gain-loss-chart', 'chartGroup') */ // (_optional_) define chart width, `default = 200`
+    //        .width(150)// (optional) define chart height, `default = 200`
+    //        .height(150)// Define pie radius
+    //        .radius(75)// Set dimension
+    //        .dimension(riskExp)// Set group
+    //        .group(riskExpGroup)// (_optional_) by default pie chart will use `group.key` as its label but you can overwrite it with a closure.
+    //        .label(function (d) {
+    //            if (riskExposedChart.hasFilter() && !riskExposedChart.hasFilter(d.key)) {
+    //                return d.key + '(0%)';
+    //            }
+    //            var label = d.key;
+    //            if (all.value()) {
+    //                label += '(' + Math.floor(d.value / all.value() * 100) + '%)';
+    //            }
+    //            return label;
+    //        });
+    //}());
+    //
+    ////Pie Chart: CC policy implemented?
+    //(function() {
+    //    // Produce counts records in the dimension
+    //    var ccImplementedGroup = ccImplemented.group();
+    //
+    //    ccPolicyImplChart
+    //        .width(150)// (optional) define chart height, `default = 200`
+    //        .height(150)// Define pie radius
+    //        .radius(75)// Set dimension
+    //        .dimension(ccImplemented)
+    //        .group(ccImplementedGroup)
+    //        .label(function (d) {
+    //            if (ccPolicyImplChart.hasFilter() && !ccPolicyImplChart.hasFilter(d.key)) {
+    //                return d.key + '(0%)';
+    //            }
+    //            var label = d.key;
+    //            if (all.value()) {
+    //                label += '(' + Math.floor(d.value / all.value() * 100) + '%)';
+    //            }
+    //            return label;
+    //        });
+    //
+    //}());
+    //
 
     //#### Rendering
 
     //simply call `.renderAll()` to render all charts on the page
     dc.renderAll();
-    //dc.redrawAll();
+    dc.redrawAll();
 
     /*
      // Or you can render charts belonging to a specific chart group
