@@ -140,7 +140,7 @@ Template.HomePrivate.events({
         e.preventDefault();
 
         fillTable(globalFilter.top(Infinity).reverse());
-        drawBubblesOnMap(globalFilter.top(Infinity));
+        //drawBubblesOnMap(globalFilter.top(Infinity));
         drawScatterPlot(globalFilter.top(Infinity));
 
         Filters.insert({
@@ -168,10 +168,6 @@ Template.HomePrivate.events({
         $(e.currentTarget).siblings().removeClass('highlight');
 
         d3.csv("/data/envDataOnSP500.csv", function(error, data) {
-
-            // clear prev resuits
-            $('.list-group').empty();
-
             for (var i = 0; i < data.length; i++) {
                 if (data[i].Name == name) {
                     d3.select(".list-group")
@@ -220,11 +216,14 @@ Template.HomePrivate.events({
 
 
     'click #closeModalButton': function (e) {
+        $('.list-group').empty();
+
         $('tbody > .clickableRow').removeClass('highlight');
     },
 
 // @TODO MAP STUFF
     'click .mapCircle': function (e) {
+
         d3.select(".list-group")
             .append("li")
             .attr("class", "modal-list-item list-group-item")
@@ -233,7 +232,7 @@ Template.HomePrivate.events({
     },
 
 
-// @TODO SCATTER PLOT STUFF - BIND DATA TO EACH BUBBLE! 
+// @TODO SCATTER PLOT STUFF - BIND DATA TO EACH BUBBLE!
 
 
 

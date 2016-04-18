@@ -10,10 +10,11 @@ var projection;
 drawMap();
 
 function drawMap() {
-    var width = 960,
-        height = 500;
 
-    projection = d3.geo.mercator();
+    var width = $("#resultBar").width() - 20,
+        height = $("#resultBar").height() - 20;
+
+    projection = d3.geo.mercator().scale(300).translate([width/2, (height/2) - 100 ]);
 
     var zoom = d3.behavior.zoom()
         .scaleExtent([1, 8])
@@ -69,15 +70,7 @@ function drawMap() {
             .datum(topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; }))
             .attr("class", "boundary")
             .attr("d", path);
-
-        //countries = topojson.feature(world, world.objects.countries).features;
-        // example json file with featuers https://raw.githubusercontent.com/mbostock/d3/5b981a18db32938206b3579248c47205ecc94123/test/data/us-counties.json
     });
-
-
-    //d3.csv("/countryMap.csv", function(error, map) {
-    //    mappings = map;
-    //});
 }
 
 function drawBubblesOnMap(results) {
@@ -155,7 +148,15 @@ function drawBubblesOnMap(results) {
         })
         .style("fill", function(d) {
             return color(cValue(d));})
-        ;
+        .on("click", function(d) {
+            // clear prev resuits
+
+            d3.select(".list-group")
+                .append("li")
+                .attr("class", "modal-list-item list-group-item")
+                .attr("value", 10)
+                .attr("id", 10);
+        });
 }
 
 function zoomed() {

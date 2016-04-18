@@ -1,3 +1,9 @@
-1. Map Coordinates based on cities
-2. Zoomable Scatter Plot
-
+1. Deal with circles that hide each other -> occulusion
+2. bind modals to all circles and lists
+3. REDO BINDING TO THE LIST SO THAT EACH LIST ELEMENT HAS DATA BOUND TO IT AND ALL THE CIRCLES
+4. RESPONSIVE - everything expanding to fit the screen
+5. Get rid of map view & list  view & etc
+6. sticky for two buttons -> Apply Filter & Reset Filters
+7. different color for filters     background-color: lightcyan;
+8. Filter starting out collapsed.
+9.
