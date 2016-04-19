@@ -29,7 +29,7 @@ var ghg3Chart = dc.barChart('#ghg3Chart');
 
 //GLOBAL VARIABLES
 var FULL_CHART_WIDTH = 400;
-var HALF_CHART_WIDTH = 210;
+var HALF_CHART_WIDTH = 160;
 var FULL_CHART_HEIGHT = 250;
 var HALF_CHART_HEIGHT = 140;
 
