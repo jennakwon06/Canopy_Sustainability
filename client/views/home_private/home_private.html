@@ -11,8 +11,13 @@
 
                     <div class="filter_bottomPanel">
 
-                        <button type="submit" class="btn btn-primary" id="applyFilterButton">Apply Filters! </button>
-                        <button type="submit" class="btn btn-primary" id="resetAllFiltersButton">Reset Filters! </button>
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary" id="applyFilterButton">Apply Filters! </button>
+                        </div>
+
+                        <div class="col-md-6">
+                            <button type="submit" class="btn btn-primary" id="resetAllFiltersButton">Reset Filters! </button>
+                        </div>
 
                         <!--<span class="glyphicon glyphicon-circle-arrow-right myGlyphicon" title="Apply filters" id="applyFilterButton"></span>-->
                         <!--<span class="glyphicon glyphicon-remove myGlyphicon" title="Reset all filters" id="resetAllFiltersButton"></span>-->
@@ -239,17 +244,9 @@
 
                         <div id="collapseMisc" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <div id="riskExposedChart">
-                                    <strong>Exposed Risk</strong>
-                                    <a class="reset" href="javascript:riskExposedChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-                                    <div class="clearfix"></div>
-                                </div>
+                                <strong>Climate Change Policy Implemented</strong>
+                                <div id="ccPolicyImplRowChart"></div>
 
-                                <div id="ccPolicyImplChart">
-                                    <strong>Climate Change Policy Implemented</strong>
-                                    <a class="reset" href="javascript:ccPolicyImplChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-                                    <div class="clearfix"></div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -273,7 +270,7 @@
                     <!--http://google.github.io/material-design-icons/-->
 
                     <span class="glyphicon md-dark md-36 myGlyphicon disabled" title="Show Scatter Plot" id="resultScatterPlotViewButton">
-                        <svg fill="#2c3e50" height="36" viewBox="0 0 24 24" width="36" xmlns="http://www.w3.org/2000/svg">
+                        <svg fill="white" height="36" viewBox="0 0 24 24" width="36" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0 0h24v24H0z" fill="none"/>
                             <circle cx="7.2" cy="14.4" r="3.2"/>
                             <circle cx="14.8" cy="18" r="2"/>

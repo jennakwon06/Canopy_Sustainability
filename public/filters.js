@@ -7,9 +7,9 @@
 var industryChart = dc.scrollableRowChart('#industry_chart');
 var sectorChart = dc.scrollableRowChart('#sector_chart');
 
-//var ghg1Chart = dc.barChart('#ghg1Chart');
-var ghg2Chart = dc.barChart('#ghg2Chart');
-var ghg3Chart = dc.barChart('#ghg3Chart');
+var ghg1Chart = dc.barChart('#ghg1Chart');
+//var ghg2Chart = dc.barChart('#ghg2Chart');
+//var ghg3Chart = dc.barChart('#ghg3Chart');
 
 //WATER
 //var waterIntensityPerSalesChart = dc.barChart('#waterIntensityPerSalesChart');
@@ -23,12 +23,12 @@ var ghg3Chart = dc.barChart('#ghg3Chart');
 //
 //// ENERGY
 //var energyIntensityPerSalesChart = dc.barChart("#energyIntensityPerSalesChart");
-//
-//var riskExposedChart = dc.pieChart('#riskExposedChart');
-//var ccPolicyImplChart = dc.pieChart('#ccPolicyImplChart');
+
+
+//var ccPolicyImplRowChart;
 
 //GLOBAL VARIABLES
-var FULL_CHART_WIDTH = 400;
+var FULL_CHART_WIDTH = 350;
 var HALF_CHART_WIDTH = 160;
 var FULL_CHART_HEIGHT = 250;
 var HALF_CHART_HEIGHT = 140;
@@ -207,75 +207,46 @@ d3.csv('/data/master.csv', function (data) {
 
     }());
 
-    //BAR CHART: GHG1
-    //(function() {
-    //
-    //    var GHG1 = sp500.dimension(function (d) {return d.GHG1;});
-    //
-    //    var minMax = d3.extent(data, function (d) {
-    //        return +d.GHG1;
-    //    });
-    //    var min = minMax[0];
-    //    var max = minMax[1];
-    //    var binCount = 10;
-    //    var span = max - min;
-    //
-    //    var GHG1bins = ['Unknown'];
-    //
-    //    for (var i = 0; i <= binCount; i++) {
-    //        GHG1bins.push((Math.floor(span / binCount) * i).toString());
-    //    }
-    //
-    //    console.log(GHG1bins);
-    //
-    //    var GHG1Group = GHG1.group(function(d) {
-    //        if (!d) {
-    //            //console.log("where am I 1");
-    //            return 'Unknown';
-    //        } else {
-    //            console.log("where am I 2");
-    //            //console.log(d);
-    //            console.log(GHG1bins[Math.ceil((+d * binCount) / max) + 1]);
-    //            return +GHG1bins[Math.ceil((+d * binCount) / max) + 1]; // add two because first two elems are "" and "Unknown"
-    //        }
-    //    });
-    //
-    //
-    //    console.log(GHG1Group.all());
-    //
-    //    ghg1Chart
-    //        .width(FULL_CHART_WIDTH)
-    //        .margins({top: 10, right: 20, bottom: 40, left: 40})
-    //        .height(FULL_CHART_HEIGHT)
-    //        .x(d3.scale.ordinal().domain(GHG1bins))
-    //        .xUnits(dc.units.ordinal)
-    //        .dimension(GHG1bins)
-    //        .group(GHG1Group)
-    //        .centerBar(true)
-    //        .gap(5)
-    //        .filterHandler(function (dimension, filter) {
-    //            var selectedRange = ghg2Chart.filter();
-    //            console.log(selectedRange);
-    //
-    //            dimension.filter(function (d) {
-    //                var range;
-    //                var match = false;
-    //                // Iterate over each selected range and return if 'd' is within the range.
-    //                for (var i = 0; i < filter.length; i++) {
-    //                    range = filter[i];
-    //                    console.log(range);
-    //                    if (d >= range - .1 && d <= range) {
-    //                        match = true;
-    //                        console.log("match is true");
-    //                        break;
-    //                    }
-    //                }
-    //                return selectedRange != null ? match : true;
-    //            });
-    //            return filter;
-    //        });
-    //
-    //}());
+
+    (function() {
+
+        //http://stackoverflow.com/questions/15191258/properly-display-bin-width-in-barchart-using-dc-js-and-crossfilter-js
+
+        var GHG1 = sp500.dimension(function (d) {return +d.GHG1;});
+
+        var binCount = 10;
+        var minMax = d3.extent(data, function (d) {return +d.GHG1;});
+        var min = minMax[0];
+        var max = minMax[1];
+        var binWidth = max - min / binCount;
+
+        var GHG1Group = GHG1.group(function(d) {
+            if (d) {
+                return Math.floor(d / binWidth) * binWidth;
+            }
+        });
+
+        console.log(GHG1Group.all());
+
+        //http://jrideout.github.io/histogram-pretty/
+
+        ghg1Chart
+            .width(FULL_CHART_WIDTH)
+            .margins({top: 10, right: 20, bottom: 40, left: 20})
+            .height(HALF_CHART_HEIGHT)
+            .x(d3.scale.log().domain(minMax).range([0, binCount]))
+            .dimension(GHG1)
+            .group(GHG1Group)
+            .elasticY(true)
+            .gap(5)
+            .round(dc.round.floor)
+            .alwaysUseRounding(true)
+            .xAxis()
+            .ticks(4);
+
+        ghg1Chart.xUnits(function() {return 10;});
+
+    }());
 
     //BAR CHART: GHG2
     //(function() {
@@ -1032,53 +1003,61 @@ d3.csv('/data/master.csv', function (data) {
     //        //});
     //}());
     //
-    ////Pie Chart: RISK EXPOSED
-    //(function() {
-    //    // Produce counts records in the dimension
-    //    var riskExpGroup = riskExp.group();
-    //
-    //    riskExposedChart /* dc.pieChart('#gain-loss-chart', 'chartGroup') */ // (_optional_) define chart width, `default = 200`
-    //        .width(150)// (optional) define chart height, `default = 200`
-    //        .height(150)// Define pie radius
-    //        .radius(75)// Set dimension
-    //        .dimension(riskExp)// Set group
-    //        .group(riskExpGroup)// (_optional_) by default pie chart will use `group.key` as its label but you can overwrite it with a closure.
-    //        .label(function (d) {
-    //            if (riskExposedChart.hasFilter() && !riskExposedChart.hasFilter(d.key)) {
-    //                return d.key + '(0%)';
-    //            }
-    //            var label = d.key;
-    //            if (all.value()) {
-    //                label += '(' + Math.floor(d.value / all.value() * 100) + '%)';
-    //            }
-    //            return label;
-    //        });
-    //}());
-    //
-    ////Pie Chart: CC policy implemented?
-    //(function() {
-    //    // Produce counts records in the dimension
-    //    var ccImplementedGroup = ccImplemented.group();
-    //
-    //    ccPolicyImplChart
-    //        .width(150)// (optional) define chart height, `default = 200`
-    //        .height(150)// Define pie radius
-    //        .radius(75)// Set dimension
-    //        .dimension(ccImplemented)
-    //        .group(ccImplementedGroup)
-    //        .label(function (d) {
-    //            if (ccPolicyImplChart.hasFilter() && !ccPolicyImplChart.hasFilter(d.key)) {
-    //                return d.key + '(0%)';
-    //            }
-    //            var label = d.key;
-    //            if (all.value()) {
-    //                label += '(' + Math.floor(d.value / all.value() * 100) + '%)';
-    //            }
-    //            return label;
-    //        });
-    //
-    //}());
-    //
+    //row Chart Chart: CC policy implemented?
+    (function() {
+        // Produce counts records in the dimension
+        var ccImplementedGroup = ccImplemented.group();
+
+        //reply to http://stackoverflow.com/questions/29360042/how-to-create-stacked-row-chart-with-one-row-with-dc-js
+
+        var chart = d3.select("#ccPolicyImplRowChart");
+
+        console.log(chart);
+        console.log(ccImplementedGroup);
+
+        var bar = chart.selectAll("div")
+            .data(ccImplementedGroup)
+            .enter().append("div")
+            .attr('data-tooltip',function(d,i){ return d.Name} )
+            .attr('style',function(d,i){
+                console.log(ccImplementedGroup);
+                return (
+                    'flex:' + d.value + '; '
+                    + 'background:' + color(i) + ';'
+                )
+            }).on("click",function(d,i){
+                updateElements(data);
+                d3.select("#rowChart")
+                    .selectAll("div")
+                    .attr("class", function(e, j) { return j != i ? "deselected" : "selected";
+                    });
+            });
+
+
+
+        function updateElements(data){
+        }
+
+        //ccPolicyImplRowChart
+        //    .width(150)// (optional) define chart height, `default = 200`
+        //    .height(150)// Define pie radius
+        //    .radius(75)// Set dimension
+        //    .dimension(ccImplemented)
+        //    .group(ccImplementedGroup)
+        //    .label(function (d) {
+        //        if (ccPolicyImplChart.hasFilter() && !ccPolicyImplChart.hasFilter(d.key)) {
+        //            return d.key + '(0%)';
+        //        }
+        //        var label = d.key;
+        //        if (all.value()) {
+        //            label += '(' + Math.floor(d.value / all.value() * 100) + '%)';
+        //        }
+        //        return label;
+        //    });
+
+    }());
+
+
 
     //#### Rendering
 
@@ -1104,7 +1083,7 @@ function rotateLabels() {
         .attr("dx", "-.8em")
         .attr("dy", ".15em")
         .attr("transform", function(d) {
-            return "translate(30,0) rotate(-65)"
+            return "rotate(-65)"
         });
 }
 
