@@ -38,21 +38,12 @@
                             <div class="panel-body">
 
                                 <div class="row">
-                                    <div class="col-md-6"><strong> Industry </strong></div>
                                     <div class="col-md-6"><strong> Sector </strong></div>
+                                    <div class="col-md-6"><strong> Industry </strong></div>
+
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-6" style="top:5px">
-                                        <div id="industry_chart" style="overflow-y: scroll; height: 300px">
-                                            <div class="clearfix"></div>
-
-                                            <div>
-                                                <a class="reset" href="javascript:industryChart.filterAll();dc.redrawAll();"
-                                                   style="visibility: hidden; position: absolute; height: 5px; right:0;"> reset</a>
-                                            </div>
-                                        </div>
-                                    </div>
 
                                     <div class="col-md-6" style="top:5px">
                                         <div id="sector_chart" style="overflow-y: scroll; height: 300px">
@@ -64,6 +55,19 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="col-md-6" style="top:5px">
+                                        <div id="industry_chart" style="overflow-y: scroll; height: 300px">
+                                            <div class="clearfix"></div>
+
+                                            <div>
+                                                <a class="reset" href="javascript:industryChart.filterAll();dc.redrawAll();"
+                                                   style="visibility: hidden; position: absolute; height: 5px; right:0;"> reset</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                 </div>
                             </div>
                         </div>
@@ -222,9 +226,7 @@
                                 <div class="col-md-12">
                                     <strong>Energy Intensity Per Sales</strong>
                                 </div>
-                                <div id="energyIntensityPerSalesChart">
-                                </div>
-
+                                <div id="energyIntensityPerSalesChart"></div>
                             </div>
 
 
@@ -244,7 +246,9 @@
 
                         <div id="collapseMisc" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <strong>Climate Change Policy Implemented</strong>
+                                <div class="col-md-12">
+                                    <strong>Climate Change Policy Implemented</strong>
+                                </div>
                                 <div id="ccPolicyImplRowChart"></div>
 
                             </div>
@@ -258,7 +262,11 @@
             <div id="controlBar">
                 <div class="controlIcons">
                     <!--@TODO factor out 504 and make it dynamic-->
-                    <h1 href="#" class="companiesCount" style="text-align: center; height: 50px; font-size: 18px" title="Company Counts">504</h1>
+                    <div class='companiesCount'>
+                        <span class='filter-count'></span>
+                        <!--selected out of <span class='total-count'></span> records.-->
+                    </div>
+
                     <span class="glyphicon glyphicon-arrow-left myGlyphicon" title="Collapse filters" id="collapseFilterButton"></span>
 
                     <!--<span class="glyphicon glyphicon-check myGlyphicon" title="Apply filters"></span>-->
@@ -312,46 +320,43 @@
                 <div class="col-md-12">
                     <div class="resultScatterPlotView" style="display: none">
 
-                        <row>
-                            <div class="col-md-12">
-                                <select id="xaxisMeasure" onchange="changeX()">
-                                    <option value="">-- x axis --</option>
-                                    <option value="GHG1">GHG1</option>
-                                    <option value="GHG2">GHG2</option>
-                                    <option value="GHG3">GHG3</option>
-                                    <option value="revenue">Revenue</option>
-                                    <option value="price">Price</option>
-                                    <option value="waterIntensityPersales">Water Intensity Per Sales</option>
-                                    <option value="totalWaterWithdrawl">Total Water Withdrawl</option>
-                                    <option value="totalWaterDischarged">Total Water Discharged</option>
-                                    <option value="wasteSentToLandfill">Waste Sent To Landfill</option>
-                                    <option value="wasteIntensityPerSales">Waste Intensity Per Sales</option>
-                                    <option value="wasteGeneratedPerAssets">Waste Generated Per Assets</option>
-                                    <option value="energyIntensityPerSales">Energy Intensity Per Sales</option>
-                                </select>
-
-                                <select id="yaxisMeasure" onchange="changeY()">
-                                    <option value="">-- y axis --</option>
-                                    <option value="GHG1">GHG1</option>
-                                    <option value="GHG2">GHG2</option>
-                                    <option value="GHG3">GHG3</option>
-                                    <option value="revenue">Revenue</option>
-                                    <option value="price">Price</option>
-                                    <option value="waterIntensityPersales">Water Intensity Per Sales</option>
-                                    <option value="totalWaterWithdrawl">Total Water Withdrawl</option>
-                                    <option value="totalWaterDischarged">Total Water Discharged</option>
-                                    <option value="wasteSentToLandfill">Waste Sent To Landfill</option>
-                                    <option value="wasteIntensityPerSales">Waste Intensity Per Sales</option>
-                                    <option value="wasteGeneratedPerAssets">Waste Generated Per Assets</option>
-                                    <option value="energyIntensityPerSales">Energy Intensity Per Sales</option>
-                                </select>
-
-                            </div>
-                        </row>
-
                         <div class="col-md-12">
-                            <div id="scatter"></div>
+                            <select id="xaxisMeasure" onchange="changeX()">
+                                <option value="">-- x axis --</option>
+                                <option value="GHG1">GHG1</option>
+                                <option value="GHG2">GHG2</option>
+                                <option value="GHG3">GHG3</option>
+                                <option value="revenue">Revenue</option>
+                                <option value="price">Price</option>
+                                <option value="waterIntensityPersales">Water Intensity Per Sales</option>
+                                <option value="totalWaterWithdrawl">Total Water Withdrawl</option>
+                                <option value="totalWaterDischarged">Total Water Discharged</option>
+                                <option value="wasteSentToLandfill">Waste Sent To Landfill</option>
+                                <option value="wasteIntensityPerSales">Waste Intensity Per Sales</option>
+                                <option value="wasteGeneratedPerAssets">Waste Generated Per Assets</option>
+                                <option value="energyIntensityPerSales">Energy Intensity Per Sales</option>
+                            </select>
+
+                            <select id="yaxisMeasure" onchange="changeY()">
+                                <option value="">-- y axis --</option>
+                                <option value="GHG1">GHG1</option>
+                                <option value="GHG2">GHG2</option>
+                                <option value="GHG3">GHG3</option>
+                                <option value="revenue">Revenue</option>
+                                <option value="price">Price</option>
+                                <option value="waterIntensityPersales">Water Intensity Per Sales</option>
+                                <option value="totalWaterWithdrawl">Total Water Withdrawl</option>
+                                <option value="totalWaterDischarged">Total Water Discharged</option>
+                                <option value="wasteSentToLandfill">Waste Sent To Landfill</option>
+                                <option value="wasteIntensityPerSales">Waste Intensity Per Sales</option>
+                                <option value="wasteGeneratedPerAssets">Waste Generated Per Assets</option>
+                                <option value="energyIntensityPerSales">Energy Intensity Per Sales</option>
+                            </select>
+
                         </div>
+
+
+                        <div id="scatter"></div>
 
 
                     </div>

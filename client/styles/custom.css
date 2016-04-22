@@ -21,6 +21,16 @@ html, body {
     background-color: #182D00;
 }
 
+#worldMap {
+    width:inherit;
+    height:auto;
+}
+
+.mapSvg {
+    width:inherit;
+    height:auto;
+}
+
 .filter_container {
     width: inherit;
 }
@@ -332,7 +342,26 @@ svg {
     left: 0;
 }
 
+/*SCATTER PLOT SIZES*/
+
+#scatter {
+    width:100%;
+    height:auto;
+}
+
+.scatterSVG {
+    width:inherit;
+    height:auto;
+}
+
 .scatterRect {
     fill: transparent;
     shape-rendering: crispEdges;
+    width:inherit;
+    height:auto;
+
+}
+
+g .axis.y {
+    display:none;
 }

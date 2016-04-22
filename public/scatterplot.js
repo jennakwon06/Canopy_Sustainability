@@ -27,9 +27,10 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
     //clear previous
     d3.select(".scatterSVG").remove();
 
-    var margin = { top: 50, right: 300, bottom: 50, left: 50 },
-        outerWidth = 1050,
-        outerHeight = 500,
+
+    var margin = { top: 20, right: 50, bottom: 100, left: 100 },
+        outerWidth = $("#resultBar").width(),
+        outerHeight = $("#resultBar").height(),
         width = outerWidth - margin.left - margin.right,
         height = outerHeight - margin.top - margin.bottom;
 
@@ -61,14 +62,6 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
 
     var color = d3.scale.category10();
 
-    //var tip = d3.tip()
-    //    .attr("class", "d3-tip")
-    //    .offset([-10, 0])
-    //    .html(function(d) {
-    //        return "(" + d[xAxisVal] + "," + d[yAxisVal] + ")";
-    //    });
-
-    // setup fill color
     var cValue = function(d) { return d.name;};
 
     var zoomBeh = d3.behavior.zoom()
@@ -86,6 +79,8 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
         .call(zoomBeh);
 
+    console.log("executed? 1");
+
     var tooltip = d3.select("body").append("div")
         .attr("class", "tooltip")
         .style("opacity", 0);
@@ -97,7 +92,6 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
     function zoom() {
         svg.select(".x.axis").call(xAxis);
         svg.select(".y.axis").call(yAxis);
-
         svg.selectAll(".scatterPlotCircle")
             .attr("transform", transform);
     }
@@ -153,6 +147,10 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
 
     if (xAxisVal !== undefined && yAxisVal !== undefined
         && !isBlank(xAxisVal) && !isBlank(yAxisVal)) {
+
+        console.log("executed? 2");
+
+
         objects.selectAll(".scatterPlotCircle")
             .data(results)
             .enter().append("circle")
@@ -162,6 +160,9 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
             //.attr("cy", yMap)
             .attr("data-toggle", "modal")
             .attr("data-target", "#myModal")
+            .attr("transform", function(d) {
+                return "translate(" + x(d[xAxisVal]) + "," + y(d[yAxisVal]) + ")"
+            })
             .style("fill", function (d) {
                 return color(cValue(d));
             })

@@ -114,16 +114,15 @@ Template.HomePrivate.events({
     },
 
     // Update number counter button
-    'click rect': function (e) {
-        $('.companiesCount').empty();
-        $('.companiesCount').html(globalFilter.top(Infinity).length);
-
-    },
+    //'click rect': function (e) {
+    //    $('.companiesCount').empty();
+    //    $('.companiesCount').html(globalFilter.top(Infinity).length);
+    //},
 
     'click #resetAllFiltersButton': function(e) {
         dc.redrawAll();
         dc.filterAll();
-        $('.companiesCount').html(globalFilter.top(Infinity).length);
+        //$('.companiesCount').html(globalFilter.top(Infinity).length);
     },
 
     'click #applyFilterButton': function (e) {
@@ -140,7 +139,7 @@ Template.HomePrivate.events({
         e.preventDefault();
 
         fillTable(globalFilter.top(Infinity).reverse());
-        //drawBubblesOnMap(globalFilter.top(Infinity));
+        drawBubblesOnMap(globalFilter.top(Infinity));
         drawScatterPlot(globalFilter.top(Infinity));
 
         Filters.insert({

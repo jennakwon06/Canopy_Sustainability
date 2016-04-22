@@ -14,7 +14,7 @@ function drawMap() {
     var width = $("#resultBar").width() - 20,
         height = $("#resultBar").height() - 20;
 
-    projection = d3.geo.mercator().scale(300).translate([width/2, (height/2) - 100 ]);
+    projection = d3.geo.mercator().scale(300).translate([(width/2) + 50, (height)]);
 
     var zoom = d3.behavior.zoom()
         .scaleExtent([1, 8])

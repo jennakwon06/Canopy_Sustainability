@@ -6050,7 +6050,7 @@
             var _renderArea = false;
             var _dotRadius = DEFAULT_DOT_RADIUS;
             var _dataPointRadius = null;
-            var _dataPointFillOpacity = DEFAULT_DOT_OPACITY;
+            var _dataPointFillOpacity = DEFAULT_DOT_OPACITY;d
             var _dataPointStrokeOpacity = DEFAULT_DOT_OPACITY;
             var _interpolate = 'linear';
             var _tension = 0.7;
