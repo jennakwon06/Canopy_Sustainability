@@ -3,6 +3,15 @@ html, body {
     overflow-x: hidden;
 }
 
+.filterTexts {
+    font-size:20px;
+}
+
+.filterTexts:hover {
+    opacity:0.8;
+    cursor: pointer;
+}
+
 .controlIcons{
     color:white;
 }
@@ -11,14 +20,14 @@ html, body {
     height:100vh;
     width:25vw;
     margin-right:-3px;
-    background-color: #CFF1A8;
+    background-color: #B3E095;
     overflow-y: scroll;
     display: inline-block;
     margin-left:15px;
 }
 
 #navbar{
-    background-color: #182D00;
+    background-color: #599513;
 }
 
 #worldMap {
@@ -40,7 +49,7 @@ html, body {
 }
 
 .filter_container .filter_bottomPanel {
-    background-color: #182D00;
+    background-color: #6B9A33;
     display:block;
     height:60px;
     z-index:1030;
@@ -57,7 +66,7 @@ html, body {
     display: inline-block;
     /*background-color:lightslategrey;*/
     position: fixed;
-    background: #182D00; /* For browsers that do not support gradients */
+    background:#D0ECBD; /* For browsers that do not support gradients */
     /*background: -webkit-linear-gradient(right, lightslategrey , lightgrey); !* For Safari 5.1 to 6.0 *!*/
     /*background: -o-linear-gradient(left, lightslategrey , lightgrey); !* For Opera 11.1 to 12.0 *!*/
     /*background: -moz-linear-gradient(left, lightslategrey , lightgrey); !* For Firefox 3.6 to 15 *!*/
@@ -201,7 +210,7 @@ span.myGlyphicon:hover {
 }
 
 .clickable-panel {
-    background-color: #6B9A33;
+    background-color: #85BD61;
     fill-opacity: 0.6;
 }
 
@@ -364,4 +373,20 @@ svg {
 
 g .axis.y {
     display:none;
+}
+
+#menu-items{
+    padding-left:21vw;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    background-color:#599513;
+}
+
+#resetAllFiltersButton{
+    bakcground-color:#599513;
+}
+
+#resetAllFiltersButton:hover{
+    bakcground-color:#59BB13;
 }

@@ -252,7 +252,7 @@ d3.csv('/data/master.csv', function (data) {
 
         function reduceAdd(p, v) {
             if (p == 1) {
-                //return p;
+                return v;
             }
             return p + 1;
         }
@@ -303,7 +303,7 @@ d3.csv('/data/master.csv', function (data) {
 
         function reduceAdd(p, v) {
             if (p == 1) {
-                //return p;
+                return v;
             }
             return p + 1;
         }
@@ -340,6 +340,9 @@ d3.csv('/data/master.csv', function (data) {
         var GHG3Group = GHG3.group().reduce(reduceAdd, reduceRemove, reduceInitial);
 
         function reduceAdd(p, v) {
+            if (p == 1) {
+                return v;
+            }
 
             return p + 1;
         }
@@ -377,6 +380,9 @@ d3.csv('/data/master.csv', function (data) {
         var waterIntensityGroup = waterIntensityPerSales.group().reduce(reduceAdd, reduceRemove, reduceInitial);
 
         function reduceAdd(p, v) {
+            if (p == 1) {
+                return v;
+            }
 
             return p + 1;
         }
@@ -414,6 +420,9 @@ d3.csv('/data/master.csv', function (data) {
         var tWWGroup = totalWaterWithdrawl.group().reduce(reduceAdd, reduceRemove, reduceInitial);
 
         function reduceAdd(p, v) {
+            if (p == 1) {
+                return v;
+            }
 
             return p + 1;
         }
@@ -451,6 +460,7 @@ d3.csv('/data/master.csv', function (data) {
 
         function reduceAdd(p, v) {
             if (p == 1) {
+                return v;
                 
             }
             return p + 1;
@@ -489,7 +499,7 @@ d3.csv('/data/master.csv', function (data) {
 
         function reduceAdd(p, v) {
             if (p == 1) {
-                //return p;
+                return v;
             }
             return p + 1;
         }
@@ -527,7 +537,7 @@ d3.csv('/data/master.csv', function (data) {
 
         function reduceAdd(p, v) {
             if (p == 1) {
-                //return p;
+                return v;
             }
             return p + 1;
         }
@@ -565,7 +575,7 @@ d3.csv('/data/master.csv', function (data) {
 
         function reduceAdd(p, v) {
             if (p == 1) {
-                //return p;
+                return v;
             }
             return p + 1;
         }
@@ -603,7 +613,7 @@ d3.csv('/data/master.csv', function (data) {
 
         function reduceAdd(p, v) {
             if (p == 1) {
-                //return p;
+                return v;
             }
             return p + 1;
         }
