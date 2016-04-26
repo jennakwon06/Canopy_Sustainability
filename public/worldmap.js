@@ -9,12 +9,15 @@ var projection;
 
 drawMap();
 
+
+//@TODO fix gdal problems and draw this map
+//http://www.tnoda.com/blog/2013-12-07
 function drawMap() {
 
     var width = $("#resultBar").width() - 20,
         height = $("#resultBar").height() - 20;
 
-    projection = d3.geo.mercator().scale(500).translate([(width/2) + 50, (height / 2)]);
+    projection = d3.geo.mercator();
 
     var zoom = d3.behavior.zoom()
         .scaleExtent([1, 8])
@@ -70,6 +73,7 @@ function drawMap() {
             .datum(topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; }))
             .attr("class", "boundary")
             .attr("d", path);
+
     });
 }
 
@@ -108,8 +112,8 @@ function drawBubblesOnMap(results) {
 
     arrayOfLocations = arrayOfLocations.filter(Boolean);
 
-    console.log("is null filtered?");
-    console.log(arrayOfLocations);
+    //console.log("is null filtered?");
+    //console.log(arrayOfLocations);
 
     var radius = d3.scale.sqrt()
         .domain([0, 1e6])

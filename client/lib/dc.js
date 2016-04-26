@@ -2648,7 +2648,7 @@
 
             var _x;
             var _xOriginalDomain;
-            var _xAxis = d3.svg.axis().orient('top');
+            var _xAxis = d3.svg.axis().orient('bottom');
             var _xUnits = dc.units.integers;
             var _xAxisPadding = 0;
             var _xElasticity = false;

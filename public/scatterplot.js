@@ -1,7 +1,6 @@
 //@TODO refactor to take in different x and y axis values
 
 function changeX() {
-    console.log("hello from scatterplot");
     var xaxis = document.getElementById("xaxisMeasure");
     var selectedX = xaxis.options[xaxis.selectedIndex].value;
     var yaxis = document.getElementById("yaxisMeasure");
@@ -28,11 +27,13 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
     d3.select(".scatterSVG").remove();
 
 
-    var margin = { top: 20, right: 50, bottom: 100, left: 100 },
+    var margin = { top: 20, right: 50, bottom: 100, left: 60 },
         outerWidth = $("#resultBar").width(),
         outerHeight = $("#resultBar").height(),
         width = outerWidth - margin.left - margin.right,
         height = outerHeight - margin.top - margin.bottom;
+
+    console.log(outerHeight);
 
     var x = d3.scale.linear()
         .range([0, width]).nice();
@@ -53,12 +54,16 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
     var xAxis = d3.svg.axis()
         .scale(x)
         .orient("bottom")
-        .tickSize(-height);
+        .tickSize(-height)
+        .ticks(8, ",.1s");
+
 
     var yAxis = d3.svg.axis()
         .scale(y)
         .orient("left")
-        .tickSize(-width);
+        .tickSize(-width)
+        //.ticks(8, ",.1s");
+
 
     var color = d3.scale.category10();
 
@@ -69,6 +74,7 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
         .y(y)
         .scaleExtent([0, 500])
         .on("zoom", zoom);
+
 
     var svg = d3.select("#scatter")
         .append("svg")
@@ -114,7 +120,7 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
         .text(xAxisVal);
 
     svg.append("g")
-        .classed("y axis scatterPlot", true)
+        .classed("y axis", true)
         .call(yAxis)
         .append("text")
         .classed("label", true)
@@ -133,31 +139,26 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
     objects.append("svg:line")
         .classed("axisLine hAxisLine", true)
         .attr("x1", 0)
-        .attr("y1", -20)
+        .attr("y1", 0)
         .attr("x2", width)
-        .attr("y2", -20)
+        .attr("y2", 0)
         .attr("transform", "translate(0," + height + ")");
 
     objects.append("svg:line")
         .classed("axisLine vAxisLine", true)
-        .attr("x1", -20)
-        .attr("y1", -20)
-        .attr("x2", -20)
+        .attr("x1", 0)
+        .attr("y1", 0)
+        .attr("x2", 0)
         .attr("y2", height);
 
     if (xAxisVal !== undefined && yAxisVal !== undefined
         && !isBlank(xAxisVal) && !isBlank(yAxisVal)) {
-
-        console.log("executed? 2");
-
 
         objects.selectAll(".scatterPlotCircle")
             .data(results)
             .enter().append("circle")
             .attr("class", "scatterPlotCircle")
             .attr("r", 3.5)
-            //.attr("cx", xMap)
-            //.attr("cy", yMap)
             .attr("data-toggle", "modal")
             .attr("data-target", "#myModal")
             .attr("transform", function(d) {

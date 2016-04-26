@@ -141,18 +141,18 @@ d3.csv('/data/master.csv', function (data) {
 
     var GHG1 = sp500.dimension(function (d) {return +d.GHG1;});
     var GHG2 = sp500.dimension(function (d) {return +d.GHG1;});
-    var GHG3 = sp500.dimension(function (d) {return d.GHG3;});
+    var GHG3 = sp500.dimension(function (d) {return +d.GHG3;});
 
     // WATER
-    var waterIntensityPerSales = sp500.dimension(function (d) {return d.waterIntensityPersales;});
-    var totalWaterWithdrawl = sp500.dimension(function (d) {return d.totalWaterWithdrawl;});
-    var totalWaterDischarged = sp500.dimension(function (d) {return d.totalWaterDischarged;});
+    var waterIntensityPerSales = sp500.dimension(function (d) {return +d.waterIntensityPersales;});
+    var totalWaterWithdrawl = sp500.dimension(function (d) {return +d.totalWaterWithdrawl;});
+    var totalWaterDischarged = sp500.dimension(function (d) {return +d.totalWaterDischarged;});
 
     // WASTE
-    var wasteIntensityPerSales = sp500.dimension(function (d) {return d.wasteIntensityPerSales;});
-    var wasteSentToLandfill = sp500.dimension(function (d) {return d.wasteSentToLandfill;});
-    var wasteGeneratedPerAssets = sp500.dimension(function (d) {return d.wasteGeneratedPerAssets;});
-    var energyIntensityPerSales = sp500.dimension(function (d) {return d.energyIntensityPerSales;});
+    var wasteIntensityPerSales = sp500.dimension(function (d) {return +d.wasteIntensityPerSales;});
+    var wasteSentToLandfill = sp500.dimension(function (d) {return +d.wasteSentToLandfill;});
+    var wasteGeneratedPerAssets = sp500.dimension(function (d) {return +d.wasteGeneratedPerAssets;});
+    var energyIntensityPerSales = sp500.dimension(function (d) {return +d.energyIntensityPerSales;});
 
     // PIE CHARTS
     var riskExp = sp500.dimension(function (d) {return d.riskExp == "1" ? 'Yes' : 'No';});
@@ -190,7 +190,7 @@ d3.csv('/data/master.csv', function (data) {
             })
             .elasticX(true)
             .controlsUseVisibility(true)
-            .xAxis().ticks(4);
+            .xAxis().ticks(8, ",.1s").tickSize(6, 0).ticks(4);
     }());
 
     //ROW CHART: SECTOR CHART
@@ -214,7 +214,7 @@ d3.csv('/data/master.csv', function (data) {
             })
             .elasticX(true)
             .controlsUseVisibility(true)
-            .xAxis().ticks(4);
+            .xAxis().ticks(8, ",.1s").tickSize(6, 0).ticks(4);
 
     }());
 
@@ -286,9 +286,14 @@ d3.csv('/data/master.csv', function (data) {
             .round(dc.round.floor)
             .alwaysUseRounding(true)
             .x(d3.scale.log().nice().domain([1, max]))
-            .xAxis();
+            .xAxis().ticks(8, ",.1s").tickSize(6, 0)
+            .ticks(8, ",.1s")
+            .tickSize(6, 0); //.tickFormat(function(v) { //https://github.com/mbostock/d3/wiki/SVG-Axes
 
-        //ghg1Chart.xUnits(function(){return 2;});
+        //Note: for log scales, the number of ticks cannot be customized;
+        // however, the number of tick labels can be customized via ticks.
+        // Likewise, the tick formatter for log scales is typically specified via ticks rather than tickFormat,
+        // so as to preserve the default label-hiding behavior.
 
     }());
 
@@ -327,7 +332,7 @@ d3.csv('/data/master.csv', function (data) {
             .round(dc.round.floor)
             .alwaysUseRounding(true)
             .x(d3.scale.log().nice().domain([1, max]))
-            .xAxis();
+            .xAxis().ticks(8, ",.1s").tickSize(6, 0);
     }());
 
     //BAR CHART: GHG3
@@ -366,7 +371,7 @@ d3.csv('/data/master.csv', function (data) {
             .round(dc.round.floor)
             .alwaysUseRounding(true)
             .x(d3.scale.log().nice().domain([1, max]))
-            .xAxis();
+            .xAxis().ticks(8, ",.1s").tickSize(6, 0)
     
     }());
     
@@ -406,7 +411,7 @@ d3.csv('/data/master.csv', function (data) {
             .round(dc.round.floor)
             .alwaysUseRounding(true)
             .x(d3.scale.log().nice().domain([1, max]))
-            .xAxis();
+            .xAxis().ticks(8, ",.1s").tickSize(6, 0)
     
     }());
     
@@ -446,7 +451,7 @@ d3.csv('/data/master.csv', function (data) {
             .round(dc.round.floor)
             .alwaysUseRounding(true)
             .x(d3.scale.log().nice().domain([1, max]))
-            .xAxis();
+            .xAxis().ticks(8, ",.1s").tickSize(6, 0)
     }());
     
     //BAR CHART: WATER DISCHARGED
@@ -485,7 +490,7 @@ d3.csv('/data/master.csv', function (data) {
             .round(dc.round.floor)
             .alwaysUseRounding(true)
             .x(d3.scale.log().nice().domain([1, max]))
-            .xAxis();
+            .xAxis().ticks(8, ",.1s").tickSize(6, 0);
     }());
     
     //BAR CHART: WASTE INTENSITY PER SALES
@@ -523,7 +528,7 @@ d3.csv('/data/master.csv', function (data) {
             .round(dc.round.floor)
             .alwaysUseRounding(true)
             .x(d3.scale.log().nice().domain([1, max]))
-            .xAxis();
+            .xAxis().ticks(8, ",.1s").tickSize(6, 0);
     }());
     
     //BAR CHART: WASTE SENT TO LANDFILL
@@ -561,7 +566,7 @@ d3.csv('/data/master.csv', function (data) {
             .round(dc.round.floor)
             .alwaysUseRounding(true)
             .x(d3.scale.log().nice().domain([1, max]))
-            .xAxis();
+            .xAxis().ticks(8, ",.1s").tickSize(6, 0);
     }());
     
     //BAR CHART: WASTE GENERATED PER ASSETS
@@ -599,7 +604,7 @@ d3.csv('/data/master.csv', function (data) {
             .round(dc.round.floor)
             .alwaysUseRounding(true)
             .x(d3.scale.log().nice().domain([1, max]))
-            .xAxis();
+            .xAxis().ticks(8, ",.1s").tickSize(6, 0);
     }());
     
     //BAR CHART: ENERGY INTENSITY PER SALES
@@ -637,7 +642,7 @@ d3.csv('/data/master.csv', function (data) {
             .round(dc.round.floor)
             .alwaysUseRounding(true)
             .x(d3.scale.log().nice().domain([1, max]))
-            .xAxis();
+            .xAxis().ticks(8, ",.1s").tickSize(6, 0);
     }());
     
     
@@ -712,7 +717,7 @@ d3.csv('/data/master.csv', function (data) {
      dc.redrawAll('group');
      */
 
-    rotateLabels();
+    //rotateLabels();
 
 });
 
