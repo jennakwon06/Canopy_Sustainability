@@ -62,7 +62,7 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
         .scale(y)
         .orient("left")
         .tickSize(-width)
-        //.ticks(8, ",.1s");
+        .ticks(8, ",.1s");
 
 
     var color = d3.scale.category10();
@@ -79,13 +79,14 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
     var svg = d3.select("#scatter")
         .append("svg")
         .attr("class", "scatterSVG")
+        .call(zoomBeh)
         .attr("width", outerWidth)
         .attr("height", outerHeight)
         .append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-        .call(zoomBeh);
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    console.log("executed? 1");
+    //.call(zoomBeh);
+
 
     var tooltip = d3.select("body").append("div")
         .attr("class", "tooltip")

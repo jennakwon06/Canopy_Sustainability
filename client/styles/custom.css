@@ -376,9 +376,9 @@ svg {
 
 }
 
-g .axis.y {
-    display:none;
-}
+/*g .axis.y {*/
+    /*display:none;*/
+/*}*/
 
 #menu-items{
     padding-left:21vw;
