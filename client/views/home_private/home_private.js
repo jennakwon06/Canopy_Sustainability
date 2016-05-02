@@ -125,6 +125,55 @@ Template.HomePrivate.events({
         //$('.companiesCount').html(globalFilter.top(Infinity).length);
     },
 
+    'click #scrollToGeneral': function(e) {
+        console.log($(".panelGeneral").offset().top);
+
+        $('#filterBar').animate({
+            scrollTop: $(".panelGeneral").offset().top - 120
+        }, 500);
+    },
+    
+    'click #scrollToEmissions': function(e) {
+        console.log($(".panelEmissions").offset().top);
+
+        $('#filterBar').animate({
+            scrollTop: $(".panelEmissions").offset().top - 120
+        }, 500);
+    },
+    
+
+    'click #scrollToWater': function(e) {
+        console.log($(".panelWater").offset().top);
+
+        $('#filterBar').animate({
+            scrollTop: $(".panelWater").offset().top - 120
+        }, 500);
+    },
+
+    'click #scrollToWaste': function(e) {
+        console.log($(".panelWaste").offset().top);
+
+        $('#filterBar').animate({
+            scrollTop: $(".panelWaste").offset().top - 120
+        }, 500);
+    },
+
+    'click #scrollToEnergy': function(e) {
+        console.log($(".panelEnergy").offset().top);
+
+        $('#filterBar').animate({
+            scrollTop: $(".panelEnergy").offset().top - 120
+        }, 500);
+    },
+
+    'click #scrollToMisc': function(e) {
+        console.log($(".panelMisc").offset().top);
+
+        $('#filterBar').animate({
+            scrollTop: $(".panelMisc").offset().top - 120
+        }, 500);
+    },
+
     'click #applyFilterButton': function (e) {
         console.log('checking database connection');
         console.log(Filters.find().count());

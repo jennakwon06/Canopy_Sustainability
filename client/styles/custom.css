@@ -4,7 +4,7 @@ html, body {
 }
 
 .filterTexts {
-    font-size:20px;
+    font-size:12px;
 }
 
 .filterTexts:hover {
@@ -16,6 +16,14 @@ html, body {
     color:white;
 }
 
+.navbar-brand {
+    font-size: 25px;
+}
+
+.headerPanel{
+    /*left:25vw;*/
+}
+
 #filterBar {
     height:100vh;
     width:25vw;
@@ -24,6 +32,11 @@ html, body {
     overflow-y: scroll;
     display: inline-block;
     margin-left:15px;
+    position:fixed;
+}
+
+.panels {
+    position: relative;
 }
 
 .panel-body {
@@ -46,10 +59,22 @@ html, body {
 
 .filter_container {
     width: inherit;
+
 }
 
 .lightText {
     color: white;
+}
+
+.filter_topPanel {
+    background-color: #6B9A33;
+    display:block;
+    height:60px;
+    z-index:1030;
+    position:fixed;
+    right:0;
+    left:0;
+    width:inherit;
 }
 
 .filter_container .filter_bottomPanel {
@@ -68,6 +93,7 @@ html, body {
     height:100vh;
     width:3vw;
     display: inline-block;
+    left:25vw;
     /*background-color:lightslategrey;*/
     position: fixed;
     background:#D0ECBD; /* For browsers that do not support gradients */
@@ -78,6 +104,7 @@ html, body {
 }
 
 #resultBar {
+    position:fixed;
     height:100vh;
     width:72vw;
     display: inline-block;

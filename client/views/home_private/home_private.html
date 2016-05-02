@@ -6,251 +6,288 @@
         <div class="row">
             <div id="filterBar" >
 
+                <div class="filter_topPanel">
+
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-secondary filterTexts" id="scrollToGeneral">General</button>
+                    </div>
+
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-secondary filterTexts" id="scrollToEmissions">Emissions</button>
+                    </div>
+
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-secondary filterTexts" id="scrollToWater">Water</button>
+                        <!--<h3 class="filterTexts" id="applyFilterButton">Apply</h3>-->
+                    </div>
+
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-secondary filterTexts" id="scrollToWaste">Waste</button>
+                    </div>
+
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-secondary filterTexts" id="scrollToEnergy">Energy</button>
+                    </div>
+
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-secondary filterTexts" id="scrollToMisc">Misc</button>
+                    </div>
+
+
+                    <!--<span class="glyphicon glyphicon-circle-arrow-right myGlyphicon" title="Apply filters" id="applyFilterButton"></span>-->
+                    <!--<span class="glyphicon glyphicon-remove myGlyphicon" title="Reset all filters" id="resetAllFiltersButton"></span>-->
+                </div>
+
 
                 <div class="filter_container" id="accordion">
 
-                    <div class="filter_bottomPanel">
 
-                        <div class="col-md-6">
-                            <h3 class="filterTexts" id="applyFilterButton">Apply</h3>
-                        </div>
+                    <!--<div class="filter_bottomPanel">-->
 
-                        <div class="col-md-6">
-                            <h3 class="filterTexts" id="resetAllFiltersButton">Reset</h3>
-                        </div>
+                        <!--<div class="col-md-6">-->
+                            <!--<button type="button" class="btn btn-secondary filterTexts" id="applyFilterButton">Apply</button>-->
 
-                        <!--<span class="glyphicon glyphicon-circle-arrow-right myGlyphicon" title="Apply filters" id="applyFilterButton"></span>-->
-                        <!--<span class="glyphicon glyphicon-remove myGlyphicon" title="Reset all filters" id="resetAllFiltersButton"></span>-->
-                    </div>
+                            <!--&lt;!&ndash;<h3 class="filterTexts" id="applyFilterButton">Apply</h3>&ndash;&gt;-->
+                        <!--</div>-->
+
+                        <!--<div class="col-md-6">-->
+                            <!--<button type="button" class="btn btn-secondary filterTexts" id="resetAllFiltersButton">Reset</button>-->
+                        <!--</div>-->
+
+                        <!--&lt;!&ndash;<span class="glyphicon glyphicon-circle-arrow-right myGlyphicon" title="Apply filters" id="applyFilterButton"></span>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<span class="glyphicon glyphicon-remove myGlyphicon" title="Reset all filters" id="resetAllFiltersButton"></span>&ndash;&gt;-->
+                    <!--</div>-->
 
                     <!--GENERAL-->
-                    <div class="panelGeneral panel-default">
-                        <div class="clickable-panel">
-                            <div class="panel-heading">
-                                <h4 class="panel-title accordion-toggle collapsed" data-toggle="collapse" data-parent="#panelGeneral" data-target="#collapseGeneral">
-                                    <a class="lightText">General</a>
-                                    <i class="indicator glyphicon glyphicon-chevron-down pull-right"></i>
-                                </h4>
-                            </div>
-                        </div>
-
-                        <div id="collapseGeneral" class="panel-collapse collapse">
-                            <div class="panel-body">
-
-                                <div class="row">
-                                    <div class="col-md-6"><strong> Sector </strong></div>
-                                    <div class="col-md-6"><strong> Industry </strong></div>
-
+                    <div class="panels">
+                        <div class="panelGeneral panel-default">
+                            <div class="clickable-panel">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#panelGeneral" data-target="#collapseGeneral">
+                                        <a class="lightText">General</a>
+                                        <i class="indicator glyphicon glyphicon-chevron-down pull-right"></i>
+                                    </h4>
                                 </div>
+                            </div>
 
-                                <div class="row">
+                            <div id="collapseGeneral" class="panel-collapse collapse in">
+                                <div class="panel-body">
 
-                                    <div class="col-md-6" style="top:5px">
-                                        <div id="sector_chart" style="overflow-y: scroll; height: 300px">
-                                            <div class="clearfix"></div>
+                                    <div class="row">
+                                        <div class="col-md-6"><strong> Sector </strong></div>
+                                        <div class="col-md-6"><strong> Industry </strong></div>
 
-                                            <div>
-                                                <a class="reset" href="javascript:sectorChart.filterAll();dc.redrawAll();"
-                                                   style="visibility: hidden; position: absolute; height: 5px; right:0;">reset</a>
-                                            </div>
-                                        </div>
                                     </div>
 
-                                    <div class="col-md-6" style="top:5px">
-                                        <div id="industry_chart" style="overflow-y: scroll; height: 300px">
-                                            <div class="clearfix"></div>
+                                    <div class="row">
 
-                                            <div>
-                                                <a class="reset" href="javascript:industryChart.filterAll();dc.redrawAll();"
-                                                   style="visibility: hidden; position: absolute; height: 5px; right:0;"> reset</a>
+                                        <div class="col-md-6" style="top:5px">
+                                            <div id="sector_chart" style="overflow-y: scroll; height: 300px">
+                                                <div class="clearfix"></div>
+
+                                                <div>
+                                                    <a class="reset" href="javascript:sectorChart.filterAll();dc.redrawAll();"
+                                                       style="visibility: hidden; position: absolute; height: 5px; right:0;">reset</a>
+                                                </div>
                                             </div>
                                         </div>
+
+                                        <div class="col-md-6" style="top:5px">
+                                            <div id="industry_chart" style="overflow-y: scroll; height: 300px">
+                                                <div class="clearfix"></div>
+
+                                                <div>
+                                                    <a class="reset" href="javascript:industryChart.filterAll();dc.redrawAll();"
+                                                       style="visibility: hidden; position: absolute; height: 5px; right:0;"> reset</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
                                     </div>
-
-
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!--EMISSIONS-->
-                    <div class="panelEmissions panel-default">
-                        <div class="clickable-panel">
-                            <div class="panel-heading">
-                                <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#panelEmissions" data-target="#collapseEmissions">
-                                    <a> Emissions </a>
-                                    <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
-                                </h4>
-                            </div>
-                        </div>
-
-                        <div id="collapseEmissions" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div class="col-md-12">
-                                    <strong>GHG Scope 1 Emission</strong>
+                        <!--EMISSIONS-->
+                        <div class="panelEmissions panel-default">
+                            <div class="clickable-panel">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#panelEmissions" data-target="#collapseEmissions">
+                                        <a> Emissions </a>
+                                        <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+                                    </h4>
                                 </div>
-                                <div id="ghg1Chart"></div>
+                            </div>
 
-                                <!--<div class="clearfix"></div>-->
+                            <div id="collapseEmissions" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <div class="col-md-12">
+                                        <strong>GHG Scope 1 Emission</strong>
+                                    </div>
+                                    <div id="ghg1Chart"></div>
+
+                                    <!--<div class="clearfix"></div>-->
                                     <!--<div class="reset" style="display: none;">-->
-                                        <!--<a class="reset" href="javascript:ghg1Chart.filterAll();dc.redrawAll();"-->
-                                           <!--style="visibility: hidden; position: absolute; height: 5px; right:0;">reset</a>-->
+                                    <!--<a class="reset" href="javascript:ghg1Chart.filterAll();dc.redrawAll();"-->
+                                    <!--style="visibility: hidden; position: absolute; height: 5px; right:0;">reset</a>-->
                                     <!--</div>-->
 
-                                <div class="col-md-12">
-                                    <strong>GHG Scope 2 Emission</strong>
-                                </div>
-                                <div id="ghg2Chart">
+                                    <div class="col-md-12">
+                                        <strong>GHG Scope 2 Emission</strong>
+                                    </div>
+                                    <div id="ghg2Chart">
 
-                                    <!--<div class="clearfix"></div>-->
-                                    <!--<span class="reset" style="display: none;">-->
+                                        <!--<div class="clearfix"></div>-->
+                                        <!--<span class="reset" style="display: none;">-->
                                         <!--<a class="reset" href="javascript:ghg2Chart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>-->
-                                    <!--</span>-->
-                                </div>
+                                        <!--</span>-->
+                                    </div>
 
-                                <div class="col-md-12">
-                                    <strong>GHG Scope 3 Emission</strong>
-                                </div>
-                                <div id="ghg3Chart">
-                                    <!--<div class="clearfix"></div>-->
-                                    <!--<span class="reset" style="display: none;">-->
+                                    <div class="col-md-12">
+                                        <strong>GHG Scope 3 Emission</strong>
+                                    </div>
+                                    <div id="ghg3Chart">
+                                        <!--<div class="clearfix"></div>-->
+                                        <!--<span class="reset" style="display: none;">-->
                                         <!--<a class="reset" href="javascript:ghg3Chart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>-->
-                                    <!--</span>-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--WATER-->
-                    <div class="panelWater panel-default">
-                        <div class="clickable-panel">
-                            <div class="panel-heading">
-                                <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#panelWater" href="#" data-target="#collapseWater">
-                                    <a> Water </a>
-                                    <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
-                                </h4>
-                            </div>
-                        </div>
-
-                        <div id="collapseWater" class="panel-collapse collapse">
-
-                            <div class="panel-body">
-
-                                <div class="col-md-12">
-                                    <strong>Water Intensity Per Sales</strong>
-                                </div>
-                                <div id="waterIntensityPerSalesChart">
-
-                                    <!--<span class="reset" style="display: none;"></span>-->
-                                    <!--<a class="reset" href="javascript:twwChart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>-->
-                                    <!--<div class="clearfix"></div>-->
-                                </div>
-
-                                <div class="col-md-12">
-                                    <strong>Total Water Withdrawl</strong>
-                                </div>
-                                <div id="totalWaterWithdrawlChart">
-
-                                    <!--<span class="reset" style="display: none;"></span>-->
-                                    <!--<a class="reset" href="javascript:twwChart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>-->
-                                    <!--<div class="clearfix"></div>-->
-                                </div>
-
-                                <div class="col-md-12">
-                                    <strong>Total Water Discharged</strong>
-                                </div>
-                                <div id="totalWaterDischargedChart">
-
-                                    <!--<div class="clearfix"></div>-->
-                                    <!--<span class="reset" style="display: none;">-->
-                                    <!--<a class="reset" href="javascript:ghg2Chart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>-->
-                                    <!--</span>-->
+                                        <!--</span>-->
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                    </div>
+                        <!--WATER-->
+                        <div class="panelWater panel-default">
+                            <div class="clickable-panel">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#panelWater" data-target="#collapseWater">
+                                        <a> Water </a>
+                                        <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+                                    </h4>
+                                </div>
+                            </div>
 
-                    <!--Waste-->
-                    <div class="panelWaste panel-default">
-                        <div class="clickable-panel">
-                            <div class="panel-heading">
-                                <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#panelWaste" data-target="#collapseWaste">
-                                    Waste
-                                    <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
-                                </h4>
+                            <div id="collapseWater" class="panel-collapse collapse in">
+
+                                <div class="panel-body">
+
+                                    <div class="col-md-12">
+                                        <strong>Water Intensity Per Sales</strong>
+                                    </div>
+                                    <div id="waterIntensityPerSalesChart">
+
+                                        <!--<span class="reset" style="display: none;"></span>-->
+                                        <!--<a class="reset" href="javascript:twwChart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>-->
+                                        <!--<div class="clearfix"></div>-->
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <strong>Total Water Withdrawl</strong>
+                                    </div>
+                                    <div id="totalWaterWithdrawlChart">
+
+                                        <!--<span class="reset" style="display: none;"></span>-->
+                                        <!--<a class="reset" href="javascript:twwChart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>-->
+                                        <!--<div class="clearfix"></div>-->
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <strong>Total Water Discharged</strong>
+                                    </div>
+                                    <div id="totalWaterDischargedChart">
+
+                                        <!--<div class="clearfix"></div>-->
+                                        <!--<span class="reset" style="display: none;">-->
+                                        <!--<a class="reset" href="javascript:ghg2Chart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>-->
+                                        <!--</span>-->
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!--Waste-->
+                        <div class="panelWaste panel-default">
+                            <div class="clickable-panel">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#panelWaste" data-target="#collapseWaste">
+                                        Waste
+                                        <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+                                    </h4>
+                                </div>
+                            </div>
+
+                            <div id="collapseWaste" class="panel-collapse collapse in">
+                                <div class="panel-body">
+
+                                    <div class="col-md-12">
+                                        <strong>Waste Intensity Per Sales</strong>
+                                    </div>
+                                    <div id="wasteIntensityPerSalesChart">
+                                    </div>
+
+
+                                    <div class="col-md-12">
+                                        <strong>Waste Generated Per Assets</strong>
+                                    </div>
+                                    <div id="wasteGeneratedPerAssetsChart">
+                                    </div>
+
+
+                                    <div class="col-md-12">
+                                        <strong>Waste Sent to Landfill</strong>
+                                    </div>
+                                    <div id="wasteSentToLandfillChart">
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
 
-                        <div id="collapseWaste" class="panel-collapse collapse">
-                            <div class="panel-body">
+                        <!--Energy-->
+                        <div class="panelEnergy panel-default">
+                            <div class="clickable-panel">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#panelEnergy" data-target="#collapseEnergy">
+                                        Energy
+                                        <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+                                    </h4>
+                                </div>
+                            </div>
 
-                                <div class="col-md-12">
-                                    <strong>Waste Intensity Per Sales</strong>
-                                </div>
-                                <div id="wasteIntensityPerSalesChart">
+                            <div id="collapseEnergy" class="panel-collapse collapse in">
+                                <div class="panel-body">
+
+                                    <div class="col-md-12">
+                                        <strong>Energy Intensity Per Sales</strong>
+                                    </div>
+                                    <div id="energyIntensityPerSalesChart"></div>
                                 </div>
 
-
-                                <div class="col-md-12">
-                                    <strong>Waste Generated Per Assets</strong>
-                                </div>
-                                <div id="wasteGeneratedPerAssetsChart">
-                                </div>
-
-
-                                <div class="col-md-12">
-                                    <strong>Waste Sent to Landfill</strong>
-                                </div>
-                                <div id="wasteSentToLandfillChart">
-                                </div>
 
                             </div>
                         </div>
-                    </div>
 
-                    <!--Energy-->
-                    <div class="panelEnergy panel-default">
-                        <div class="clickable-panel">
-                            <div class="panel-heading">
-                                <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#panelEnergy" data-target="#collapseEnergy">
-                                    Energy
-                                    <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
-                                </h4>
-                            </div>
-                        </div>
-
-                        <div id="collapseEnergy" class="panel-collapse collapse">
-                            <div class="panel-body">
-
-                                <div class="col-md-12">
-                                    <strong>Energy Intensity Per Sales</strong>
-                                </div>
-                                <div id="energyIntensityPerSalesChart"></div>
-                            </div>
-
-
-                        </div>
-                    </div>
-
-                    <!--MISC-->
-                    <div class="panelMisc panel-default">
-                        <div class="clickable-panel">
-                            <div class="panel-heading">
-                                <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#panelMisc" data-target="#collapseMisc">
+                        <!--MISC-->
+                        <div class="panelMisc panel-default">
+                            <div class="clickable-panel">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title accordion-toggle" data-toggle="collapse" data-parent="#panelMisc" data-target="#collapseMisc">
                                         Misc
-                                    <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
-                                </h4>
-                            </div>
-                        </div>
-
-                        <div id="collapseMisc" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div class="col-md-12">
-                                    <strong>Climate Change Policy Implemented</strong>
+                                        <i class="indicator glyphicon glyphicon-chevron-down  pull-right"></i>
+                                    </h4>
                                 </div>
-                                <div id="ccPolicyImplRowChart"></div>
+                            </div>
 
+                            <div id="collapseMisc" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <div class="col-md-12">
+                                        <strong>Climate Change Policy Implemented</strong>
+                                    </div>
+                                    <div id="ccPolicyImplRowChart"></div>
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -293,7 +330,12 @@
 
 
                 <div class="col-md-12">
-                    <div class="resultListView">
+                    <div class="initView" >
+                        Please apply filters
+                    </div>
+
+
+                    <div class="resultListView" style="display: none">
                         <table class="table resultsTable">
                             <thead class="thead-inverse">
                             <tr>

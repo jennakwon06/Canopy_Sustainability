@@ -102,33 +102,46 @@
 		</div>
 		{{> yield}}
 	</div>
-	<div id="footer" class="sticky-footer">
-		<div class="footer-container container">
-			<p class="text-muted">
-			</p>
-		</div>
-	</div>
+	<!--<div id="footer" class="sticky-footer">-->
+		<!--<div class="footer-container container">-->
+			<!--<p class="text-muted">-->
+			<!--</p>-->
+		<!--</div>-->
+	<!--</div>-->
 </template>
 
 <template name="PrivateLayoutLeftMenu">
-	<ul id="menu-items" class="nav navbar-nav">
-		<li id="menu-item-simple" class="{{menuItemClass 'home_private'}}">
-			<a href="{{pathFor 'home_private'}}">
-				<span class="item-title">
-					Home
-				</span>
-			</a>
-		</li>
+
+    <!--<div class='companiesCount'>-->
+            <!--<span class='filter-count'></span>-->
+            <!--&lt;!&ndash;selected out of <span class='total-count'></span> records.&ndash;&gt;-->
+        <!--</div>-->
+    <!--<button type="button" class="btn btn-secondary filterTexts" id="applyFilterButton">Apply</button>-->
+    <!--<button type="button" class="btn btn-secondary filterTexts" id="resetAllFiltersButton">Reset</button>-->
 
 
-		<li id="menu-item-simple" class="{{menuItemClass 'compare_panel'}}">
-			<a href="{{pathFor 'compare_panel'}}">
-				<span class="item-title">
-					Compare results
-				</span>
-			</a>
-		</li>
-	</ul>
+
+    <!--<span class="glyphicon glyphicon-circle-arrow-right myGlyphicon" title="Apply filters" id="applyFilterButton"></span>-->
+    <!--<span class="glyphicon glyphicon-remove myGlyphicon" title="Reset all filters" id="resetAllFiltersButton"></span>-->
+
+	<!--<ul id="menu-items" class="nav navbar-nav">-->
+		<!--<li id="menu-item-simple" class="{{menuItemClass 'home_private'}}">-->
+			<!--<a href="{{pathFor 'home_private'}}">-->
+				<!--<span class="item-title">-->
+					<!--Home-->
+				<!--</span>-->
+			<!--</a>-->
+		<!--</li>-->
+
+
+		<!--<li id="menu-item-simple" class="{{menuItemClass 'compare_panel'}}">-->
+			<!--<a href="{{pathFor 'compare_panel'}}">-->
+				<!--<span class="item-title">-->
+					<!--Compare results-->
+				<!--</span>-->
+			<!--</a>-->
+		<!--</li>-->
+	<!--</ul>-->
 </template>
 
 <template name="PrivateLayoutRightMenu">
