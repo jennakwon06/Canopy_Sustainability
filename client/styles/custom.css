@@ -137,7 +137,8 @@ html, body {
     cursor: pointer;
 }
 
-g .axis.y {
+
+.dc-chart g .axis.y {
     display:none;
 }
 

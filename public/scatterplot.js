@@ -32,9 +32,7 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
         outerHeight = $("#resultBar").height(),
         width = outerWidth - margin.left - margin.right,
         height = outerHeight - margin.top - margin.bottom;
-
-    console.log(outerHeight);
-
+    
     var x = d3.scale.linear()
         .range([0, width]).nice();
 
@@ -50,6 +48,15 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
 
     x.domain([xMin, xMax]);
     y.domain([yMin, yMax]);
+
+
+    // min maxes
+
+    console.log("min maxes");
+    console.log(xMin);
+    console.log(xMax);
+    console.log(yMin);
+    console.log(yMax);
 
     var xAxis = d3.svg.axis()
         .scale(x)
@@ -121,7 +128,7 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
         .text(xAxisVal);
 
     svg.append("g")
-        .classed("y axisScatterPlot", true)
+        .classed("y axis", true)
         .call(yAxis)
         .append("text")
         .classed("label", true)
@@ -155,13 +162,21 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
     if (xAxisVal !== undefined && yAxisVal !== undefined
         && !isBlank(xAxisVal) && !isBlank(yAxisVal)) {
 
+        var xAxisMax = d3.extent(globalData, function (d) {return +d[xAxisVal];})[1];
+        var yAxisMax = d3.extent(globalData, function (d) {return +d[yAxisVal];})[1];
+
+        console.log(xAxisMax);
+
+        console.log(yAxisMax);
+
+
         objects.selectAll(".scatterPlotCircle")
             .data(results)
             .enter().append("circle")
             .attr("class", "scatterPlotCircle")
             .attr("r", 3.5)
-            .attr("data-toggle", "modal")
-            .attr("data-target", "#myModal")
+            //.attr("data-toggle", "modal")
+            //.attr("data-target", "#myModal")
             .attr("transform", function(d) {
                 return "translate(" + x(d[xAxisVal]) + "," + y(d[yAxisVal]) + ")"
             })
@@ -170,8 +185,8 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
             })
             .on("mouseover", function (d) {
 
-                console.log("sustindex from scatterplot");
-                console.log(d.sustIndex);
+                //console.log("sustindex from scatterplot");
+                //console.log(d.sustIndex);
 
                 tooltip.transition()
                     .duration(200)
@@ -187,13 +202,13 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
                     .style("opacity", 0);
             })
             .on("click", function(d) {
-                console.log("ayo");
-                d3.select(".list-group")
-                    .append("li")
-                    .attr("class", "modal-list-item list-group-item")
-                    .attr("value", 10)
-                    .attr("id", 10)
-                    .text("FROM SCATTER PLOT");
+                //console.log("ayo");
+                //d3.select(".list-group")
+                //    .append("li")
+                //    .attr("class", "modal-list-item list-group-item")
+                //    .attr("value", 10)
+                //    .attr("id", 10)
+                //    .text("FROM SCATTER PLOT");
             });
     }
 }
