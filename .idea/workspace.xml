@@ -3,16 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="ecb22e18-2595-4b9d-9b37-b6b50df87b24" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TODO" afterPath="$PROJECT_DIR$/TODO" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/styles/custom.css" afterPath="$PROJECT_DIR$/client/styles/custom.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/styles/dc.css" afterPath="$PROJECT_DIR$/client/styles/dc.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/home_private/home_private.html" afterPath="$PROJECT_DIR$/client/views/home_private/home_private.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/home_private/home_private.js" afterPath="$PROJECT_DIR$/client/views/home_private/home_private.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/layout/layout.html" afterPath="$PROJECT_DIR$/client/views/layout/layout.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/views/layout/layout.js" afterPath="$PROJECT_DIR$/client/views/layout/layout.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/filters.js" afterPath="$PROJECT_DIR$/public/filters.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/scatterplot.js" afterPath="$PROJECT_DIR$/public/scatterplot.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/worldmap.js" afterPath="$PROJECT_DIR$/public/worldmap.js" />
     </list>
     <ignored path="sustVizApp.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,12 +29,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="layout.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="layout.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/views/layout/layout.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="197" column="43" selection-start-line="197" selection-start-column="37" selection-end-line="197" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.4840336">
+              <caret line="106" column="58" selection-start-line="106" selection-start-column="58" selection-end-line="106" selection-end-column="58" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="layout.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/views/layout/layout.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-10.5">
+              <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+              <folding>
+                <element signature="n#style#0;n#input#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#head#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -57,18 +64,23 @@
       <file leaf-file-name="home_private.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/views/home_private/home_private.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.3529415">
-              <caret line="372" column="0" selection-start-line="372" selection-start-column="0" selection-end-line="372" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="-7.4313726">
+              <caret line="340" column="69" selection-start-line="340" selection-start-column="48" selection-end-line="340" selection-end-column="69" />
+              <folding>
+                <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#5;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home_private.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="home_private.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/views/home_private/home_private.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.13215859">
-              <caret line="29" column="51" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
+            <state vertical-scroll-proportion="-7.6666665">
+              <caret line="36" column="64" selection-start-line="36" selection-start-column="60" selection-end-line="36" selection-end-column="64" />
               <folding />
             </state>
           </provider>
@@ -77,8 +89,8 @@
       <file leaf-file-name="custom.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/styles/custom.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.941176">
-              <caret line="145" column="23" selection-start-line="145" selection-start-column="23" selection-end-line="145" selection-end-column="23" />
+            <state vertical-scroll-proportion="-10.843137">
+              <caret line="559" column="0" selection-start-line="559" selection-start-column="0" selection-end-line="559" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -99,8 +111,8 @@
       <file leaf-file-name="filters.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/filters.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.851852">
-              <caret line="148" column="0" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+            <state vertical-scroll-proportion="-25.62963">
+              <caret line="160" column="0" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -168,13 +180,13 @@
         <option value="$PROJECT_DIR$/client/styles/dc.css" />
         <option value="$PROJECT_DIR$/public/scatterplot.js" />
         <option value="$PROJECT_DIR$/TODO" />
-        <option value="$PROJECT_DIR$/client/views/layout/layout.js" />
-        <option value="$PROJECT_DIR$/client/views/layout/layout.html" />
         <option value="$PROJECT_DIR$/public/worldmap.js" />
-        <option value="$PROJECT_DIR$/client/views/home_private/home_private.html" />
-        <option value="$PROJECT_DIR$/client/views/home_private/home_private.js" />
-        <option value="$PROJECT_DIR$/client/styles/custom.css" />
         <option value="$PROJECT_DIR$/public/filters.js" />
+        <option value="$PROJECT_DIR$/client/views/home_private/home_private.js" />
+        <option value="$PROJECT_DIR$/client/views/layout/layout.html" />
+        <option value="$PROJECT_DIR$/client/styles/custom.css" />
+        <option value="$PROJECT_DIR$/client/views/home_private/home_private.html" />
+        <option value="$PROJECT_DIR$/client/views/layout/layout.js" />
       </list>
     </option>
   </component>
@@ -185,9 +197,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="37" />
-    <option name="y" value="23" />
+    <option name="y" value="56" />
     <option name="width" value="1440" />
-    <option name="height" value="805" />
+    <option name="height" value="746" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -520,7 +532,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="37" y="23" width="1440" height="805" extended-state="0" />
+    <frame x="37" y="56" width="1440" height="746" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22847222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -852,14 +864,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/layout/layout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.456621">
-          <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/data/master.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -884,10 +888,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/styles/custom.css">
+    <entry file="file://$PROJECT_DIR$/public/filters.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.941176">
-          <caret line="145" column="23" selection-start-line="145" selection-start-column="23" selection-end-line="145" selection-end-column="23" />
+        <state vertical-scroll-proportion="-25.62963">
+          <caret line="160" column="0" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -902,34 +906,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/layout/layout.js">
+    <entry file="file://$PROJECT_DIR$/client/views/home_private/home_private.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="197" column="43" selection-start-line="197" selection-start-column="37" selection-end-line="197" selection-end-column="43" />
+        <state vertical-scroll-proportion="-7.6666665">
+          <caret line="36" column="64" selection-start-line="36" selection-start-column="60" selection-end-line="36" selection-end-column="64" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/filters.js">
+    <entry file="file://$PROJECT_DIR$/client/views/layout/layout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.851852">
-          <caret line="148" column="0" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
+        <state vertical-scroll-proportion="-10.5">
+          <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#head#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/styles/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.843137">
+          <caret line="559" column="0" selection-start-line="559" selection-start-column="0" selection-end-line="559" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/views/home_private/home_private.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.3529415">
-          <caret line="372" column="0" selection-start-line="372" selection-start-column="0" selection-end-line="372" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="-7.4313726">
+          <caret line="340" column="69" selection-start-line="340" selection-start-column="48" selection-end-line="340" selection-end-column="69" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#5;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/home_private/home_private.js">
+    <entry file="file://$PROJECT_DIR$/client/views/layout/layout.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13215859">
-          <caret line="29" column="51" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
+        <state vertical-scroll-proportion="0.4840336">
+          <caret line="106" column="58" selection-start-line="106" selection-start-column="58" selection-end-line="106" selection-end-column="58" />
           <folding />
         </state>
       </provider>

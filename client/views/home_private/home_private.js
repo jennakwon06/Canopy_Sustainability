@@ -21,41 +21,6 @@ var findPDFs = function(company) {
     return PDFs.find({}).fetch();
 };
 
-var fillTable = function(results){
-    var table = $(".resultsTable");
-
-    //clear table
-    $('.resultsTable > tbody').empty();
-
-    for (var i = 0; i <= results.length - 1; i++) {
-        var tr = document.createElement('tr');
-
-        tr.className += "clickableRow";
-        tr.id += results[i].Name;
-
-        var td1 = document.createElement('td');
-        var td2 = document.createElement('td');
-        var td3 = document.createElement('td');
-        var td4 = document.createElement('td');
-        var td5 = document.createElement('td');
-
-        td1.appendChild(document.createTextNode(results[i].name));
-        td2.appendChild(document.createTextNode(results[i].industry));
-        td3.appendChild(document.createTextNode(results[i].sector));
-        td4.appendChild(document.createTextNode(results[i].country));
-        td5.appendChild(document.createTextNode(results[i].sustIndex));
-
-
-        tr.appendChild(td1);
-        tr.appendChild(td2);
-        tr.appendChild(td3);
-        tr.appendChild(td4);
-        tr.appendChild(td5);
-
-        //tr.data(results[i]);
-        table.append(tr);
-    }
-};
 
 Template.HomePrivate.events({
 //<!------ CONTROL BAR ---->
@@ -242,28 +207,6 @@ Template.HomePrivate.events({
         });
     },
 
-    'click #sortByCompanyButton': function(e) {
-        fillTable(globalFilter.top(Infinity).reverse())
-    },
-
-    'click #sortByIndustryButton': function(e) {
-        fillTable(globalFilter.top(Infinity).sort(function(a,b) {
-            return a.industry.localeCompare(b.industry);
-        }))
-
-    },
-
-    'click #sortBySectorButton': function(e) {
-        fillTable(globalFilter.top(Infinity).sort(function(a,b) {
-            return a.sector.localeCompare(b.sector);
-        }))
-    },
-
-    'click #sortByCountryButton': function(e) {
-        fillTable(globalFilter.top(Infinity).sort(function(a,b) {
-            return a.country.localeCompare(b.country);
-        }))
-    },
 
 
     'click #closeModalButton': function (e) {

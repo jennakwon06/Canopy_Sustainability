@@ -123,14 +123,10 @@
                             <div id="collapseEmissions" class="panel-collapse collapse in">
                                 <div class="panel-body">
                                     <row>
-                                        <div class="col-md-12">
-                                            <strong>GHG Scope 1 Emission (MT) </strong>
-                                        </div>
+                                        <strong>GHG Scope 1 Emission (MT) </strong>
                                     </row>
 
-                                    <row>
-                                        <div id="ghg1Chart"></div>
-                                    </row>
+                                    <div id="ghg1Chart"></div>
 
 
                                     <!--<div class="clearfix"></div>-->
@@ -139,20 +135,16 @@
                                     <!--style="visibility: hidden; position: absolute; height: 5px; right:0;">reset</a>-->
                                     <!--</div>-->
 
-                                    <div class="col-md-12">
+                                    <row>
                                         <strong>GHG Scope 2 Emission (MT) </strong>
-                                    </div>
-                                    <div id="ghg2Chart">
+                                    </row>
 
-                                        <!--<div class="clearfix"></div>-->
-                                        <!--<span class="reset" style="display: none;">-->
-                                        <!--<a class="reset" href="javascript:ghg2Chart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>-->
-                                        <!--</span>-->
-                                    </div>
+                                    <div id="ghg2Chart"></div>
 
-                                    <div class="col-md-12">
+                                    <row>
                                         <strong>GHG Scope 3 Emission (MT) </strong>
-                                    </div>
+                                    </row>
+
                                     <div id="ghg3Chart">
                                         <!--<div class="clearfix"></div>-->
                                         <!--<span class="reset" style="display: none;">-->
@@ -178,9 +170,10 @@
 
                                 <div class="panel-body">
 
-                                    <div class="col-md-12">
+                                    <row>
                                         <strong>Water Intensity Per Sales</strong>
-                                    </div>
+                                    </row>
+
                                     <div id="waterIntensityPerSalesChart">
 
                                         <!--<span class="reset" style="display: none;"></span>-->
@@ -188,9 +181,11 @@
                                         <!--<div class="clearfix"></div>-->
                                     </div>
 
-                                    <div class="col-md-12">
+
+                                    <row>
                                         <strong>Total Water Withdrawl(1000m<sup>3</sup>)</strong>
-                                    </div>
+                                    </row>
+
                                     <div id="totalWaterWithdrawlChart">
 
                                         <!--<span class="reset" style="display: none;"></span>-->
@@ -198,9 +193,10 @@
                                         <!--<div class="clearfix"></div>-->
                                     </div>
 
-                                    <div class="col-md-12">
+                                    <row>
                                         <strong>Total Water Discharged(1000m<sup>3</sup>)</strong>
-                                    </div>
+                                    </row>
+
                                     <div id="totalWaterDischargedChart">
 
                                         <!--<div class="clearfix"></div>-->
@@ -227,23 +223,25 @@
                             <div id="collapseWaste" class="panel-collapse collapse in">
                                 <div class="panel-body">
 
-                                    <div class="col-md-12">
+                                    <row>
                                         <strong>Waste Intensity Per Sales</strong>
-                                    </div>
+                                    </row>
+
                                     <div id="wasteIntensityPerSalesChart">
                                     </div>
 
-
-                                    <div class="col-md-12">
+                                    <row>
                                         <strong>Waste Generated Per Assets</strong>
-                                    </div>
+                                    </row>
+
                                     <div id="wasteGeneratedPerAssetsChart">
                                     </div>
 
 
-                                    <div class="col-md-12">
+                                    <row>
                                         <strong>Waste Sent to Landfill(1000m<sup>3</sup>)</strong>
-                                    </div>
+                                    </row>
+
                                     <div id="wasteSentToLandfillChart">
                                     </div>
 
@@ -265,9 +263,9 @@
                             <div id="collapseEnergy" class="panel-collapse collapse in">
                                 <div class="panel-body">
 
-                                    <div class="col-md-12">
+                                    <row>
                                         <strong>Energy Intensity Per Sales</strong>
-                                    </div>
+                                    </row>
                                     <div id="energyIntensityPerSalesChart"></div>
                                 </div>
 
@@ -288,9 +286,10 @@
 
                             <div id="collapseMisc" class="panel-collapse collapse in">
                                 <div class="panel-body" style="height:825px;">
-                                    <div class="col-md-12">
+                                    <row>
                                         <strong>Climate Change Policy Implemented</strong>
-                                    </div>
+                                    </row>
+
                                     <div id="ccPolicyImplRowChart"></div>
 
                                 </div>
@@ -298,8 +297,6 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
 
             <div id="controlBar">
@@ -446,7 +443,5 @@
 
             </div>
         </div>
-
-
     </div>
 </template>

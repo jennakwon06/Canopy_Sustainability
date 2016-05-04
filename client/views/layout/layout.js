@@ -39,23 +39,28 @@ var fillTable = function(results){
 
 		tr.className += "clickableRow";
 		tr.id += results[i].Name;
-		tr.setAttribute("data-toggle", "modal");
-		tr.setAttribute("data-target", "#myModal");
 
 		var td1 = document.createElement('td');
 		var td2 = document.createElement('td');
 		var td3 = document.createElement('td');
 		var td4 = document.createElement('td');
+		var td5 = document.createElement('td');
 
-		td1.appendChild(document.createTextNode(results[i].Name));
+		td1.appendChild(document.createTextNode(results[i].name));
 		td2.appendChild(document.createTextNode(results[i].industry));
 		td3.appendChild(document.createTextNode(results[i].sector));
 		td4.appendChild(document.createTextNode(results[i].country));
+		td5.appendChild(document.createTextNode(Math.round(results[i].sustIndex * 1000) / 1000));
+
+		console.log("what's the sustindex");
+		console.log(results[i].sustIndex);
 
 		tr.appendChild(td1);
 		tr.appendChild(td2);
 		tr.appendChild(td3);
 		tr.appendChild(td4);
+		tr.appendChild(td5);
+
 		//tr.data(results[i]);
 		table.append(tr);
 	}
@@ -91,9 +96,6 @@ Template.layout.events({
 		console.log(Results.find().count());
 		console.log(PDFs.find().count());
 
-		$('.initView').attr("style", "display: none");
-		$('.resultListView').attr("style", "display: block");
-
 		$('#saveResultButton').removeClass("disabled");
 		$('#resultListViewButton').removeClass("disabled");
 		$('#resultMapViewButton').removeClass("disabled");
@@ -101,12 +103,45 @@ Template.layout.events({
 
 		e.preventDefault();
 
+		$('.initView').attr("style", "display: none");
+		$('.resultListView').attr("style", "display: block");
+
+
 		fillTable(globalFilter.top(Infinity).reverse());
 		drawBubblesOnMap(globalFilter.top(Infinity));
 		drawScatterPlot(globalFilter.top(Infinity));
 
 		Filters.insert({
 		});
+	},
+
+	'click #sortByCompanyButton': function(e) {
+		fillTable(globalFilter.top(Infinity).reverse())
+	},
+
+	'click #sortByIndustryButton': function(e) {
+		fillTable(globalFilter.top(Infinity).sort(function(a,b) {
+			return a.industry.localeCompare(b.industry);
+		}))
+
+	},
+
+	'click #sortBySectorButton': function(e) {
+		fillTable(globalFilter.top(Infinity).sort(function(a,b) {
+			return a.sector.localeCompare(b.sector);
+		}))
+	},
+
+	'click #sortByCountryButton': function(e) {
+		fillTable(globalFilter.top(Infinity).sort(function(a,b) {
+			return a.country.localeCompare(b.country);
+		}))
+	},
+
+	'click #sortByScoreButton': function(e) {
+		fillTable(globalFilter.top(Infinity).sort(function(a,b) {
+			return a.sustIndex - b.sustIndex;
+		}))
 	},
 
 	'click #myModalLabel':function (e) {
