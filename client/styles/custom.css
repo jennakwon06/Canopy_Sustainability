@@ -8,7 +8,7 @@ html, body {
 }
 
 .dc-chart .brush rect.extent {
-    fill: #3C8D2F;
+    fill: #599513;
 }
 .filterMenuContainer {
     height: 60px;
@@ -26,7 +26,7 @@ html, body {
 }
 
 .controlIcons{
-    color:#3C8D2F;
+    color:#599513;
 }
 
 .navbar-brand {
@@ -313,11 +313,11 @@ svg {
 }
 
 .resultsTable tbody tr.highlight td {
-    background-color: green;
+    background-color: #3C8D2F;
 }
 
 .clickableRow:hover {
-    background-color: green;
+    background-color: #3C8D2F;
 }
 
 
@@ -464,12 +464,15 @@ svg {
     font-size: 14px;
 }
 
+.modal-header {
+    background-color: #3C8D2F;
+}
+
 
 /*SLIDERS*/
 
 #myRange{
-    background: #00b3ee;
-    padding:10px;
+    background: #3C8D2F;
 }
 
 input[type=range]::-webkit-slider-runnable-track {
@@ -477,13 +480,13 @@ input[type=range]::-webkit-slider-runnable-track {
     height: 5px;
     cursor: pointer;
     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-    background: #3071a9;
+    background: #3C8D2F;
     border-radius: 1.3px;
     border: 0.2px solid #010101;
 }
 
 input[type=range]:focus::-webkit-slider-runnable-track {
-    background: #367ebd;
+    background: #3C8D2F;
 }
 
 input[type=range]::-moz-range-track {
@@ -491,7 +494,7 @@ input[type=range]::-moz-range-track {
     height: 5px;
     cursor: pointer;
     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-    background: #3071a9;
+    background: #3C8D2F;
     border-radius: 2.5px;
     border: 0.2px solid #010101;
 }
@@ -506,22 +509,22 @@ input[type=range]::-ms-track {
     color: transparent;
 }
 input[type=range]::-ms-fill-lower {
-    background: #2a6495;
+    background: #3C8D2F;
     border: 0.2px solid #010101;
     border-radius: 5px;
     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
 }
 input[type=range]:focus::-ms-fill-lower {
-    background: #3071a9;
+    background: #3C8D2F;
 }
 input[type=range]::-ms-fill-upper {
-    background: #3071a9;
+    background: #3C8D2F;
     border: 0.2px solid #010101;
     border-radius: 5px;
     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
 }
 input[type=range]:focus::-ms-fill-upper {
-    background: #367ebd;
+    background: #3C8D2F;
 }
 
 /* Special styling for WebKit/Blink */

@@ -183,28 +183,28 @@ Template.HomePrivate.events({
         $(e.currentTarget).addClass('highlight');
         $(e.currentTarget).siblings().removeClass('highlight');
 
-        d3.csv("/data/envDataOnSP500.csv", function(error, data) {
-            for (var i = 0; i < data.length; i++) {
-                if (data[i].Name == name) {
-                    d3.select(".list-group")
-                        .append("li")
-                        .attr("class", "modal-list-item list-group-item")
-                        .attr("value", 10)
-                        .attr("id", 10)
-                        .text(data[i].GR_name);
-
-
-                    // TOOD TRY USING SHELLJS AND FS
-                    //var path = "/reports/" + data[i].GR_name;
-                    //var files = fs.readdirSync('/report/');
-                    //console.log(files);
-                    // TODO SOLUTION 2) USE MONGO DB
-                    //console.log(findPDFs(data[i].GR_name));
-
-                    break;
-                }
-            }
-        });
+        //d3.csv("/data/envDataOnSP500.csv", function(error, data) {
+        //    for (var i = 0; i < data.length; i++) {
+        //        if (data[i].Name == name) {
+        //            d3.select(".list-group")
+        //                .append("li")
+        //                .attr("class", "modal-list-item list-group-item")
+        //                .attr("value", 10)
+        //                .attr("id", 10)
+        //                .text(data[i].GR_name);
+        //
+        //
+        //            // TOOD TRY USING SHELLJS AND FS
+        //            //var path = "/reports/" + data[i].GR_name;
+        //            //var files = fs.readdirSync('/report/');
+        //            //console.log(files);
+        //            // TODO SOLUTION 2) USE MONGO DB
+        //            //console.log(findPDFs(data[i].GR_name));
+        //
+        //            break;
+        //        }
+        //    }
+        //});
     },
 
 

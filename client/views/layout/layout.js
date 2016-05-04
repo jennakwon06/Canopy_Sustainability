@@ -52,8 +52,8 @@ var fillTable = function(results){
 		td4.appendChild(document.createTextNode(results[i].country));
 		td5.appendChild(document.createTextNode(Math.round(results[i].sustIndex * 1000) / 1000));
 
-		console.log("what's the sustindex");
-		console.log(results[i].sustIndex);
+		//console.log("what's the sustindex");
+		//console.log(results[i].sustIndex);
 
 		tr.appendChild(td1);
 		tr.appendChild(td2);
@@ -106,6 +106,7 @@ Template.layout.events({
 		$('.initView').attr("style", "display: none");
 		$('.resultListView').attr("style", "display: block");
 
+		calculateIndex();
 
 		fillTable(globalFilter.top(Infinity).reverse());
 		drawBubblesOnMap(globalFilter.top(Infinity));

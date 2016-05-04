@@ -38,6 +38,8 @@ var HALF_CHART_HEIGHT = 100;
 var globalFilter;
 var sp500;
 
+var globalData;
+
 /*
  * Check if csv cell is empty
  */
@@ -45,6 +47,19 @@ function isBlank(str) {
     return (!str || /^\s*$/.test(str));
 }
 
+function calculateIndex() {
+    var ghg1Extent = d3.extent(globalData, function (d) {return +d.GHG1;});
+
+    globalData.forEach(function (d) {
+
+        console.log(weight);
+
+        var weight = document.getElementById("ghg1weight").value;
+        d.sustIndex = (d.GHG1 / ghg1Extent[1]) * 100 * (weight / 100);
+
+        console.log(d.sustIndex);
+    });
+}
 
 // ### Anchor Div for Charts
 /*
@@ -77,6 +92,8 @@ function isBlank(str) {
  */
 
 d3.csv('/data/master.csv', function (data) {
+
+    globalData = data;
 
     var numberFormat = d3.format('.2f');
     // Ticker,Name,Weight,Shares,Price,Climate Chg Pol:Y,Equal Opp Pol:Y,Water Policy,Human Rights Pol:Y,Energy Effic Pol:Y,
@@ -146,18 +163,6 @@ d3.csv('/data/master.csv', function (data) {
 
 
     });
-
-    //calculateIndex();
-
-    //// MINMAX
-    //function calculateIndex() {
-    //    var ghg1Extent = d3.extent(data, function (d) {return +d.GHG1;});
-    //
-    //    data.forEach(function (d) {
-    //        d.sustIndex = (d.GHG1 / ghg1Extent[1]) * 100;
-    //        console.log(d.sustIndex);
-    //    });
-    //}
 
     //### Create Crossfilter Dimensions and Groups. NOTE: BE CAREFUL OF HOW MANY DIMENSIONS YOU INSTANTIATE
     sp500 = crossfilter(data);

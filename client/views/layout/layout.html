@@ -13,15 +13,22 @@
                 <div class="modal-body">
                     <ul class="modal-list list-group">
 
-                        <input type="range" id="myRange" min="0" max="100" style="width: 500px; margin:0px"
-                               onchange="myFunction()">
+                        <div class="col-md-2">
+                            <p>GHG1: </p>
+                        </div>
 
-                        <div >
+                        <div class="col-md-6">
+                            <input type="range" id="ghg1weight" min="0" max="100" style="width: 200px; margin:0px"
+                                   onchange="GHG1Weight()">
+                        </div>
+
+                        <div class="col-md-4">
                             <p id="sliderCount"></p>
                         </div>
+
                         <script>
-                            function myFunction() {
-                                var x = "Weight " + document.getElementById("myRange").value;
+                            function GHG1Weight() {
+                                var x = "Weight " + document.getElementById("ghg1weight").value;
                                 document.getElementById("sliderCount").innerHTML = x;
                             }
                         </script>

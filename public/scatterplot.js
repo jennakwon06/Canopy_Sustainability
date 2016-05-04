@@ -169,6 +169,10 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
                 return color(cValue(d));
             })
             .on("mouseover", function (d) {
+
+                console.log("sustindex from scatterplot");
+                console.log(d.sustIndex);
+
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
