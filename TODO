@@ -8,9 +8,14 @@
 
 UI
 1. Filters - Make each panel start off as expanded, then click on nav bar on the top to zoom into that panel
+    - hard code scroll to points
+    - variable weight setter
+
 2. Font size - consistency
+
 3. get rid of y axis on filters (getting rid of the ones on filter may also get rid of the ones on scatterplot
 so make sure to ID the scatter plot ones
+
 4. Buttons on "Apply" and "Reset"
 5. Index on variables -> sustainability index. Coloring. Put on table
 6. Table supports having pdfs / logos / links to company websites
@@ -24,11 +29,9 @@ so make sure to ID the scatter plot ones
 
 April 26 - May 6th
 - UI clean up
-    - Filter panel expansion
     - Consistent font sizes
-    - Buttons on "Apply" and "Reset"
-    - Get rid of y axis on filter charts & fix coloring to dark green
     - Light grey color on the tables
+    - auto detection on points
     - No more modals
     - Tooltip on map bubbles
     - Add units to each graph

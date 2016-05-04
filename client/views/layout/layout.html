@@ -3,6 +3,24 @@
 	<title>
 		Canopy
 	</title>
+
+    <div class="modal fade" id="modalVarWeights" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Set Variable Weights</h4>
+                </div>
+                <div class="modal-body">
+                    <ul class="modal-list list-group">
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="closeModalButton" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </head>
 <template name="layout">
 	{{#if currentUser}}
@@ -112,13 +130,22 @@
 
 <template name="PrivateLayoutLeftMenu">
 
-    <!--<div class='companiesCount'>-->
-            <!--<span class='filter-count'></span>-->
-            <!--&lt;!&ndash;selected out of <span class='total-count'></span> records.&ndash;&gt;-->
-        <!--</div>-->
-    <!--<button type="button" class="btn btn-secondary filterTexts" id="applyFilterButton">Apply</button>-->
-    <!--<button type="button" class="btn btn-secondary filterTexts" id="resetAllFiltersButton">Reset</button>-->
 
+    <ul id="menu-items" class="nav navbar-nav">
+
+        <button type="button" class="btn btn-secondary filterTexts" id="applyFilterButton">Apply</button>
+        <button type="button" class="btn btn-secondary filterTexts" id="resetAllFiltersButton">Reset</button>
+        <button type="button" class="btn btn-secondary filterTexts" id="resetAllFiltersButton"
+                data-toggle="modal" data-target="#modalVarWeights">Set Variable Weights</button>
+
+    </ul>
+
+    <ul class="nav navbar-nav">
+        <div class='companiesCount'>
+            <span class='filter-count'></span>
+            <!--selected out of <span class='total-count'></span> records.-->
+        </div>
+    </ul>
 
 
     <!--<span class="glyphicon glyphicon-circle-arrow-right myGlyphicon" title="Apply filters" id="applyFilterButton"></span>-->
@@ -145,7 +172,7 @@
 </template>
 
 <template name="PrivateLayoutRightMenu">
-	<ul id="menu-items" class="nav navbar-nav navbar-right">
+	<ul class="nav navbar-nav navbar-right">
 		<li id="menu-item-dropdown" class="dropdown ">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				<span class="item-title">

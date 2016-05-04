@@ -23,6 +23,42 @@ Template.layout.rendered = function() {
 		}
 	}); 
 	/*TEMPLATE_RENDERED_CODE*/
+	$.getScript("/filters.js");
+	$.getScript("/worldmap.js");
+	$.getScript("/scatterplot.js");
+};
+
+var fillTable = function(results){
+	var table = $(".resultsTable");
+
+	//clear table
+	$('.resultsTable > tbody').empty();
+
+	for (var i = 0; i <= results.length - 1; i++) {
+		var tr = document.createElement('tr');
+
+		tr.className += "clickableRow";
+		tr.id += results[i].Name;
+		tr.setAttribute("data-toggle", "modal");
+		tr.setAttribute("data-target", "#myModal");
+
+		var td1 = document.createElement('td');
+		var td2 = document.createElement('td');
+		var td3 = document.createElement('td');
+		var td4 = document.createElement('td');
+
+		td1.appendChild(document.createTextNode(results[i].Name));
+		td2.appendChild(document.createTextNode(results[i].industry));
+		td3.appendChild(document.createTextNode(results[i].sector));
+		td4.appendChild(document.createTextNode(results[i].country));
+
+		tr.appendChild(td1);
+		tr.appendChild(td2);
+		tr.appendChild(td3);
+		tr.appendChild(td4);
+		//tr.data(results[i]);
+		table.append(tr);
+	}
 };
 
 Template.layout.events({ 
@@ -41,7 +77,41 @@ Template.layout.events({
                 $('.navbar-collapse').collapse('hide');
             }
         }
-    }
+    },
+
+	'click #resetAllFiltersButton': function(e) {
+		dc.redrawAll();
+		dc.filterAll();
+		//$('.companiesCount').html(globalFilter.top(Infinity).length);
+	},
+
+	'click #applyFilterButton': function (e) {
+		console.log('checking database connection');
+		console.log(Filters.find().count());
+		console.log(Results.find().count());
+		console.log(PDFs.find().count());
+
+		$('.initView').attr("style", "display: none");
+		$('.resultListView').attr("style", "display: block");
+
+		$('#saveResultButton').removeClass("disabled");
+		$('#resultListViewButton').removeClass("disabled");
+		$('#resultMapViewButton').removeClass("disabled");
+		$('#resultScatterPlotViewButton').removeClass("disabled");
+
+		e.preventDefault();
+
+		fillTable(globalFilter.top(Infinity).reverse());
+		drawBubblesOnMap(globalFilter.top(Infinity));
+		drawScatterPlot(globalFilter.top(Infinity));
+
+		Filters.insert({
+		});
+	},
+
+	'click #myModalLabel':function (e) {
+
+	}
 });
 
 

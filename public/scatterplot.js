@@ -121,7 +121,7 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
         .text(xAxisVal);
 
     svg.append("g")
-        .classed("y axis", true)
+        .classed("y axisScatterPlot", true)
         .call(yAxis)
         .append("text")
         .classed("label", true)

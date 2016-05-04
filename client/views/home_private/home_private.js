@@ -32,23 +32,26 @@ var fillTable = function(results){
 
         tr.className += "clickableRow";
         tr.id += results[i].Name;
-        tr.setAttribute("data-toggle", "modal");
-        tr.setAttribute("data-target", "#myModal");
 
         var td1 = document.createElement('td');
         var td2 = document.createElement('td');
         var td3 = document.createElement('td');
         var td4 = document.createElement('td');
+        var td5 = document.createElement('td');
 
-        td1.appendChild(document.createTextNode(results[i].Name));
+        td1.appendChild(document.createTextNode(results[i].name));
         td2.appendChild(document.createTextNode(results[i].industry));
         td3.appendChild(document.createTextNode(results[i].sector));
         td4.appendChild(document.createTextNode(results[i].country));
+        td5.appendChild(document.createTextNode(results[i].sustIndex));
+
 
         tr.appendChild(td1);
         tr.appendChild(td2);
         tr.appendChild(td3);
         tr.appendChild(td4);
+        tr.appendChild(td5);
+
         //tr.data(results[i]);
         table.append(tr);
     }
@@ -129,7 +132,7 @@ Template.HomePrivate.events({
         console.log($(".panelGeneral").offset().top);
 
         $('#filterBar').animate({
-            scrollTop: $(".panelGeneral").offset().top - 120
+            scrollTop: 0
         }, 500);
     },
     
@@ -137,7 +140,7 @@ Template.HomePrivate.events({
         console.log($(".panelEmissions").offset().top);
 
         $('#filterBar').animate({
-            scrollTop: $(".panelEmissions").offset().top - 120
+            scrollTop: 516 - 120
         }, 500);
     },
     
@@ -146,7 +149,7 @@ Template.HomePrivate.events({
         console.log($(".panelWater").offset().top);
 
         $('#filterBar').animate({
-            scrollTop: $(".panelWater").offset().top - 120
+            scrollTop: 969 - 120
         }, 500);
     },
 
@@ -154,7 +157,7 @@ Template.HomePrivate.events({
         console.log($(".panelWaste").offset().top);
 
         $('#filterBar').animate({
-            scrollTop: $(".panelWaste").offset().top - 120
+            scrollTop: 1422 - 120
         }, 500);
     },
 
@@ -162,7 +165,7 @@ Template.HomePrivate.events({
         console.log($(".panelEnergy").offset().top);
 
         $('#filterBar').animate({
-            scrollTop: $(".panelEnergy").offset().top - 120
+            scrollTop: 1875 - 120
         }, 500);
     },
 
@@ -170,7 +173,7 @@ Template.HomePrivate.events({
         console.log($(".panelMisc").offset().top);
 
         $('#filterBar').animate({
-            scrollTop: $(".panelMisc").offset().top - 120
+            scrollTop: 2076 - 120
         }, 500);
     },
 

@@ -122,10 +122,16 @@
 
                             <div id="collapseEmissions" class="panel-collapse collapse in">
                                 <div class="panel-body">
-                                    <div class="col-md-12">
-                                        <strong>GHG Scope 1 Emission</strong>
-                                    </div>
-                                    <div id="ghg1Chart"></div>
+                                    <row>
+                                        <div class="col-md-12">
+                                            <strong>GHG Scope 1 Emission (MT) </strong>
+                                        </div>
+                                    </row>
+
+                                    <row>
+                                        <div id="ghg1Chart"></div>
+                                    </row>
+
 
                                     <!--<div class="clearfix"></div>-->
                                     <!--<div class="reset" style="display: none;">-->
@@ -134,7 +140,7 @@
                                     <!--</div>-->
 
                                     <div class="col-md-12">
-                                        <strong>GHG Scope 2 Emission</strong>
+                                        <strong>GHG Scope 2 Emission (MT) </strong>
                                     </div>
                                     <div id="ghg2Chart">
 
@@ -145,7 +151,7 @@
                                     </div>
 
                                     <div class="col-md-12">
-                                        <strong>GHG Scope 3 Emission</strong>
+                                        <strong>GHG Scope 3 Emission (MT) </strong>
                                     </div>
                                     <div id="ghg3Chart">
                                         <!--<div class="clearfix"></div>-->
@@ -183,7 +189,7 @@
                                     </div>
 
                                     <div class="col-md-12">
-                                        <strong>Total Water Withdrawl</strong>
+                                        <strong>Total Water Withdrawl(1000m<sup>3</sup>)</strong>
                                     </div>
                                     <div id="totalWaterWithdrawlChart">
 
@@ -193,7 +199,7 @@
                                     </div>
 
                                     <div class="col-md-12">
-                                        <strong>Total Water Discharged</strong>
+                                        <strong>Total Water Discharged(1000m<sup>3</sup>)</strong>
                                     </div>
                                     <div id="totalWaterDischargedChart">
 
@@ -236,7 +242,7 @@
 
 
                                     <div class="col-md-12">
-                                        <strong>Waste Sent to Landfill</strong>
+                                        <strong>Waste Sent to Landfill(1000m<sup>3</sup>)</strong>
                                     </div>
                                     <div id="wasteSentToLandfillChart">
                                     </div>
@@ -281,7 +287,7 @@
                             </div>
 
                             <div id="collapseMisc" class="panel-collapse collapse in">
-                                <div class="panel-body">
+                                <div class="panel-body" style="height:825px;">
                                     <div class="col-md-12">
                                         <strong>Climate Change Policy Implemented</strong>
                                     </div>
@@ -309,13 +315,13 @@
                     <!--<span class="glyphicon glyphicon-check myGlyphicon" title="Apply filters"></span>-->
                            <hr />
 
-                    <span class="glyphicon glyphicon-save myGlyphicon disabled" title="Save Results" id="saveResultButton"></span>
+                    <!--<span class="glyphicon glyphicon-save myGlyphicon disabled" title="Save Results" id="saveResultButton"></span>-->
                     <span class="glyphicon glyphicon-th-list myGlyphicon disabled" title="Show List View" id="resultListViewButton" ></span>
                     <span class="glyphicon glyphicon-map-marker myGlyphicon disabled" title="Show Map View" id="resultMapViewButton"></span>
                     <!--http://google.github.io/material-design-icons/-->
 
                     <span class="glyphicon md-dark md-36 myGlyphicon disabled" title="Show Scatter Plot" id="resultScatterPlotViewButton">
-                        <svg fill="white" height="36" viewBox="0 0 24 24" width="36" xmlns="http://www.w3.org/2000/svg">
+                        <svg fill="#3C8D2F" height="36" viewBox="0 0 24 24" width="36" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0 0h24v24H0z" fill="none"/>
                             <circle cx="7.2" cy="14.4" r="3.2"/>
                             <circle cx="14.8" cy="18" r="2"/>
@@ -350,6 +356,9 @@
                                 </th>
                                 <th>Country
                                     <i class="indicator glyphicon glyphicon-chevron-down  pull-right" id="sortByCountryButton"></i>
+                                </th>
+                                <th>Sustainability Score
+                                    <i class="indicator glyphicon glyphicon-chevron-down  pull-right" id="sortByScoreButton"></i>
                                 </th>
                             </tr>
                             </thead>
@@ -406,10 +415,8 @@
 
                 <div class="col-md-12">
                     <div class="resultMapView" style="display: none">
-                        <div class="col-md-12">
-                            <div id="worldMap">
-                        </div>
-                        </div>
+                        <div id="worldMap"></div>
+                        <div class="tooltip-box"></div>
                     </div>
                 </div>
 
@@ -418,22 +425,6 @@
 
 
                 <!-- Modal -->
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="myModalLabel">View company information</h4>
-                            </div>
-                            <div class="modal-body">
-                                <ul class="modal-list list-group">
-                                </ul>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" id="closeModalButton" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <!--<div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">-->
                     <!--<div class="modal-dialog" role="document">-->

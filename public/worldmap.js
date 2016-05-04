@@ -14,10 +14,12 @@ drawMap();
 //http://www.tnoda.com/blog/2013-12-07
 function drawMap() {
 
-    var width = $("#resultBar").width() - 20,
-        height = $("#resultBar").height() - 20;
+    var width = $("#resultBar").width(),
+        height = $("#resultBar").height();
 
-    projection = d3.geo.mercator();
+    projection = d3.geo.mercator()
+        .translate([width / 2, height / 2])
+        .scale((width - 1) / 2 / Math.PI);
 
     var zoom = d3.behavior.zoom()
         .scaleExtent([1, 8])
@@ -30,7 +32,7 @@ function drawMap() {
         .attr("class", "mapSvg")
         .attr("width", width)
         .attr("height", height)
-        .style("margin-top", 20);
+        .style("margin-top", 0);
 
     var g = svg.append("g");
 
@@ -84,6 +86,7 @@ function drawBubblesOnMap(results) {
 
     for (var i = 0; i < results.length; i++) {
         var temp = {
+            "name": "",
             "address": "",
             "count": 0,
             "latitude": 0,
@@ -91,6 +94,7 @@ function drawBubblesOnMap(results) {
             "companies": []
         };
 
+        temp.name = results[i].name;
         temp.address = results[i].address;
         temp.latitude = results[i].latitude;
         temp.longitude = results[i].longitude;
@@ -98,6 +102,8 @@ function drawBubblesOnMap(results) {
         temp.companies.push(results[i]);
         arrayOfLocations.push(temp);
     }
+
+    console.log(arrayOfLocations);
 
     arrayOfLocations.sort(function(a,b) {
         return (a.address > b.address) ? 1 : ((b.address > a.address) ? -1 : 0);} ); //SORT BY ADDRESS
@@ -153,13 +159,20 @@ function drawBubblesOnMap(results) {
         .style("fill", function(d) {
             return color(cValue(d));})
         .on("click", function(d) {
-            // clear prev resuits
 
-            d3.select(".list-group")
-                .append("li")
-                .attr("class", "modal-list-item list-group-item")
-                .attr("value", 10)
-                .attr("id", 10);
+            d3.selectAll(".tooltip-box p").remove();
+
+            d3.select(".tooltip-box")
+                .append("p")
+                .attr("class", "address")
+                .html(d.address);
+
+            for (var i = 0; i < d.companies.length; i++) {
+                d3.select(".tooltip-box")
+                    .append("p")
+                    .html(d.companies[i].name);
+            }
+
         });
 }
 
