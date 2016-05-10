@@ -26,7 +26,6 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
     //clear previous
     d3.select(".scatterSVG").remove();
 
-
     var margin = { top: 20, right: 50, bottom: 100, left: 60 },
         outerWidth = $("#resultBar").width(),
         outerHeight = $("#resultBar").height(),
@@ -39,11 +38,18 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
     var y = d3.scale.linear()
         .range([height, 0]).nice();
 
-    var xMax = d3.max(results, function(d) { return d[xAxisVal]; }) * 1.05,
-        xMin = d3.min(results, function(d) { return d[xAxisVal]; }),
+    //var xMax = d3.max(results, function(d) { return d[xAxisVal]; }) * 1.05,
+    //    xMin = d3.min(results, function(d) { return d[xAxisVal]; }),
+    //    xMin = xMin > 0 ? 0 : xMin,
+    //    yMax = d3.max(results, function(d) { return d[yAxisVal]; }) * 1.05,
+    //    yMin = d3.min(results, function(d) { return d[yAxisVal]; }),
+    //    yMin = yMin > 0 ? 0 : yMin;
+
+    var xMax = d3.extent(globalData, function (d) {return +d[xAxisVal];})[1] * 1.05,
+        xMin = d3.extent(globalData, function (d) {return +d[yAxisVal];})[0],
         xMin = xMin > 0 ? 0 : xMin,
-        yMax = d3.max(results, function(d) { return d[yAxisVal]; }) * 1.05,
-        yMin = d3.min(results, function(d) { return d[yAxisVal]; }),
+        yMax = d3.extent(globalData, function (d) {return +d[yAxisVal];})[1] * 1.05,
+        yMin = d3.extent(globalData, function (d) {return +d[yAxisVal];})[0],
         yMin = yMin > 0 ? 0 : yMin;
 
     x.domain([xMin, xMax]);
@@ -51,12 +57,26 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
 
 
     // min maxes
-
     console.log("min maxes");
     console.log(xMin);
     console.log(xMax);
     console.log(yMin);
     console.log(yMax);
+
+    var xAxisMax = d3.extent(globalData, function (d) {return +d[xAxisVal];})[1];
+    var yAxisMax = d3.extent(globalData, function (d) {return +d[yAxisVal];})[1];
+
+    console.log("extent minmaxes");
+    console.log(xAxisMax);
+    console.log(yAxisMax);
+
+    console.log("extent minmaxes with result");
+    var resultMaxX = d3.extent(results, function (d) {return +d[xAxisVal];})[1];
+    var resultMaxY = d3.extent(results, function (d) {return +d[yAxisVal];})[1];
+
+    console.log("extent minmaxes");
+    console.log(resultMaxX);
+    console.log(resultMaxY);
 
     var xAxis = d3.svg.axis()
         .scale(x)
@@ -64,13 +84,11 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
         .tickSize(-height)
         .ticks(8, ",.1s");
 
-
     var yAxis = d3.svg.axis()
         .scale(y)
         .orient("left")
         .tickSize(-width)
         .ticks(8, ",.1s");
-
 
     var color = d3.scale.category10();
 
@@ -161,13 +179,6 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
 
     if (xAxisVal !== undefined && yAxisVal !== undefined
         && !isBlank(xAxisVal) && !isBlank(yAxisVal)) {
-
-        var xAxisMax = d3.extent(globalData, function (d) {return +d[xAxisVal];})[1];
-        var yAxisMax = d3.extent(globalData, function (d) {return +d[yAxisVal];})[1];
-
-        console.log(xAxisMax);
-
-        console.log(yAxisMax);
 
 
         objects.selectAll(".scatterPlotCircle")

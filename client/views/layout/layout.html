@@ -13,33 +13,85 @@
                 <div class="modal-body">
                     <ul class="modal-list list-group">
 
-                        <div class="col-md-2"><p>GHG1: </p></div>
-                        <div class="col-md-6"><input type="range" id="ghg1weight" min="0" max="100" style="width: 200px; margin:0px" onchange="GHG1Weight()"></div>
-                        <div class="col-md-4"><p id="ghg1Count"></p></div>
+                        <div class="col-md-12">
+                            <div class="col-md-2"><p>GHG1: </p></div>
+                            <div class="col-md-6" style="height: 15px;"><input type="range" class="attrScale" id="ghg1Weight" min="0" max="100" style="width: 200px;" onchange="ghg1Count()"></div>
+                            <div class="col-md-4"><p id="ghg1Count"></p></div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-2"><p>GHG2: </p></div>
+                            <div class="col-md-6" style="height: 15px;"><input type="range" class="attrScale" id="ghg2Weight" min="0" max="100" style="width: 200px;" onchange="ghg2Count()"></div>
+                            <div class="col-md-4"><p id="ghg2Count"></p></div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-2"><p>GHG3: </p></div>
+                            <div class="col-md-6" style="height: 15px;"><input type="range" class="attrScale" id="ghg3Weight" min="0" max="100" style="width: 200px;" onchange="ghg3Count()"></div>
+                            <div class="col-md-4"><p id="ghg3Count"></p></div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-2"><p>Total Water Use: </p></div>
+                            <div class="col-md-6" style="height: 15px;"><input type="range" class="attrScale" id="totalWaterUseWeight" min="0" max="100" style="width: 200px;" onchange="totalWaterUseCount()"></div>
+                            <div class="col-md-4"><p id="totalWaterUseCount"></p></div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-2"><p>Total Water Withdrawl: </p></div>
+                            <div class="col-md-6" style="height: 15px;"><input type="range" class="attrScale" id="totalWaterWithdrawlWeight" min="0" max="100" style="width: 200px;" onchange="totalWaterWithdrawlCount()"></div>
+                            <div class="col-md-4"><p id="totalWaterWithdrawlCount"></p></div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-2"><p>Total Water Discharged: </p></div>
+                            <div class="col-md-6" style="height: 15px;"><input type="range" class="attrScale" id="totalWaterDischargedWeight" min="0" max="100" style="width: 200px;" onchange="totalWaterDischargedCount()"></div>
+                            <div class="col-md-4"><p id="totalWaterDischargedCount"></p></div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-2"><p>Total Waste: </p></div>
+                            <div class="col-md-6" style="height: 15px;"><input type="range" class="attrScale" id="totalWasteWeight" min="0" max="100" style="width: 200px;" onchange="totalWasteCount()"></div>
+                            <div class="col-md-4"><p id="totalWasteCount"></p></div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-2"><p>Waste Recycled: </p></div>
+                            <div class="col-md-6" style="height: 15px;"><input type="range" class="attrScale" id="totalWasteRecycledWeight" min="0" max="100" style="width: 200px;" onchange="totalWasteRecycledCount()"></div>
+                            <div class="col-md-4"><p id="totalWasteRecycledCount"></p></div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-2"><p>Waste Sent to Landfill: </p></div>
+                            <div class="col-md-6" style="height: 15px;"><input type="range" class="attrScale" id="wasteSentToLandfillWeight" min="0" max="100" style="width: 200px;" onchange="wasteSentToLandfillCount()"></div>
+                            <div class="col-md-4"><p id="wasteSentToLandfillCount"></p></div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-2"><p>Total Energy Consumption: </p></div>
+                            <div class="col-md-6" style="height: 15px;"><input type="range" class="attrScale" id="energyConsumptionWeight" min="0" max="100" style="width: 200px;" onchange="energyConsumptionCount()"></div>
+                            <div class="col-md-4"><p id="energyConsumptionCount"></p></div>
+                        </div>
 
-                        <div class="col-md-2"><p>GHG2: </p></div>
-                        <div class="col-md-6"><input type="range" id="ghg2weight" min="0" max="100" style="width: 200px; margin:0px" onchange="GHG2Weight()"></div>
-                        <div class="col-md-4"><p id="ghg2Count"></p></div>
-
-                        <div class="col-md-2"><p>GHG2: </p></div>
-                        <div class="col-md-6"><input type="range" id="ghg2weight" min="0" max="100" style="width: 200px; margin:0px" onchange="GHG2Weight()"></div>
-                        <div class="col-md-4"><p id="ghg2Count"></p></div>
 
                         <script>
-                            function GHG1Weight() {
-                                var x = "Weight " + document.getElementById("ghg1weight").value;
+                            function ghg1Count() {
+                                var x = "Weight " + document.getElementById("ghg1Weight").value;
                                 document.getElementById("ghg1Count").innerHTML = x;
                             }
-
-                            function GHG2Weight() {
-                                var x = "Weight " + document.getElementById("ghg2weight").value;
+                            function ghg2Count() {
+                                var x = "Weight " + document.getElementById("ghg2Weight").value;
                                 document.getElementById("ghg2Count").innerHTML = x;
                             }
-
-                            function GHG3Weight() {
-                                var x = "Weight " + document.getElementById("ghg3weight").value;
+                            function ghg3Count() {
+                                var x = "Weight " + document.getElementById("ghg3Weight").value;
                                 document.getElementById("ghg3Count").innerHTML = x;
                             }
+
+//                            function GHG1Weight() {
+//                                var x = "Weight " + document.getElementById("ghg1Weight").value;
+//                                document.getElementById("ghg1Count").innerHTML = x;
+//                            }
+//                            function GHG2Weight() {
+//                                var x = "Weight " + document.getElementById("ghg2weight").value;
+//                                document.getElementById("ghg2Count").innerHTML = x;
+//                            }
+//                            function GHG3Weight() {
+//                                var x = "Weight " + document.getElementById("ghg3weight").value;
+//                                document.getElementById("ghg3Count").innerHTML = x;
+//                            }
+
                         </script>
 
                     </ul>

@@ -20,11 +20,11 @@ var totalWaterDischargedChart = dc.barChart('#totalWaterDischargedChart');
 
 // WASTE
 var totalWasteChart = dc.barChart("#totalWasteChart");
-var wasteGeneratedPerAssetsChart = dc.barChart("#wasteGeneratedPerAssetsChart");
+var wasteRecycledChart = dc.barChart("#wasteRecycledChart");
 var wasteSentToLandfillChart = dc.barChart("#wasteSentToLandfillChart");
 
 // ENERGY
-var energyIntensityPerSalesChart = dc.barChart("#energyIntensityPerSalesChart");
+var totalEnergyConsumptionChart = dc.barChart("#totalEnergyConsumptionChart");
 
 
 //var ccPolicyImplRowChart;
@@ -111,66 +111,45 @@ d3.csv('/data/master.csv', function (data) {
 
     var numberFormat = d3.format('.2f');
 
-    //Ticker,Ticker,Name,address,Price,Climate Chg Pol:Y,Equal Opp Pol:Y,Water Policy,Human Rights Pol:Y
-    //Energy Effic Pol:Y,Bus Ethics Pol:Y,Biodiv Pol:Y,Registered State Location,Product/Geographic Revenue
-    //Revenue T12M,ISIN,ICB Industry Name,ICB Sector Name,Registered Country Location,Total Water Withdrawal
-    // Tot Wtr Dschgd:Y,Wste Sent to Ldflls:Y,GHG Scope 3:Y,GHG Scope 2:Y,GHG Scope 1:Y,latitude,longitude
-    // Tot Wtr Use:Y,Waste Recycl:Y,Total Waste:Y,Energy Consump:Y,Wste Sent to Ldflls:Y
-
-
     data.forEach(function (d) {
+
+        //Ticker,Name,address,latitude,longitude,registered Country Location,ISIN,ICB Industry Name,ICB Sector Name
         d.name = d["Name"];
-
-        d.riskExp = d["Reg Risk Exp:Y"];
-        d.ccImplemented = d["Climate Chg Pol:Y"];
-        d.wasteReductionPolicy = d["Waste Reduc Pol:Y"];
-
-
+        d.latitude = d["latitude"];
+        d.longitude = d["longitude"];
+        d.address = d["address"];
         d.country = d["Registered Country Location"];
         d.industry = d["ICB Industry Name"];
         d.sector = d["ICB Sector Name"];
         d.isin = d["ISIN"];
 
+        //Climate Chg Pol:Y,Equal Opp Pol:Y,Water Policy,Human Rights Pol:Y, Energy Effic Pol:Y,Bus Ethics Pol:Y,Biodiv Pol:Y,
+        d.ccImplemented = d["Climate Chg Pol:Y"];
+        d.wasteReductionPolicy = d["Waste Reduc Pol:Y"];
+
+        //Revenue T12M, Price
         d.revenue = d["Revenue T12M"];
         d.price = d["Price"];
 
-        //Water
-        //Total water used is ESO16
-        d.totalWaterUse = d["Tot Wtr Use:Y"];
-        // total water use * 1,000,000 / sales
+        // Total Water Withdrawal
+        // Tot Wtr Dschgd:Y
+        // Tot Wtr Use:Y
+        d.totalWaterUse = d["Tot Wtr Use:Y"]; // total water use * 1,000,000 / sales, ESO16
+        d.totalWaterWithdrawl = d["Total Water Withdrawal"]; // thousands of cubic meters
+        d.totalWaterDischarged = d["Tot Wtr Dschgd:Y"]; // thousands of cubic meters
 
-        d.totalWaterWithdrawl = d["Total Water Withdrawal"];
-        // thousands of cubic meters
+        //Waste Recycl:Y,Total Waste:Y,Wste Sent to Ldflls:Y
+        d.totalWaste = d["Total Waste:Y"];         //Total waste is ESO20
+        d.wasteSentToLandfill = d["Wste Sent to Ldflls:Y"]; //thousands of metric tons
+        d.wasteRecycled = d["Waste Recycl:Y"]; //total waste / total assets
 
-        d.totalWaterDischarged = d["Tot Wtr Dschgd:Y"];
-        // thousands of cubic meters
+        // Energy Consump:Y
+        d.totalEnergyConsumption = d["Energy Consump:Y"]; //  ESO14 : thousands of megawatt hours
 
-        //Waste
-        //Total waste is ESO20
-        d.wasteSentToLandfill = d["Wste Sent to Ldflls:Y"];
-        //thousands of metric tons
-
-        d.totalWaste = d["Total Waste:Y"];
-
-        d.wasteGeneratedPerAssets = d["Waste Generated per Assets"];
-        //total waste / total assets
-
-        //Energy
-        //Total energy is ESO14
-        d.energyIntensityPerSales = d["Engy Intens/Sls:Y"];
-        // energy consumption * 1,000,000 / sales
-        // Energy consumption: ESO14 : thousands of megawatt hours
-
-        //Emissions
-        d.GHG3 = d["GHG Scope 3:Y"];
-        // thousands of metric tons
+        //GHG Scope 3:Y,GHG Scope 2:Y,GHG Scope 1:Y
+        d.GHG3 = d["GHG Scope 3:Y"]; // thousands of metric tons
         d.GHG2 = d["GHG Scope 2:Y"];
-        d.GHG1 = d["GHG Scope 1:Y"];
-        // thousands of metric tons
-
-        //d.latitude = d["latitude"];
-        //d.longitude = d["longitude"];
-        //d.address = d["address"];
+        d.GHG1 = d["GHG Scope 1:Y"]; // thousands of metric tons
 
         // INDEX CALCULATION
         var ghg1Extent = d3.extent(data, function (d) {return +d.GHG1;});
@@ -183,7 +162,6 @@ d3.csv('/data/master.csv', function (data) {
     var all = sp500.groupAll();
 
     // GENERAL
-    // USEFUL FOR FILLING TABLES
     globalFilter = sp500.dimension(function (d) {return d.name;});
 
     var industry = sp500.dimension(function (d) {return d.industry;});
@@ -203,8 +181,10 @@ d3.csv('/data/master.csv', function (data) {
     // WASTE
     var totalWaste = sp500.dimension(function (d) {return +d.totalWaste;});
     var wasteSentToLandfill = sp500.dimension(function (d) {return +d.wasteSentToLandfill;});
-    var wasteGeneratedPerAssets = sp500.dimension(function (d) {return +d.wasteGeneratedPerAssets;});
-    var energyIntensityPerSales = sp500.dimension(function (d) {return +d.energyIntensityPerSales;});
+    var wasteRecycled = sp500.dimension(function (d) {return +d.wasteRecycled;});
+
+    //ENERGY
+    var totalEnergyConsumption = sp500.dimension(function (d) {return +d.totalEnergyConsumption;});
 
     // PIE CHARTS
     var riskExp = sp500.dimension(function (d) {return d.riskExp == "1" ? 'Yes' : 'No';});
@@ -622,14 +602,14 @@ d3.csv('/data/master.csv', function (data) {
             .xAxis().ticks(8, ",.1s").tickSize(6, 0);
     }());
 
-    //BAR CHART: WASTE GENERATED PER ASSETS
+    //BAR CHART: WASTE RECYCLED
     (function() {
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {return +d.wasteGeneratedPerAssets;});
+        var minMax = d3.extent(data, function (d) {return +d.wasteRecycled;});
         var min = minMax[0];
         var max = minMax[1];
         var binWidth = (max - min) / binCount;
-        var wgGroup = wasteSentToLandfill.group().reduce(reduceAdd, reduceRemove, reduceInitial);
+        var wgGroup = wasteRecycled.group().reduce(reduceAdd, reduceRemove, reduceInitial);
 
         function reduceAdd(p, v) {
             if (p == 1) {
@@ -646,11 +626,11 @@ d3.csv('/data/master.csv', function (data) {
             return 0;
         };
 
-        wasteGeneratedPerAssetsChart
+        wasteRecycledChart
             .width(FULL_CHART_WIDTH)
             .margins({top: 10, right: 5, bottom: 40, left: 15})
             .height(HALF_CHART_HEIGHT)
-            .dimension(wasteGeneratedPerAssets)
+            .dimension(wasteRecycled)
             .group(wgGroup)
             .elasticY(true)
             .gap(5)
@@ -660,14 +640,14 @@ d3.csv('/data/master.csv', function (data) {
             .xAxis().ticks(8, ",.1s").tickSize(6, 0);
     }());
 
-    //BAR CHART: ENERGY INTENSITY PER SALES
+    //BAR CHART: total energy consumped
     (function() {
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {return +d.energyIntensityPerSales;});
+        var minMax = d3.extent(data, function (d) {return +d.totalEnergyConsumption;});
         var min = minMax[0];
         var max = minMax[1];
         var binWidth = (max - min) / binCount;
-        var group = energyIntensityPerSales.group().reduce(reduceAdd, reduceRemove, reduceInitial);
+        var group = totalEnergyConsumption.group().reduce(reduceAdd, reduceRemove, reduceInitial);
 
         function reduceAdd(p, v) {
             if (p == 1) {
@@ -684,11 +664,11 @@ d3.csv('/data/master.csv', function (data) {
             return 0;
         };
 
-        energyIntensityPerSalesChart
+        totalEnergyConsumptionChart
             .width(FULL_CHART_WIDTH)
             .margins({top: 10, right: 5, bottom: 40, left: 15})
             .height(HALF_CHART_HEIGHT)
-            .dimension(energyIntensityPerSales)
+            .dimension(totalEnergyConsumption)
             .group(group)
             .elasticY(true)
             .gap(5)

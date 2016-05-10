@@ -1,15 +1,12 @@
 import csv
 
-f1 = file('public/data/master.csv', 'r')
+f1 = file('public/data/master_original.csv', 'r')
 f2 = file('public/data/master1.csv', 'r')
 f3 = file('public/data/master_concat.csv', 'w')
-
 c1 = csv.reader(f1)
 c2 = csv.reader(f2)
 c3 = csv.writer(f3)
-
 masterlist = list(c2)
-
 for master_row1 in c1:
     print master_row1
     row = 1
