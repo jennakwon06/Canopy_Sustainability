@@ -19,7 +19,6 @@ so make sure to ID the scatter plot ones
 4. Buttons on "Apply" and "Reset"
 5. Index on variables -> sustainability index. Coloring. Put on table
 6. Table supports having pdfs / logos / links to company websites
-7. Lighter color on the tables
 8. Sort table by clicking on name, not chevron
 8. No more modal on tables
 9. Tooltip on map bubbles - City name, count, sust index of the city
@@ -27,19 +26,14 @@ so make sure to ID the scatter plot ones
 11. Dynamic changes in filtered data
 
 
-April 26 - May 6th
-- UI clean up
-    - Consistent font sizes
-    - Light grey color on the tables
-    - auto detection on points
-    - No more modals
-    - Tooltip on map bubbles
-    - Add units to each graph
-- Sustainability Index Calculation for each company & show on scatter plot & table
-
 * Will spend 15 hours / week on the project *
 
 May 9th - May 13th
+    - UI clean up
+        - auto detection on points
+        - No more modals
+        - Tooltip on map bubbles
+    - Sustainability Index Calculation for each company & show on scatter plot & table
     - Sustainability Index calculation for each city & show coloring on map
     - Tooltip for each map bubble
 
@@ -67,5 +61,4 @@ June 13rd - July 29th
 - Transition dynamically for the "best" view on scatter plot (based on plotted bubbles)
 - Analytics; different mechanisms for variable weighing?
 - "About" page explaining each variable / data source / etc
-
 

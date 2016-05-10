@@ -10,7 +10,7 @@ ABT UN Equity,Abbott Laboratories,"Minneapolis, Minnesota",44.9772995,-93.265469
 ACN UN Equity,Accenture PLC,"Atlanta, Georgia",33.7490987,-84.3901849,112.1,1,1,1,1,1,1,0,0,0,33502614016,IE00B4BNMY34,Industrials,Support Services,IE,0,,,,,,469.3059998,33.12799835,237.2389984,5532.844238
 ADBE UW Equity,Adobe Systems Inc,"New Orleans, Louisiana",29.9499323,-90.0701156,93.78,0,1,0,1,1,1,0,0,0,5069664896,US00724F1012,Technology,Software & Computer Services,US,0,0.824999988,,,,1.439100027,106.4759979,,29.1989994,
 ADI UW Equity,Analog Devices Inc,"Mountain View, California",37.3943302,-122.0757135,58.36,0,1,1,0,1,1,0,0,0,3432534976,US0326541051,Technology,Technology Hardware & Equipment,US,0,1100,,,,1.950999975,,171871,95.15499878,51.80199814
-ADM UN Equity,Archer-Daniels-Midland Co,"London,ÔøΩÔøΩ_United Kingdom",51.5073219,-0.1276474,35.72,0,1,1,1,1,1,0,0,0,67702001664,US0394831020,Consumer Goods,Food Producers,US,0,,,,,,,32.06499863,,7100
+ADM UN Equity,Archer-Daniels-Midland Co,"London,âè_United Kingdom",51.5073219,-0.1276474,35.72,0,1,1,1,1,1,0,0,0,67702001664,US0394831020,Consumer Goods,Food Producers,US,0,,,,,,,32.06499863,,7100
 ADP UW Equity,Automatic Data Processing Inc,"Houston, Texas",29.7589382,-95.3676974,89.8,0,1,0,0,1,1,0,0,0,11247200000,US0530151036,Industrials,Support Services,US,0,,,,,,,,20.46299934,
 ADS UN Equity,Alliance Data Systems Corp,"Toledo, Ohio",33.6431901,-117.8401648,212.43,0,1,0,0,0,1,0,0,0,6439792000,US0185811082,Industrials,Support Services,US,0,,,,,,,47400,79.96700287,56.98310089
 ADSK UW Equity,Autodesk Inc,"Redwood City, California",37.4852152,-122.2363548,56.39,1,1,1,1,1,1,0,0,0,2504100032,US0527691069,Technology,Software & Computer Services,US,0,,,0.088,0.035,12.63099957,37.83000183,,1.679999948,
@@ -87,7 +87,7 @@ CERN UW Equity,Cerner Corp,"Glendale, California",34.1423455,-118.2483671,55.98,
 CF UN Equity,CF Industries Holdings Inc,"Hartford, Connecticut",44.9127229,-93.499059,29.19,0,1,0,0,1,1,0,0,0,4308300096,US1252691001,Basic Materials,Chemicals,US,0,,,,,,,,,7.360000134
 CFG UN Equity,Citizens Financial Group Inc,"Las Vegas, Nevada",44.9772995,-93.2654692,20.79,,,0,,,,,0,0,5276000000,US1746101054,Financials,Banks,US,0,,,,,,,4.146999836,,57111.80078
 CHD UN Equity,Church & Dwight Co Inc,"Dulles, Virginia",40.7281575,-74.0776417,93.92,0,1,0,0,0,1,0,0,0,3394800064,US1713401024,Consumer Goods,Household Goods & Home Construction,US,0,1733.800049,752.2979736,,11.15200043,41.10599899,444.5469971,,,
-CHK UN Equity,Chesapeake Energy Corp,"CuraÔøΩÔøΩ_ao,ÔøΩÔøΩ_Kingdom of the Netherlands",39.1014537,-84.5124602,3.61,0,1,1,0,0,1,0,0,0,12028000000,US1651671075,Oil & Gas,Oil & Gas Producers,US,0,,,,,,,,,
+CHK UN Equity,Chesapeake Energy Corp,"Curaâè_ao,âè_Kingdom of the Netherlands",39.1014537,-84.5124602,3.61,0,1,1,0,0,1,0,0,0,12028000000,US1651671075,Oil & Gas,Oil & Gas Producers,US,0,,,,,,,,,
 CHRW UW Equity,CH Robinson Worldwide Inc,"Minneapolis, Minnesota",47.6960491,8.634513,71.85,0,1,0,0,0,1,0,0,0,13476084224,US12541W2098,Industrials,Industrial Transportation,US,0,,,,,,,,,0.623000026
 CI UN Equity,Cigna Corp,"Broomfield, Colorado",39.9203827,-105.0691464,131.86,0,1,0,0,1,1,0,0,0,37818999808,US1255091092,Health Care,Health Care Equipment & Services,US,0,,,,,,228.973999,5319.370117,78.71700287,109.2890015
 CINF UW Equity,Cincinnati Financial Corp,"Rockville, Maryland",39.0840054,-77.1527573,64.31,0,1,1,0,1,1,0,0,0,5142000000,US1720621010,Financials,Nonlife Insurance,US,0,,,,,,,,,
@@ -156,7 +156,7 @@ EMC UN Equity,EMC Corp/MA,"Louisville, Kentucky",38.2542376,-85.759407,26.02,1,1
 EMN UN Equity,Eastman Chemical Co,"Atlanta, Georgia",33.7490987,-84.3901849,71.19,0,1,0,1,1,1,0,0,0,9648000000,US2774321002,Basic Materials,Chemicals,US,0,,,,,,25284,,,
 EMR UN Equity,Emerson Electric Co,"Islandia, New York",40.8042649,-73.1690019,52.87,0,1,0,1,1,1,0,0,0,21430000128,US2910111044,Industrials,Electronic & Electrical Equipment,US,0,,,,,,,,,
 ENDP UW Equity,Endo International PLC,"Burbank, California",29.7589382,-95.3676974,29.07,0,0,0,0,0,1,0,0,0,3268718016,IE00BJ3V9050,Health Care,Pharmaceuticals & Biotechnology,IE,0,,,,,,,10.31400013,,19111.80078
-EOG UN Equity,EOG Resources Inc,"Amsterdam,ÔøΩÔøΩ_Netherlands",52.3264009,4.739650991,71.45,1,1,1,1,1,1,0,0,0,8048251008,US26875P1012,Oil & Gas,Oil & Gas Producers,US,0,,,,,,,,159.1190033,
+EOG UN Equity,EOG Resources Inc,"Amsterdam,âè_Netherlands",52.3264009,4.739650991,71.45,1,1,1,1,1,1,0,0,0,8048251008,US26875P1012,Oil & Gas,Oil & Gas Producers,US,0,,,,,,,,159.1190033,
 EQIX UW Equity,Equinix Inc,"Federal Way, Washington",42.1167065,-86.4541894,325.81,0,1,0,1,1,1,0,0,0,2725867072,US29444U7000,Financials,Real Estate Investment Trusts,US,0,,,,,,,1433,,215.1535034
 EQR UN Equity,Equity Residential,"Golden Valley, Minnesota",45.0020097,-93.3585273,73.9,0,1,1,0,1,1,0,0,0,2744965056,US29476L1070,Financials,Real Estate Investment Trusts,US,0,,,,,,,602.289978,,284
 EQT UN Equity,EQT Corp,"Houston, Texas",29.7589382,-95.3676974,65.13,0,1,0,0,1,1,1,0,0,2039698016,US26884L1098,Oil & Gas,Oil & Gas Producers,US,0,6174.632324,,,,,78.18669891,2272.991943,,171
@@ -214,7 +214,7 @@ HAR UN Equity,Harman International Industries Inc,"Denver, Colorado",39.7391536,
 HAS UW Equity,Hasbro Inc,"Waltham, Massachusetts",42.3756401,-71.2358004,78.46,0,0,0,0,0,1,0,0,0,4447508992,US4180561072,Consumer Goods,Leisure Goods,US,0,51.48400116,,,6.402699947,7.982699871,62.96889877,,16.90399933,
 HBAN UW Equity,Huntington Bancshares Inc/OH,"San Diego, California",32.88101605,-117.2311636,9.3,0,1,0,0,0,1,0,0,0,3153251008,US4461501045,Financials,Banks,US,0,,,,,,,,,
 HBI UN Equity,Hanesbrands Inc,"Zurich, Switzerland",47.3685586,8.5404434,27.87,0,1,0,1,1,1,0,0,0,5731548928,US4103451021,Consumer Goods,Personal Goods,US,0,9596.459961,,,18.53989983,26.00270081,1058.400024,,,
-HCA UN Equity,HCA Holdings Inc,"Dublin,ÔøΩÔøΩ_Ireland",53.3497645,-6.2602732,78.84,0,1,0,0,0,1,0,0,0,39678000128,US40412C1018,Health Care,Health Care Equipment & Services,US,0,,,,,,,,,
+HCA UN Equity,HCA Holdings Inc,"Dublin,âè_Ireland",53.3497645,-6.2602732,78.84,0,1,0,0,0,1,0,0,0,39678000128,US40412C1018,Health Care,Health Care Equipment & Services,US,0,,,,,,,,,
 HCN UN Equity,Welltower Inc,"Raleigh, North Carolina",35.7804015,-78.6390779,68.77,0,1,0,0,1,1,0,0,0,3859827072,US95040Q1040,Financials,Real Estate Investment Trusts,US,0,1070.560059,,17.67900085,2.190000057,,301.8330078,,155.8869934,
 HCP UN Equity,HCP Inc,"Houston, Texas",29.7589382,-95.3676974,34.04,1,1,0,1,1,1,0,0,0,2544312000,US40414L1098,Financials,Real Estate Investment Trusts,US,0,5605.680176,,18.80879974,3.77850008,34.34999847,868.8439941,637.5499878,254.3099976,271.3599854
 HD UN Equity,Home Depot Inc/The,"Santa Clara, California",37.3541132,-121.9551744,133.87,0,1,0,0,1,1,0,0,0,88519002112,US4370761029,Consumer Services,General Retailers,US,0,,,,,,,,2249.709961,13.64599991

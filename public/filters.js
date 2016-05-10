@@ -14,12 +14,12 @@ var ghg3Chart = dc.barChart('#ghg3Chart');
 
 
 // WATER
-var waterIntensityPerSalesChart = dc.barChart('#waterIntensityPerSalesChart');
+var totalWaterUseChart = dc.barChart('#totalWaterUseChart');
 var totalWaterWithdrawlChart = dc.barChart('#totalWaterWithdrawlChart');
 var totalWaterDischargedChart = dc.barChart('#totalWaterDischargedChart');
 
 // WASTE
-var wasteIntensityPerSalesChart = dc.barChart("#wasteIntensityPerSalesChart");
+var totalWasteChart = dc.barChart("#totalWasteChart");
 var wasteGeneratedPerAssetsChart = dc.barChart("#wasteGeneratedPerAssetsChart");
 var wasteSentToLandfillChart = dc.barChart("#wasteSentToLandfillChart");
 
@@ -49,16 +49,30 @@ function isBlank(str) {
 
 function calculateIndex() {
     var ghg1Extent = d3.extent(globalData, function (d) {return +d.GHG1;});
+    var ghg2Extent = d3.extent(globalData, function (d) {return +d.GHG2;});
+    var ghg3Extent = d3.extent(globalData, function (d) {return +d.GHG3;});
 
-    globalData.forEach(function (d) {
+    var maxScore = ghg1Extent[1] + ghg2Extent[1] + ghg3Extent[1];
 
-        console.log(weight);
+    var ghg1weight = document.getElementById("ghg1weight").value;
+    var ghg2weight = document.getElementById("ghg2weight").value;
+    var ghg3weight = document.getElementById("ghg3weight").value;
 
-        var weight = document.getElementById("ghg1weight").value;
-        d.sustIndex = (d.GHG1 / ghg1Extent[1]) * 100 * (weight / 100);
+    var totalWeight = ghg1weight + ghg2weight + ghg3weight;
 
-        console.log(d.sustIndex);
-    });
+    ghg1weight = ghg1weight / totalWeight; // percentage weight
+    ghg2weight = ghg2weight / totalWeight;
+    ghg3weight = ghg3weight / totalWeight;
+
+    // each data point is compared to the max point as a percentage
+    // it is multiplied by its weight, whose weights add up to 1.
+    // what you should get is an average?
+
+
+    //globalData.forEach(function (d) {
+    //    //var curScore = (d.GHG1 * ghg1weight) + (d.GHG2 *  + d.GHG3;
+    //    //d.sustIndex = (curScore / maxScore) * 100;
+    //});
 }
 
 // ### Anchor Div for Charts
@@ -96,11 +110,13 @@ d3.csv('/data/master.csv', function (data) {
     globalData = data;
 
     var numberFormat = d3.format('.2f');
-    // Ticker,Name,Weight,Shares,Price,Climate Chg Pol:Y,Equal Opp Pol:Y,Water Policy,Human Rights Pol:Y,Energy Effic Pol:Y,
-    // Bus Ethics Pol:Y,Biodiv Pol:Y,Registered State Location,Product/Geographic Revenue,Revenue T12M,CDP Rep CH4 MetTon:Y,
-    // CDP Rep PFC MetTon:Y,CDP Rep HFC MetTon:Y,ISIN,ICB Industry Name,ICB Sector Name,Registered Country Location,
-    // Total Water Withdrawal,Tot Wtr Dschgd:Y,Wtr Intens/Sls:Y,Wste Per Sls:Y,Engy Intens/Sls:Y,Energy Intensity per Assets,
-    // Wste Sent to Ldflls:Y,Waste Generated per Assets,GHG Scope 3:Y,GHG Scope 2:Y,ROE:Y,AZS,Rev - 1 Yr Gr:Y
+
+    //Ticker,Ticker,Name,address,Price,Climate Chg Pol:Y,Equal Opp Pol:Y,Water Policy,Human Rights Pol:Y
+    //Energy Effic Pol:Y,Bus Ethics Pol:Y,Biodiv Pol:Y,Registered State Location,Product/Geographic Revenue
+    //Revenue T12M,ISIN,ICB Industry Name,ICB Sector Name,Registered Country Location,Total Water Withdrawal
+    // Tot Wtr Dschgd:Y,Wste Sent to Ldflls:Y,GHG Scope 3:Y,GHG Scope 2:Y,GHG Scope 1:Y,latitude,longitude
+    // Tot Wtr Use:Y,Waste Recycl:Y,Total Waste:Y,Energy Consump:Y,Wste Sent to Ldflls:Y
+
 
     data.forEach(function (d) {
         d.name = d["Name"];
@@ -120,7 +136,7 @@ d3.csv('/data/master.csv', function (data) {
 
         //Water
         //Total water used is ESO16
-        d.waterIntensityPersales = d["Wtr Intens/Sls:Y"];
+        d.totalWaterUse = d["Tot Wtr Use:Y"];
         // total water use * 1,000,000 / sales
 
         d.totalWaterWithdrawl = d["Total Water Withdrawal"];
@@ -134,7 +150,7 @@ d3.csv('/data/master.csv', function (data) {
         d.wasteSentToLandfill = d["Wste Sent to Ldflls:Y"];
         //thousands of metric tons
 
-        d.wasteIntensityPerSales = d["Wste Per Sls:Y"];
+        d.totalWaste = d["Total Waste:Y"];
 
         d.wasteGeneratedPerAssets = d["Waste Generated per Assets"];
         //total waste / total assets
@@ -148,20 +164,17 @@ d3.csv('/data/master.csv', function (data) {
         //Emissions
         d.GHG3 = d["GHG Scope 3:Y"];
         // thousands of metric tons
-
         d.GHG2 = d["GHG Scope 2:Y"];
         d.GHG1 = d["GHG Scope 1:Y"];
         // thousands of metric tons
 
-        d.latitude = d["latitude"];
-        d.longitude = d["longitude"];
-        d.address = d["address"];
+        //d.latitude = d["latitude"];
+        //d.longitude = d["longitude"];
+        //d.address = d["address"];
 
         // INDEX CALCULATION
         var ghg1Extent = d3.extent(data, function (d) {return +d.GHG1;});
         d.sustIndex = (d.GHG1 / ghg1Extent[1]) * 100;
-
-
     });
 
     //### Create Crossfilter Dimensions and Groups. NOTE: BE CAREFUL OF HOW MANY DIMENSIONS YOU INSTANTIATE
@@ -183,12 +196,12 @@ d3.csv('/data/master.csv', function (data) {
     var GHG3 = sp500.dimension(function (d) {return +d.GHG3;});
 
     // WATER
-    var waterIntensityPerSales = sp500.dimension(function (d) {return +d.waterIntensityPersales;});
+    var totalWaterUse = sp500.dimension(function (d) {return +d.totalWaterUse;});
     var totalWaterWithdrawl = sp500.dimension(function (d) {return +d.totalWaterWithdrawl;});
     var totalWaterDischarged = sp500.dimension(function (d) {return +d.totalWaterDischarged;});
 
     // WASTE
-    var wasteIntensityPerSales = sp500.dimension(function (d) {return +d.wasteIntensityPerSales;});
+    var totalWaste = sp500.dimension(function (d) {return +d.totalWaste;});
     var wasteSentToLandfill = sp500.dimension(function (d) {return +d.wasteSentToLandfill;});
     var wasteGeneratedPerAssets = sp500.dimension(function (d) {return +d.wasteGeneratedPerAssets;});
     var energyIntensityPerSales = sp500.dimension(function (d) {return +d.energyIntensityPerSales;});
@@ -418,11 +431,11 @@ d3.csv('/data/master.csv', function (data) {
     //BAR CHART: WATER INTENSITY PER SALES
     (function() {
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {return +d.waterIntensityPersales;});
+        var minMax = d3.extent(data, function (d) {return +d.totalWaterUse;});
         var min = minMax[0];
         var max = minMax[1];
         var binWidth = (max - min) / binCount;
-        var waterIntensityGroup = waterIntensityPerSales.group().reduce(reduceAdd, reduceRemove, reduceInitial);
+        var waterIntensityGroup = totalWaterUse.group().reduce(reduceAdd, reduceRemove, reduceInitial);
 
         function reduceAdd(p, v) {
             if (p == 1) {
@@ -440,11 +453,11 @@ d3.csv('/data/master.csv', function (data) {
             return 0;
         };
 
-        waterIntensityPerSalesChart
+        totalWaterUseChart
             .width(FULL_CHART_WIDTH)
             .margins({top: 10, right: 5, bottom: 40, left: 15})
             .height(HALF_CHART_HEIGHT)
-            .dimension(waterIntensityPerSales)
+            .dimension(totalWaterUse)
             .group(waterIntensityGroup)
             .elasticY(true)
             .gap(5)
@@ -536,11 +549,11 @@ d3.csv('/data/master.csv', function (data) {
     //BAR CHART: WASTE INTENSITY PER SALES
     (function() {
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {return +d.wasteIntensityPerSales;});
+        var minMax = d3.extent(data, function (d) {return +d.totalWaste;});
         var min = minMax[0];
         var max = minMax[1];
         var binWidth = (max - min) / binCount;
-        var wasteIntensityGroup = wasteIntensityPerSales.group().reduce(reduceAdd, reduceRemove, reduceInitial);
+        var wasteIntensityGroup = totalWaste.group().reduce(reduceAdd, reduceRemove, reduceInitial);
 
         function reduceAdd(p, v) {
             if (p == 1) {
@@ -557,11 +570,11 @@ d3.csv('/data/master.csv', function (data) {
             return 0;
         };
 
-        wasteIntensityPerSalesChart
+        totalWasteChart
             .width(FULL_CHART_WIDTH)
             .margins({top: 10, right: 5, bottom: 40, left: 15})
             .height(HALF_CHART_HEIGHT)
-            .dimension(wasteIntensityPerSales)
+            .dimension(totalWaste)
             .group(wasteIntensityGroup)
             .elasticY(true)
             .gap(5)

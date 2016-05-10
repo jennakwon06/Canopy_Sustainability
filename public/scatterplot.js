@@ -32,7 +32,7 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
         outerHeight = $("#resultBar").height(),
         width = outerWidth - margin.left - margin.right,
         height = outerHeight - margin.top - margin.bottom;
-    
+
     var x = d3.scale.linear()
         .range([0, width]).nice();
 
