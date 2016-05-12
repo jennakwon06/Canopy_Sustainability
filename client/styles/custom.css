@@ -8,7 +8,12 @@ html, body {
     overflow: hidden; /* will contain if #first is longer than #second */
 }
 
+.cityCompanies {
+    font-size: 8px;
+}
+
 .attrScale {
+
     width: 265px;
     float:left; /* add this */
     margin-bottom: 10px;
@@ -326,17 +331,27 @@ svg {
     height: 500px;
 }
 
-.resultsTable tbody tr:nth-child(odd) td {
-    background-color: #EEEEEE;
+.clickableRow {
+    /*-khtml-opacity:.50;*/
+    /*-moz-opacity:.50;*/
+    /*-ms-filter:”alpha(opacity=50)”;*/
+    /*filter:alpha(opacity=50);*/
+    /*filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.5);*/
+    /*opacity:.50;*/
 }
 
-.resultsTable tbody tr.highlight td {
-    background-color: #3C8D2F;
-}
+/*.resultsTable tbody tr:nth-child(odd) td {*/
+    /*background-color: #EEEEEE;*/
+/*}*/
 
-.clickableRow:hover {
-    background-color: #3C8D2F;
-}
+/*.resultsTable tbody tr.highlight td {*/
+    /*background-color: #3C8D2F;*/
+/*}*/
+
+
+/*.clickableRow:hover {*/
+    /*background-color: #3C8D2F;*/
+/*}*/
 
 
 .land {

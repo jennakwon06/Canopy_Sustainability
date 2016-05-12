@@ -44,6 +44,10 @@ var fields = ["ghg1", "ghg2", "ghg3"
     , "totalWaste", "wasteRecycled", "wasteSentToLandfill"
     , "totalEnergyConsumption" ];
 
+var color = d3.scale.linear()
+    .range(["green", "red"])
+    .interpolate(d3.interpolateHsl);
+
 /*
  * Check if csv cell is empty
  */
@@ -102,13 +106,14 @@ function calculateIndex() {
                 object.weight = document.getElementById(fields[i] + "Weight").value / totalWeight;
                 object.value = +d[fields[i]];
                 arr.push(object);
-                curScore += +d[fields[i]] / maxValues[i] * object.weight;
+                var score = Math.log(d[fields[i]]) / Math.log(maxValues[i]);
+                score = score > 0 ? score : 0;
+                curScore += score * object.weight;
             }
         }
         d.dataInfo = arr;
-        //console.log("array for company" + d.name);
-        //console.log(arr);
         d.sustIndex = curScore;
+        d.color = color(curScore);
     });
 }
 

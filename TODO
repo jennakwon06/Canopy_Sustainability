@@ -30,9 +30,9 @@ so make sure to ID the scatter plot ones
 
 May 9th - May 13th
     - UI clean up
-        - auto detection on points
         - No more modals
         - Tooltip on map bubbles
+    - coloring
     - Sustainability Index Calculation for each company & show on scatter plot & table
     - Sustainability Index calculation for each city & show coloring on map
     - Tooltip for each map bubble

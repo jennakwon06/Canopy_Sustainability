@@ -10,6 +10,7 @@ var projection;
 drawMap();
 
 
+
 //@TODO fix gdal problems and draw this map
 //http://www.tnoda.com/blog/2013-12-07
 function drawMap() {
@@ -91,6 +92,7 @@ function drawBubblesOnMap(results) {
             "count": 0,
             "latitude": 0,
             "longitude": 0,
+            "sustIndex": 0,
             "companies": []
         };
 
@@ -99,11 +101,12 @@ function drawBubblesOnMap(results) {
         temp.latitude = results[i].latitude;
         temp.longitude = results[i].longitude;
         temp.count = 1;
+        temp.sustIndex += results[i].sustIndex;
         temp.companies.push(results[i]);
         arrayOfLocations.push(temp);
     }
 
-    //console.log(arrayOfLocations);
+    // location accumulator
 
     arrayOfLocations.sort(function(a,b) {
         return (a.address > b.address) ? 1 : ((b.address > a.address) ? -1 : 0);} ); //SORT BY ADDRESS
@@ -111,6 +114,7 @@ function drawBubblesOnMap(results) {
     for (i = arrayOfLocations.length - 1; i > 0; i--) {
         if (arrayOfLocations[i - 1].address == arrayOfLocations[i].address) {
             arrayOfLocations[i - 1].count += arrayOfLocations[i].count;
+            arrayOfLocations[i - 1].sustIndex += arrayOfLocations[i].sustIndex;
             arrayOfLocations[i - 1].companies.push.apply(arrayOfLocations[i - 1].companies, arrayOfLocations[i].companies);
             arrayOfLocations[i] = null;
         }
@@ -118,15 +122,22 @@ function drawBubblesOnMap(results) {
 
     arrayOfLocations = arrayOfLocations.filter(Boolean);
 
-    //console.log("is null filtered?");
-    //console.log(arrayOfLocations);
+    console.log(arrayOfLocations);
+
+    // normalize sust index
+    for (i = arrayOfLocations.length - 1; i > 0; i--) {
+        arrayOfLocations[i].sustIndex /= arrayOfLocations[i].count;
+    }
+
+    console.log(arrayOfLocations);
 
     var radius = d3.scale.sqrt()
         .domain([0, 1e6])
         .range([0, 15]);
 
-    var cValue = function(d) { return d.address;},
-        color = d3.scale.category10();
+    arrayOfLocations.sort(function (a,b) {
+        return b.count - a.count;
+    });
 
     //svg.append("g")
     //    .attr("class", "bubble")
@@ -157,21 +168,30 @@ function drawBubblesOnMap(results) {
             return (radius(d.count) * 150);
         })
         .style("fill", function(d) {
-            return color(cValue(d));})
+            return color(d.sustIndex);})
         .on("click", function(d) {
-
             d3.selectAll(".tooltip-box p").remove();
 
             d3.select(".tooltip-box")
                 .append("p")
                 .attr("class", "address")
-                .html(d.address);
+                .html("City: " + d.address
+                    + "<br> Sustainability Index: " + Math.round(d.sustIndex * 100) / 100);
+
+            d3.select(".tooltip-box")
+                .append("p")
+                .attr("class", "cityCompanies")
+                .html("Companies: <br>");
+
+            var cities = "";
 
             for (var i = 0; i < d.companies.length; i++) {
-                d3.select(".tooltip-box")
-                    .append("p")
-                    .html(d.companies[i].name);
+                cities += d.companies[i].name + "(" + Math.round(d.companies[i].sustIndex * 100) / 100 + ")" + "<br>";
             }
+
+            d3.select(".cityCompanies")
+                .append("p")
+                .html(cities);
 
         });
 }

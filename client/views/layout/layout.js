@@ -24,7 +24,7 @@ Template.layout.rendered = function() {
 	}); 
 	/*TEMPLATE_RENDERED_CODE*/
 	$.getScript("/filters.js");
-	$.getScript("/worldmap.js");
+	//$.getScript("/worldmap.js");
 	$.getScript("/scatterplot.js");
 };
 
@@ -71,14 +71,16 @@ var fillTable = function(results){
 		//$(tr2).hide();
 
 		var p = document.createElement('p');
-		console.log("what's my data info");
-		console.log(results[i].dataInfo);
+		//console.log("what's my data info");
+		//console.log(results[i].dataInfo);
 		var html = ""
 		for (var j = 0; j < results[i].dataInfo.length; j++) { // j iterates dataInfo array
 			html += results[i].dataInfo[j].name + ": " + results[i].dataInfo[j].value + "<br> ";
 		}
 		$(p).html(html);
 		$(p).hide();
+
+		$(tr).css("background-color", results[i].color);
 
 		tr2.appendChild(tr2td.appendChild(p));
 
