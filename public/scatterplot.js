@@ -56,27 +56,27 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
     y.domain([yMin, yMax]);
 
 
-    // min maxes
-    console.log("min maxes");
-    console.log(xMin);
-    console.log(xMax);
-    console.log(yMin);
-    console.log(yMax);
+    //// min maxes
+    //console.log("min maxes");
+    //console.log(xMin);
+    //console.log(xMax);
+    //console.log(yMin);
+    //console.log(yMax);
 
     var xAxisMax = d3.extent(globalData, function (d) {return +d[xAxisVal];})[1];
     var yAxisMax = d3.extent(globalData, function (d) {return +d[yAxisVal];})[1];
 
-    console.log("extent minmaxes");
-    console.log(xAxisMax);
-    console.log(yAxisMax);
-
-    console.log("extent minmaxes with result");
-    var resultMaxX = d3.extent(results, function (d) {return +d[xAxisVal];})[1];
-    var resultMaxY = d3.extent(results, function (d) {return +d[yAxisVal];})[1];
-
-    console.log("extent minmaxes");
-    console.log(resultMaxX);
-    console.log(resultMaxY);
+    //console.log("extent minmaxes");
+    //console.log(xAxisMax);
+    //console.log(yAxisMax);
+    //
+    //console.log("extent minmaxes with result");
+    //var resultMaxX = d3.extent(results, function (d) {return +d[xAxisVal];})[1];
+    //var resultMaxY = d3.extent(results, function (d) {return +d[yAxisVal];})[1];
+    //
+    //console.log("extent minmaxes");
+    //console.log(resultMaxX);
+    //console.log(resultMaxY);
 
     var xAxis = d3.svg.axis()
         .scale(x)

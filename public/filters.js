@@ -30,49 +30,86 @@ var totalEnergyConsumptionChart = dc.barChart("#totalEnergyConsumptionChart");
 //var ccPolicyImplRowChart;
 
 //GLOBAL VARIABLES
-var FULL_CHART_WIDTH = 350;
+var FULL_CHART_WIDTH = 330;
 var HALF_CHART_WIDTH = 160;
 var FULL_CHART_HEIGHT = 200;
-var HALF_CHART_HEIGHT = 100;
+var HALF_CHART_HEIGHT = 60;
 
 var globalFilter;
 var sp500;
-
 var globalData;
+
+var fields = ["ghg1", "ghg2", "ghg3"
+    , "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged"
+    , "totalWaste", "wasteRecycled", "wasteSentToLandfill"
+    , "totalEnergyConsumption" ];
 
 /*
  * Check if csv cell is empty
  */
+
 function isBlank(str) {
     return (!str || /^\s*$/.test(str));
 }
 
 function calculateIndex() {
-    var ghg1Extent = d3.extent(globalData, function (d) {return +d.GHG1;});
-    var ghg2Extent = d3.extent(globalData, function (d) {return +d.GHG2;});
-    var ghg3Extent = d3.extent(globalData, function (d) {return +d.GHG3;});
+    // calculate max index;
+    var i;
+    var maxValues = [];
+    for (i = 0; i < fields.length; i++) {
+        maxValues.push(d3.extent(globalData, function (d) {return +d[fields[i]];})[1]);
+    }
 
-    var maxScore = ghg1Extent[1] + ghg2Extent[1] + ghg3Extent[1];
+    //var totalWeight = 0;
+    //for (i = 0; i < fields.length; i++) {
+    //    totalWeight += parseInt(document.getElementById(fields[i] + "Weight").value);
+    //}
 
-    var ghg1weight = document.getElementById("ghg1weight").value;
-    var ghg2weight = document.getElementById("ghg2weight").value;
-    var ghg3weight = document.getElementById("ghg3weight").value;
+    //console.log("totalWeight");
+    //console.log(totalWeight);
 
-    var totalWeight = ghg1weight + ghg2weight + ghg3weight;
+    // add normalized weights
+    //var weights = [];
+    //for (i = 0; i < fields.length; i++) {
+    //    weights.push(document.getElementById(fields[i] + "Weight").value / totalWeight);
+    //}
 
-    ghg1weight = ghg1weight / totalWeight; // percentage weight
-    ghg2weight = ghg2weight / totalWeight;
-    ghg3weight = ghg3weight / totalWeight;
-
-    // each data point is compared to the max point as a percentage
-    // it is multiplied by its weight, whose weights add up to 1.
-    // what you should get is an average?
+    //console.log("weights");
+    //console.log(weights);
 
 
-    //globalData.forEach(function (d) {
-    //    //var curScore = (d.GHG1 * ghg1weight) + (d.GHG2 *  + d.GHG3;
-    //    //d.sustIndex = (curScore / maxScore) * 100;
-    //});
+    globalData.forEach(function (d) {
+        var curScore = 0;
+        var totalWeight = 0;
+
+        var arr = [];
+
+        for (i = 0; i < fields.length; i++) {
+            if (+d[fields[i]]) {
+                totalWeight += parseInt(document.getElementById(fields[i] + "Weight").value);
+            }
+        }
+
+        for (i = 0; i < fields.length; i++) {
+            //console.log(+d[fields[i]]);
+            if (+d[fields[i]]) {
+                var object = {
+                    name: "",
+                    weight: 0,
+                    value: 0
+                };
+                object.name = fields[i];
+                object.weight = document.getElementById(fields[i] + "Weight").value / totalWeight;
+                object.value = +d[fields[i]];
+                arr.push(object);
+                curScore += +d[fields[i]] / maxValues[i] * object.weight;
+            }
+        }
+        d.dataInfo = arr;
+        //console.log("array for company" + d.name);
+        //console.log(arr);
+        d.sustIndex = curScore;
+    });
 }
 
 // ### Anchor Div for Charts
@@ -147,13 +184,10 @@ d3.csv('/data/master.csv', function (data) {
         d.totalEnergyConsumption = d["Energy Consump:Y"]; //  ESO14 : thousands of megawatt hours
 
         //GHG Scope 3:Y,GHG Scope 2:Y,GHG Scope 1:Y
-        d.GHG3 = d["GHG Scope 3:Y"]; // thousands of metric tons
-        d.GHG2 = d["GHG Scope 2:Y"];
-        d.GHG1 = d["GHG Scope 1:Y"]; // thousands of metric tons
+        d.ghg3 = d["GHG Scope 3:Y"]; // thousands of metric tons
+        d.ghg2 = d["GHG Scope 2:Y"];
+        d.ghg1 = d["GHG Scope 1:Y"]; // thousands of metric tons
 
-        // INDEX CALCULATION
-        var ghg1Extent = d3.extent(data, function (d) {return +d.GHG1;});
-        d.sustIndex = (d.GHG1 / ghg1Extent[1]) * 100;
     });
 
     //### Create Crossfilter Dimensions and Groups. NOTE: BE CAREFUL OF HOW MANY DIMENSIONS YOU INSTANTIATE
@@ -169,9 +203,9 @@ d3.csv('/data/master.csv', function (data) {
 
     // EMISSIONS
 
-    var GHG1 = sp500.dimension(function (d) {return +d.GHG1;});
-    var GHG2 = sp500.dimension(function (d) {return +d.GHG2;});
-    var GHG3 = sp500.dimension(function (d) {return +d.GHG3;});
+    var ghg1 = sp500.dimension(function (d) {return +d.ghg1;});
+    var ghg2 = sp500.dimension(function (d) {return +d.ghg2;});
+    var ghg3 = sp500.dimension(function (d) {return +d.ghg3;});
 
     // WATER
     var totalWaterUse = sp500.dimension(function (d) {return +d.totalWaterUse;});
@@ -207,7 +241,7 @@ d3.csv('/data/master.csv', function (data) {
         industryChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
             .width(HALF_CHART_WIDTH)
             .height(HALF_CHART_HEIGHT)
-            .margins({top: 0, left: 0, right: 0, bottom: 0})
+            .margins({top: 0, left: 0, right: 0, bottom: 20})
             .group(industryGroup)
             .dimension(industry)
             // Assign colors to each value in the x scale domain
@@ -231,7 +265,7 @@ d3.csv('/data/master.csv', function (data) {
         sectorChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
             .width(HALF_CHART_WIDTH)
             .height(HALF_CHART_HEIGHT)
-            .margins({top: 0, left: 0, right: 0, bottom: 0})
+            .margins({top: 0, left: 0, right: 0, bottom: 20})
             .group(sectorGroup)
             .dimension(sector)
             // Assign colors to each value in the x scale domain
@@ -253,31 +287,31 @@ d3.csv('/data/master.csv', function (data) {
     (function() {
 
         //http://stackoverflow.com/questions/15191258/properly-display-bin-width-in-barchart-using-dc-js-and-crossfilter-js
-        //console.log("printing GHG1");
-        //console.log(GHG1.top(Infinity));
+        //console.log("printing ghg1");
+        //console.log(ghg1.top(Infinity));
         //var arr = [];
-        //GHG1.forEach(function (x) {
+        //ghg1.forEach(function (x) {
         //    console.log(x);
-        //    //arr.push(+x.GHG1);
+        //    //arr.push(+x.ghg1);
         //});
         //http://jrideout.github.io/histogram-pretty/
         //var hist = histogram(arr);
         //console.log(hist);
 
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {return +d.GHG1;});
+        var minMax = d3.extent(data, function (d) {return +d.ghg1;});
         var min = minMax[0];
         var max = minMax[1];
         var binWidth = (max - min) / binCount;
 
 
-        //var GHG1Group = GHG1.group(function(d) {
+        //var ghg1Group = ghg1.group(function(d) {
         //    if (d) {
         //        return Math.floor(+d / binWidth) * binWidth;
         //    }
         //});
 
-        var GHG1Group = GHG1.group().reduce(reduceAdd, reduceRemove, reduceInitial);
+        var ghg1Group = ghg1.group().reduce(reduceAdd, reduceRemove, reduceInitial);
 
         function reduceAdd(p, v) {
             if (p == 1) {
@@ -294,22 +328,22 @@ d3.csv('/data/master.csv', function (data) {
             return 0;
         };
 
-        //var GHG1UndefinedGroup = GHG1.group(function(d) {
+        //var ghg1UndefinedGroup = ghg1.group(function(d) {
         //    if (!d) {
         //        return d;
         //    }
         //});
         //
         //console.log("printing ghg1 group");
-        //console.log(GHG1Group.all());
-        //console.log(GHG1Group.top(2)[1]);
+        //console.log(ghg1Group.all());
+        //console.log(ghg1Group.top(2)[1]);
 
         ghg1Chart
             .width(FULL_CHART_WIDTH)
-            .margins({top: 10, right: 5, bottom: 40, left: 15})
+            .margins({top: 10, right: 5, bottom: 20, left: 0})
             .height(HALF_CHART_HEIGHT)
-            .dimension(GHG1)
-            .group(GHG1Group)
+            .dimension(ghg1)
+            .group(ghg1Group)
             .elasticY(true)
             .gap(5)
             .round(dc.round.floor)
@@ -330,14 +364,14 @@ d3.csv('/data/master.csv', function (data) {
 
     }());
 
-//    BAR CHART: GHG2
+//    BAR CHART: ghg2
     (function() {
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {return +d.GHG2;});
+        var minMax = d3.extent(data, function (d) {return +d.ghg2;});
         var min = minMax[0];
         var max = minMax[1];
         var binWidth = (max - min) / binCount;
-        var GHG2Group = GHG2.group().reduce(reduceAdd, reduceRemove, reduceInitial);
+        var ghg2Group = ghg2.group().reduce(reduceAdd, reduceRemove, reduceInitial);
 
         function reduceAdd(p, v) {
             if (p == 1) {
@@ -356,10 +390,10 @@ d3.csv('/data/master.csv', function (data) {
 
         ghg2Chart
             .width(FULL_CHART_WIDTH)
-            .margins({top: 10, right: 5, bottom: 40, left: 15})
+            .margins({top: 10, right: 5, bottom: 20, left: 0})
             .height(HALF_CHART_HEIGHT)
-            .dimension(GHG2)
-            .group(GHG2Group)
+            .dimension(ghg2)
+            .group(ghg2Group)
             .elasticY(true)
             .gap(5)
             .round(dc.round.floor)
@@ -371,11 +405,11 @@ d3.csv('/data/master.csv', function (data) {
     //BAR CHART: GHG3
     (function(){
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {return +d.GHG3;});
+        var minMax = d3.extent(data, function (d) {return +d.ghg3;});
         var min = minMax[0];
         var max = minMax[1];
         var binWidth = (max - min) / binCount;
-        var GHG3Group = GHG3.group().reduce(reduceAdd, reduceRemove, reduceInitial);
+        var ghg3Group = ghg3.group().reduce(reduceAdd, reduceRemove, reduceInitial);
 
         function reduceAdd(p, v) {
             if (p == 1) {
@@ -395,10 +429,10 @@ d3.csv('/data/master.csv', function (data) {
 
         ghg3Chart
             .width(FULL_CHART_WIDTH)
-            .margins({top: 10, right: 5, bottom: 40, left: 15})
+            .margins({top: 10, right: 5, bottom: 20, left: 0})
             .height(HALF_CHART_HEIGHT)
-            .dimension(GHG3)
-            .group(GHG3Group)
+            .dimension(ghg3)
+            .group(ghg3Group)
             .elasticY(true)
             .gap(5)
             .round(dc.round.floor)
@@ -435,7 +469,7 @@ d3.csv('/data/master.csv', function (data) {
 
         totalWaterUseChart
             .width(FULL_CHART_WIDTH)
-            .margins({top: 10, right: 5, bottom: 40, left: 15})
+            .margins({top: 10, right: 5, bottom: 20, left: 0})
             .height(HALF_CHART_HEIGHT)
             .dimension(totalWaterUse)
             .group(waterIntensityGroup)
@@ -475,7 +509,7 @@ d3.csv('/data/master.csv', function (data) {
 
         totalWaterWithdrawlChart
             .width(FULL_CHART_WIDTH)
-            .margins({top: 10, right: 5, bottom: 40, left: 15})
+            .margins({top: 10, right: 5, bottom: 20, left: 0})
             .height(HALF_CHART_HEIGHT)
             .dimension(totalWaterWithdrawl)
             .group(tWWGroup)
@@ -514,7 +548,7 @@ d3.csv('/data/master.csv', function (data) {
 
         totalWaterDischargedChart
             .width(FULL_CHART_WIDTH)
-            .margins({top: 10, right: 5, bottom: 40, left: 15})
+            .margins({top: 10, right: 5, bottom: 20, left: 0})
             .height(HALF_CHART_HEIGHT)
             .dimension(totalWaterDischarged)
             .group(totalWaterDischargedGroup)
@@ -552,7 +586,7 @@ d3.csv('/data/master.csv', function (data) {
 
         totalWasteChart
             .width(FULL_CHART_WIDTH)
-            .margins({top: 10, right: 5, bottom: 40, left: 15})
+            .margins({top: 10, right: 5, bottom: 20, left: 0})
             .height(HALF_CHART_HEIGHT)
             .dimension(totalWaste)
             .group(wasteIntensityGroup)
@@ -590,7 +624,7 @@ d3.csv('/data/master.csv', function (data) {
 
         wasteSentToLandfillChart
             .width(FULL_CHART_WIDTH)
-            .margins({top: 10, right: 5, bottom: 40, left: 15})
+            .margins({top: 10, right: 5, bottom: 20, left: 0})
             .height(HALF_CHART_HEIGHT)
             .dimension(wasteSentToLandfill)
             .group(wasteSentToLandFillGroup)
@@ -628,7 +662,7 @@ d3.csv('/data/master.csv', function (data) {
 
         wasteRecycledChart
             .width(FULL_CHART_WIDTH)
-            .margins({top: 10, right: 5, bottom: 40, left: 15})
+            .margins({top: 10, right: 5, bottom: 20, left: 0})
             .height(HALF_CHART_HEIGHT)
             .dimension(wasteRecycled)
             .group(wgGroup)
@@ -666,7 +700,7 @@ d3.csv('/data/master.csv', function (data) {
 
         totalEnergyConsumptionChart
             .width(FULL_CHART_WIDTH)
-            .margins({top: 10, right: 5, bottom: 40, left: 15})
+            .margins({top: 10, right: 5, bottom: 20, left: 0})
             .height(HALF_CHART_HEIGHT)
             .dimension(totalEnergyConsumption)
             .group(group)

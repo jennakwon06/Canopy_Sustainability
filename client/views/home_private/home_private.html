@@ -129,6 +129,11 @@
                                     <div id="ghg1Chart"></div>
 
 
+                                    <div class="col-md-12" style="padding-left:0px;">
+                                        <div class="col-md-10"><input type="range" class="attrScale" id="ghg1Weight" min="0" max="100" onchange="ghg1Count()"></div>
+                                        <div style="font-size:9px; margin-left:15px;" id="ghg1Count">Weight: 50</div>
+                                    </div>
+
                                     <!--<div class="clearfix"></div>-->
                                     <!--<div class="reset" style="display: none;">-->
                                     <!--<a class="reset" href="javascript:ghg1Chart.filterAll();dc.redrawAll();"-->
@@ -141,6 +146,11 @@
 
                                     <div id="ghg2Chart"></div>
 
+                                    <div class="col-md-12" style="padding-left:0px;">
+                                        <div class="col-md-10"><input type="range" class="attrScale" id="ghg2Weight" min="0" max="100" onchange="ghg2Count()"></div>
+                                        <div style="font-size:9px; margin-left:15px;" id="ghg2Count">Weight: 50</div>
+                                    </div>
+
                                     <row>
                                         <strong>GHG Scope 3 Emission (MT) </strong>
                                     </row>
@@ -150,6 +160,11 @@
                                         <!--<span class="reset" style="display: none;">-->
                                         <!--<a class="reset" href="javascript:ghg3Chart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>-->
                                         <!--</span>-->
+                                    </div>
+
+                                    <div class="col-md-12" style="padding-left:0px;">
+                                        <div class="col-md-10" ><input type="range" class="attrScale" id="ghg3Weight" min="0" max="100" onchange="ghg3Count()"></div>
+                                        <div style="font-size:9px; margin-left:15px;" id="ghg3Count">Weight: 50</div>
                                     </div>
                                 </div>
                             </div>
@@ -181,6 +196,10 @@
                                         <!--<div class="clearfix"></div>-->
                                     </div>
 
+                                    <div class="col-md-12" style="padding-left:0px;">
+                                        <div class="col-md-10" ><input type="range" class="attrScale" id="totalWaterUseWeight" min="0" max="100" onchange="totalWaterUseCount()"></div>
+                                        <div style="font-size:9px; margin-left:15px;" id="totalWaterUseCount">Weight: 50</div>
+                                    </div>
 
                                     <row>
                                         <strong>Total Water Withdrawl(1000m<sup>3</sup>)</strong>
@@ -193,16 +212,20 @@
                                         <!--<div class="clearfix"></div>-->
                                     </div>
 
+                                    <div class="col-md-12" style="padding-left:0px;">
+                                        <div class="col-md-10" ><input type="range" class="attrScale" id="totalWaterWithdrawlWeight" min="0" max="100" onchange="totalWaterWithdrawlCount()"></div>
+                                        <div style="font-size:9px; margin-left:15px;" id="totalWaterWithdrawlCount">Weight: 50</div>
+                                    </div>
+
                                     <row>
                                         <strong>Total Water Discharged(1000m<sup>3</sup>)</strong>
                                     </row>
 
-                                    <div id="totalWaterDischargedChart">
+                                    <div id="totalWaterDischargedChart"></div>
 
-                                        <!--<div class="clearfix"></div>-->
-                                        <!--<span class="reset" style="display: none;">-->
-                                        <!--<a class="reset" href="javascript:ghg2Chart.filterAll();dc.redrawAll();" style="visibility: hidden;">reset</a>-->
-                                        <!--</span>-->
+                                    <div class="col-md-12" style="padding-left:0px;">
+                                        <div class="col-md-10" ><input type="range" class="attrScale" id="totalWaterDischargedWeight" min="0" max="100" onchange="totalWaterDischargedCount()"></div>
+                                        <div style="font-size:9px; margin-left:15px;" id="totalWaterDischargedCount">Weight: 50</div>
                                     </div>
                                 </div>
                             </div>
@@ -227,23 +250,32 @@
                                         <strong>Total Waste</strong>
                                     </row>
 
-                                    <div id="totalWasteChart">
+                                    <div id="totalWasteChart"></div>
+
+                                    <div class="col-md-12" style="padding-left:0px;">
+                                        <div class="col-md-10" ><input type="range" class="attrScale" id="totalWasteWeight" min="0" max="100" onchange="totalWasteCount()"></div>
+                                        <div style="font-size:9px; margin-left:15px;" id="totalWasteCount">Weight: 50</div>
                                     </div>
 
                                     <row>
                                         <strong>Waste Recycled</strong>
                                     </row>
 
-                                    <div id="wasteRecycledChart">
+                                    <div id="wasteRecycledChart"></div>
+                                    <div class="col-md-12" style="padding-left:0px;">
+                                        <div class="col-md-10" ><input type="range" class="attrScale" id="wasteRecycledWeight" min="0" max="100" onchange="totalWasteRecycledCount()"></div>
+                                        <div style="font-size:9px; margin-left:15px;" id="wasteRecycledCount">Weight: 50</div>
                                     </div>
 
+                                    <row><strong>Waste Sent to Landfill(1000m<sup>3</sup>)</strong></row>
 
-                                    <row>
-                                        <strong>Waste Sent to Landfill(1000m<sup>3</sup>)</strong>
-                                    </row>
+                                    <div id="wasteSentToLandfillChart"></div>
 
-                                    <div id="wasteSentToLandfillChart">
+                                    <div class="col-md-12" style="padding-left:0px;">
+                                        <div class="col-md-10" ><input type="range" class="attrScale" id="wasteSentToLandfillWeight" min="0" max="100" onchange="wasteSentToLandfillCount()"></div>
+                                        <div style="font-size:9px; margin-left:15px;" id="wasteSentToLandfillCount">Weight: 50</div>
                                     </div>
+
 
                                 </div>
                             </div>
@@ -262,11 +294,14 @@
 
                             <div id="collapseEnergy" class="panel-collapse collapse in">
                                 <div class="panel-body">
-
-                                    <row>
-                                        <strong>Total Energy Consumption</strong>
-                                    </row>
+                                    <row><strong>Total Energy Consumption</strong></row>
                                     <div id="totalEnergyConsumptionChart"></div>
+
+                                    <div class="col-md-12" style="padding-left:0px;">
+                                        <div class="col-md-10" ><input type="range" class="attrScale" id="totalEnergyConsumptionWeight" min="0" max="100" onchange="energyConsumptionCount()"></div>
+                                        <div style="font-size:9px; margin-left:15px;" id="totalEnergyConsumptionCount">Weight: 50</div>
+                                    </div>
+
                                 </div>
 
 
@@ -298,6 +333,49 @@
                     </div>
                 </div>
             </div>
+
+            <script>
+                function ghg1Count() {
+                    var x = "Weight: " + document.getElementById("ghg1Weight").value;
+                    document.getElementById("ghg1Count").innerHTML = x;
+                }
+                function ghg2Count() {
+                    var x = "Weight: " + document.getElementById("ghg2Weight").value;
+                    document.getElementById("ghg2Count").innerHTML = x;
+                }
+                function ghg3Count() {
+                    var x = "Weight: " + document.getElementById("ghg3Weight").value;
+                    document.getElementById("ghg3Count").innerHTML = x;
+                }
+                function totalWaterUseCount() {
+                    var x = "Weight: " + document.getElementById("totalWaterUseWeight").value;
+                    document.getElementById("totalWaterUseCount").innerHTML = x;
+                }
+                function totalWaterWithdrawlCount() {
+                    var x = "Weight: " + document.getElementById("totalWaterWithdrawlWeight").value;
+                    document.getElementById("totalWaterWithdrawlCount").innerHTML = x;
+                }
+                function totalWaterDischargedCount() {
+                    var x = "Weight: " + document.getElementById("totalWaterDischargedWeight").value;
+                    document.getElementById("totalWaterDischargedCount").innerHTML = x;
+                }
+                function totalWasteCount() {
+                    var x = "Weight: " + document.getElementById("totalWasteWeight").value;
+                    document.getElementById("totalWasteCount").innerHTML = x;
+                }
+                function wasteRecycledCount() {
+                    var x = "Weight: " + document.getElementById("wasteRecycledWeight").value;
+                    document.getElementById("wasteRecycledCount").innerHTML = x;
+                }
+                function wasteSentToLandfillCount() {
+                    var x = "Weight: " + document.getElementById("wasteSentToLandfillWeight").value;
+                    document.getElementById("wasteSentToLandfillCount").innerHTML = x;
+                }
+                function totalEnergyConsumptionCount() {
+                    var x = "Weight: " + document.getElementById("totalEnergyConsumptionWeight").value;
+                    document.getElementById("totalEnergyConsumptionCount").innerHTML = x;
+                }
+            </script>
 
             <div id="controlBar">
                 <div class="controlIcons">

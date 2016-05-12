@@ -3,8 +3,20 @@ html, body {
     overflow-x: hidden;
 }
 
+.wrapper {
+    width: 100%;
+    overflow: hidden; /* will contain if #first is longer than #second */
+}
+
 .attrScale {
-    margin-top: 10px;
+    width: 265px;
+    float:left; /* add this */
+    margin-bottom: 10px;
+}
+
+.countText {
+    font-size:10px;
+    overflow: hidden; /* if you don't want #second to wrap below #first */
 }
 
 .companiesCount {
@@ -14,6 +26,7 @@ html, body {
 .dc-chart .brush rect.extent {
     fill: #599513;
 }
+
 .filterMenuContainer {
     height: 60px;
     width : 200px;
@@ -29,16 +42,16 @@ html, body {
     cursor: pointer;
 }
 
+.headerPanel {
+    /*left:25vw;*/
+}
+
 .controlIcons{
     color:#599513;
 }
 
 .navbar-brand {
     font-size: 25px;
-}
-
-.headerPanel{
-    /*left:25vw;*/
 }
 
 #filterBar {
@@ -481,7 +494,7 @@ svg {
 }
 
 input[type=range]::-webkit-slider-runnable-track {
-    width: 100%;
+    /*width: 100%;*/
     height: 5px;
     cursor: pointer;
     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
@@ -495,7 +508,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 }
 
 input[type=range]::-moz-range-track {
-    width: 100%;
+    /*width: 100%;*/
     height: 5px;
     cursor: pointer;
     box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
@@ -505,7 +518,7 @@ input[type=range]::-moz-range-track {
 }
 
 input[type=range]::-ms-track {
-    width: 100%;
+    /*width: 100%;*/
     height: 5px;
     cursor: pointer;
     background: transparent;

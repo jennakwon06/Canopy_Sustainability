@@ -103,7 +103,7 @@ function drawBubblesOnMap(results) {
         arrayOfLocations.push(temp);
     }
 
-    console.log(arrayOfLocations);
+    //console.log(arrayOfLocations);
 
     arrayOfLocations.sort(function(a,b) {
         return (a.address > b.address) ? 1 : ((b.address > a.address) ? -1 : 0);} ); //SORT BY ADDRESS

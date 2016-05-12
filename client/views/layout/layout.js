@@ -51,7 +51,7 @@ var fillTable = function(results){
 		td3.appendChild(document.createTextNode(results[i].sector));
 		td4.appendChild(document.createTextNode(results[i].country));
 		td5.appendChild(document.createTextNode(Math.round(results[i].sustIndex * 1000) / 1000));
-
+		//console.log(results[i].sustIndex);
 		//console.log("what's the sustindex");
 		//console.log(results[i].sustIndex);
 
@@ -61,8 +61,29 @@ var fillTable = function(results){
 		tr.appendChild(td4);
 		tr.appendChild(td5);
 
-		//tr.data(results[i]);
+		var tr2 = document.createElement('tr');
+
+		tr2.id = "rowInfo";
+		var tr2td = document.createElement('td');
+		var a = document.createAttribute("colspan");
+		a.value = 5;
+		tr2td.setAttributeNode(a);
+		//$(tr2).hide();
+
+		var p = document.createElement('p');
+		console.log("what's my data info");
+		console.log(results[i].dataInfo);
+		var html = ""
+		for (var j = 0; j < results[i].dataInfo.length; j++) { // j iterates dataInfo array
+			html += results[i].dataInfo[j].name + ": " + results[i].dataInfo[j].value + "<br> ";
+		}
+		$(p).html(html);
+		$(p).hide();
+
+		tr2.appendChild(tr2td.appendChild(p));
+
 		table.append(tr);
+		table.append(tr2);
 	}
 };
 
@@ -109,6 +130,8 @@ Template.layout.events({
 		calculateIndex();
 
 		fillTable(globalFilter.top(Infinity).reverse());
+		$(".rowInfo").hide();
+
 		drawBubblesOnMap(globalFilter.top(Infinity));
 		drawScatterPlot(globalFilter.top(Infinity));
 

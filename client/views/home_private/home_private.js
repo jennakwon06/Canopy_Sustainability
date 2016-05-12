@@ -156,6 +156,7 @@ Template.HomePrivate.events({
         e.preventDefault();
 
         fillTable(globalFilter.top(Infinity).reverse());
+        $("td[colspan=3]").find("p").hide();
         drawBubblesOnMap(globalFilter.top(Infinity));
         drawScatterPlot(globalFilter.top(Infinity));
 
@@ -178,33 +179,21 @@ Template.HomePrivate.events({
 //<!----- LIST VIEW ---->
 
     'click .clickableRow': function (e) {
+        e.preventDefault();
 
         var name = $(e.currentTarget).attr('id');
         $(e.currentTarget).addClass('highlight');
         $(e.currentTarget).siblings().removeClass('highlight');
 
-        //d3.csv("/data/envDataOnSP500.csv", function(error, data) {
-        //    for (var i = 0; i < data.length; i++) {
-        //        if (data[i].Name == name) {
-        //            d3.select(".list-group")
-        //                .append("li")
-        //                .attr("class", "modal-list-item list-group-item")
-        //                .attr("value", 10)
-        //                .attr("id", 10)
-        //                .text(data[i].GR_name);
-        //
-        //
-        //            // TOOD TRY USING SHELLJS AND FS
-        //            //var path = "/reports/" + data[i].GR_name;
-        //            //var files = fs.readdirSync('/report/');
-        //            //console.log(files);
-        //            // TODO SOLUTION 2) USE MONGO DB
-        //            //console.log(findPDFs(data[i].GR_name));
-        //
-        //            break;
-        //        }
-        //    }
-        //});
+        console.log(name);
+
+        var $target = $(e.currentTarget);
+        if ( $target.closest("td").attr("colspan") > 1 ) {
+            $target.slideUp();
+        } else {
+            $target.closest("tr").next().find("p").slideToggle();
+        }
+
     },
 
 
