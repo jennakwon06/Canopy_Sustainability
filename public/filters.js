@@ -12,7 +12,6 @@ var ghg1Chart = dc.barChart('#ghg1Chart');
 var ghg2Chart = dc.barChart('#ghg2Chart');
 var ghg3Chart = dc.barChart('#ghg3Chart');
 
-
 // WATER
 var totalWaterUseChart = dc.barChart('#totalWaterUseChart');
 var totalWaterWithdrawlChart = dc.barChart('#totalWaterWithdrawlChart');
@@ -26,23 +25,10 @@ var wasteSentToLandfillChart = dc.barChart("#wasteSentToLandfillChart");
 // ENERGY
 var totalEnergyConsumptionChart = dc.barChart("#totalEnergyConsumptionChart");
 
-
 //var ccPolicyImplRowChart;
 
-//GLOBAL VARIABLES
-var FULL_CHART_WIDTH = 330;
-var HALF_CHART_WIDTH = 160;
-var FULL_CHART_HEIGHT = 200;
-var HALF_CHART_HEIGHT = 60;
-
 var globalFilter;
-var sp500;
 var globalData;
-
-var fields = ["ghg1", "ghg2", "ghg3"
-    , "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged"
-    , "totalWaste", "wasteRecycled", "wasteSentToLandfill"
-    , "totalEnergyConsumption" ];
 
 var color = d3.scale.linear()
     .range(["green", "red"])
@@ -63,24 +49,6 @@ function calculateIndex() {
     for (i = 0; i < fields.length; i++) {
         maxValues.push(d3.extent(globalData, function (d) {return +d[fields[i]];})[1]);
     }
-
-    //var totalWeight = 0;
-    //for (i = 0; i < fields.length; i++) {
-    //    totalWeight += parseInt(document.getElementById(fields[i] + "Weight").value);
-    //}
-
-    //console.log("totalWeight");
-    //console.log(totalWeight);
-
-    // add normalized weights
-    //var weights = [];
-    //for (i = 0; i < fields.length; i++) {
-    //    weights.push(document.getElementById(fields[i] + "Weight").value / totalWeight);
-    //}
-
-    //console.log("weights");
-    //console.log(weights);
-
 
     globalData.forEach(function (d) {
         var curScore = 0;
@@ -148,10 +116,20 @@ function calculateIndex() {
  */
 
 d3.csv('/data/master.csv', function (data) {
-
     globalData = data;
 
+    // Chart
+    var FULL_CHART_WIDTH = 330;
+    var HALF_CHART_WIDTH = 160;
+    var FULL_CHART_HEIGHT = 200;
+    var HALF_CHART_HEIGHT = 60;
     var numberFormat = d3.format('.2f');
+
+    var fields = ["ghg1", "ghg2", "ghg3"
+        , "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged"
+        , "totalWaste", "wasteRecycled", "wasteSentToLandfill"
+        , "totalEnergyConsumption" ];
+
 
     data.forEach(function (d) {
 
@@ -196,7 +174,7 @@ d3.csv('/data/master.csv', function (data) {
     });
 
     //### Create Crossfilter Dimensions and Groups. NOTE: BE CAREFUL OF HOW MANY DIMENSIONS YOU INSTANTIATE
-    sp500 = crossfilter(data);
+    var sp500 = crossfilter(data);
 
     var all = sp500.groupAll();
 
@@ -238,8 +216,101 @@ d3.csv('/data/master.csv', function (data) {
             all: '<strong>%total-count</strong>'
         });
 
+    var tooltipDiv = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
 
-    //ROW CHART: INDUSTRY CHART
+    //var tip = d3.tip()
+    //    .attr('class', 'd3-tip')
+    //    .offset([-10, 0])
+    //    .html(function(d) {
+    //        return "<strong>Frequency:</strong> <span style='color:red'>" + d.frequency + "</span>";
+    //    })
+    var fieldMap = {
+        "sector": "sector info",
+        "industry": "industry info",
+        "ghg1":
+            "Scope 1/Direct Greenhouse Gas (GHG) Emissions of the company, in thousands of metric tons. " +
+            "GHG are defined as those gases which contribute to the trapping of heat in the Earth's atmosphere and they include Carbon Dioxide (CO2), Methane, and Nitrous Oxide. " +
+            "Scope 1 Emissions are those emitted from sources that are owned or controlled by the reporting entity. " +
+            "Examples of Direct Emissions include emissions from combustion in owned or controlled boilers, furnaces, vehicles, emissions from chemical production in owned or controlled process equipment. " +
+            "Emissions reported as CO2 only will NOT be captured in this field. Emissions reported as generic GHG emissions or CO2 equivalents (CO2e) will be captured in this field. ",
+        "ghg2":
+            "Scope 2/Indirect Greenhouse Gas (GHG) Emissions of the company in thousands of metric tons. " +
+            "Greenhouse Gases are defined as those gases which contribute to the trapping of heat in the Earth's atmosphere and they include Carbon Dioxide (CO2), Methane, and Nitrous Oxide. " +
+            "Scope 2 Emissions are those emitted that are a consequence of the activities of the reporting entity, but occur at sources owned or controlled by another entity. " +
+            "The principle source of Indirect Emissions is emissions from purchased electricity, steam and/or heating/cooling. " +
+            "These emissions physically occur at the facility where electricity/steam/heating/cooling is generated. " +
+            "Emissions reported as CO2 only will NOT be captured in this field. " +
+            "Emissions reported as generic GHG emissions or CO2 equivalents (CO2e) will be captured in this field. " ,
+        "ghg3":
+            "Scope 3 Greenhouse Gas (GHG) Emissions of the company, in thousands of metric ton. " +
+            "Greenhouse Gases are defined as those gases which contribute to the trapping of heat in the Earth's atmosphere and they include Carbon Dioxide (CO2), Methane, and Nitrous Oxide. " +
+            "Scope 3 emissions are all non-scope 2, indirect emissions, such as the extraction and production of purchased materials and fuels, " +
+            "transport-related activities in vehicles not owned or controlled by the reporting entity, electricity-related activities" +
+            " (e.g. Transmission & Distribution losses) not covered in Scope 2, outsourced activities, waste disposal, etc. " +
+            "Emissions reported as CO2 only will NOT be captured in this field. " +
+            "Emissions reported as generic GHG emissions or CO2 equivalents (CO2e) will be captured in this field. ",
+        "totalWaterUse" :
+            "Total amount of water used to support a company's operational processes, in thousands of cubic meters. " +
+            "The sum of all water withdrawls for process water and cooling water and all water retained by company facilities through recycling.",
+        "totalWaterWithdrawl" : "Unavailable",
+        "totalWaterDischarged" : "Total volume of liquid waste and process water discharged by the corporation, in thousands of cubic meters. " +
+            "Includes treated and untreated effluents returned toa ny water source. " +
+            "The volume of cooling water discharged is specifically reported as the field coolinG water outflow.",
+        "totalWaste" :
+            "Total amount of waste the company discards, both hazardous and non-hazardous, in thousands of metric tons. ",
+        "wasteRecycled" :
+            "Total amount of waste the company recycles, in thousands of metric tons. ",
+        "wasteSentToLandfill" :
+            "Amount of company waste sent to landfills, in thousands of metric tons",
+        "totalEnergyConsumption" : "Total Energy Consumption Figure in thousands of megawatt hours (MWh). " +
+            "This field might include energy directly consumed through combustion in owned or controlled boilers, furnaces, vehicles, or through chemical production in owned or controlled process equipment. " +
+            "It also includes energy consumed as electricity. " +
+            "Field is part of the Environmental, Social and Governance (ESG) group of fields."
+    };
+
+    d3.select("#filterBar")
+        .selectAll("strong")
+        .on("mouseover", function(d) {
+            //console.log($(this).attr("id")); //GHG Scope 2
+
+            var text = "";
+
+            //console.log(fieldMap);
+            //console.log(fieldMap.keys());
+            //console.log(fieldMap.keys()[1]);
+
+            //console.log(Object.keys(fieldMap).length);
+
+            for (var i = 0; i < Object.keys(fieldMap).length; i++) {
+                if (fieldMap[$(this).attr("id")]) {
+                    console.log(fieldMap[$(this).attr("id")]);
+                    text = fieldMap[$(this).attr("id")];
+                }
+            }
+
+            tooltipDiv.transition()
+                .duration(200)
+                .style("opacity", .9)
+                .style("left", (d3.event.pageX + 5) + "px")
+                .style("top", (d3.event.pageY - 28) + "px");
+            tooltipDiv.html(text);
+        })
+
+    //formatTime(d.date) + "<br/>"  + d.close)
+    //.style("left", (d3.event.pageX) + "px")
+    //    .style("top", (d3.event.pageY - 28) + "px"
+
+        .on("mouseout", function(d) {
+            tooltipDiv.transition()
+                .duration(500)
+                .style("opacity", 0);
+        });
+
+
+
+        //ROW CHART: INDUSTRY CHART
     (function() {
         var industryGroup = industry.group();
 

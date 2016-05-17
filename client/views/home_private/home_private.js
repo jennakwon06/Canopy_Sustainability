@@ -1,5 +1,7 @@
 Template.HomePrivate.rendered = function() {
+    $.getScript("/globalFunctions.js");
     $.getScript("/filters.js");
+    $.getScript("/dc.js");
     $.getScript("/worldmap.js");
     $.getScript("/scatterplot.js");
 
@@ -20,7 +22,6 @@ var findPDFs = function(company) {
     // @TODO use regex to find a file by name
     return PDFs.find({}).fetch();
 };
-
 
 Template.HomePrivate.events({
 //<!------ CONTROL BAR ---->
@@ -114,7 +115,7 @@ Template.HomePrivate.events({
         console.log($(".panelWater").offset().top);
 
         $('#filterBar').animate({
-            scrollTop: 969 - 120
+            scrollTop: 894 - 120
         }, 500);
     },
 
@@ -122,7 +123,7 @@ Template.HomePrivate.events({
         console.log($(".panelWaste").offset().top);
 
         $('#filterBar').animate({
-            scrollTop: 1422 - 120
+            scrollTop: 1272 - 120
         }, 500);
     },
 
@@ -130,7 +131,7 @@ Template.HomePrivate.events({
         console.log($(".panelEnergy").offset().top);
 
         $('#filterBar').animate({
-            scrollTop: 1875 - 120
+            scrollTop: 1650 - 120
         }, 500);
     },
 
@@ -138,7 +139,7 @@ Template.HomePrivate.events({
         console.log($(".panelMisc").offset().top);
 
         $('#filterBar').animate({
-            scrollTop: 2076 - 120
+            scrollTop: 1826 - 120
         }, 500);
     },
 

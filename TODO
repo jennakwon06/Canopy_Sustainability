@@ -1,47 +1,12 @@
-1. Deal with circles that hide each other -> occulusion
-2. bind modals to all circles and lists
-3. REDO BINDING TO THE LIST SO THAT EACH LIST ELEMENT HAS DATA BOUND TO IT AND ALL THE CIRCLES
-4. RESPONSIVE - everything expanding to fit the screen <- almost?
-5. Get gdal working & practice customizing maps
-6. Binary Button
-7.
+Timeline
 
-UI
-1. Filters - Make each panel start off as expanded, then click on nav bar on the top to zoom into that panel
-    - hard code scroll to points
-    - variable weight setter
-
-2. Font size - consistency
-
-3. get rid of y axis on filters (getting rid of the ones on filter may also get rid of the ones on scatterplot
-so make sure to ID the scatter plot ones
-
-4. Buttons on "Apply" and "Reset"
-5. Index on variables -> sustainability index. Coloring. Put on table
-6. Table supports having pdfs / logos / links to company websites
-8. Sort table by clicking on name, not chevron
-8. No more modal on tables
-9. Tooltip on map bubbles - City name, count, sust index of the city
-10. populate everything with user friendly information
-11. Dynamic changes in filtered data
-
-
-* Will spend 15 hours / week on the project *
-
-May 9th - May 13th
-    - UI clean up
-        - No more modals
-        - Tooltip on map bubbles
-    - coloring
-    - Sustainability Index Calculation for each company & show on scatter plot & table
-    - Sustainability Index calculation for each city & show coloring on map
-    - Tooltip for each map bubble
+* 15 hours / week *
 
 May 16th - May 20th
-    - UI for user input for dynamic adjustment of weights of variables
+    - Populate everything with user friendly information
+    - Dynamically changing bubble colors in scatterplot & map view based on weights
 
 May 23rd - May 27th
-    - Dynamically changing bubble colors in scatterplot & map view based on weights
     - Get rid of "Apply" button. Incorporate "Reset" button somewhere else in the UI
 
 May 30th - June 3rd
@@ -51,14 +16,25 @@ May 30th - June 3rd
 
 June 6th - June 10th
     - Expansion of each table row
-        - PDF integration & viewer / download
-        - Scrape company URLs
+    - PDF integration & viewer / download
+    - Scrape company URLs
 
-* Will spend 10 hours / week on the project *
-June 13rd - July 29th
+* 10 hours / week*
+
+June 13rd - June 17th
+- Binary selectors for binary variables (ex. Climate change policy implemented), integrate with existing weighing mechanisms
+
+June 20th - June 24th
+- Transition dynamically for the "best" view on scatter plot (based on plotted bubbles)
+
+June 27th - July 1st
+- Analytics; different mechanisms for variable weighing?
+
+July 4th - July 8th
+- "About" page explaining each variable / data source / etc
+
 
 - Binary selectors for binary variables (ex. Climate change policy implemented)
-- Transition dynamically for the "best" view on scatter plot (based on plotted bubbles)
 - Analytics; different mechanisms for variable weighing?
 - "About" page explaining each variable / data source / etc
 

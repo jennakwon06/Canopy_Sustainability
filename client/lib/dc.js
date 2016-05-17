@@ -1956,6 +1956,8 @@
              */
             _chart.onClick = function (datum) {
                 var filter = _chart.keyAccessor()(datum);
+                console.log("hello");
+                onChange();
                 dc.events.trigger(function () {
                     _chart.filter(filter);
                     _chart.redrawGroup();
@@ -2628,6 +2630,7 @@
 
                 if (_rangeChart && !rangesEqual(_chart.filter(), _rangeChart.filter())) {
                     dc.events.trigger(function () {
+                        //onChange();
                         _rangeChart.replaceFilter(domFilter);
                         _rangeChart.redraw();
                     });
@@ -2636,6 +2639,7 @@
                 _chart._invokeZoomedListener();
 
                 dc.events.trigger(function () {
+                    onChange();
                     _chart.redrawGroup();
                 }, dc.constants.EVENT_DELAY);
 
@@ -3620,6 +3624,7 @@
 
                 if (_chart.brushIsEmpty(extent)) {
                     dc.events.trigger(function () {
+                        onChange();
                         _chart.filter(null);
                         _chart.redrawGroup();
                     }, dc.constants.EVENT_DELAY);
@@ -3627,6 +3632,7 @@
                     var rangedFilter = dc.filters.RangedFilter(extent[0], extent[1]);
 
                     dc.events.trigger(function () {
+                        onChange();
                         _chart.replaceFilter(rangedFilter);
                         _chart.redrawGroup();
                     }, dc.constants.EVENT_DELAY);
@@ -3827,10 +3833,12 @@
                 _chart.on('filtered', function (chart) {
                     if (!chart.filter()) {
                         dc.events.trigger(function () {
+                            onChange();
                             _focusChart.x().domain(_focusChart.xOriginalDomain());
                         });
                     } else if (!rangesEqual(chart.filter(), _focusChart.filter())) {
                         dc.events.trigger(function () {
+                            onChange();
                             _focusChart.focus(chart.filter());
                         });
                     }
@@ -4586,6 +4594,7 @@
 
             _chart.onClick = function (d) {
                 var filter = d.key;
+                onChange();
                 dc.events.trigger(function () {
                     _chart.filter(filter);
                     _chart.redrawGroup();
