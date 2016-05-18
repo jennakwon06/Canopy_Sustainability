@@ -7,8 +7,6 @@
 var path;
 var projection;
 
-drawMap();
-
 //@TODO fix gdal problems and draw this map
 //http://www.tnoda.com/blog/2013-12-07
 function drawMap() {
@@ -91,6 +89,7 @@ function drawBubblesOnMap(results) {
             "latitude": 0,
             "longitude": 0,
             "sustIndex": 0,
+            "sustIndexCount": 0,
             "companies": []
         };
 
@@ -112,8 +111,12 @@ function drawBubblesOnMap(results) {
     for (i = arrayOfLocations.length - 1; i > 0; i--) {
         if (arrayOfLocations[i - 1].address == arrayOfLocations[i].address) {
             arrayOfLocations[i - 1].count += arrayOfLocations[i].count;
-            arrayOfLocations[i - 1].sustIndex += arrayOfLocations[i].sustIndex;
             arrayOfLocations[i - 1].companies.push.apply(arrayOfLocations[i - 1].companies, arrayOfLocations[i].companies);
+            // Some companies have NaN index
+            if (arrayOfLocations[i].sustIndex) {
+                arrayOfLocations[i - 1].sustIndexCount += arrayOfLocations[i].sustIndexCount;
+                arrayOfLocations[i - 1].sustIndex += arrayOfLocations[i].sustIndex;
+            }
             arrayOfLocations[i] = null;
         }
     }

@@ -145,7 +145,7 @@
                                     <!--</div>-->
 
                                     <row>
-                                        <strong id="ghg2">GHG Scope 2 Emission (MT) </strong>
+                                        <strong id="ghg2">GHG Scope 2 Emission (1000MT) </strong>
                                     </row>
 
                                     <div id="ghg2Chart"></div>
@@ -156,7 +156,7 @@
                                     </div>
 
                                     <row>
-                                        <strong id="ghg3" >GHG Scope 3 Emission (MT) </strong>
+                                        <strong id="ghg3" >GHG Scope 3 Emission (1000MT) </strong>
                                     </row>
 
                                     <div id="ghg3Chart">
@@ -403,10 +403,9 @@
 
                         <div class="col-md-12">
                             <select id="xaxisMeasure" onchange="changeX()">
-                                <option value="">-- x axis --</option>
-                                <option value="GHG1">GHG1</option>
-                                <option value="GHG2">GHG2</option>
-                                <option value="GHG3">GHG3</option>
+                                <option value="ghg1" selected="selected">GHG1</option>
+                                <option value="ghg2">GHG2</option>
+                                <option value="ghg3">GHG3</option>
                                 <option value="revenue">Revenue</option>
                                 <option value="price">Price</option>
                                 <option value="totalWaterUse">Water Intensity Per Sales</option>
@@ -419,10 +418,9 @@
                             </select>
 
                             <select id="yaxisMeasure" onchange="changeY()">
-                                <option value="">-- y axis --</option>
-                                <option value="GHG1">GHG1</option>
-                                <option value="GHG2">GHG2</option>
-                                <option value="GHG3">GHG3</option>
+                                <option value="ghg1" selected="selected">GHG1</option>
+                                <option value="ghg2">GHG2</option>
+                                <option value="ghg3">GHG3</option>
                                 <option value="revenue">Revenue</option>
                                 <option value="price">Price</option>
                                 <option value="totalWaterUse">Water Intensity Per Sales</option>

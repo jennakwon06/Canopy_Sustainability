@@ -88,17 +88,12 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
         .orient("left")
         .tickSize(-width)
         .ticks(8, ",.1s");
-    //
-    //var color = d3.scale.category10();
-    //
-    //var cValue = function(d) { return d.name;};
 
     var zoomBeh = d3.behavior.zoom()
         .x(x)
         .y(y)
         .scaleExtent([0, 500])
         .on("zoom", zoom);
-
 
     var svg = d3.select("#scatter")
         .append("svg")
@@ -191,7 +186,7 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
                 return "translate(" + x(d[xAxisVal]) + "," + y(d[yAxisVal]) + ")"
             })
             .style("fill", function (d) {
-                return d.color;
+                return color(d.sustIndex);
             })
             .on("mouseover", function (d) {
 

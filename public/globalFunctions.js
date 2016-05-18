@@ -2,8 +2,15 @@ var onChange = function() {
     calculateIndex();
     fillTable(globalFilter.top(Infinity).reverse());
     drawBubblesOnMap(globalFilter.top(Infinity));
-    drawScatterPlot(globalFilter.top(Infinity));
 
+    var xaxis = document.getElementById("xaxisMeasure");
+    var selectedX = xaxis.options[xaxis.selectedIndex].value;
+    console.log(selectedX);
+    var yaxis = document.getElementById("yaxisMeasure");
+    var selectedY = yaxis.options[yaxis.selectedIndex].value;
+    console.log(selectedY);
+
+    drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
 };
 
 // Filter chart objects
@@ -43,6 +50,19 @@ var fields = ["ghg1", "ghg2", "ghg3"
     , "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged"
     , "totalWaste", "wasteRecycled", "wasteSentToLandfill"
     , "totalEnergyConsumption" ];
+
+var fieldUnits = {
+    "ghg1" : "(1000MT)",
+    "ghg2" : "(1000MT)",
+    "ghg3" : "(1000MT)",
+    "totalWaterUse": "(1000m<sup>3</sup>)",
+    "totalWaterWithdrawl" : "(1000m<sup>3</sup>)",
+    "totalWaterDischarged" : "(1000m<sup>3</sup>)",
+    "totalWaste" : "(1000MT)",
+    "wasteRecycled" : "(1000MT)",
+    "wasteSentToLandfill" : "(1000MT)",
+    "totalEnergyConsumption" : "(1000MWh)"
+};
 
 /*
  * Calculate sustainability index based on selected weights

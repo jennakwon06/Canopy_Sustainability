@@ -3,14 +3,19 @@ Template.HomePrivate.rendered = function() {
     $.getScript("/globalFunctions.js");
     $.getScript("/filters.js");
     $.getScript("/dc.js");
-    $.getScript("/worldmap.js");
-    $.getScript("/scatterplot.js");
+    $.getScript("/worldmap.js", function(data, textStatus, jdxhr) {
+        drawMap();
+    });
+    $.getScript("/scatterplot.js", function( data, textStatus, jqxhr ) {
+        onChange();
+    });
 
     Meteor.subscribe('userFilters');
     Meteor.subscribe('userResults');
     Meteor.subscribe('fs.files');
 
-    onChange();
+    console.log("rendering from homeprivate js");
+
 };
 
 var i = 0;
