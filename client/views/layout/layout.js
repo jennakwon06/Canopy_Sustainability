@@ -23,71 +23,10 @@ Template.layout.rendered = function() {
 		}
 	}); 
 	/*TEMPLATE_RENDERED_CODE*/
+	$.getScript("/utility.js");
 	$.getScript("/globalFunctions.js");
 	$.getScript("/filters.js");
 	$.getScript("/scatterplot.js");
-};
-
-var fillTable = function(results){
-	var table = $(".resultsTable");
-
-	//clear table
-	$('.resultsTable > tbody').empty();
-
-	for (var i = 0; i <= results.length - 1; i++) {
-		var tr = document.createElement('tr');
-
-		tr.className += "clickableRow";
-		tr.id += results[i].Name;
-
-		var td1 = document.createElement('td');
-		var td2 = document.createElement('td');
-		var td3 = document.createElement('td');
-		var td4 = document.createElement('td');
-		var td5 = document.createElement('td');
-
-		td1.appendChild(document.createTextNode(results[i].name));
-		td2.appendChild(document.createTextNode(results[i].industry));
-		td3.appendChild(document.createTextNode(results[i].sector));
-		td4.appendChild(document.createTextNode(results[i].country));
-		td5.appendChild(document.createTextNode(Math.round(results[i].sustIndex * 1000) / 1000));
-		//console.log(results[i].sustIndex);
-		//console.log("what's the sustindex");
-		//console.log(results[i].sustIndex);
-
-		tr.appendChild(td1);
-		tr.appendChild(td2);
-		tr.appendChild(td3);
-		tr.appendChild(td4);
-		tr.appendChild(td5);
-
-		var tr2 = document.createElement('tr');
-
-		tr2.id = "rowInfo";
-		var tr2td = document.createElement('td');
-		var a1 = document.createAttribute("colspan");
-		a1.value = 5;
-		tr2td.setAttributeNode(a1);
-		//$(tr2).hide();
-
-		//var p = document.createElement('p');
-		//console.log("what's my data info");
-		//console.log(results[i].dataInfo);
-		var html = "";
-		for (var j = 0; j < results[i].dataInfo.length; j++) { // j iterates dataInfo array
-			html += results[i].dataInfo[j].name + ": " + roundTo100(results[i].dataInfo[j].value)
-				+ "(" + results[i].dataInfo[j].weight + ") <br> ";
-		}
-		$(tr2td).html(html);
-		$(tr2td).hide();
-
-		$(tr).css("background-color", results[i].color);
-
-		tr2.appendChild(tr2td);
-
-		table.append(tr);
-		table.append(tr2);
-	}
 };
 
 Template.layout.events({ 
@@ -111,6 +50,7 @@ Template.layout.events({
 	'click #resetAllFiltersButton': function(e) {
 		dc.redrawAll();
 		dc.filterAll();
+		onChange();
 		//$('.companiesCount').html(globalFilter.top(Infinity).length);
 	},
 
@@ -120,33 +60,33 @@ Template.layout.events({
 		}
 	},
 
-	'click #applyFilterButton': function (e) {
-		console.log('checking database connection');
-		console.log(Filters.find().count());
-		console.log(Results.find().count());
-		console.log(PDFs.find().count());
-
-		$('#saveResultButton').removeClass("disabled");
-		$('#resultListViewButton').removeClass("disabled");
-		$('#resultMapViewButton').removeClass("disabled");
-		$('#resultScatterPlotViewButton').removeClass("disabled");
-
-		e.preventDefault();
-
-		$('.initView').attr("style", "display: none");
-		$('.resultListView').attr("style", "display: block");
-
-		calculateIndex();
-
-		fillTable(globalFilter.top(Infinity).reverse());
-		$(".rowInfo").hide();
-
-		drawBubblesOnMap(globalFilter.top(Infinity));
-		drawScatterPlot(globalFilter.top(Infinity));
-
-		Filters.insert({
-		});
-	},
+	//'click #applyFilterButton': function (e) {
+	//	console.log('checking database connection');
+	//	console.log(Filters.find().count());
+	//	console.log(Results.find().count());
+	//	console.log(PDFs.find().count());
+    //
+	//	$('#saveResultButton').removeClass("disabled");
+	//	$('#resultListViewButton').removeClass("disabled");
+	//	$('#resultMapViewButton').removeClass("disabled");
+	//	$('#resultScatterPlotViewButton').removeClass("disabled");
+    //
+	//	e.preventDefault();
+    //
+	//	//$('.initView').attr("style", "display: none");
+	//	//$('.resultListView').attr("style", "display: block");
+    //
+	//	calculateIndex();
+    //
+	//	fillTable(globalFilter.top(Infinity).reverse());
+	//	$(".rowInfo").hide();
+    //
+	//	drawBubblesOnMap(globalFilter.top(Infinity));
+	//	drawScatterPlot(globalFilter.top(Infinity));
+    //
+	//	Filters.insert({
+	//	});
+	//},
 
 	'click #sortByCompanyButton': function(e) {
 		fillTable(globalFilter.top(Infinity).reverse())

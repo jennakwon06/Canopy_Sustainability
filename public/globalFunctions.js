@@ -1,5 +1,9 @@
 var onChange = function() {
-    console.log("take mass action");
+    calculateIndex();
+    fillTable(globalFilter.top(Infinity).reverse());
+    drawBubblesOnMap(globalFilter.top(Infinity));
+    drawScatterPlot(globalFilter.top(Infinity));
+
 };
 
 // Filter chart objects
@@ -39,17 +43,6 @@ var fields = ["ghg1", "ghg2", "ghg3"
     , "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged"
     , "totalWaste", "wasteRecycled", "wasteSentToLandfill"
     , "totalEnergyConsumption" ];
-
-function roundTo100(d) {
-    return Math.round(d * 100) / 100;
-}
-
-/*
- * Check if csv cell is empty
- */
-function isBlank(str) {
-    return (!str || /^\s*$/.test(str));
-}
 
 /*
  * Calculate sustainability index based on selected weights
@@ -108,6 +101,75 @@ function calculateIndex() {
     });
 }
 
+/*
+ * Interact with list view
+ */
+var fillTable = function(results){
+    var table = $(".resultsTable");
+
+    //clear table
+    $('.resultsTable > tbody').empty();
+
+    for (var i = 0; i <= results.length - 1; i++) {
+        var tr = document.createElement('tr');
+
+        tr.className += "clickableRow";
+        tr.id += results[i].Name;
+
+        var td1 = document.createElement('td');
+        var td2 = document.createElement('td');
+        var td3 = document.createElement('td');
+        var td4 = document.createElement('td');
+        var td5 = document.createElement('td');
+
+        td1.appendChild(document.createTextNode(results[i].name));
+        td2.appendChild(document.createTextNode(results[i].industry));
+        td3.appendChild(document.createTextNode(results[i].sector));
+        td4.appendChild(document.createTextNode(results[i].country));
+        td5.appendChild(document.createTextNode(Math.round(results[i].sustIndex * 1000) / 1000));
+        //console.log(results[i].sustIndex);
+        //console.log("what's the sustindex");
+        //console.log(results[i].sustIndex);
+
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        tr.appendChild(td4);
+        tr.appendChild(td5);
+
+        var tr2 = document.createElement('tr');
+
+        tr2.id = "rowInfo";
+        var tr2td = document.createElement('td');
+        var a1 = document.createAttribute("colspan");
+        a1.value = 5;
+        tr2td.setAttributeNode(a1);
+        //$(tr2).hide();
+
+        //var p = document.createElement('p');
+        //console.log("what's my data info");
+        //console.log(results[i].dataInfo);
+        var html = "";
+        for (var j = 0; j < results[i].dataInfo.length; j++) { // j iterates dataInfo array
+            html += results[i].dataInfo[j].name + ": " + roundTo100(results[i].dataInfo[j].value)
+                + "(" + results[i].dataInfo[j].weight + ") <br> ";
+        }
+        $(tr2td).html(html);
+        $(tr2td).hide();
+
+        $(tr).css("background-color", results[i].color);
+
+        tr2.appendChild(tr2td);
+
+        table.append(tr);
+        table.append(tr2);
+    }
+};
+
+
+/**
+ * Monitor the scales
+ */
 function ghg1Count() {
     var x = "Weight: " + document.getElementById("ghg1Weight").value;
     document.getElementById("ghg1Count").innerHTML = x;

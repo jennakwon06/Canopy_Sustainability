@@ -1,4 +1,5 @@
 Template.HomePrivate.rendered = function() {
+    $.getScript("/utility.js");
     $.getScript("/globalFunctions.js");
     $.getScript("/filters.js");
     $.getScript("/dc.js");
@@ -8,6 +9,8 @@ Template.HomePrivate.rendered = function() {
     Meteor.subscribe('userFilters');
     Meteor.subscribe('userResults');
     Meteor.subscribe('fs.files');
+
+    onChange();
 };
 
 var i = 0;
@@ -141,28 +144,6 @@ Template.HomePrivate.events({
         $('#filterBar').animate({
             scrollTop: 1826 - 120
         }, 500);
-    },
-
-    'click #applyFilterButton': function (e) {
-        console.log('checking database connection');
-        console.log(Filters.find().count());
-        console.log(Results.find().count());
-        console.log(PDFs.find().count());
-
-        $('#saveResultButton').removeClass("disabled");
-        $('#resultListViewButton').removeClass("disabled");
-        $('#resultMapViewButton').removeClass("disabled");
-        $('#resultScatterPlotViewButton').removeClass("disabled");
-
-        e.preventDefault();
-
-        fillTable(globalFilter.top(Infinity).reverse());
-        $("td[colspan=3]").find("p").hide();
-        drawBubblesOnMap(globalFilter.top(Infinity));
-        drawScatterPlot(globalFilter.top(Infinity));
-
-        Filters.insert({
-        });
     },
 
     'click #saveResultButton': function (e) {
