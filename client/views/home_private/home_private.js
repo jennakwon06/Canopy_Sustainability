@@ -192,12 +192,10 @@ Template.HomePrivate.events({
         if ( $target.closest("td").attr("colspan") > 1 ) {
             $target.slideUp();
         } else {
-            $target.closest("tr").next().find("p").slideToggle();
+            $target.closest("tr").next().find("td").slideToggle("fast");
         }
 
     },
-
-
 
     'click #closeModalButton': function (e) {
         $('.list-group').empty();
@@ -207,17 +205,12 @@ Template.HomePrivate.events({
 
 // @TODO MAP STUFF
     'click .mapCircle': function (e) {
-
         d3.select(".list-group")
             .append("li")
             .attr("class", "modal-list-item list-group-item")
             .attr("value", 10)
             .attr("id", 10);
     },
-
-
-// @TODO SCATTER PLOT STUFF - BIND DATA TO EACH BUBBLE!
-
 
 
     'click #submitDropdown' : function(e) {

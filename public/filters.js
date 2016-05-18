@@ -1,120 +1,3 @@
-// ### Create Chart Objects
-
-
-//STANDARDIZE VAR NAMES TO CAMEL CASE!
-
-var companiesCount = dc.dataCount('.companiesCount');
-
-var industryChart = dc.scrollableRowChart('#industry_chart');
-var sectorChart = dc.scrollableRowChart('#sector_chart');
-
-var ghg1Chart = dc.barChart('#ghg1Chart');
-var ghg2Chart = dc.barChart('#ghg2Chart');
-var ghg3Chart = dc.barChart('#ghg3Chart');
-
-// WATER
-var totalWaterUseChart = dc.barChart('#totalWaterUseChart');
-var totalWaterWithdrawlChart = dc.barChart('#totalWaterWithdrawlChart');
-var totalWaterDischargedChart = dc.barChart('#totalWaterDischargedChart');
-
-// WASTE
-var totalWasteChart = dc.barChart("#totalWasteChart");
-var wasteRecycledChart = dc.barChart("#wasteRecycledChart");
-var wasteSentToLandfillChart = dc.barChart("#wasteSentToLandfillChart");
-
-// ENERGY
-var totalEnergyConsumptionChart = dc.barChart("#totalEnergyConsumptionChart");
-
-//var ccPolicyImplRowChart;
-
-var globalFilter;
-var globalData;
-
-var color = d3.scale.linear()
-    .range(["green", "red"])
-    .interpolate(d3.interpolateHsl);
-
-/*
- * Check if csv cell is empty
- */
-
-function isBlank(str) {
-    return (!str || /^\s*$/.test(str));
-}
-
-function calculateIndex() {
-    // calculate max index;
-    var i;
-    var maxValues = [];
-    for (i = 0; i < fields.length; i++) {
-        maxValues.push(d3.extent(globalData, function (d) {return +d[fields[i]];})[1]);
-    }
-
-    globalData.forEach(function (d) {
-        var curScore = 0;
-        var totalWeight = 0;
-
-        var arr = [];
-
-        for (i = 0; i < fields.length; i++) {
-            if (+d[fields[i]]) {
-                totalWeight += parseInt(document.getElementById(fields[i] + "Weight").value);
-            }
-        }
-
-        for (i = 0; i < fields.length; i++) {
-            //console.log(+d[fields[i]]);
-            if (+d[fields[i]]) {
-                var object = {
-                    name: "",
-                    weight: 0,
-                    value: 0
-                };
-                object.name = fields[i];
-                object.weight = document.getElementById(fields[i] + "Weight").value / totalWeight;
-                object.value = +d[fields[i]];
-                arr.push(object);
-                var score = Math.log(d[fields[i]]) / Math.log(maxValues[i]);
-                score = score > 0 ? score : 0;
-                curScore += score * object.weight;
-            }
-        }
-        d.dataInfo = arr;
-        d.sustIndex = curScore;
-        d.color = color(curScore);
-    });
-}
-
-// ### Anchor Div for Charts
-/*
- // A div anchor that can be identified by id
- <div id='your-chart'></div>
- // Title or anything you want to add above the chart
- <div id='chart'><span>Days by Gain or Loss</span></div>
- // ##### .turnOnControls()
-
- // If a link with css class `reset` is present then the chart
- // will automatically hide/show it based on whether there is a filter
- // set on the chart (e.g. slice selection for pie chart and brush
- // selection for bar chart). Enable this with `chart.turnOnControls(true)`
-
- // dc.js >=2.1 uses `visibility: hidden` to hide/show controls without
- // disrupting the layout. To return the old `display: none` behavior,
- // set `chart.controlsUseVisibility(false)` and use that style instead.
- <div id='chart'>
- <a class='reset'
- href='javascript:myChart.filterAll();dc.redrawAll();'
- style='visibility: hidden;'>reset</a>
- </div>
- // dc.js will also automatically inject the current filter value into
- // any html element with its css class set to `filter`
- <div id='chart'>
- <span class='reset' style='visibility: hidden;'>
- Current filter: <span class='filter'></span>
- </span>
- </div>
- */
-
 d3.csv('/data/master.csv', function (data) {
     globalData = data;
 
@@ -124,11 +7,6 @@ d3.csv('/data/master.csv', function (data) {
     var FULL_CHART_HEIGHT = 200;
     var HALF_CHART_HEIGHT = 60;
     var numberFormat = d3.format('.2f');
-
-    var fields = ["ghg1", "ghg2", "ghg3"
-        , "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged"
-        , "totalWaste", "wasteRecycled", "wasteSentToLandfill"
-        , "totalEnergyConsumption" ];
 
 
     data.forEach(function (d) {
@@ -143,9 +21,10 @@ d3.csv('/data/master.csv', function (data) {
         d.sector = d["ICB Sector Name"];
         d.isin = d["ISIN"];
 
+        // @TODO implement binary selectors
         //Climate Chg Pol:Y,Equal Opp Pol:Y,Water Policy,Human Rights Pol:Y, Energy Effic Pol:Y,Bus Ethics Pol:Y,Biodiv Pol:Y,
-        d.ccImplemented = d["Climate Chg Pol:Y"];
-        d.wasteReductionPolicy = d["Waste Reduc Pol:Y"];
+        //d.ccImplemented = d["Climate Chg Pol:Y"];
+        //d.wasteReductionPolicy = d["Waste Reduc Pol:Y"];
 
         //Revenue T12M, Price
         d.revenue = d["Revenue T12M"];
@@ -203,9 +82,9 @@ d3.csv('/data/master.csv', function (data) {
     //ENERGY
     var totalEnergyConsumption = sp500.dimension(function (d) {return +d.totalEnergyConsumption;});
 
-    // PIE CHARTS
-    var riskExp = sp500.dimension(function (d) {return d.riskExp == "1" ? 'Yes' : 'No';});
-    var ccImplemented = sp500.dimension(function (d) {return d.ccImplemented == "1" ? 'Yes' : 'No';});
+    //@TODO binary selectors
+    //var riskExp = sp500.dimension(function (d) {return d.riskExp == "1" ? 'Yes' : 'No';});
+    //var ccImplemented = sp500.dimension(function (d) {return d.ccImplemented == "1" ? 'Yes' : 'No';});
     //var WasteReductionPolicy = sp500.dimension(function (d) {return d.wasteReductionPolicy == "1" ? 'Yes' : 'No';});
 
     companiesCount
@@ -273,19 +152,10 @@ d3.csv('/data/master.csv', function (data) {
     d3.select("#filterBar")
         .selectAll("strong")
         .on("mouseover", function(d) {
-            //console.log($(this).attr("id")); //GHG Scope 2
-
             var text = "";
-
-            //console.log(fieldMap);
-            //console.log(fieldMap.keys());
-            //console.log(fieldMap.keys()[1]);
-
-            //console.log(Object.keys(fieldMap).length);
 
             for (var i = 0; i < Object.keys(fieldMap).length; i++) {
                 if (fieldMap[$(this).attr("id")]) {
-                    console.log(fieldMap[$(this).attr("id")]);
                     text = fieldMap[$(this).attr("id")];
                 }
             }
@@ -790,58 +660,55 @@ d3.csv('/data/master.csv', function (data) {
     
     
     // BINARY BARS
-    (function() {
-        // Produce counts records in the dimension
-        var ccImplementedGroup = ccImplemented.group();
-    
-        //reply to http://stackoverflow.com/questions/29360042/how-to-create-stacked-row-chart-with-one-row-with-dc-js
-    
-        var chart = d3.select("#ccPolicyImplRowChart");
-    
-        console.log(chart);
-        console.log(ccImplementedGroup);
-    
-        var bar = chart.selectAll("div")
-            .data(ccImplementedGroup)
-            .enter().append("div")
-            .attr('data-tooltip',function(d,i){ return d.Name} )
-            .attr('style',function(d,i){
-                console.log(ccImplementedGroup);
-                return (
-                    'flex:' + d.value + '; '
-                    + 'background:' + color(i) + ';'
-                )
-            }).on("click",function(d,i){
-                updateElements(data);
-                d3.select("#rowChart")
-                    .selectAll("div")
-                    .attr("class", function(e, j) { return j != i ? "deselected" : "selected";
-                    });
-            });
-    
-    
-    
-        function updateElements(data){
-        }
-    
-        //ccPolicyImplRowChart
-        //    .width(150)// (optional) define chart height, `default = 200`
-        //    .height(150)// Define pie radius
-        //    .radius(75)// Set dimension
-        //    .dimension(ccImplemented)
-        //    .group(ccImplementedGroup)
-        //    .label(function (d) {
-        //        if (ccPolicyImplChart.hasFilter() && !ccPolicyImplChart.hasFilter(d.key)) {
-        //            return d.key + '(0%)';
-        //        }
-        //        var label = d.key;
-        //        if (all.value()) {
-        //            label += '(' + Math.floor(d.value / all.value() * 100) + '%)';
-        //        }
-        //        return label;
-        //    });
-    
-    }());
+    //(function() {
+    //    // Produce counts records in the dimension
+    //    var ccImplementedGroup = ccImplemented.group();
+    //
+    //    //reply to http://stackoverflow.com/questions/29360042/how-to-create-stacked-row-chart-with-one-row-with-dc-js
+    //
+    //    var chart = d3.select("#ccPolicyImplRowChart");
+    //
+    //    console.log(chart);
+    //    console.log(ccImplementedGroup);
+    //
+    //    var bar = chart.selectAll("div")
+    //        .data(ccImplementedGroup)
+    //        .enter().append("div")
+    //        .attr('data-tooltip',function(d,i){ return d.Name} )
+    //        .attr('style',function(d,i){
+    //            console.log(ccImplementedGroup);
+    //            return (
+    //                'flex:' + d.value + '; '
+    //                + 'background:' + color(i) + ';'
+    //            )
+    //        }).on("click",function(d,i){
+    //            updateElements(data);
+    //            d3.select("#rowChart")
+    //                .selectAll("div")
+    //                .attr("class", function(e, j) { return j != i ? "deselected" : "selected";
+    //                });
+    //        });
+    //
+    //    function updateElements(data){
+    //    }
+    //
+    //    //ccPolicyImplRowChart
+    //    //    .width(150)// (optional) define chart height, `default = 200`
+    //    //    .height(150)// Define pie radius
+    //    //    .radius(75)// Set dimension
+    //    //    .dimension(ccImplemented)
+    //    //    .group(ccImplementedGroup)
+    //    //    .label(function (d) {
+    //    //        if (ccPolicyImplChart.hasFilter() && !ccPolicyImplChart.hasFilter(d.key)) {
+    //    //            return d.key + '(0%)';
+    //    //        }
+    //    //        var label = d.key;
+    //    //        if (all.value()) {
+    //    //            label += '(' + Math.floor(d.value / all.value() * 100) + '%)';
+    //    //        }
+    //    //        return label;
+    //    //    });
+    //}());
 
 
 

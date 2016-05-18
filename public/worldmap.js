@@ -9,8 +9,6 @@ var projection;
 
 drawMap();
 
-
-
 //@TODO fix gdal problems and draw this map
 //http://www.tnoda.com/blog/2013-12-07
 function drawMap() {

@@ -2,9 +2,16 @@ Timeline
 
 * 15 hours / week *
 
+- How do we deal with missing data?
+- Companies without any data - black?
+-
+
 May 16th - May 20th
     - Populate everything with user friendly information
     - Dynamically changing bubble colors in scatterplot & map view based on weights
+    - Reset selection
+    - Reset scales
+
 
 May 23rd - May 27th
     - Get rid of "Apply" button. Incorporate "Reset" button somewhere else in the UI

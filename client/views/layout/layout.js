@@ -23,8 +23,8 @@ Template.layout.rendered = function() {
 		}
 	}); 
 	/*TEMPLATE_RENDERED_CODE*/
+	$.getScript("/globalFunctions.js");
 	$.getScript("/filters.js");
-	//$.getScript("/worldmap.js");
 	$.getScript("/scatterplot.js");
 };
 
@@ -65,24 +65,25 @@ var fillTable = function(results){
 
 		tr2.id = "rowInfo";
 		var tr2td = document.createElement('td');
-		var a = document.createAttribute("colspan");
-		a.value = 5;
-		tr2td.setAttributeNode(a);
+		var a1 = document.createAttribute("colspan");
+		a1.value = 5;
+		tr2td.setAttributeNode(a1);
 		//$(tr2).hide();
 
-		var p = document.createElement('p');
+		//var p = document.createElement('p');
 		//console.log("what's my data info");
 		//console.log(results[i].dataInfo);
-		var html = ""
+		var html = "";
 		for (var j = 0; j < results[i].dataInfo.length; j++) { // j iterates dataInfo array
-			html += results[i].dataInfo[j].name + ": " + results[i].dataInfo[j].value + "<br> ";
+			html += results[i].dataInfo[j].name + ": " + roundTo100(results[i].dataInfo[j].value)
+				+ "(" + results[i].dataInfo[j].weight + ") <br> ";
 		}
-		$(p).html(html);
-		$(p).hide();
+		$(tr2td).html(html);
+		$(tr2td).hide();
 
 		$(tr).css("background-color", results[i].color);
 
-		tr2.appendChild(tr2td.appendChild(p));
+		tr2.appendChild(tr2td);
 
 		table.append(tr);
 		table.append(tr2);
@@ -111,6 +112,12 @@ Template.layout.events({
 		dc.redrawAll();
 		dc.filterAll();
 		//$('.companiesCount').html(globalFilter.top(Infinity).length);
+	},
+
+	'click #resetAllScalesButton': function(e) {
+		for (var i = 0; i < fields.length; i++) {
+			document.getElementById(fields[i] + "Weight").value = "100";
+		}
 	},
 
 	'click #applyFilterButton': function (e) {

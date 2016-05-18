@@ -16,7 +16,6 @@ function changeY() {
     drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY)
 }
 
-
 function drawScatterPlot(results, xAxisVal, yAxisVal) {
 
     function isBlank(str) {
