@@ -1,13 +1,10 @@
 Template.HomePrivate.rendered = function() {
-    $.getScript("/utility.js");
-    $.getScript("/filters.js");
-    $.getScript("/worldmap.js");
-    $.getScript("/scatterplot.js");
-    $.getScript("/globalFunctions.js");
-
     Meteor.subscribe('userFilters');
     Meteor.subscribe('userResults');
     Meteor.subscribe('fs.files');
+
+    $.getScript("/filters.js");
+    $.getScript("/worldmap.js");
 
     onChange();
 };

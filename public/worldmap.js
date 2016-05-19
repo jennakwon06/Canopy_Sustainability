@@ -133,9 +133,7 @@ function drawBubblesOnMap(results) {
     for (i = arrayOfLocations.length - 1; i > 0; i--) {
         arrayOfLocations[i].sustIndex /= arrayOfLocations[i].count;
     }
-
-    console.log(arrayOfLocations);
-
+    
     var radius = d3.scale.sqrt()
         .domain([0, 1e6])
         .range([0, 15]);

@@ -1,7 +1,6 @@
 Template.ComparePanel.rendered = function() {
     var results = Results.find({}).fetch();
     var numResults = Results.find({}).count();
-    console.log(results);
 
     var table = $(".resultsTable");
 

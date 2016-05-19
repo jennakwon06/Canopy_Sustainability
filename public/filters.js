@@ -1,6 +1,30 @@
 var globalFilter;
 var globalData;
 
+// Filter chart objects
+var companiesCount = dc.dataCount('.companiesCount');
+
+var industryChart = dc.scrollableRowChart('#industry_chart');
+var sectorChart = dc.scrollableRowChart('#sector_chart');
+
+var ghg1Chart = dc.barChart('#ghg1Chart');
+var ghg2Chart = dc.barChart('#ghg2Chart');
+var ghg3Chart = dc.barChart('#ghg3Chart');
+
+// WATER
+var totalWaterUseChart = dc.barChart('#totalWaterUseChart');
+var totalWaterWithdrawlChart = dc.barChart('#totalWaterWithdrawlChart');
+var totalWaterDischargedChart = dc.barChart('#totalWaterDischargedChart');
+
+// WASTE
+var totalWasteChart = dc.barChart("#totalWasteChart");
+var wasteRecycledChart = dc.barChart("#wasteRecycledChart");
+var wasteSentToLandfillChart = dc.barChart("#wasteSentToLandfillChart");
+
+// ENERGY
+var totalEnergyConsumptionChart = dc.barChart("#totalEnergyConsumptionChart");
+
+
 d3.csv('/data/master.csv', function (data) {
     globalData = data;
 

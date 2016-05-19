@@ -21,12 +21,12 @@ Template.layout.rendered = function() {
 				$('html,body').scrollTop(0);
 			}
 		}
-	}); 
-	/*TEMPLATE_RENDERED_CODE*/
+	});
+
 	$.getScript("/utility.js");
 	$.getScript("/filters.js");
-	$.getScript("/scatterplot.js");
 	$.getScript("/worldmap.js");
+	$.getScript("/scatterplot.js");
 	$.getScript("/globalFunctions.js");
 };
 
@@ -118,9 +118,6 @@ Template.layout.events({
 		}))
 	},
 
-	'click #myModalLabel':function (e) {
-
-	}
 });
 
 

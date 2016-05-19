@@ -2,8 +2,6 @@
  * Created by JennaKwon on 5/18/16.
  */
 // !-------------- UTILITY FUNCTIONS ----------------! //
-console.log("rendering from utility");
-
 function roundTo100(d) {
     return Math.round(d * 100) / 100;
 }

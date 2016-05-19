@@ -1,6 +1,4 @@
 var onChange = function() {
-    console.log("on change called");
-
     calculateIndex();
     fillTable(globalFilter.top(Infinity).reverse());
     drawBubblesOnMap(globalFilter.top(Infinity));
@@ -13,28 +11,6 @@ var onChange = function() {
     drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
 };
 
-// Filter chart objects
-var companiesCount = dc.dataCount('.companiesCount');
-
-var industryChart = dc.scrollableRowChart('#industry_chart');
-var sectorChart = dc.scrollableRowChart('#sector_chart');
-
-var ghg1Chart = dc.barChart('#ghg1Chart');
-var ghg2Chart = dc.barChart('#ghg2Chart');
-var ghg3Chart = dc.barChart('#ghg3Chart');
-
-// WATER
-var totalWaterUseChart = dc.barChart('#totalWaterUseChart');
-var totalWaterWithdrawlChart = dc.barChart('#totalWaterWithdrawlChart');
-var totalWaterDischargedChart = dc.barChart('#totalWaterDischargedChart');
-
-// WASTE
-var totalWasteChart = dc.barChart("#totalWasteChart");
-var wasteRecycledChart = dc.barChart("#wasteRecycledChart");
-var wasteSentToLandfillChart = dc.barChart("#wasteSentToLandfillChart");
-
-// ENERGY
-var totalEnergyConsumptionChart = dc.barChart("#totalEnergyConsumptionChart");
 
 //var ccPolicyImplRowChart;
 
