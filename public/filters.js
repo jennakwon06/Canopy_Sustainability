@@ -1,3 +1,6 @@
+var globalFilter;
+var globalData;
+
 d3.csv('/data/master.csv', function (data) {
     globalData = data;
 

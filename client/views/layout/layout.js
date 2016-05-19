@@ -24,9 +24,10 @@ Template.layout.rendered = function() {
 	}); 
 	/*TEMPLATE_RENDERED_CODE*/
 	$.getScript("/utility.js");
-	$.getScript("/globalFunctions.js");
 	$.getScript("/filters.js");
 	$.getScript("/scatterplot.js");
+	$.getScript("/worldmap.js");
+	$.getScript("/globalFunctions.js");
 };
 
 Template.layout.events({ 

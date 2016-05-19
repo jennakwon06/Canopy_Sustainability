@@ -1,21 +1,15 @@
 Template.HomePrivate.rendered = function() {
     $.getScript("/utility.js");
-    $.getScript("/globalFunctions.js");
     $.getScript("/filters.js");
-    $.getScript("/dc.js");
-    $.getScript("/worldmap.js", function(data, textStatus, jdxhr) {
-        drawMap();
-    });
-    $.getScript("/scatterplot.js", function( data, textStatus, jqxhr ) {
-        onChange();
-    });
+    $.getScript("/worldmap.js");
+    $.getScript("/scatterplot.js");
+    $.getScript("/globalFunctions.js");
 
     Meteor.subscribe('userFilters');
     Meteor.subscribe('userResults');
     Meteor.subscribe('fs.files');
 
-    console.log("rendering from homeprivate js");
-
+    onChange();
 };
 
 var i = 0;

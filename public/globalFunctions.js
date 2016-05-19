@@ -1,14 +1,14 @@
 var onChange = function() {
+    console.log("on change called");
+
     calculateIndex();
     fillTable(globalFilter.top(Infinity).reverse());
     drawBubblesOnMap(globalFilter.top(Infinity));
 
     var xaxis = document.getElementById("xaxisMeasure");
     var selectedX = xaxis.options[xaxis.selectedIndex].value;
-    console.log(selectedX);
     var yaxis = document.getElementById("yaxisMeasure");
     var selectedY = yaxis.options[yaxis.selectedIndex].value;
-    console.log(selectedY);
 
     drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
 };
@@ -37,10 +37,6 @@ var wasteSentToLandfillChart = dc.barChart("#wasteSentToLandfillChart");
 var totalEnergyConsumptionChart = dc.barChart("#totalEnergyConsumptionChart");
 
 //var ccPolicyImplRowChart;
-
-var globalFilter;
-var globalData;
-
 
 var color = d3.scale.linear()
     .range(["green", "red"])
