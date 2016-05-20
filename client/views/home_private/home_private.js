@@ -3,10 +3,17 @@ Template.HomePrivate.rendered = function() {
     Meteor.subscribe('userResults');
     Meteor.subscribe('fs.files');
 
-    $.getScript("/filters.js");
-    $.getScript("/worldmap.js");
+    console.log("from home private");
 
-    onChange();
+    $.getScript("/utility.js");
+    $.getScript("/filters.js").done(function(script, textStatus){
+        $.getScript("/scatterplot.js");
+        $.getScript("/globalFunctions.js");
+        $.getScript("/worldMapInit.js").done(function( script, textStatus ) {
+            onChange();
+        });
+    });
+
 };
 
 var i = 0;

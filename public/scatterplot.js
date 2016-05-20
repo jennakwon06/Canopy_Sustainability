@@ -16,11 +16,14 @@ function changeY() {
     drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY)
 }
 
+function isBlank(str) {
+    return (!str || /^\s*$/.test(str));
+}
+
 function drawScatterPlot(results, xAxisVal, yAxisVal) {
 
-    function isBlank(str) {
-        return (!str || /^\s*$/.test(str));
-    }
+    console.log("load order 3: scatter plot");
+
 
     //clear previous
     d3.select(".scatterSVG").remove();

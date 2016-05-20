@@ -23,9 +23,10 @@ Template.layout.rendered = function() {
 		}
 	});
 
+	console.log("from layout")
 	$.getScript("/utility.js");
 	$.getScript("/filters.js");
-	$.getScript("/worldmap.js");
+	$.getScript("/worldMap.js");
 	$.getScript("/scatterplot.js");
 	$.getScript("/globalFunctions.js");
 };
@@ -59,6 +60,7 @@ Template.layout.events({
 		for (var i = 0; i < fields.length; i++) {
 			document.getElementById(fields[i] + "Weight").value = "100";
 		}
+		onChange();
 	},
 
 	//'click #applyFilterButton': function (e) {

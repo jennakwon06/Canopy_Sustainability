@@ -24,6 +24,67 @@ var wasteSentToLandfillChart = dc.barChart("#wasteSentToLandfillChart");
 // ENERGY
 var totalEnergyConsumptionChart = dc.barChart("#totalEnergyConsumptionChart");
 
+console.log("order 2: filters loaded");
+
+
+/*
+ * Populate sustainability index data field based on selected weights
+ */
+function calculateIndex() {
+    // calculate max index;
+    var i;
+    var maxValues = [];
+    for (i = 0; i < fields.length; i++) {
+        maxValues.push(d3.extent(globalData, function (d) {return +d[fields[i]];})[1]);
+    }
+
+    globalData.forEach(function (d) {
+        var curScore = 0;
+        var totalWeight = 0;
+
+        // Gather selected scale weights
+        for (i = 0; i < fields.length; i++) {
+            if (+d[fields[i]]) { // nonzero if there's at least one data
+                totalWeight += parseInt(document.getElementById(fields[i] + "Weight").value);
+            }
+        }
+
+        // Gather data array
+
+        // @TODO data info stays here if I want to show more than name & value.
+        // @TODO if I want to show weights and details of index calculation, then it has to change dynamically.
+        var arr = [];
+        for (i = 0; i < fields.length; i++) {
+            //console.log(+d[fields[i]]);
+            if (+d[fields[i]]) {
+                var object = {
+                    name: "",
+                    weight: 0,
+                    value: 0
+                };
+                object.name = fields[i];
+                object.weight = document.getElementById(fields[i] + "Weight").value / totalWeight;
+                object.value = +d[fields[i]];
+                arr.push(object);
+                var score = Math.log(d[fields[i]]) / Math.log(maxValues[i]);
+                score = score > 0 ? score : 0;
+                curScore += score * object.weight;
+            }
+        }
+
+        d.dataInfo = arr;
+
+        if (!totalWeight) {
+            d.sustIndex = NaN;
+            d.color = "gray";
+        } else {
+            d.sustIndex = curScore;
+            d.color = color(curScore);
+        }
+    });
+}
+
+
 
 d3.csv('/data/master.csv', function (data) {
     globalData = data;

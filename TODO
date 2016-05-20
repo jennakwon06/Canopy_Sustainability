@@ -8,13 +8,11 @@ Timeline
 
 May 16th - May 20th
     - Populate everything with user friendly information
-    - Dynamically changing bubble colors in scatterplot & map view based on weights
-    - Reset selection
-    - Reset scales
-
+    - units on scatter plot
+    - Scrape company URLs w/ blockspring https://www.blockspring.com/help/google_sheets
 
 May 23rd - May 27th
-    - Get rid of "Apply" button. Incorporate "Reset" button somewhere else in the UI
+    - Incorporate "Reset" button somewhere else in the UI
 
 May 30th - June 3rd
     - Logo for each filter panel
