@@ -81,7 +81,7 @@ div.dc-chart {
 }
 
 .dc-chart .axis text {
-    font: 10px sans-serif;
+    font: 10px Arial,Helvetica Neue,Helvetica,sans-serif;
 }
 
 .dc-chart .grid-line,
@@ -226,13 +226,12 @@ div.dc-chart {
 
 .dc-chart g.row text {
     fill: black;
-    font-size: 9px;
+    font: 9px Arial,Helvetica Neue,Helvetica,sans-serif;
     cursor: pointer;
 }
 
 .dc-legend {
-    font-size: 11px;
-}
+    font: 11px Arial,Helvetica Neue,Helvetica,sans-serif;  }
 
 .dc-legend-item {
     cursor: pointer;
@@ -275,7 +274,7 @@ g.dc-legend-item.fadeout {
 }
 
 .dc-chart .box text {
-    font: 10px sans-serif;
+    font: 10px Arial,Helvetica Neue,Helvetica,sans-serif;
     -webkit-user-select: none; /* Chrome/Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10 */

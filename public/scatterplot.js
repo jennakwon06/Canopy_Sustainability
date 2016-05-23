@@ -28,9 +28,10 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
     //clear previous
     d3.select(".scatterSVG").remove();
 
-    var margin = { top: 20, right: 50, bottom: 100, left: 60 },
+    var margin = { top: 20, right: 50, bottom: 30, left: 60 },
         outerWidth = $("#resultBar").width(),
-        outerHeight = $("#resultBar").height(),
+        //outerHeight = $("#resultBar").height(),
+        outerHeight = 330;
         width = outerWidth - margin.left - margin.right,
         height = outerHeight - margin.top - margin.bottom;
 

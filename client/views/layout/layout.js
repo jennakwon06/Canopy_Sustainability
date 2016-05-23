@@ -1,3 +1,5 @@
+var i = 0;
+
 Template.layout.rendered = function() {
 	// scroll to anchor
 	$('body').on('click', 'a', function(e) { 
@@ -48,6 +50,42 @@ Template.layout.events({
             }
         }
     },
+
+	'click #collapseFilterButton': function(e) {
+		if (i % 2 == 0) {
+			//$('#controlBar').animate({
+			//	left: "0px"
+			//}, 500, function() {});
+
+			$('#filterBar').animate({
+				opacity: 0
+			}, 500, function() {});
+
+
+			$('.mapSvg').css({"width" : "auto"});
+
+
+			$('#resultBar').css({"width" : "100vw","position" :"fixed"});
+
+			$(".glyphicon-arrow-left").addClass( "glyphicon-arrow-right");
+			$(".glyphicon-arrow-right").removeClass( "glyphicon-arrow-left");
+
+		} else {
+			$(".glyphicon-arrow-right").addClass( "glyphicon-arrow-left");
+			$(".glyphicon-arrow-left").removeClass( "glyphicon-arrow-right");
+
+			$('#resultBar').removeAttr("style");
+			//$('#controlBar').removeAttr("style");
+
+			$('#filterBar').animate({
+				opacity: 1
+			}, 500, function() {
+
+			});
+		}
+		i++;
+	},
+
 
 	'click #resetAllFiltersButton': function(e) {
 		dc.redrawAll();

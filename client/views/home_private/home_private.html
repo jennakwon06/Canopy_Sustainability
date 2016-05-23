@@ -75,10 +75,10 @@
 
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <strong id="sector"> Sector </strong>
+                                            <p id="sector"> Sector </p>
                                         </div>
                                         <div class="col-md-6">
-                                            <strong id="industry"> Industry </strong>
+                                            <p id="industry"> Industry </p>
                                         </div>
 
                                     </div>
@@ -127,7 +127,7 @@
                             <div id="collapseEmissions" class="panel-collapse collapse in">
                                 <div class="panel-body">
                                     <row>
-                                        <strong id="ghg1">GHG Scope 1 Emission (1000MT) </strong>
+                                        <p id="ghg1">GHG Scope 1 Emission (1000MT) </p>
                                     </row>
 
                                     <div id="ghg1Chart"></div>
@@ -145,7 +145,7 @@
                                     <!--</div>-->
 
                                     <row>
-                                        <strong id="ghg2">GHG Scope 2 Emission (1000MT) </strong>
+                                        <p id="ghg2">GHG Scope 2 Emission (1000MT) </p>
                                     </row>
 
                                     <div id="ghg2Chart"></div>
@@ -156,7 +156,7 @@
                                     </div>
 
                                     <row>
-                                        <strong id="ghg3" >GHG Scope 3 Emission (1000MT) </strong>
+                                        <p id="ghg3" >GHG Scope 3 Emission (1000MT) </p>
                                     </row>
 
                                     <div id="ghg3Chart">
@@ -190,7 +190,7 @@
                                 <div class="panel-body">
 
                                     <row>
-                                        <strong id="totalWaterUse">Total Water Use (1000m<sup>3</sup>) </strong>
+                                        <p id="totalWaterUse">Total Water Use (1000m<sup>3</sup>) </p>
                                     </row>
 
                                     <div id="totalWaterUseChart">
@@ -206,7 +206,7 @@
                                     </div>
 
                                     <row>
-                                        <strong id="totalWaterWithdrawl">Total Water Withdrawl (1000m<sup>3</sup>)</strong>
+                                        <p id="totalWaterWithdrawl">Total Water Withdrawl (1000m<sup>3</sup>)</p>
                                     </row>
 
                                     <div id="totalWaterWithdrawlChart">
@@ -222,7 +222,7 @@
                                     </div>
 
                                     <row>
-                                        <strong id="totalWaterDischarged">Total Water Discharged (1000m<sup>3</sup>)</strong>
+                                        <p id="totalWaterDischarged">Total Water Discharged (1000m<sup>3</sup>)</p>
                                     </row>
 
                                     <div id="totalWaterDischargedChart"></div>
@@ -251,7 +251,7 @@
                                 <div class="panel-body">
 
                                     <row>
-                                        <strong id="totalWaste">Total Waste (1000MT)</strong>
+                                        <p id="totalWaste">Total Waste (1000MT)</p>
                                     </row>
 
                                     <div id="totalWasteChart"></div>
@@ -262,7 +262,7 @@
                                     </div>
 
                                     <row>
-                                        <strong id="wasteRecycled">Waste Recycled (1000MT)</strong>
+                                        <p id="wasteRecycled">Waste Recycled (1000MT)</p>
                                     </row>
 
                                     <div id="wasteRecycledChart"></div>
@@ -271,7 +271,7 @@
                                         <div style="font-size:9px; margin-left:15px;" id="wasteRecycledCount">Weight: 100</div>
                                     </div>
 
-                                    <row><strong id="wasteSentToLandfill">Waste Sent to Landfill (1000MT) </strong></row>
+                                    <row><p id="wasteSentToLandfill">Waste Sent to Landfill (1000MT) </p></row>
 
                                     <div id="wasteSentToLandfillChart"></div>
 
@@ -298,7 +298,7 @@
 
                             <div id="collapseEnergy" class="panel-collapse collapse in">
                                 <div class="panel-body">
-                                    <row><strong id="totalEnergyConsumption">Total Energy Consumption (1000MWh)</strong></row>
+                                    <row><p id="totalEnergyConsumption">Total Energy Consumption (1000MWh)</p></row>
                                     <div id="totalEnergyConsumptionChart"></div>
 
                                     <div class="col-md-12" style="padding-left:0px;">
@@ -326,7 +326,7 @@
                             <div id="collapseMisc" class="panel-collapse collapse in">
                                 <div class="panel-body" style="height:825px;">
                                     <row>
-                                        <strong>Climate Change Policy Implemented</strong>
+                                        <p>Climate Change Policy Implemented</p>
                                     </row>
 
                                     <div id="ccPolicyImplRowChart"></div>
@@ -338,68 +338,40 @@
                 </div>
             </div>
 
-            <div id="controlBar">
-                <div class="controlIcons">
-                    <!--@TODO factor out 504 and make it dynamic-->
-                    <div class='companiesCount'>
-                        <span class='filter-count'></span>
-                        <!--selected out of <span class='total-count'></span> records.-->
-                    </div>
+            <!--<div id="controlBar">-->
+                <!--<div class="controlIcons">-->
+                    <!--&lt;!&ndash;@TODO factor out 504 and make it dynamic&ndash;&gt;-->
+                    <!--<div class='companiesCount'>-->
+                        <!--<span class='filter-count'></span>-->
+                        <!--&lt;!&ndash;selected out of <span class='total-count'></span> records.&ndash;&gt;-->
+                    <!--</div>-->
 
-                    <span class="glyphicon glyphicon-arrow-left myGlyphicon" title="Collapse filters" id="collapseFilterButton"></span>
+                    <!--<span class="glyphicon glyphicon-arrow-left myGlyphicon" title="Collapse filters" id="collapseFilterButton"></span>-->
 
-                    <!--<span class="glyphicon glyphicon-check myGlyphicon" title="Apply filters"></span>-->
-                           <hr />
+                    <!--&lt;!&ndash;<span class="glyphicon glyphicon-check myGlyphicon" title="Apply filters"></span>&ndash;&gt;-->
+                           <!--<hr />-->
 
-                    <!--<span class="glyphicon glyphicon-save myGlyphicon disabled" title="Save Results" id="saveResultButton"></span>-->
-                    <span class="glyphicon glyphicon-th-list myGlyphicon" title="Show List View" id="resultListViewButton" ></span>
-                    <span class="glyphicon glyphicon-map-marker myGlyphicon" title="Show Map View" id="resultMapViewButton"></span>
-                    <!--http://google.github.io/material-design-icons/-->
-                    <span class="glyphicon md-dark md-36 myGlyphicon" title="Show Scatter Plot" id="resultScatterPlotViewButton">
-                        <svg fill="#3C8D2F" height="36" viewBox="0 0 24 24" width="36" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0 0h24v24H0z" fill="none"/>
-                            <circle cx="7.2" cy="14.4" r="3.2"/>
-                            <circle cx="14.8" cy="18" r="2"/>
-                            <circle cx="15.2" cy="8.8" r="4.8"/>
-                        </svg>
-                    </span>
-                </div>
-            </div>
+                    <!--&lt;!&ndash;<span class="glyphicon glyphicon-save myGlyphicon disabled" title="Save Results" id="saveResultButton"></span>&ndash;&gt;-->
+                    <!--<span class="glyphicon glyphicon-th-list myGlyphicon" title="Show List View" id="resultListViewButton" ></span>-->
+                    <!--<span class="glyphicon glyphicon-map-marker myGlyphicon" title="Show Map View" id="resultMapViewButton"></span>-->
+                    <!--&lt;!&ndash;http://google.github.io/material-design-icons/&ndash;&gt;-->
+                    <!--<span class="glyphicon md-dark md-36 myGlyphicon" title="Show Scatter Plot" id="resultScatterPlotViewButton">-->
+                        <!--<svg fill="#3C8D2F" height="36" viewBox="0 0 24 24" width="36" xmlns="http://www.w3.org/2000/svg">-->
+                            <!--<path d="M0 0h24v24H0z" fill="none"/>-->
+                            <!--<circle cx="7.2" cy="14.4" r="3.2"/>-->
+                            <!--<circle cx="14.8" cy="18" r="2"/>-->
+                            <!--<circle cx="15.2" cy="8.8" r="4.8"/>-->
+                        <!--</svg>-->
+                    <!--</span>-->
+                <!--</div>-->
+            <!--</div>-->
 
             <div id="resultBar">
 
 
-
-                <div class="col-md-12">
-                    <div class="resultListView" style="display: block">
-                        <table class="table resultsTable">
-                            <thead class="thead-inverse">
-                            <tr>
-                                <th>Company Name
-                                    <i class="indicator glyphicon glyphicon-chevron-down  pull-right" id="sortByCompanyButton"></i>
-                                </th>
-                                <th>Industry
-                                    <i class="indicator glyphicon glyphicon-chevron-down  pull-right" id="sortByIndustryButton"></i>
-                                </th>
-                                <th>Sector
-                                    <i class="indicator glyphicon glyphicon-chevron-down  pull-right" id="sortBySectorButton"></i>
-                                </th>
-                                <th>Country
-                                    <i class="indicator glyphicon glyphicon-chevron-down  pull-right" id="sortByCountryButton"></i>
-                                </th>
-                                <th>Sustainability Score
-                                    <i class="indicator glyphicon glyphicon-chevron-down  pull-right" id="sortByScoreButton"></i>
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div class="col-md-12">
-                    <div class="resultScatterPlotView" style="display: none">
+                <div class="col-md-6">
+                    <div class="resultScatterPlotView" style="display: block">
+                        <!--style="display: none"-->
 
                         <div class="col-md-12">
                             <select id="xaxisMeasure" onchange="changeX()">
@@ -439,10 +411,39 @@
                     </div>
                 </div>
 
-                <div class="col-md-12">
-                    <div class="resultMapView" style="display: none">
+                <div class="col-md-6">
+                    <div class="resultMapView" style="display: block">
+                         <!--style="display: none">-->
                         <div id="worldMap"></div>
-                        <div class="tooltip-box"></div>
+                        <!--<div class="tooltip-box"></div>-->
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="resultListView" style="display: block">
+                        <table class="table resultsTable">
+                            <thead class="thead-inverse">
+                            <tr>
+                                <th>Company Name
+                                    <i class="fa fa-sort-alpha-asc pull-right" id="sortByCompanyButton"></i>
+                                </th>
+                                <th>Industry
+                                    <i class="fa fa-sort-alpha-asc pull-right" id="sortByIndustryButton"></i>
+                                </th>
+                                <th>Sector
+                                    <i class="fa fa-sort-alpha-asc pull-right" id="sortBySectorButton"></i>
+                                </th>
+                                <th>Country
+                                    <i class="fa fa-sort-alpha-asc pull-right" id="sortByCountryButton"></i>
+                                </th>
+                                <th>Sustainability Score
+                                    <i class="fa fa-sort-numeric-asc pull-right" id="sortByScoreButton"></i>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 

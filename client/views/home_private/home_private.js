@@ -16,8 +16,6 @@ Template.HomePrivate.rendered = function() {
 
 };
 
-var i = 0;
-
 var findPDFs = function(company) {
     // Check if database is correctly set up
     console.log(PDFs.find().count());
@@ -37,57 +35,25 @@ Template.HomePrivate.events({
         ghg3Chart.filterAll();
     },
 
-    // Switch between views
-    'click #resultListViewButton': function (e) {
-        $('.resultListView').attr("style", "display: block");
-        $('.resultMapView').attr("style", "display: none");
-        $('.resultScatterPlotView').attr("style", "display: none");
-
-    },
-    'click #resultMapViewButton': function (e) {
-        $('.resultListView').attr("style", "display: none");
-        $('.resultMapView').attr("style", "display: block");
-        $('.resultScatterPlotView').attr("style", "display: none");
-
-    },
-    'click #resultScatterPlotViewButton': function (e) {
-        $('.resultListView').attr("style", "display: none");
-        $('.resultMapView').attr("style", "display: none");
-        $('.resultScatterPlotView').attr("style", "display: block");
-
-    },
-
-    'click #collapseFilterButton': function(e) {
-        if (i % 2 == 0) {
-            $('#controlBar').animate({
-                left: "0px"
-            }, 500, function() {});
-
-            $('#filterBar').animate({
-                opacity: 0
-            }, 500, function() {});
-
-            $('#resultBar').css({"width" : "96vw","position" :"fixed"});
-
-            $(".glyphicon-arrow-left").addClass( "glyphicon-arrow-right");
-            $(".glyphicon-arrow-right").removeClass( "glyphicon-arrow-left");
-
-        } else {
-            $(".glyphicon-arrow-right").addClass( "glyphicon-arrow-left");
-            $(".glyphicon-arrow-left").removeClass( "glyphicon-arrow-right");
-
-            $('#resultBar').removeAttr("style");
-            $('#controlBar').removeAttr("style");
-
-            $('#filterBar').animate({
-                opacity: 1
-            }, 500, function() {
-
-            });
-        }
-        i++;
-    },
-
+    //// Switch between views
+    //'click #resultListViewButton': function (e) {
+    //    $('.resultListView').attr("style", "display: block");
+    //    $('.resultMapView').attr("style", "display: none");
+    //    $('.resultScatterPlotView').attr("style", "display: none");
+    //
+    //},
+    //'click #resultMapViewButton': function (e) {
+    //    $('.resultListView').attr("style", "display: none");
+    //    $('.resultMapView').attr("style", "display: block");
+    //    $('.resultScatterPlotView').attr("style", "display: none");
+    //
+    //},
+    //'click #resultScatterPlotViewButton': function (e) {
+    //    $('.resultListView').attr("style", "display: none");
+    //    $('.resultMapView').attr("style", "display: none");
+    //    $('.resultScatterPlotView').attr("style", "display: block");
+    //},
+    //
     // Update number counter button
     //'click rect': function (e) {
     //    $('.companiesCount').empty();

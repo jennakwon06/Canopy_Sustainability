@@ -131,18 +131,20 @@
 <template name="PrivateLayoutLeftMenu">
 
 
-    <ul id="menu-items" class="nav navbar-nav">
+    <ul class="nav navbar-nav">
+    </ul>
 
+
+    <ul id="menu-items" class="nav navbar-nav">
+        <!--<span class="glyphicon glyphicon-arrow-left myGlyphicon" title="Collapse filters" id="collapseFilterButton"></span>-->
         <!--<button type="button" class="btn btn-secondary filterTexts" id="applyFilterButton">Apply</button>-->
-        <button type="button" class="btn btn-secondary filterTexts" id="resetAllFiltersButton">Reset Selection</button>
-        <button type="button" class="btn btn-secondary filterTexts" id="resetAllScalesButton">Reset Scales</button>
+        <button type="button" class="btn btn-secondary filterTexts" id="collapseFilterButton">CF</button>
+        <button type="button" class="btn btn-secondary filterTexts" id="resetAllFiltersButton">RS</button>
+        <button type="button" class="btn btn-secondary filterTexts" id="resetAllScalesButton">RS</button>
 
         <!--<button type="button" class="btn btn-secondary filterTexts" id="resetAllFiltersButton"-->
                 <!--data-toggle="modal" data-target="#modalVarWeights">Set Variable Weights</button>-->
 
-    </ul>
-
-    <ul class="nav navbar-nav">
         <div class='companiesCount'>
             <span class='filter-count'></span>
             <!--selected out of <span class='total-count'></span> records.-->

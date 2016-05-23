@@ -1,6 +1,17 @@
 html, body {
     max-width: 100%;
     overflow-x: hidden;
+    font: 12px Arial,Helvetica Neue,Helvetica ;
+
+}
+
+p {
+    font: 14px Arial,Helvetica Neue,Helvetica ;
+    margin-bottom: 0px;
+}
+
+th {
+    font: 12px Arial,Helvetica Neue,Helvetica ;
 }
 
 .wrapper {
@@ -9,7 +20,7 @@ html, body {
 }
 
 .cityCompanies {
-    font-size: 8px;
+    font: 8px Arial,Helvetica Neue,Helvetica ;
 }
 
 .attrScale {
@@ -20,7 +31,7 @@ html, body {
 }
 
 .countText {
-    font-size:10px;
+    font: 10px Arial,Helvetica Neue,Helvetica ;
     overflow: hidden; /* if you don't want #second to wrap below #first */
 }
 
@@ -56,7 +67,7 @@ html, body {
 }
 
 .navbar-brand {
-    font-size: 25px;
+    font: 25px Arial,Helvetica Neue,Helvetica ;
 }
 
 #filterBar {
@@ -125,24 +136,24 @@ html, body {
     width:inherit;
 }
 
-#controlBar{
-    height:100vh;
-    width:3vw;
-    display: inline-block;
-    left:25vw;
-    /*background-color:lightslategrey;*/
-    position: fixed;
-    background:#D0ECBD; /* For browsers that do not support gradients */
-    /*background: -webkit-linear-gradient(right, lightslategrey , lightgrey); !* For Safari 5.1 to 6.0 *!*/
-    /*background: -o-linear-gradient(left, lightslategrey , lightgrey); !* For Opera 11.1 to 12.0 *!*/
-    /*background: -moz-linear-gradient(left, lightslategrey , lightgrey); !* For Firefox 3.6 to 15 *!*/
-    /*background: linear-gradient(to left, lightslategrey , lightgrey); !* Standard syntax *!*/
-}
+/*#controlBar{*/
+    /*height:100vh;*/
+    /*width:3vw;*/
+    /*display: inline-block;*/
+    /*left:25vw;*/
+    /*!*background-color:lightslategrey;*!*/
+    /*position: fixed;*/
+    /*background:#D0ECBD; !* For browsers that do not support gradients *!*/
+    /*!*background: -webkit-linear-gradient(right, lightslategrey , lightgrey); !* For Safari 5.1 to 6.0 *!*!*/
+    /*!*background: -o-linear-gradient(left, lightslategrey , lightgrey); !* For Opera 11.1 to 12.0 *!*!*/
+    /*!*background: -moz-linear-gradient(left, lightslategrey , lightgrey); !* For Firefox 3.6 to 15 *!*!*/
+    /*!*background: linear-gradient(to left, lightslategrey , lightgrey); !* Standard syntax *!*!*/
+/*}*/
 
 #resultBar {
     position:fixed;
     height:100vh;
-    width:72vw;
+    width:75vw;
     display: inline-block;
     overflow-y: scroll;
     right: 0;
@@ -151,7 +162,7 @@ html, body {
 }
 
 .resultsTable {
-    font-size: 13px;
+    font: 12px Arial,Helvetica Neue,Helvetica ;
 }
 
 #resetEmissions:hover {
@@ -297,8 +308,8 @@ span.myGlyphicon:hover {
 
 }
 
-h4{
-    font-size: 16px;
+h4 {
+    font: 16px Arial,Helvetica Neue,Helvetica ;
 }
 
 svg {
@@ -379,7 +390,7 @@ svg {
     width: 60px;
     height: 100px;
     padding: 2px;
-    font: 12px sans-serif;
+    font: 12px Arial,Helvetica Neue,Helvetica ;
     background: lightsteelblue;
     border: 0px;
     border-radius: 8px;
@@ -474,28 +485,28 @@ svg {
     bakcground-color:#59BB13;
 }
 
-.tooltip-box {
-    position: absolute;
-    background-color: #fff;
-    width: 200px;
-    right: 0px;
-    top: 0px;
-    overflow-y: scroll;
-    height: 200px;
-    border: 1px #ccc solid;
-    border-radius: 6px;
-    box-shadow: inset 1px 1px 6px 2px rgba(0,0,0, .25);
-}
-.tooltip-box h2 {
-    margin: 0 0 0.5rem 0;
-    padding: 3px;
-    text-align: center;
-}
+/*.tooltip-box {*/
+    /*position: absolute;*/
+    /*background-color: #fff;*/
+    /*width: 200px;*/
+    /*right: 0px;*/
+    /*top: 0px;*/
+    /*overflow-y: scroll;*/
+    /*height: 200px;*/
+    /*border: 1px #ccc solid;*/
+    /*border-radius: 6px;*/
+    /*box-shadow: inset 1px 1px 6px 2px rgba(0,0,0, .25);*/
+/*}*/
+/*.tooltip-box h2 {*/
+    /*margin: 0 0 0.5rem 0;*/
+    /*padding: 3px;*/
+    /*text-align: center;*/
+/*}*/
 
-.tooltip-box p {
-    padding-left: 10px;
-    font-size: 14px;
-}
+/*.tooltip-box p {*/
+    /*padding-left: 10px;*/
+    /*font: 14px Arial,Helvetica Neue,Helvetica ;*/
+/*}*/
 
 .modal-header {
     background-color: #3C8D2F;
