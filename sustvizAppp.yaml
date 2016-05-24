@@ -50,7 +50,7 @@ application:
   private_zone:
     navbar_class: navbar-default navbar-fixed-top
     pages:
-      - name: home_private
+      - name: home
         title: 'Welcome {{userFullName}}!'
       - name: user_settings
         pages:
@@ -99,7 +99,7 @@ application:
         dest_selector: '#menu'
         items:
           - title: Home
-            route: home_private
+            route: home
       - name: right_menu
         type: menu
         class: nav navbar-nav navbar-right

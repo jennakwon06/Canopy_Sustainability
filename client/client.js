@@ -5,10 +5,10 @@ Meteor.startup(function() {
 	
 });
 
-App.logout = function() {
-	Meteor.logout(function(err) {
-	});
-};
+//App.logout = function() {
+//	Meteor.logout(function(err) {
+//	});
+//};
 
 this.menuItemClass = function(routeName) {
 	if(!routeGranted(routeName)) {
@@ -37,19 +37,19 @@ Helpers.menuItemClass = function(routeName) {
 	return menuItemClass(routeName);
 };
 
-Helpers.userFullName = function() {
-	var name = "";
-	if(Meteor.user() && Meteor.user().profile)
-		name = Meteor.user().profile.name;
-	return name;
-};
+//Helpers.userFullName = function() {
+//	var name = "";
+//	if(Meteor.user() && Meteor.user().profile)
+//		name = Meteor.user().profile.name;
+//	return name;
+//};
 
-Helpers.userEmail = function() {
-	var email = "";
-	if(Meteor.user() && Meteor.user().profile)
-		email = Meteor.user().profile.email;
-	return email;
-};
+//Helpers.userEmail = function() {
+//	var email = "";
+//	if(Meteor.user() && Meteor.user().profile)
+//		email = Meteor.user().profile.email;
+//	return email;
+//};
 
 Helpers.randomString = function(strLen) {
 	return Random.id(strLen);

@@ -1,4 +1,4 @@
-Template.HomePrivate.rendered = function() {
+Template.Home.rendered = function() {
     Meteor.subscribe('userFilters');
     Meteor.subscribe('userResults');
     Meteor.subscribe('fs.files');
@@ -27,7 +27,7 @@ var findPDFs = function(company) {
     return PDFs.find({}).fetch();
 };
 
-Template.HomePrivate.events({
+Template.Home.events({
 //<!------ CONTROL BAR ---->
     'click #resetEmissions' : function (e) {
         ghg1Chart.filterAll();
@@ -167,7 +167,7 @@ Template.HomePrivate.events({
     }
 });
 
-Template.HomePrivate.helpers({
+Template.Home.helpers({
     pdfs: function () {
         return PDFs.find(); // Where Images is an FS.Collection instance
     }

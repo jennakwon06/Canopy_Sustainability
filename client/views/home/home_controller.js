@@ -1,5 +1,5 @@
-this.HomePrivateController = RouteController.extend({
-    template: "HomePrivate",
+this.HomeController = RouteController.extend({
+    template: "Home",
 
 
     yieldTemplates: {
