@@ -12,6 +12,7 @@ p {
 
 th {
     font: 12px Arial,Helvetica Neue,Helvetica ;
+    border: 1px black solid;
 }
 
 .wrapper {
@@ -343,12 +344,7 @@ svg {
 }
 
 .clickableRow {
-    /*-khtml-opacity:.50;*/
-    /*-moz-opacity:.50;*/
-    /*-ms-filter:”alpha(opacity=50)”;*/
-    /*filter:alpha(opacity=50);*/
-    /*filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0.5);*/
-    /*opacity:.50;*/
+    border: 2px darkgray;
 }
 
 /*.resultsTable tbody tr:nth-child(odd) td {*/
@@ -356,13 +352,15 @@ svg {
 /*}*/
 
 /*.resultsTable tbody tr.highlight td {*/
-    /*background-color: #3C8D2F;*/
+    /*background-color: #EEEEEE;*/
 /*}*/
 
 
-/*.clickableRow:hover {*/
-    /*background-color: #3C8D2F;*/
-/*}*/
+
+
+.clickableRow:hover {
+    background-color: #EEEEEE;
+}
 
 
 .land {
@@ -391,7 +389,7 @@ svg {
     height: 100px;
     padding: 2px;
     font: 12px Arial,Helvetica Neue,Helvetica ;
-    background: lightsteelblue;
+    background: palegreen;
     border: 0px;
     border-radius: 8px;
     pointer-events: none;

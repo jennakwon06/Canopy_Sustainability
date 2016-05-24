@@ -72,14 +72,9 @@ function drawBubbles(results) {
         return b.count - a.count;
     });
 
-    //svg.append("g")
-    //    .attr("class", "bubble")
-    //    .selectAll("circle")
-    //    .data(topojson.feature(us, us.objects.counties).features
-    //        .sort(function(a, b) { return b.properties.population - a.properties.population; }))
-    //    .enter().append("circle")
-    //    .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
-    //    .attr("r", function(d) { return radius(d.properties.population); });
+    var tooltipDiv = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
 
     d3.select(".mapSvg g")
         //.insert('g', '.land + *')
@@ -104,33 +99,47 @@ function drawBubbles(results) {
         })
         .style("fill", function(d) {
             return color(d.sustIndex);})
-        .on("click", function(d) {
-            //d3.selectAll(".tooltip-box p").remove();
-            //
-            //d3.select(".tooltip-box")
-            //    .append("p")
-            //    .attr("class", "address")
-            //    .html("City: " + d.address
-            //        + "<br> Sustainability Index: " + Math.round(d.sustIndex * 100) / 100);
-            //
-            //d3.select(".tooltip-box")
-            //    .append("p")
-            //    .attr("class", "cityCompanies")
-            //    .html("Companies: <br>");
-            //
-            //var cities = "";
-            //
-            //for (var i = 0; i < d.companies.length; i++) {
-            //    cities += d.companies[i].name + "(" + Math.round(d.companies[i].sustIndex * 100) / 100 + ")" + "<br>";
-            //}
-            //
-            //d3.select(".cityCompanies")
-            //    .append("p")
-            //    .html(cities);
-
+        .on("mouseover", function(d) {
+            tooltipDiv.transition()
+                .duration(200)
+                .style("opacity", .9)
+                .style("left", (d3.event.pageX + 5) + "px")
+                .style("top", (d3.event.pageY - 28) + "px");
+            tooltipDiv
+                .html("City: " + d.address
+                    + "<br> Sustainability Index: " + Math.round(d.sustIndex * 100) / 100);
+        })
+        .on("mouseout", function(d) {
+            tooltipDiv.transition()
+                .duration(500)
+                .style("opacity", 0);
         });
 
-    d3.select(self.frameElement).style("height", height + "px");
+    //d3.selectAll(".tooltip-box p").remove();
+        //
+        //d3.select(".tooltip-box")
+        //    .append("p")
+        //    .attr("class", "address")
+        //    .html("City: " + d.address
+        //        + "<br> Sustainability Index: " + Math.round(d.sustIndex * 100) / 100);
+        //
+        //d3.select(".tooltip-box")
+        //    .append("p")
+        //    .attr("class", "cityCompanies")
+        //    .html("Companies: <br>");
+        //
+        //var cities = "";
+        //
+        //for (var i = 0; i < d.companies.length; i++) {
+        //    cities += d.companies[i].name + "(" + Math.round(d.companies[i].sustIndex * 100) / 100 + ")" + "<br>";
+        //}
+        //
+        //d3.select(".cityCompanies")
+        //    .append("p")
+        //    .html(cities);
+
+
+        d3.select(self.frameElement).style("height", height + "px");
 }
 
 function drawMap(results) {
@@ -163,6 +172,28 @@ function drawMap(results) {
 
         svg.call(zoom)
             .call(zoom.event);
+
+
+        var z = color;
+
+        // Add a legend for the color values.
+        var legend = svg.selectAll(".legend")
+            .data(z.ticks(6).slice(1).reverse())
+            .enter().append("g")
+            .attr("class", "legend")
+            .attr("transform", function(d, i) { return "translate(" + (width + 20 - 80) + "," + (20 + i * 20) + ")"; });
+
+        legend.append("rect")
+            .attr("width", 15)
+            .attr("height", 15)
+            .style("fill", z);
+
+        legend.append("text")
+            .attr("x", 20)
+            .attr("y", 10)
+            .attr("dy", ".25em")
+            .text(String);
+
 
         d3.json("/world-50m.json", function(error, world) {
 

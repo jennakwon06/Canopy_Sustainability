@@ -136,8 +136,6 @@ Template.HomePrivate.events({
         $(e.currentTarget).addClass('highlight');
         $(e.currentTarget).siblings().removeClass('highlight');
 
-        console.log(name);
-
         var $target = $(e.currentTarget);
         if ( $target.closest("td").attr("colspan") > 1 ) {
             $target.slideUp();

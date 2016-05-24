@@ -4,18 +4,18 @@ Timeline
 
 - How do we deal with missing data?
 - Companies without any data - black?
--
 
-May 16th - May 20th
+
+Done
+
+
+May 23rd - May 27th
     - Populate everything with user friendly information
     - units on scatter plot
     - Scrape company URLs w/ blockspring https://www.blockspring.com/help/google_sheets
-
-May 23rd - May 27th
+    - Take out overhead for log in?
     - Incorporate "Reset" button somewhere else in the UI
-    - make the min/max x/y in Scatterplot adjust to the values. So that you can easily see all the datapoints at once.
-    - in the map, remove the "shaded" details window. We should have it more contained in a nicely formatted tooltip
-    - the map is not dynamically adjusting when I collapse the panel. the canvas is not updated
+    - Better tooltip for map
     - a color legend on what the colors mean needs to be provided on the geomap
     - please check your geocoding. noticed some incorrect lat/longs (e.g. Endo International says Burbank but shows up in Texas).
     - we need to somewhere show the "active filters" maybe as breadcrumbs at the top..

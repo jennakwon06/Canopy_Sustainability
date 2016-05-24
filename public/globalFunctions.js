@@ -55,15 +55,15 @@ var fillTable = function(results){
         var td3 = document.createElement('td');
         var td4 = document.createElement('td');
         var td5 = document.createElement('td');
+        var a0 = document.createAttribute("class");
+        a0.value = "sustIndexCell";
+        td5.setAttributeNode(a0);
 
         td1.appendChild(document.createTextNode(results[i].name));
         td2.appendChild(document.createTextNode(results[i].industry));
         td3.appendChild(document.createTextNode(results[i].sector));
         td4.appendChild(document.createTextNode(results[i].country));
         td5.appendChild(document.createTextNode(Math.round(results[i].sustIndex * 1000) / 1000));
-        //console.log(results[i].sustIndex);
-        //console.log("what's the sustindex");
-        //console.log(results[i].sustIndex);
 
         tr.appendChild(td1);
         tr.appendChild(td2);
@@ -91,13 +91,26 @@ var fillTable = function(results){
         $(tr2td).html(html);
         $(tr2td).hide();
 
-        $(tr).css("background-color", results[i].color);
+        d3.select(td5)
+            .append("svg")
+            .style("position", "relative")
+            .attr("width", 15)
+            .attr("height", 15)
+            .append("g")
+            .append("rect")
+            .attr("width", 15)
+            .attr("height", 15)
+            .style("fill", results[i].color);
+
+        //$(tr).css("background-color", results[i].color);
 
         tr2.appendChild(tr2td);
 
         table.append(tr);
         table.append(tr2);
     }
+
+
 };
 
 

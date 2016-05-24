@@ -61,9 +61,8 @@ Template.layout.events({
 				opacity: 0
 			}, 500, function() {});
 
-
-			$('.mapSvg').css({"width" : "auto"});
-
+			d3.select(".mapSvg")
+				.attr("width", "auto");
 
 			$('#resultBar').css({"width" : "100vw","position" :"fixed"});
 
@@ -154,7 +153,25 @@ Template.layout.events({
 
 	'click #sortByScoreButton': function(e) {
 		fillTable(globalFilter.top(Infinity).sort(function(a,b) {
-			return a.sustIndex - b.sustIndex;
+				//if( !isFinite(a.sustIndex) && !isFinite(b.sustIndex) ) {
+				//	return 0;
+				//}
+				//if( !isFinite(a.sustIndex) ) {
+				//	return 1;
+				//}
+				//if( !isFinite(b.sustIndex) ) {
+				//	return -1;
+				//}
+				//return a.sustIndex - b.sustIndex;
+			if (isNaN(a.sustIndex) && isNaN(b.sustIndex)) {
+				return 0;
+			} else if (isNaN(a.sustIndex)) {
+				return 1;
+			} else if (isNaN(b.sustIndex)) {
+				return -1;
+			} else {
+				return a.sustIndex - b.sustIndex;
+			}
 		}))
 	},
 

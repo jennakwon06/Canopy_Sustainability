@@ -24,12 +24,11 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
 
     console.log("load order 3: scatter plot");
 
-
     //clear previous
     d3.select(".scatterSVG").remove();
 
-    var margin = { top: 20, right: 50, bottom: 30, left: 60 },
-        outerWidth = $("#resultBar").width(),
+    var margin = { top: 20, right: 10, bottom: 30, left: 60 },
+        outerWidth = $(".resultScatterPlotView").width(),
         //outerHeight = $("#resultBar").height(),
         outerHeight = 330;
         width = outerWidth - margin.left - margin.right,
@@ -58,28 +57,8 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
     x.domain([xMin, xMax]);
     y.domain([yMin, yMax]);
 
-
-    //// min maxes
-    //console.log("min maxes");
-    //console.log(xMin);
-    //console.log(xMax);
-    //console.log(yMin);
-    //console.log(yMax);
-
     var xAxisMax = d3.extent(globalData, function (d) {return +d[xAxisVal];})[1];
     var yAxisMax = d3.extent(globalData, function (d) {return +d[yAxisVal];})[1];
-
-    //console.log("extent minmaxes");
-    //console.log(xAxisMax);
-    //console.log(yAxisMax);
-    //
-    //console.log("extent minmaxes with result");
-    //var resultMaxX = d3.extent(results, function (d) {return +d[xAxisVal];})[1];
-    //var resultMaxY = d3.extent(results, function (d) {return +d[yAxisVal];})[1];
-    //
-    //console.log("extent minmaxes");
-    //console.log(resultMaxX);
-    //console.log(resultMaxY);
 
     var xAxis = d3.svg.axis()
         .scale(x)

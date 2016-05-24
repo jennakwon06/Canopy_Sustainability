@@ -247,7 +247,6 @@ d3.csv('/data/master.csv', function (data) {
                     text = fieldMap[$(this).attr("id")];
                 }
             }
-
             tooltipDiv.transition()
                 .duration(200)
                 .style("opacity", .9)
@@ -255,11 +254,6 @@ d3.csv('/data/master.csv', function (data) {
                 .style("top", (d3.event.pageY - 28) + "px");
             tooltipDiv.html(text);
         })
-
-    //formatTime(d.date) + "<br/>"  + d.close)
-    //.style("left", (d3.event.pageX) + "px")
-    //    .style("top", (d3.event.pageY - 28) + "px"
-
         .on("mouseout", function(d) {
             tooltipDiv.transition()
                 .duration(500)
