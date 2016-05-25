@@ -1,13 +1,19 @@
 var onChange = function() {
     calculateIndex();
     fillTable(globalFilter.top(Infinity).reverse());
-    drawMap(globalFilter.top(Infinity));
-    var xaxis = document.getElementById("xaxisMeasure");
-    var selectedX = xaxis.options[xaxis.selectedIndex].value;
-    var yaxis = document.getElementById("yaxisMeasure");
-    var selectedY = yaxis.options[yaxis.selectedIndex].value;
+    drawMap(globalFilter.top(Infinity), false);
+    xaxis = document.getElementById("xaxisMeasure");
+    selectedX = xaxis.options[xaxis.selectedIndex].value;
+    yaxis = document.getElementById("yaxisMeasure");
+    selectedY = yaxis.options[yaxis.selectedIndex].value;
     drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
 };
+
+
+var xaxis;
+var selectedX;
+var yaxis;
+var selectedY;
 
 console.log("load order global funcs");
 

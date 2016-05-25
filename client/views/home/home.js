@@ -16,6 +16,8 @@ Template.Home.rendered = function() {
 
 };
 
+var i = 0;
+
 var findPDFs = function(company) {
     // Check if database is correctly set up
     console.log(PDFs.find().count());
@@ -164,7 +166,132 @@ Template.Home.events({
     'click #submitDropdown' : function(e) {
     //    http://www.w3schools.com/jsref/coll_select_options.asp
 
-    }
+    },
+
+
+    'click #collapseFilterButton': function(e) {
+        if (i % 2 == 0) {
+            //$('#controlBar').animate({
+            //	left: "0px"
+            //}, 500, function() {});
+
+            $('#filterBar').animate({
+                opacity: 0
+            }, 500, function() {});
+
+            $('#resultBar').css({"width" : "100vw","position" :"fixed"});
+
+            drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
+            drawMap(globalFilter.top(Infinity), true);
+
+            $(".glyphicon-arrow-left").addClass( "glyphicon-arrow-right");
+            $(".glyphicon-arrow-right").removeClass( "glyphicon-arrow-left");
+
+        } else {
+            $(".glyphicon-arrow-right").addClass( "glyphicon-arrow-left");
+            $(".glyphicon-arrow-left").removeClass( "glyphicon-arrow-right");
+
+            $('#resultBar').removeAttr("style");
+            //$('#controlBar').removeAttr("style");
+
+            $('#filterBar').animate({
+                opacity: 1
+            }, 500, function() {
+
+            });
+        }
+        i++;
+    },
+
+
+    'click #resetAllFiltersButton': function(e) {
+        dc.redrawAll();
+        dc.filterAll();
+        onChange();
+        //$('.companiesCount').html(globalFilter.top(Infinity).length);
+    },
+
+    'click #resetAllScalesButton': function(e) {
+        for (var i = 0; i < fields.length; i++) {
+            document.getElementById(fields[i] + "Weight").value = "100";
+        }
+        onChange();
+    },
+
+    //'click #applyFilterButton': function (e) {
+    //	console.log('checking database connection');
+    //	console.log(Filters.find().count());
+    //	console.log(Results.find().count());
+    //	console.log(PDFs.find().count());
+    //
+    //	$('#saveResultButton').removeClass("disabled");
+    //	$('#resultListViewButton').removeClass("disabled");
+    //	$('#resultMapViewButton').removeClass("disabled");
+    //	$('#resultScatterPlotViewButton').removeClass("disabled");
+    //
+    //	e.preventDefault();
+    //
+    //	//$('.initView').attr("style", "display: none");
+    //	//$('.resultListView').attr("style", "display: block");
+    //
+    //	calculateIndex();
+    //
+    //	fillTable(globalFilter.top(Infinity).reverse());
+    //	$(".rowInfo").hide();
+    //
+    //	drawBubblesOnMap(globalFilter.top(Infinity));
+    //	drawScatterPlot(globalFilter.top(Infinity));
+    //
+    //	Filters.insert({
+    //	});
+    //},
+
+    'click #sortByCompanyButton': function(e) {
+        fillTable(globalFilter.top(Infinity).reverse())
+    },
+
+    'click #sortByIndustryButton': function(e) {
+        fillTable(globalFilter.top(Infinity).sort(function(a,b) {
+            return a.industry.localeCompare(b.industry);
+        }))
+
+    },
+
+    'click #sortBySectorButton': function(e) {
+        fillTable(globalFilter.top(Infinity).sort(function(a,b) {
+            return a.sector.localeCompare(b.sector);
+        }))
+    },
+
+    'click #sortByCountryButton': function(e) {
+        fillTable(globalFilter.top(Infinity).sort(function(a,b) {
+            return a.country.localeCompare(b.country);
+        }))
+    },
+
+    'click #sortByScoreButton': function(e) {
+        fillTable(globalFilter.top(Infinity).sort(function(a,b) {
+            //if( !isFinite(a.sustIndex) && !isFinite(b.sustIndex) ) {
+            //	return 0;
+            //}
+            //if( !isFinite(a.sustIndex) ) {
+            //	return 1;
+            //}
+            //if( !isFinite(b.sustIndex) ) {
+            //	return -1;
+            //}
+            //return a.sustIndex - b.sustIndex;
+            if (isNaN(a.sustIndex) && isNaN(b.sustIndex)) {
+                return 0;
+            } else if (isNaN(a.sustIndex)) {
+                return 1;
+            } else if (isNaN(b.sustIndex)) {
+                return -1;
+            } else {
+                return a.sustIndex - b.sustIndex;
+            }
+        }))
+    },
 });
 
 Template.Home.helpers({

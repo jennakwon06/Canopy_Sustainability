@@ -6,7 +6,6 @@ function zoomed() {
 }
 
 function drawBubbles(results) {
-    console.log("draw bubbles called");
 
     if (!d3.select(".bubble").empty()) {
         d3.select(".bubble").remove();
@@ -115,36 +114,12 @@ function drawBubbles(results) {
                 .style("opacity", 0);
         });
 
-    //d3.selectAll(".tooltip-box p").remove();
-        //
-        //d3.select(".tooltip-box")
-        //    .append("p")
-        //    .attr("class", "address")
-        //    .html("City: " + d.address
-        //        + "<br> Sustainability Index: " + Math.round(d.sustIndex * 100) / 100);
-        //
-        //d3.select(".tooltip-box")
-        //    .append("p")
-        //    .attr("class", "cityCompanies")
-        //    .html("Companies: <br>");
-        //
-        //var cities = "";
-        //
-        //for (var i = 0; i < d.companies.length; i++) {
-        //    cities += d.companies[i].name + "(" + Math.round(d.companies[i].sustIndex * 100) / 100 + ")" + "<br>";
-        //}
-        //
-        //d3.select(".cityCompanies")
-        //    .append("p")
-        //    .html(cities);
-
-
         d3.select(self.frameElement).style("height", height + "px");
 }
 
-function drawMap(results) {
+function drawMap(results, inputWidth) {
 
-    if (d3.select(".mapSvg").empty()) {
+    if (d3.select(".mapSvg").empty() && inputWidth) {
 
         //d3.select(".mapSvg").remove();
 
@@ -172,7 +147,6 @@ function drawMap(results) {
 
         svg.call(zoom)
             .call(zoom.event);
-
 
         var z = color;
 

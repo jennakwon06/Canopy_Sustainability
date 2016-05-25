@@ -946,7 +946,7 @@
 
             var _filterPrinter = dc.printers.filters;
 
-            var _mandatoryAttributes = ['dimension', 'group'];
+            var _mandatoryAttributes = ['group'];
 
             var _chartGroup = dc.constants.DEFAULT_CHART_GROUP;
 

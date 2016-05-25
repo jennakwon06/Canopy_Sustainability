@@ -5,6 +5,14 @@ html, body {
 
 }
 
+.resultMapView {
+    border: 2px solid black;
+}
+
+.resultScatterPlotView {
+    border: 2px solid black;
+}
+
 p {
     font: 14px Arial,Helvetica Neue,Helvetica ;
     margin-bottom: 0px;
@@ -96,12 +104,12 @@ th {
 
 #worldMap {
     width:inherit;
-    height:auto;
+    height:357px;
 }
 
 .mapSvg {
     width:inherit;
-    height:auto;
+    height:357px;
 }
 
 .filter_container {
@@ -158,12 +166,14 @@ th {
     display: inline-block;
     overflow-y: scroll;
     right: 0;
-    margin-left: 3vw;
-    padding: 20px;
+    padding: 15px;
 }
 
 .resultsTable {
     font: 12px Arial,Helvetica Neue,Helvetica ;
+    border: 2px solid black;
+    height: 30vw;
+    overflow-y: scroll;
 }
 
 #resetEmissions:hover {
@@ -262,6 +272,10 @@ span.myGlyphicon:hover {
     cursor: pointer;
 }
 
+#collapseFilterButton {
+
+
+}
 .mapCircle {
     opacity: 0.75;
     stroke: #fff;
@@ -446,7 +460,7 @@ svg {
 
 #scatter {
     width:100%;
-    height:auto;
+    height:357px;
 }
 
 .scatterSVG {

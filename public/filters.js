@@ -24,8 +24,6 @@ var wasteSentToLandfillChart = dc.barChart("#wasteSentToLandfillChart");
 // ENERGY
 var totalEnergyConsumptionChart = dc.barChart("#totalEnergyConsumptionChart");
 
-console.log("order 2: filters loaded");
-
 
 /*
  * Populate sustainability index data field based on selected weights
@@ -88,6 +86,7 @@ function calculateIndex() {
 
 d3.csv('/data/master.csv', function (data) {
     globalData = data;
+
 
     // Chart
     var FULL_CHART_WIDTH = 330;
