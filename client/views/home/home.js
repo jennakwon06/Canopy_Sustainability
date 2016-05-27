@@ -10,7 +10,7 @@ Template.Home.rendered = function() {
         $.getScript("/scatterplot.js");
         $.getScript("/globalFunctions.js");
         $.getScript("/worldMapInit.js").done(function( script, textStatus ) {
-            onChange();
+            renderPage();
         });
     });
 
@@ -171,43 +171,42 @@ Template.Home.events({
 
     'click #collapseFilterButton': function(e) {
         if (i % 2 == 0) {
-            //$('#controlBar').animate({
-            //	left: "0px"
-            //}, 500, function() {});
-
             $('#filterBar').animate({
                 opacity: 0
             }, 500, function() {});
 
             $('#resultBar').css({"width" : "100vw","position" :"fixed"});
 
-            drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
-            drawMap(globalFilter.top(Infinity), true);
-
             $(".glyphicon-arrow-left").addClass( "glyphicon-arrow-right");
             $(".glyphicon-arrow-right").removeClass( "glyphicon-arrow-left");
 
         } else {
-            $(".glyphicon-arrow-right").addClass( "glyphicon-arrow-left");
-            $(".glyphicon-arrow-left").removeClass( "glyphicon-arrow-right");
-
-            $('#resultBar').removeAttr("style");
-            //$('#controlBar').removeAttr("style");
-
             $('#filterBar').animate({
                 opacity: 1
-            }, 500, function() {
+            }, 500, function() {});
 
-            });
+            $('#resultBar').removeAttr("style");
+
+            $(".glyphicon-arrow-right").addClass( "glyphicon-arrow-left");
+            $(".glyphicon-arrow-left").removeClass( "glyphicon-arrow-right");
         }
+        
+        var xaxis = document.getElementById("xaxisMeasure");
+        var selectedX = xaxis.options[xaxis.selectedIndex].value;
+        var yaxis = document.getElementById("yaxisMeasure");
+        var selectedY = yaxis.options[yaxis.selectedIndex].value;
+
+        drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
+        drawMap(globalFilter.top(Infinity), true);
+
         i++;
     },
 
-
     'click #resetAllFiltersButton': function(e) {
-        dc.redrawAll();
         dc.filterAll();
+        dc.redrawAll();
         onChange();
+        $("#breadcrumb li").remove();
         //$('.companiesCount').html(globalFilter.top(Infinity).length);
     },
 
@@ -216,6 +215,7 @@ Template.Home.events({
             document.getElementById(fields[i] + "Weight").value = "100";
         }
         onChange();
+        $("#breadcrumb li").remove();
     },
 
     //'click #applyFilterButton': function (e) {

@@ -1,21 +1,58 @@
-var onChange = function() {
+var renderPage = function() {
     calculateIndex();
     fillTable(globalFilter.top(Infinity).reverse());
-    drawMap(globalFilter.top(Infinity), false);
-    xaxis = document.getElementById("xaxisMeasure");
-    selectedX = xaxis.options[xaxis.selectedIndex].value;
-    yaxis = document.getElementById("yaxisMeasure");
-    selectedY = yaxis.options[yaxis.selectedIndex].value;
+    drawMap(globalFilter.top(Infinity), true);
+    var xaxis = document.getElementById("xaxisMeasure");
+    var selectedX = xaxis.options[xaxis.selectedIndex].value;
+    var yaxis = document.getElementById("yaxisMeasure");
+    var selectedY = yaxis.options[yaxis.selectedIndex].value;
     drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
 };
 
 
-var xaxis;
-var selectedX;
-var yaxis;
-var selectedY;
+var onChange = function(d) {
+    calculateIndex();
+    fillTable(globalFilter.top(Infinity).reverse());
+    drawMap(globalFilter.top(Infinity), false);
+    var xaxis = document.getElementById("xaxisMeasure");
+    var selectedX = xaxis.options[xaxis.selectedIndex].value;
+    var yaxis = document.getElementById("yaxisMeasure");
+    var selectedY = yaxis.options[yaxis.selectedIndex].value;
+    drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
+    insertBreadCrumb(d);
+};
 
-console.log("load order global funcs");
+$.fn.exists = function () {
+    return this.length !== 0;
+};
+
+var insertBreadCrumb = function(d) {
+    if (!$("li#" + d).exists() && d !== undefined) {
+        var breadCrumb = $("#breadcrumb");
+
+        //<li><a href="#">ghg1 <span id="closeIcon"> &#10006; </span></a></li>
+
+        var li = document.createElement('li');
+        li.id = d;
+        var a = document.createElement('a');
+        var span = document.createElement('span');
+        span.id = "closeIcon";
+
+        a.appendChild(document.createTextNode(d));
+        span.appendChild(document.createTextNode(" ✖"));
+
+        li.appendChild(a);
+        a.appendChild(span);
+
+        $(li).click(function() {
+            $(this).remove();
+            window[this.id+"Chart"].filterAll();
+            dc.redrawAll();
+        });
+
+        breadCrumb.append(li);
+    }
+};
 
 //var ccPolicyImplRowChart;
 
@@ -23,23 +60,6 @@ var color = d3.scale.linear()
     .range(["green", "red"])
     .interpolate(d3.interpolateHsl);
 
-var fields = ["ghg1", "ghg2", "ghg3"
-    , "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged"
-    , "totalWaste", "wasteRecycled", "wasteSentToLandfill"
-    , "totalEnergyConsumption" ];
-
-var fieldUnits = {
-    "ghg1" : "(1000MT)",
-    "ghg2" : "(1000MT)",
-    "ghg3" : "(1000MT)",
-    "totalWaterUse": "(1000m<sup>3</sup>)",
-    "totalWaterWithdrawl" : "(1000m<sup>3</sup>)",
-    "totalWaterDischarged" : "(1000m<sup>3</sup>)",
-    "totalWaste" : "(1000MT)",
-    "wasteRecycled" : "(1000MT)",
-    "wasteSentToLandfill" : "(1000MT)",
-    "totalEnergyConsumption" : "(1000MWh)"
-};
 
 /*
  * Interact with list view
@@ -86,9 +106,6 @@ var fillTable = function(results){
         tr2td.setAttributeNode(a1);
         //$(tr2).hide();
 
-        //var p = document.createElement('p');
-        //console.log("what's my data info");
-        //console.log(results[i].dataInfo);
         var html = "";
         for (var j = 0; j < results[i].dataInfo.length; j++) { // j iterates dataInfo array
             html += results[i].dataInfo[j].name + ": " + roundTo100(results[i].dataInfo[j].value)
@@ -119,57 +136,56 @@ var fillTable = function(results){
 
 };
 
-
 /**
  * Monitor the scales
  */
 function ghg1Count() {
     var x = "Weight: " + document.getElementById("ghg1Weight").value;
     document.getElementById("ghg1Count").innerHTML = x;
-    onChange();
+    onChange("ghg1");
 }
 function ghg2Count() {
     var x = "Weight: " + document.getElementById("ghg2Weight").value;
     document.getElementById("ghg2Count").innerHTML = x;
-    onChange();
+    onChange("ghg2");
 }
 function ghg3Count() {
     var x = "Weight: " + document.getElementById("ghg3Weight").value;
     document.getElementById("ghg3Count").innerHTML = x;
-    onChange();
+    onChange("ghg3");
 }
 function totalWaterUseCount() {
     var x = "Weight: " + document.getElementById("totalWaterUseWeight").value;
     document.getElementById("totalWaterUseCount").innerHTML = x;
-    onChange();
+    onChange("totalWaterUse");
 }
 function totalWaterWithdrawlCount() {
     var x = "Weight: " + document.getElementById("totalWaterWithdrawlWeight").value;
     document.getElementById("totalWaterWithdrawlCount").innerHTML = x;
-    onChange();
+    onChange("totalWaterWithdrawl");
 }
 function totalWaterDischargedCount() {
     var x = "Weight: " + document.getElementById("totalWaterDischargedWeight").value;
     document.getElementById("totalWaterDischargedCount").innerHTML = x;
-    onChange();
+    onChange("totalWaterDischarged");
 }
 function totalWasteCount() {
     var x = "Weight: " + document.getElementById("totalWasteWeight").value;
     document.getElementById("totalWasteCount").innerHTML = x;
-    onChange();
+    onChange("totalWaste");
 }
 function wasteRecycledCount() {
     var x = "Weight: " + document.getElementById("wasteRecycledWeight").value;
     document.getElementById("wasteRecycledCount").innerHTML = x;
-    onChange();
+    onChange("wasteRecycled");
 }
 function wasteSentToLandfillCount() {
     var x = "Weight: " + document.getElementById("wasteSentToLandfillWeight").value;
     document.getElementById("wasteSentToLandfillCount").innerHTML = x;
-    onChange();
+    onChange("wasteSentToLandfill");
 }
 function totalEnergyConsumptionCount() {
     var x = "Weight: " + document.getElementById("totalEnergyConsumptionWeight").value;
     document.getElementById("totalEnergyConsumptionCount").innerHTML = x;
-    onChange();
+    onChange("totalEnergyConsumption");
 }

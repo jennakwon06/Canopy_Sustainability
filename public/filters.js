@@ -24,6 +24,24 @@ var wasteSentToLandfillChart = dc.barChart("#wasteSentToLandfillChart");
 // ENERGY
 var totalEnergyConsumptionChart = dc.barChart("#totalEnergyConsumptionChart");
 
+var fields = ["ghg1", "ghg2", "ghg3"
+    , "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged"
+    , "totalWaste", "wasteRecycled", "wasteSentToLandfill"
+    , "totalEnergyConsumption" ];
+
+var fieldUnits = {
+    "ghg1" : "(1000MT)",
+    "ghg2" : "(1000MT)",
+    "ghg3" : "(1000MT)",
+    "totalWaterUse": "(1000m<sup>3</sup>)",
+    "totalWaterWithdrawl" : "(1000m<sup>3</sup>)",
+    "totalWaterDischarged" : "(1000m<sup>3</sup>)",
+    "totalWaste" : "(1000MT)",
+    "wasteRecycled" : "(1000MT)",
+    "wasteSentToLandfill" : "(1000MT)",
+    "totalEnergyConsumption" : "(1000MWh)"
+};
+
 
 /*
  * Populate sustainability index data field based on selected weights
@@ -53,7 +71,6 @@ function calculateIndex() {
         // @TODO if I want to show weights and details of index calculation, then it has to change dynamically.
         var arr = [];
         for (i = 0; i < fields.length; i++) {
-            //console.log(+d[fields[i]]);
             if (+d[fields[i]]) {
                 var object = {
                     name: "",
@@ -266,6 +283,7 @@ d3.csv('/data/master.csv', function (data) {
         var industryGroup = industry.group();
 
         industryChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
+            .chartId("industry")
             .width(HALF_CHART_WIDTH)
             .height(HALF_CHART_HEIGHT)
             .margins({top: 0, left: 0, right: 0, bottom: 20})
@@ -290,6 +308,7 @@ d3.csv('/data/master.csv', function (data) {
         var sectorGroup = sector.group();
 
         sectorChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
+            .chartId("sector")
             .width(HALF_CHART_WIDTH)
             .height(HALF_CHART_HEIGHT)
             .margins({top: 0, left: 0, right: 0, bottom: 20})
@@ -366,6 +385,7 @@ d3.csv('/data/master.csv', function (data) {
         //console.log(ghg1Group.top(2)[1]);
 
         ghg1Chart
+            .chartId("ghg1")
             .width(FULL_CHART_WIDTH)
             .margins({top: 10, right: 5, bottom: 20, left: 0})
             .height(HALF_CHART_HEIGHT)
@@ -416,6 +436,7 @@ d3.csv('/data/master.csv', function (data) {
         };
 
         ghg2Chart
+            .chartId("ghg2")
             .width(FULL_CHART_WIDTH)
             .margins({top: 10, right: 5, bottom: 20, left: 0})
             .height(HALF_CHART_HEIGHT)
@@ -455,6 +476,7 @@ d3.csv('/data/master.csv', function (data) {
         }
 
         ghg3Chart
+            .chartId("ghg3")
             .width(FULL_CHART_WIDTH)
             .margins({top: 10, right: 5, bottom: 20, left: 0})
             .height(HALF_CHART_HEIGHT)
@@ -495,6 +517,7 @@ d3.csv('/data/master.csv', function (data) {
         };
 
         totalWaterUseChart
+            .chartId("totalWaterUse")
             .width(FULL_CHART_WIDTH)
             .margins({top: 10, right: 5, bottom: 20, left: 0})
             .height(HALF_CHART_HEIGHT)
@@ -535,6 +558,7 @@ d3.csv('/data/master.csv', function (data) {
         };
 
         totalWaterWithdrawlChart
+            .chartId("totalWaterWithdrawl")
             .width(FULL_CHART_WIDTH)
             .margins({top: 10, right: 5, bottom: 20, left: 0})
             .height(HALF_CHART_HEIGHT)
@@ -574,6 +598,7 @@ d3.csv('/data/master.csv', function (data) {
         };
 
         totalWaterDischargedChart
+            .chartId("totalWaterDischarged")
             .width(FULL_CHART_WIDTH)
             .margins({top: 10, right: 5, bottom: 20, left: 0})
             .height(HALF_CHART_HEIGHT)
@@ -612,6 +637,7 @@ d3.csv('/data/master.csv', function (data) {
         };
 
         totalWasteChart
+            .chartId("totalWaste")
             .width(FULL_CHART_WIDTH)
             .margins({top: 10, right: 5, bottom: 20, left: 0})
             .height(HALF_CHART_HEIGHT)
@@ -650,6 +676,7 @@ d3.csv('/data/master.csv', function (data) {
         };
 
         wasteSentToLandfillChart
+            .chartId("wasteSentToLandfill")
             .width(FULL_CHART_WIDTH)
             .margins({top: 10, right: 5, bottom: 20, left: 0})
             .height(HALF_CHART_HEIGHT)
@@ -688,6 +715,7 @@ d3.csv('/data/master.csv', function (data) {
         };
 
         wasteRecycledChart
+            .chartId("wasteRecycled")
             .width(FULL_CHART_WIDTH)
             .margins({top: 10, right: 5, bottom: 20, left: 0})
             .height(HALF_CHART_HEIGHT)
@@ -726,6 +754,7 @@ d3.csv('/data/master.csv', function (data) {
         };
 
         totalEnergyConsumptionChart
+            .chartId("totalEnergyConsumption")
             .width(FULL_CHART_WIDTH)
             .margins({top: 10, right: 5, bottom: 20, left: 0})
             .height(HALF_CHART_HEIGHT)
@@ -738,8 +767,8 @@ d3.csv('/data/master.csv', function (data) {
             .x(d3.scale.log().nice().domain([1, max]))
             .xAxis().ticks(8, ",.1s").tickSize(6, 0);
     }());
-    
-    
+
+
     // BINARY BARS
     //(function() {
     //    // Produce counts records in the dimension

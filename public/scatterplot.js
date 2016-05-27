@@ -1,18 +1,18 @@
 //@TODO refactor to take in different x and y axis values
 
 function changeX() {
-    xaxis = document.getElementById("xaxisMeasure");
-    selectedX = xaxis.options[xaxis.selectedIndex].value;
-    yaxis = document.getElementById("yaxisMeasure");
-    selectedY = yaxis.options[yaxis.selectedIndex].value;
+    var xaxis = document.getElementById("xaxisMeasure");
+    var selectedX = xaxis.options[xaxis.selectedIndex].value;
+    var yaxis = document.getElementById("yaxisMeasure");
+    var selectedY = yaxis.options[yaxis.selectedIndex].value;
     drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY)
 }
 
 function changeY() {
-    xaxis = document.getElementById("xaxisMeasure");
-    selectedX = xaxis.options[xaxis.selectedIndex].value;
-    yaxis = document.getElementById("yaxisMeasure");
-    selectedY = yaxis.options[yaxis.selectedIndex].value;
+    var xaxis = document.getElementById("xaxisMeasure");
+    var selectedX = xaxis.options[xaxis.selectedIndex].value;
+    var yaxis = document.getElementById("yaxisMeasure");
+    var selectedY = yaxis.options[yaxis.selectedIndex].value;
     drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY)
 }
 
@@ -20,21 +20,16 @@ function isBlank(str) {
     return (!str || /^\s*$/.test(str));
 }
 
-function drawScatterPlot(results, xAxisVal, yAxisVal, inputWidth) {
-
-    console.log("load order 3: scatter plot");
-
+function drawScatterPlot(results, xAxisVal, yAxisVal) {
     //clear previous
     d3.select(".scatterSVG").remove();
 
-    var margin = { top: 20, right: 10, bottom: 30, left: 60 };
-
-        outerWidth = $(".resultScatterPlotView").width()
-
-        //outerHeight = $("#resultBar").height(),
-        outerHeight = 330;
+    var margin = { top: 20, right: 10, bottom: 30, left: 60},
+        outerWidth = $(".resultScatterPlotView").width(),
+        outerHeight = 330,
         width = outerWidth - margin.left - margin.right,
         height = outerHeight - margin.top - margin.bottom;
+
 
     var x = d3.scale.linear()
         .range([0, width]).nice();

@@ -13,6 +13,16 @@ html, body {
     border: 2px solid black;
 }
 
+.resultListView {
+    border: 2px solid black;
+    height: 25vw;
+    overflow-y: scroll;
+}
+
+.resultsTable {
+    font: 12px Arial,Helvetica Neue,Helvetica ;
+}
+
 p {
     font: 14px Arial,Helvetica Neue,Helvetica ;
     margin-bottom: 0px;
@@ -45,7 +55,7 @@ th {
 }
 
 .companiesCount {
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .dc-chart .brush rect.extent {
@@ -60,6 +70,7 @@ th {
 
 .filterTexts {
     font-size:12px;
+    padding:2px;
 }
 
 .filterTexts:hover {
@@ -169,12 +180,6 @@ th {
     padding: 15px;
 }
 
-.resultsTable {
-    font: 12px Arial,Helvetica Neue,Helvetica ;
-    border: 2px solid black;
-    height: 30vw;
-    overflow-y: scroll;
-}
 
 #resetEmissions:hover {
     opacity: 0.5;
@@ -660,3 +665,103 @@ div.tooltip {
     pointer-events: none;
 }
 
+.myMenu {
+    margin-left:250px;
+}
+
+#breadcrumb {
+    list-style: none;
+    display: inline-block;
+    bottom:10px;
+    margin-left:-40px;
+
+
+}
+#breadcrumb .icon {
+    font-size: 10px;
+}
+#breadcrumb li {
+    float: left;
+}
+#breadcrumb li a {
+    color: #FFF;
+    display: block;
+    background: darkgreen;
+    text-decoration: none;
+    position: relative;
+    height: 20px;
+    line-height: 20px;
+    padding: 0 5px 0 5px;
+    text-align: center;
+    margin-right: 23px;
+}
+#breadcrumb li:nth-child(even) a {
+    background-color: green;
+}
+#breadcrumb li:nth-child(even) a:before {
+    border-color: green;
+    border-left-color: transparent;
+}
+#breadcrumb li:nth-child(even) a:after {
+    border-left-color: green;
+}
+#breadcrumb li:first-child a {
+    padding-left: 15px;
+    -moz-border-radius: 4px 0 0 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px 0 0 4px;
+}
+#breadcrumb li:first-child a:before {
+    border: none;
+}
+#breadcrumb li:last-child a {
+    padding-right: 15px;
+    -moz-border-radius: 0 4px 4px 0;
+    -webkit-border-radius: 0;
+    border-radius: 0 4px 4px 0;
+}
+#breadcrumb li:last-child a:after {
+    border: none;
+}
+#breadcrumb li a:before, #breadcrumb li a:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    border: 0 solid darkgreen;
+    border-width: 10px 10px;
+    width: 0;
+    height: 0;
+}
+#breadcrumb li a:before {
+    left: -20px;
+    border-left-color: transparent;
+}
+#breadcrumb li a:after {
+    left: 100%;
+    border-color: transparent;
+    border-left-color: darkgreen;
+}
+#breadcrumb li a:hover {
+    background-color: #1abc9c;
+}
+#breadcrumb li a:hover:before {
+    border-color: #1abc9c;
+    border-left-color: transparent;
+}
+#breadcrumb li a:hover:after {
+    border-left-color: #1abc9c;
+}
+#breadcrumb li a:active {
+    background-color: green;
+}
+#breadcrumb li a:active:before {
+    border-color: green;
+    border-left-color: transparent;
+}
+#breadcrumb li a:active:after {
+    border-left-color: green;
+}
+
+#closeIcon{
+    fill:black;
+}

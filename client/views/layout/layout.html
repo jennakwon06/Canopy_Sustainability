@@ -20,7 +20,7 @@
 
                 </div>
 				<div id="menu" class="collapse navbar-collapse">
-					{{> PrivateLayoutLeftMenu}}{{> PrivateLayoutRightMenu}}
+					{{> PrivateLayoutLeftMenu}}
 				</div>
 			</div>
 		</div>
@@ -33,7 +33,13 @@
 
 <template name="PrivateLayoutLeftMenu">
 
-    <ul class="nav navbar-nav">
+
+    <ul class="myMenu nav navbar-nav">
+        <div class='companiesCount'>
+            <span class='filter-count'></span>
+            <!--selected out of <span class='total-count'></span> records.-->
+        </div>
+        <ul id="breadcrumb"></ul>
     </ul>
     <!--<span class="glyphicon glyphicon-circle-arrow-right myGlyphicon" title="Apply filters" id="applyFilterButton"></span>-->
     <!--<span class="glyphicon glyphicon-remove myGlyphicon" title="Reset all filters" id="resetAllFiltersButton"></span>-->
@@ -47,8 +53,3 @@
 			<!--</a>-->
 		<!--</li>-->
 </template>
-
-<template name="PrivateLayoutRightMenu">
-
-</template>
-

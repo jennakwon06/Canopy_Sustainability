@@ -53,9 +53,6 @@ function drawBubbles(results) {
         }
     }
 
-    console.log("Is arrayOfLocations valid on render");
-    console.log(arrayOfLocations);
-
     arrayOfLocations = arrayOfLocations.filter(Boolean);
 
     // normalize sust index
@@ -113,15 +110,12 @@ function drawBubbles(results) {
                 .duration(500)
                 .style("opacity", 0);
         });
-
-        d3.select(self.frameElement).style("height", height + "px");
 }
 
 function drawMap(results, inputWidth) {
 
-    if (d3.select(".mapSvg").empty() && inputWidth) {
-
-        //d3.select(".mapSvg").remove();
+    if (d3.select(".mapSvg").empty() || inputWidth) {
+        d3.select(".mapSvg").remove();
 
         var width = $(".resultMapView").width(),
             height = 350;
@@ -162,16 +156,13 @@ function drawMap(results, inputWidth) {
             .attr("height", 15)
             .style("fill", z);
 
-        legend.append("text")
-            .attr("x", 20)
+        legend.append("text").attr("x", 20)
             .attr("y", 10)
             .attr("dy", ".25em")
             .text(String);
 
 
         d3.json("/world-50m.json", function(error, world) {
-
-            console.log("loading map");
 
             //https://bl.ocks.org/mbostock/9943478
             if (error) throw error;
