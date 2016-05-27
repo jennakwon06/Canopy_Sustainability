@@ -33,21 +33,6 @@
                         <button type="button" class="btn btn-secondary filterTexts filterButtons" id="scrollToMisc">Misc</button>
                     </div>
 
-                    <div class="col-md-12">
-
-                        <!--<span class="glyphicon glyphicon-arrow-left myGlyphicon" title="Collapse filters" id="collapseFilterButton"></span>-->
-                        <!--<button type="button" class="btn btn-secondary filterTexts" id="applyFilterButton">Apply</button>-->
-                        <button type="button" class="btn btn-secondary filterTexts" id="resetAllFiltersButton">RS</button>
-                        <button type="button" class="btn btn-secondary filterTexts" id="resetAllScalesButton">RS</button>
-
-
-                        <!--<button type="button" class="btn btn-secondary filterTexts" id="resetAllFiltersButton"-->
-                        <!--data-toggle="modal" data-target="#modalVarWeights">Set Variable Weights</button>-->
-
-                    </div>
-
-
-
                     <!--<span class="glyphicon glyphicon-circle-arrow-right myGlyphicon" title="Apply filters" id="applyFilterButton"></span>-->
                     <!--<span class="glyphicon glyphicon-remove myGlyphicon" title="Reset all filters" id="resetAllFiltersButton"></span>-->
                 </div>
@@ -352,43 +337,30 @@
                 </div>
             </div>
 
-            <!--<div id="controlBar">-->
-                <!--<div class="controlIcons">-->
-                    <!--&lt;!&ndash;@TODO factor out 504 and make it dynamic&ndash;&gt;-->
-                    <!--<div class='companiesCount'>-->
-                        <!--<span class='filter-count'></span>-->
-                        <!--&lt;!&ndash;selected out of <span class='total-count'></span> records.&ndash;&gt;-->
-                    <!--</div>-->
-
-                    <!--<span class="glyphicon glyphicon-arrow-left myGlyphicon" title="Collapse filters" id="collapseFilterButton"></span>-->
-
-                    <!--&lt;!&ndash;<span class="glyphicon glyphicon-check myGlyphicon" title="Apply filters"></span>&ndash;&gt;-->
-                           <!--<hr />-->
-
-                    <!--&lt;!&ndash;<span class="glyphicon glyphicon-save myGlyphicon disabled" title="Save Results" id="saveResultButton"></span>&ndash;&gt;-->
-                    <!--<span class="glyphicon glyphicon-th-list myGlyphicon" title="Show List View" id="resultListViewButton" ></span>-->
-                    <!--<span class="glyphicon glyphicon-map-marker myGlyphicon" title="Show Map View" id="resultMapViewButton"></span>-->
-                    <!--&lt;!&ndash;http://google.github.io/material-design-icons/&ndash;&gt;-->
-                    <!--<span class="glyphicon md-dark md-36 myGlyphicon" title="Show Scatter Plot" id="resultScatterPlotViewButton">-->
-                        <!--<svg fill="#3C8D2F" height="36" viewBox="0 0 24 24" width="36" xmlns="http://www.w3.org/2000/svg">-->
-                            <!--<path d="M0 0h24v24H0z" fill="none"/>-->
-                            <!--<circle cx="7.2" cy="14.4" r="3.2"/>-->
-                            <!--<circle cx="14.8" cy="18" r="2"/>-->
-                            <!--<circle cx="15.2" cy="8.8" r="4.8"/>-->
-                        <!--</svg>-->
-                    <!--</span>-->
-                <!--</div>-->
-            <!--</div>-->
-
-            <div id="resultBar">
-                <div class="col-md-12">
-                    <span class="glyphicon glyphicon-arrow-left myGlyphicon pull-left" title="Collapse filters" id="collapseFilterButton"></span>
+            <div id="controlBar">
+                <div class="controlIcons">
+                    <span class="glyphicon glyphicon-arrow-left myGlyphicon" title="Collapse filters" id="collapseFilterButton"></span>
+                    <button type="button" class="btn btn-secondary filterTexts" id="resetAllFiltersButton">RS</button>
+                    <button type="button" class="btn btn-secondary filterTexts" id="resetAllScalesButton">RS</button>
                 </div>
+            </div>
+
+            < id="resultBar">
+                <svg id="expandIcon" fill="#000000" height="15" viewBox="0 0 24 24" width="15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <defs>
+                        <path d="M0 0h24v24H0z" id="a"/>
+                    </defs>
+                    <clipPath id="b">
+                        <use overflow="visible" xlink:href="#a"/>
+                    </clipPath>
+                    <path clip-path="url(#b)" d="M15 3l2.3 2.3-2.89 2.87 1.42 1.42L18.7 6.7 21 9V3zM3 9l2.3-2.3 2.87 2.89 1.42-1.42L6.7 5.3 9 3H3zm6 12l-2.3-2.3 2.89-2.87-1.42-1.42L5.3 17.3 3 15v6zm12-6l-2.3 2.3-2.87-2.89-1.42 1.42 2.89 2.87L15 21h6z"/>
+                    <path clip-path="url(#b)" d="M0 0h24v24H0z" fill="none"/>
+                </svg>
+
 
                 <div class="col-md-6">
                     <div class="resultScatterPlotView" style="display: block">
                         <!--style="display: none"-->
-
                         <div class="col-md-12">
                             <select id="xaxisMeasure" onchange="changeX()">
                                 <option value="ghg1" selected="selected">GHG1</option>
@@ -421,22 +393,46 @@
                             </select>
                         </div>
 
-                        <div id="scatter"></div>
+
+                        <div id="scatter">
+                        </div>
 
 
                     </div>
                 </div>
 
+                <svg id="expandIcon" style="margin-left:-17px" fill="#000000" height="15" viewBox="0 0 24 24" width="15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <defs>
+                        <path d="M0 0h24v24H0z" id="a"/>
+                    </defs>
+                    <clipPath id="b">
+                        <use overflow="visible" xlink:href="#a"/>
+                    </clipPath>
+                    <path clip-path="url(#b)" d="M15 3l2.3 2.3-2.89 2.87 1.42 1.42L18.7 6.7 21 9V3zM3 9l2.3-2.3 2.87 2.89 1.42-1.42L6.7 5.3 9 3H3zm6 12l-2.3-2.3 2.89-2.87-1.42-1.42L5.3 17.3 3 15v6zm12-6l-2.3 2.3-2.87-2.89-1.42 1.42 2.89 2.87L15 21h6z"/>
+                    <path clip-path="url(#b)" d="M0 0h24v24H0z" fill="none"/>
+                </svg>
+
                 <div class="col-md-6">
                     <div class="resultMapView" style="display: block">
                          <!--style="display: none">-->
-                        <div id="worldMap"></div>
+                        <div id="worldMap">
+                        </div>
                         <!--<div class="tooltip-box"></div>-->
                     </div>
                 </div>
 
                 <div class="col-md-12">
                     <div class="resultListView" style="display: block">
+                        <svg id="expandIcon" fill="#000000" height="15" viewBox="0 0 24 24" width="15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <defs>
+                                <path d="M0 0h24v24H0z" id="a"/>
+                            </defs>
+                            <clipPath id="b">
+                                <use overflow="visible" xlink:href="#a"/>
+                            </clipPath>
+                            <path clip-path="url(#b)" d="M15 3l2.3 2.3-2.89 2.87 1.42 1.42L18.7 6.7 21 9V3zM3 9l2.3-2.3 2.87 2.89 1.42-1.42L6.7 5.3 9 3H3zm6 12l-2.3-2.3 2.89-2.87-1.42-1.42L5.3 17.3 3 15v6zm12-6l-2.3 2.3-2.87-2.89-1.42 1.42 2.89 2.87L15 21h6z"/>
+                            <path clip-path="url(#b)" d="M0 0h24v24H0z" fill="none"/>
+                        </svg>
                         <table class="table resultsTable">
                             <thead class="thead-inverse">
                             <tr>

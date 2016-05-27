@@ -168,7 +168,6 @@ Template.Home.events({
 
     },
 
-
     'click #collapseFilterButton': function(e) {
         if (i % 2 == 0) {
             $('#filterBar').animate({
@@ -180,6 +179,11 @@ Template.Home.events({
             $(".glyphicon-arrow-left").addClass( "glyphicon-arrow-right");
             $(".glyphicon-arrow-right").removeClass( "glyphicon-arrow-left");
 
+            $('#controlBar').animate({
+                left: "0px"
+            }, 500, function() {});
+
+
         } else {
             $('#filterBar').animate({
                 opacity: 1
@@ -189,8 +193,11 @@ Template.Home.events({
 
             $(".glyphicon-arrow-right").addClass( "glyphicon-arrow-left");
             $(".glyphicon-arrow-left").removeClass( "glyphicon-arrow-right");
+
+            $('#controlBar').removeAttr("style");
+
         }
-        
+
         var xaxis = document.getElementById("xaxisMeasure");
         var selectedX = xaxis.options[xaxis.selectedIndex].value;
         var yaxis = document.getElementById("yaxisMeasure");

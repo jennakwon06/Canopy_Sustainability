@@ -1,32 +1,14 @@
 Timeline
 
-* 15 hours / week *
-
-- How do we deal with missing data?
-- Companies without any data - black?
-
-
-Done
-
-filter breadcrumbs: http://www.w3schools.com/css/css3_pagination.asp
-
-May 23rd - May 27th
-    - Populate everything with user friendly information
+May 30th - June 3rd
     - units on scatter plot
     - Scrape company URLs w/ blockspring https://www.blockspring.com/help/google_sheets
-    - Incorporate "Reset" button somewhere else in the UI
-    - Better tooltip for map
-    - a color legend on what the colors mean needs to be provided on the geomap
-    - we need to somewhere show the "active filters" maybe as breadcrumbs at the top..
-    - as much as i like the row coloring, I am struggling with how color-dense the table looks. I suggest that in the column for the sustainability score, you add a small colored square. the row should stay white. use very thin light gray lines to differentiate row entries..
-    - when hovering over row entries in the table, the row should highlight in a very light gray for feedback
-    - use a cleaner Arial-like font. It needs to be "less heavy" than what's there. let's avoid using bold font if possible.
-    - if you sort a column, indicate whether it's sorted A-Z or Z-A or up or down (for quantitative). and which columsn is sorted. There are some nice icons that you could use for that.
-    - the filter tooltips are very long, we need to figure out how to make this more concise
-    - i see that the weights are working, but it is not immediately clear to the user. we need to figure out a way to make it more intuitive
-    - Wondering what if had all three visualizations show at once. I would probably put the "table list" at the bottom. The scatterplot top right, the geo top left. That way you can see them all at once.
-
-May 30th - June 3rd
+    - Data linking
+    - Each view panel expand
+    - Global color legend
+    - Breadcrumbs - width overflow
+    - Long filter tooltips
+    - How to make weights work more intuitively
     - Logo for each filter panel
     - Logo for canopy
     - Company logos

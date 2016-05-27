@@ -26,7 +26,7 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
 
     var margin = { top: 20, right: 10, bottom: 30, left: 60},
         outerWidth = $(".resultScatterPlotView").width(),
-        outerHeight = 330,
+        outerHeight = 280,
         width = outerWidth - margin.left - margin.right,
         height = outerHeight - margin.top - margin.bottom;
 
