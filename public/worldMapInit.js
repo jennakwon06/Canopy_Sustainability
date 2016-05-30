@@ -117,8 +117,8 @@ function drawMap(results, inputWidth) {
     if (d3.select(".mapSvg").empty() || inputWidth) {
         d3.select(".mapSvg").remove();
 
-        var width = $(".resultMapView").width(),
-            height = 350;
+        var width = $(".resultMapView").width();
+        var height = $(".resultMapView").height();
 
         projection = d3.geo.mercator()
             .translate([width / 2, height / 2])

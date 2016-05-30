@@ -2,8 +2,27 @@ html, body {
     max-width: 100%;
     overflow-x: hidden;
     font: 12px Arial,Helvetica Neue,Helvetica ;
-
 }
+
+p {
+    font: 14px Arial,Helvetica Neue,Helvetica ;
+    margin-bottom: 0px;
+}
+
+th {
+    font: 12px Arial,Helvetica Neue,Helvetica ;
+    border: 1px black solid;
+}
+
+h4 {
+    font: 16px Arial,Helvetica Neue,Helvetica ;
+}
+
+.cityCompanies {
+    font: 8px Arial,Helvetica Neue,Helvetica ;
+}
+
+/* RESULT BAR */
 
 #expandIcon {
     float: left;
@@ -12,32 +31,12 @@ html, body {
 
 #expandIcon:hover {
     opacity: 0.5;
-}
-
-
-.scatterExpand {
-    margin-left:-5px;
-}
-
-.mapExpand {
-    margin-left:-7px;
-}
-
-.listExpand {
-    margin-left:-17px;
-
-}
-
-.col-md-6, .col-md-12 {
-    position: relative;
-    min-height: 1px;
-    padding-left: 10px;
-    padding-right: 10px;
+    cursor: pointer;
 }
 
 #resultBar {
     position:fixed;
-    height:100vh;
+    height:100%;
     width:73vw;
     display: inline-block;
     overflow-y: scroll;
@@ -48,34 +47,69 @@ html, body {
 .resultMapView {
     position:relative;
     border: 2px solid black;
-    height: 22vw;
+    height: 42vh;
     width: 35vw;
 }
 
 #worldMap {
     width:inherit;
-    height:307px;
+    height:auto;
 }
 
 .mapSvg {
     width:inherit;
-    height:307px;
+    height:auto;
 }
+
+.mapCircle {
+    opacity: 0.75;
+    stroke: #fff;
+    stroke-width: .5px;
+}
+
+.mapCircle:hover {
+    opacity: 0.5;
+    cursor: pointer;
+    stroke: black;
+    stroke-width: 1px;
+}
+
+.sphere {
+    fill: #fff;
+}
+
+.land {
+    fill: #EEEEEE;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: rgba(0, 0, 0, 0.1);
+    shape-rendering: crispEdges;
+}
+
+.axisLine {
+    fill: none;
+    shape-rendering: crispEdges;
+    stroke: rgba(0, 0, 0, 0.5);
+    stroke-width: 2px;
+}
+
+/*SCATTER PLOT SIZES*/
 
 .resultScatterPlotView {
     position:relative;
     border: 2px solid black;
-    height: 22vw;
+    height: 42vh;
     width: 35vw;
     float: left;
     margin-right:10px;
 }
 
-/*SCATTER PLOT SIZES*/
-
 #scatter {
     width:100%;
-    height:307px;
+    height:auto;
 }
 
 .scatterSVG {
@@ -90,10 +124,17 @@ html, body {
     height:auto;
 }
 
+#axisSelectors{
+    position: fixed;
+    margin-left:15px;
+}
+
+/*List view*/
+
 .resultListView {
     position:relative;
     border: 2px solid black;
-    height: 22vw;
+    height: 42vh;
     width: 70.7vw;
     overflow-y: scroll;
     margin-top: 10px;
@@ -103,27 +144,30 @@ html, body {
     font: 12px Arial,Helvetica Neue,Helvetica ;
 }
 
-p {
-    font: 14px Arial,Helvetica Neue,Helvetica ;
-    margin-bottom: 0px;
+/*.resultsTable tbody tr:nth-child(odd) td {*/
+/*background-color: #EEEEEE;*/
+/*}*/
+
+/*.resultsTable tbody tr.highlight td {*/
+/*background-color: #EEEEEE;*/
+/*}*/
+
+.clickableRow {
+    border: 2px darkgray;
 }
 
-th {
-    font: 12px Arial,Helvetica Neue,Helvetica ;
-    border: 1px black solid;
+.clickableRow:hover {
+    background-color: #EEEEEE;
 }
 
+/* FILTER BAR */
 .wrapper {
     width: 100%;
     overflow: hidden; /* will contain if #first is longer than #second */
 }
 
-.cityCompanies {
-    font: 8px Arial,Helvetica Neue,Helvetica ;
-}
 
 .attrScale {
-
     width: 265px;
     float:left; /* add this */
     margin-bottom: 10px;
@@ -158,10 +202,6 @@ th {
     cursor: pointer;
 }
 
-.headerPanel {
-    /*left:25vw;*/
-}
-
 .controlIcons{
     color:#599513;
 }
@@ -192,7 +232,6 @@ th {
 #navbar{
     background-color: #599513;
 }
-
 
 .filter_container {
     width: inherit;
@@ -243,7 +282,6 @@ th {
     opacity: 0.5;
     cursor: pointer;
 }
-
 
 .dc-chart g .axis.y {
     display:none;
@@ -329,12 +367,10 @@ span.myGlyphicon.disabled {
     cursor: not-allowed;
 }
 
-
 span.myGlyphicon:hover {
     opacity: 0.5;
     cursor: pointer;
 }
-
 
 .mapCircle {
     opacity: 0.75;
@@ -358,10 +394,6 @@ span.myGlyphicon:hover {
     width: 100vw;
 }
 
-.resultStatus {
-
-}
-
 .panel-heading {
     margin-bottom: 5px;
 }
@@ -380,31 +412,6 @@ span.myGlyphicon:hover {
 .clickable-panel:hover {
     fill-opacity: 0.3;
     cursor: pointer;
-
-}
-
-h4 {
-    font: 16px Arial,Helvetica Neue,Helvetica ;
-}
-
-svg {
-    /*background: #eee;*/
-}
-
-.sphere {
-    fill: #fff;
-}
-
-.land {
-    fill: #EEEEEE;
-}
-
-.boundary {
-    fill: none;
-    stroke: #fff;
-    stroke-linejoin: round;
-    stroke-linecap: round;
-    vector-effect: non-scaling-stroke;
 }
 
 .overlay {
@@ -417,26 +424,6 @@ svg {
     height: 500px;
 }
 
-.clickableRow {
-    border: 2px darkgray;
-}
-
-/*.resultsTable tbody tr:nth-child(odd) td {*/
-    /*background-color: #EEEEEE;*/
-/*}*/
-
-/*.resultsTable tbody tr.highlight td {*/
-    /*background-color: #EEEEEE;*/
-/*}*/
-
-
-
-
-.clickableRow:hover {
-    background-color: #EEEEEE;
-}
-
-
 .land {
     fill: #CCCCCC;
     fill-opacity: 1;
@@ -444,6 +431,15 @@ svg {
     stroke-opacity: 1;
     stroke-width:0.5;
 }
+
+.boundary {
+    fill: none;
+    stroke: #fff;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    vector-effect: non-scaling-stroke;
+}
+
 
 .glyphicon-chevron-down:hover {
     opacity: 0.5;
@@ -467,20 +463,6 @@ svg {
     border: 0px;
     border-radius: 8px;
     pointer-events: none;
-}
-
-.axis path,
-.axis line {
-    fill: none;
-    stroke: rgba(0, 0, 0, 0.1);
-    shape-rendering: crispEdges;
-}
-
-.axisLine {
-    fill: none;
-    shape-rendering: crispEdges;
-    stroke: rgba(0, 0, 0, 0.5);
-    stroke-width: 2px;
 }
 
 .scatterPlotCircle:hover {
@@ -516,10 +498,6 @@ svg {
     left: 0;
 }
 
-/*g .axis.y {*/
-    /*display:none;*/
-/*}*/
-
 #menu-items{
     padding-left:22vw;
     width: 600px;
@@ -537,33 +515,9 @@ svg {
     bakcground-color:#59BB13;
 }
 
-/*.tooltip-box {*/
-    /*position: absolute;*/
-    /*background-color: #fff;*/
-    /*width: 200px;*/
-    /*right: 0px;*/
-    /*top: 0px;*/
-    /*overflow-y: scroll;*/
-    /*height: 200px;*/
-    /*border: 1px #ccc solid;*/
-    /*border-radius: 6px;*/
-    /*box-shadow: inset 1px 1px 6px 2px rgba(0,0,0, .25);*/
-/*}*/
-/*.tooltip-box h2 {*/
-    /*margin: 0 0 0.5rem 0;*/
-    /*padding: 3px;*/
-    /*text-align: center;*/
-/*}*/
-
-/*.tooltip-box p {*/
-    /*padding-left: 10px;*/
-    /*font: 14px Arial,Helvetica Neue,Helvetica ;*/
-/*}*/
-
 .modal-header {
     background-color: #3C8D2F;
 }
-
 
 /*SLIDERS*/
 
@@ -709,15 +663,16 @@ div.tooltip {
     display: inline-block;
     bottom:10px;
     margin-left:-40px;
-
-
 }
+
 #breadcrumb .icon {
     font-size: 10px;
 }
+
 #breadcrumb li {
     float: left;
 }
+
 #breadcrumb li a {
     color: #FFF;
     display: block;

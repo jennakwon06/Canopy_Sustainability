@@ -30,32 +30,10 @@
                     <div class="col-md-2">
                         <button type="button" class="btn btn-secondary filterTexts filterButtons" id="scrollToMisc">Misc</button>
                     </div>
-
-                    <!--<span class="glyphicon glyphicon-circle-arrow-right myGlyphicon" title="Apply filters" id="applyFilterButton"></span>-->
-                    <!--<span class="glyphicon glyphicon-remove myGlyphicon" title="Reset all filters" id="resetAllFiltersButton"></span>-->
                 </div>
 
 
                 <div class="filter_container" id="accordion">
-
-
-                    <!--<div class="filter_bottomPanel">-->
-
-                        <!--<div class="col-md-6">-->
-                            <!--<button type="button" class="btn btn-secondary filterTexts" id="applyFilterButton">Apply</button>-->
-
-                            <!--&lt;!&ndash;<h3 class="filterTexts" id="applyFilterButton">Apply</h3>&ndash;&gt;-->
-                        <!--</div>-->
-
-                        <!--<div class="col-md-6">-->
-                            <!--<button type="button" class="btn btn-secondary filterTexts" id="resetAllFiltersButton">Reset</button>-->
-                        <!--</div>-->
-
-                        <!--&lt;!&ndash;<span class="glyphicon glyphicon-circle-arrow-right myGlyphicon" title="Apply filters" id="applyFilterButton"></span>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<span class="glyphicon glyphicon-remove myGlyphicon" title="Reset all filters" id="resetAllFiltersButton"></span>&ndash;&gt;-->
-                    <!--</div>-->
-
-                    <!--GENERAL-->
                     <div class="panels">
                         <div class="panelGeneral panel-default">
                             <div class="clickable-panel">
@@ -84,23 +62,23 @@
 
                                         <div class="col-md-6" style="top:5px">
                                             <div id="sector_chart" style="overflow-y: scroll; height: 300px">
-                                                <div class="clearfix"></div>
+                                                <!--<div class="clearfix"></div>-->
 
-                                                <div>
-                                                    <a class="reset" href="javascript:sectorChart.filterAll();dc.redrawAll();"
-                                                       style="visibility: hidden; position: absolute; height: 5px; right:0;">reset</a>
-                                                </div>
+                                                <!--<div>-->
+                                                    <!--<a class="reset" href="javascript:sectorChart.filterAll();dc.redrawAll();"-->
+                                                       <!--style="visibility: hidden; position: absolute; height: 5px; right:0;">reset</a>-->
+                                                <!--</div>-->
                                             </div>
                                         </div>
 
                                         <div class="col-md-6" style="top:5px">
                                             <div id="industry_chart" style="overflow-y: scroll; height: 300px">
-                                                <div class="clearfix"></div>
+                                                <!--<div class="clearfix"></div>-->
 
-                                                <div>
-                                                    <a class="reset" href="javascript:industryChart.filterAll();dc.redrawAll();"
-                                                       style="visibility: hidden; position: absolute; height: 5px; right:0;"> reset</a>
-                                                </div>
+                                                <!--<div>-->
+                                                    <!--<a class="reset" href="javascript:industryChart.filterAll();dc.redrawAll();"-->
+                                                       <!--style="visibility: hidden; position: absolute; height: 5px; right:0;"> reset</a>-->
+                                                <!--</div>-->
                                             </div>
                                         </div>
 
@@ -344,20 +322,21 @@
             </div>
 
             <div id="resultBar">
-                <svg id="expandIcon" class="scatterExpand" fill="#000000" height="15" viewBox="0 0 24 24" width="15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <defs>
-                        <path d="M0 0h24v24H0z" id="a"/>
-                    </defs>
-                    <clipPath id="b">
-                        <use overflow="visible" xlink:href="#a"/>
-                    </clipPath>
-                    <path clip-path="url(#b)" d="M15 3l2.3 2.3-2.89 2.87 1.42 1.42L18.7 6.7 21 9V3zM3 9l2.3-2.3 2.87 2.89 1.42-1.42L6.7 5.3 9 3H3zm6 12l-2.3-2.3 2.89-2.87-1.42-1.42L5.3 17.3 3 15v6zm12-6l-2.3 2.3-2.87-2.89-1.42 1.42 2.89 2.87L15 21h6z"/>
-                    <path clip-path="url(#b)" d="M0 0h24v24H0z" fill="none"/>
-                </svg>
+                 <div class="resultScatterPlotView" style="display: inline-block">
 
-                 <div class="resultScatterPlotView" style="display: inline-inline-block">
-                    <!--style="display: none"-->
-                    <div class="col-md-12">
+                     <svg id="expandIcon" class="scatterExpand" fill="#000000" height="15" viewBox="0 0 24 24" width="15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                         <defs>
+                             <path d="M0 0h24v24H0z" id="a"/>
+                         </defs>
+                         <clipPath id="b">
+                             <use overflow="visible" xlink:href="#a"/>
+                         </clipPath>
+                         <path clip-path="url(#b)" d="M15 3l2.3 2.3-2.89 2.87 1.42 1.42L18.7 6.7 21 9V3zM3 9l2.3-2.3 2.87 2.89 1.42-1.42L6.7 5.3 9 3H3zm6 12l-2.3-2.3 2.89-2.87-1.42-1.42L5.3 17.3 3 15v6zm12-6l-2.3 2.3-2.87-2.89-1.42 1.42 2.89 2.87L15 21h6z"/>
+                         <path clip-path="url(#b)" d="M0 0h24v24H0z" fill="none"/>
+                     </svg>
+
+                     <!--style="display: none"-->
+                     <div id="axisSelectors">
                         <select id="xaxisMeasure" onchange="changeX()">
                             <option value="ghg1" selected="selected">GHG1</option>
                             <option value="ghg2">GHG2</option>
@@ -387,29 +366,25 @@
                             <option value="wasteRecycled">Waste Generated Per Assets</option>
                             <option value="totalEnergyConsumption">Energy Intensity Per Sales</option>
                         </select>
-                    </div>
+                     </div>
 
 
                     <div id="scatter">
                     </div>
                  </div>
 
-                <svg id="expandIcon" class="mapExpand" fill="#000000" height="15" viewBox="0 0 24 24" width="15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <defs>
-                        <path d="M0 0h24v24H0z" id="a"/>
-                    </defs>
-                    <clipPath id="b">
-                        <use overflow="visible" xlink:href="#a"/>
-                    </clipPath>
-                    <path clip-path="url(#b)" d="M15 3l2.3 2.3-2.89 2.87 1.42 1.42L18.7 6.7 21 9V3zM3 9l2.3-2.3 2.87 2.89 1.42-1.42L6.7 5.3 9 3H3zm6 12l-2.3-2.3 2.89-2.87-1.42-1.42L5.3 17.3 3 15v6zm12-6l-2.3 2.3-2.87-2.89-1.42 1.42 2.89 2.87L15 21h6z"/>
-                    <path clip-path="url(#b)" d="M0 0h24v24H0z" fill="none"/>
-                </svg>
-
                 <div class="resultMapView" style="display: inline-block">
-                     <!--style="display: none">-->
-                    <div id="worldMap">
-                    </div>
-                    <!--<div class="tooltip-box"></div>-->
+                    <svg id="expandIcon" class="mapExpand" fill="#000000" height="15" viewBox="0 0 24 24" width="15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <defs>
+                            <path d="M0 0h24v24H0z" id="a"/>
+                        </defs>
+                        <clipPath id="b">
+                            <use overflow="visible" xlink:href="#a"/>
+                        </clipPath>
+                        <path clip-path="url(#b)" d="M15 3l2.3 2.3-2.89 2.87 1.42 1.42L18.7 6.7 21 9V3zM3 9l2.3-2.3 2.87 2.89 1.42-1.42L6.7 5.3 9 3H3zm6 12l-2.3-2.3 2.89-2.87-1.42-1.42L5.3 17.3 3 15v6zm12-6l-2.3 2.3-2.87-2.89-1.42 1.42 2.89 2.87L15 21h6z"/>
+                        <path clip-path="url(#b)" d="M0 0h24v24H0z" fill="none"/>
+                    </svg>
+                    <div id="worldMap"></div>
                 </div>
 
                 <div class="resultListView" style="display: inline-block">

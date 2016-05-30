@@ -2,10 +2,6 @@ var renderPage = function() {
     calculateIndex();
     fillTable(globalFilter.top(Infinity).reverse());
     drawMap(globalFilter.top(Infinity), true);
-    var xaxis = document.getElementById("xaxisMeasure");
-    var selectedX = xaxis.options[xaxis.selectedIndex].value;
-    var yaxis = document.getElementById("yaxisMeasure");
-    var selectedY = yaxis.options[yaxis.selectedIndex].value;
     drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
 };
 
@@ -14,10 +10,6 @@ var onChange = function(d) {
     calculateIndex();
     fillTable(globalFilter.top(Infinity).reverse());
     drawMap(globalFilter.top(Infinity), false);
-    var xaxis = document.getElementById("xaxisMeasure");
-    var selectedX = xaxis.options[xaxis.selectedIndex].value;
-    var yaxis = document.getElementById("yaxisMeasure");
-    var selectedY = yaxis.options[yaxis.selectedIndex].value;
     drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
     insertBreadCrumb(d);
 };
@@ -54,13 +46,15 @@ var insertBreadCrumb = function(d) {
     }
 };
 
-//var ccPolicyImplRowChart;
+var xaxis = document.getElementById("xaxisMeasure");
+var selectedX = xaxis.options[xaxis.selectedIndex].value;
+var yaxis = document.getElementById("yaxisMeasure");
+var selectedY = yaxis.options[yaxis.selectedIndex].value;
+
 
 var color = d3.scale.linear()
     .range(["green", "red"])
     .interpolate(d3.interpolateHsl);
-
-
 /*
  * Interact with list view
  */

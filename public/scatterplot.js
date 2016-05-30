@@ -1,18 +1,18 @@
 //@TODO refactor to take in different x and y axis values
 
 function changeX() {
-    var xaxis = document.getElementById("xaxisMeasure");
-    var selectedX = xaxis.options[xaxis.selectedIndex].value;
-    var yaxis = document.getElementById("yaxisMeasure");
-    var selectedY = yaxis.options[yaxis.selectedIndex].value;
+    xaxis = document.getElementById("xaxisMeasure");
+    selectedX = xaxis.options[xaxis.selectedIndex].value;
+    yaxis = document.getElementById("yaxisMeasure");
+    selectedY = yaxis.options[yaxis.selectedIndex].value;
     drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY)
 }
 
 function changeY() {
-    var xaxis = document.getElementById("xaxisMeasure");
-    var selectedX = xaxis.options[xaxis.selectedIndex].value;
-    var yaxis = document.getElementById("yaxisMeasure");
-    var selectedY = yaxis.options[yaxis.selectedIndex].value;
+    xaxis = document.getElementById("xaxisMeasure");
+    selectedX = xaxis.options[xaxis.selectedIndex].value;
+    yaxis = document.getElementById("yaxisMeasure");
+    selectedY = yaxis.options[yaxis.selectedIndex].value;
     drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY)
 }
 
@@ -25,10 +25,6 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
     d3.select(".scatterSVG").remove();
 
     var margin = { top: 20, right: 10, bottom: 30, left: 60};
-        //if outerWidth != null {
-        //    outerWidth = $(".resultScatterPlotView").width(),
-        //
-        //}
     var outerWidth = $(".resultScatterPlotView").width();
     var outerHeight = $(".resultScatterPlotView").height();
     var width = outerWidth - margin.left - margin.right;
