@@ -24,12 +24,15 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
     //clear previous
     d3.select(".scatterSVG").remove();
 
-    var margin = { top: 20, right: 10, bottom: 30, left: 60},
-        outerWidth = $(".resultScatterPlotView").width(),
-        outerHeight = 280,
-        width = outerWidth - margin.left - margin.right,
-        height = outerHeight - margin.top - margin.bottom;
-
+    var margin = { top: 20, right: 10, bottom: 30, left: 60};
+        //if outerWidth != null {
+        //    outerWidth = $(".resultScatterPlotView").width(),
+        //
+        //}
+    var outerWidth = $(".resultScatterPlotView").width();
+    var outerHeight = $(".resultScatterPlotView").height();
+    var width = outerWidth - margin.left - margin.right;
+    var height = outerHeight - margin.top - margin.bottom;
 
     var x = d3.scale.linear()
         .range([0, width]).nice();
@@ -154,7 +157,6 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
     if (xAxisVal !== undefined && yAxisVal !== undefined
         && !isBlank(xAxisVal) && !isBlank(yAxisVal)) {
 
-
         objects.selectAll(".scatterPlotCircle")
             .data(results)
             .enter().append("circle")
@@ -169,10 +171,6 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
                 return color(d.sustIndex);
             })
             .on("mouseover", function (d) {
-
-                //console.log("sustindex from scatterplot");
-                //console.log(d.sustIndex);
-
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);

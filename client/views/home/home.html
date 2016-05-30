@@ -1,8 +1,6 @@
 <template name="Home">
     <div class="page-container" id="content">
-
         <div id="page_menu" class="pull-right"></div>
-
         <div class="row">
             <div id="filterBar" >
 
@@ -345,8 +343,8 @@
                 </div>
             </div>
 
-            < id="resultBar">
-                <svg id="expandIcon" fill="#000000" height="15" viewBox="0 0 24 24" width="15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <div id="resultBar">
+                <svg id="expandIcon" class="scatterExpand" fill="#000000" height="15" viewBox="0 0 24 24" width="15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <defs>
                         <path d="M0 0h24v24H0z" id="a"/>
                     </defs>
@@ -357,51 +355,46 @@
                     <path clip-path="url(#b)" d="M0 0h24v24H0z" fill="none"/>
                 </svg>
 
+                 <div class="resultScatterPlotView" style="display: inline-inline-block">
+                    <!--style="display: none"-->
+                    <div class="col-md-12">
+                        <select id="xaxisMeasure" onchange="changeX()">
+                            <option value="ghg1" selected="selected">GHG1</option>
+                            <option value="ghg2">GHG2</option>
+                            <option value="ghg3">GHG3</option>
+                            <option value="revenue">Revenue</option>
+                            <option value="price">Price</option>
+                            <option value="totalWaterUse">Water Intensity Per Sales</option>
+                            <option value="totalWaterWithdrawl">Total Water Withdrawl</option>
+                            <option value="totalWaterDischarged">Total Water Discharged</option>
+                            <option value="totalWaste">Waste Sent To Landfill</option>
+                            <option value="wasteSentToLandfill">Waste Intensity Per Sales</option>
+                            <option value="wasteRecycled">Waste Generated Per Assets</option>
+                            <option value="totalEnergyConsumption">Energy Intensity Per Sales</option>
+                        </select>
 
-                <div class="col-md-6">
-                    <div class="resultScatterPlotView" style="display: block">
-                        <!--style="display: none"-->
-                        <div class="col-md-12">
-                            <select id="xaxisMeasure" onchange="changeX()">
-                                <option value="ghg1" selected="selected">GHG1</option>
-                                <option value="ghg2">GHG2</option>
-                                <option value="ghg3">GHG3</option>
-                                <option value="revenue">Revenue</option>
-                                <option value="price">Price</option>
-                                <option value="totalWaterUse">Water Intensity Per Sales</option>
-                                <option value="totalWaterWithdrawl">Total Water Withdrawl</option>
-                                <option value="totalWaterDischarged">Total Water Discharged</option>
-                                <option value="totalWaste">Waste Sent To Landfill</option>
-                                <option value="wasteSentToLandfill">Waste Intensity Per Sales</option>
-                                <option value="wasteRecycled">Waste Generated Per Assets</option>
-                                <option value="totalEnergyConsumption">Energy Intensity Per Sales</option>
-                            </select>
-
-                            <select id="yaxisMeasure" onchange="changeY()">
-                                <option value="ghg1" selected="selected">GHG1</option>
-                                <option value="ghg2">GHG2</option>
-                                <option value="ghg3">GHG3</option>
-                                <option value="revenue">Revenue</option>
-                                <option value="price">Price</option>
-                                <option value="totalWaterUse">Water Intensity Per Sales</option>
-                                <option value="totalWaterWithdrawl">Total Water Withdrawl</option>
-                                <option value="totalWaterDischarged">Total Water Discharged</option>
-                                <option value="totalWaste">Waste Sent To Landfill</option>
-                                <option value="wasteSentToLandfill">Waste Intensity Per Sales</option>
-                                <option value="wasteRecycled">Waste Generated Per Assets</option>
-                                <option value="totalEnergyConsumption">Energy Intensity Per Sales</option>
-                            </select>
-                        </div>
-
-
-                        <div id="scatter">
-                        </div>
-
-
+                        <select id="yaxisMeasure" onchange="changeY()">
+                            <option value="ghg1" selected="selected">GHG1</option>
+                            <option value="ghg2">GHG2</option>
+                            <option value="ghg3">GHG3</option>
+                            <option value="revenue">Revenue</option>
+                            <option value="price">Price</option>
+                            <option value="totalWaterUse">Water Intensity Per Sales</option>
+                            <option value="totalWaterWithdrawl">Total Water Withdrawl</option>
+                            <option value="totalWaterDischarged">Total Water Discharged</option>
+                            <option value="totalWaste">Waste Sent To Landfill</option>
+                            <option value="wasteSentToLandfill">Waste Intensity Per Sales</option>
+                            <option value="wasteRecycled">Waste Generated Per Assets</option>
+                            <option value="totalEnergyConsumption">Energy Intensity Per Sales</option>
+                        </select>
                     </div>
-                </div>
 
-                <svg id="expandIcon" style="margin-left:-17px" fill="#000000" height="15" viewBox="0 0 24 24" width="15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+                    <div id="scatter">
+                    </div>
+                 </div>
+
+                <svg id="expandIcon" class="mapExpand" fill="#000000" height="15" viewBox="0 0 24 24" width="15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <defs>
                         <path d="M0 0h24v24H0z" id="a"/>
                     </defs>
@@ -412,77 +405,49 @@
                     <path clip-path="url(#b)" d="M0 0h24v24H0z" fill="none"/>
                 </svg>
 
-                <div class="col-md-6">
-                    <div class="resultMapView" style="display: block">
-                         <!--style="display: none">-->
-                        <div id="worldMap">
-                        </div>
-                        <!--<div class="tooltip-box"></div>-->
+                <div class="resultMapView" style="display: inline-block">
+                     <!--style="display: none">-->
+                    <div id="worldMap">
                     </div>
+                    <!--<div class="tooltip-box"></div>-->
                 </div>
 
-                <div class="col-md-12">
-                    <div class="resultListView" style="display: block">
-                        <svg id="expandIcon" fill="#000000" height="15" viewBox="0 0 24 24" width="15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <defs>
-                                <path d="M0 0h24v24H0z" id="a"/>
-                            </defs>
-                            <clipPath id="b">
-                                <use overflow="visible" xlink:href="#a"/>
-                            </clipPath>
-                            <path clip-path="url(#b)" d="M15 3l2.3 2.3-2.89 2.87 1.42 1.42L18.7 6.7 21 9V3zM3 9l2.3-2.3 2.87 2.89 1.42-1.42L6.7 5.3 9 3H3zm6 12l-2.3-2.3 2.89-2.87-1.42-1.42L5.3 17.3 3 15v6zm12-6l-2.3 2.3-2.87-2.89-1.42 1.42 2.89 2.87L15 21h6z"/>
-                            <path clip-path="url(#b)" d="M0 0h24v24H0z" fill="none"/>
-                        </svg>
-                        <table class="table resultsTable">
-                            <thead class="thead-inverse">
-                            <tr>
-                                <th>Company Name
-                                    <i class="fa fa-sort-alpha-asc pull-right" id="sortByCompanyButton"></i>
-                                </th>
-                                <th>Industry
-                                    <i class="fa fa-sort-alpha-asc pull-right" id="sortByIndustryButton"></i>
-                                </th>
-                                <th>Sector
-                                    <i class="fa fa-sort-alpha-asc pull-right" id="sortBySectorButton"></i>
-                                </th>
-                                <th>Country
-                                    <i class="fa fa-sort-alpha-asc pull-right" id="sortByCountryButton"></i>
-                                </th>
-                                <th>Sustainability Score
-                                    <i class="fa fa-sort-numeric-asc pull-right" id="sortByScoreButton"></i>
-                                </th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="resultListView" style="display: inline-block">
+                    <svg id="expandIcon" class="listExpand" fill="#000000" height="15" viewBox="0 0 24 24" width="15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <defs>
+                            <path d="M0 0h24v24H0z" id="a"/>
+                        </defs>
+                        <clipPath id="b">
+                            <use overflow="visible" xlink:href="#a"/>
+                        </clipPath>
+                        <path clip-path="url(#b)" d="M15 3l2.3 2.3-2.89 2.87 1.42 1.42L18.7 6.7 21 9V3zM3 9l2.3-2.3 2.87 2.89 1.42-1.42L6.7 5.3 9 3H3zm6 12l-2.3-2.3 2.89-2.87-1.42-1.42L5.3 17.3 3 15v6zm12-6l-2.3 2.3-2.87-2.89-1.42 1.42 2.89 2.87L15 21h6z"/>
+                        <path clip-path="url(#b)" d="M0 0h24v24H0z" fill="none"/>
+                    </svg>
+
+                    <table class="table resultsTable">
+                        <thead class="thead-inverse">
+                        <tr>
+                            <th>Company Name
+                                <i class="fa fa-sort-alpha-asc pull-right" id="sortByCompanyButton"></i>
+                            </th>
+                            <th>Industry
+                                <i class="fa fa-sort-alpha-asc pull-right" id="sortByIndustryButton"></i>
+                            </th>
+                            <th>Sector
+                                <i class="fa fa-sort-alpha-asc pull-right" id="sortBySectorButton"></i>
+                            </th>
+                            <th>Country
+                                <i class="fa fa-sort-alpha-asc pull-right" id="sortByCountryButton"></i>
+                            </th>
+                            <th>Sustainability Score
+                                <i class="fa fa-sort-numeric-asc pull-right" id="sortByScoreButton"></i>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
                 </div>
-
-
-
-
-
-                <!-- Modal -->
-
-                <!--<div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">-->
-                    <!--<div class="modal-dialog" role="document">-->
-                        <!--<div class="modal-content">-->
-                            <!--<div class="modal-header">-->
-                                <!--<h4 class="modal-title" id="myModalLabel">View location information </h4>-->
-                            <!--</div>-->
-                            <!--<div class="modal-body">-->
-                                <!--<ul class="modal-list list-group">-->
-                                <!--</ul>-->
-                            <!--</div>-->
-                            <!--<div class="modal-footer">-->
-                                <!--<button type="button" class="btn btn-default" id="closeModalButton" data-dismiss="modal">Close</button>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-
-
             </div>
         </div>
     </div>

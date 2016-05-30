@@ -17,6 +17,9 @@ Template.Home.rendered = function() {
 };
 
 var i = 0;
+var iScatter = 0;
+var iMap = 0;
+var iList = 0;
 
 var findPDFs = function(company) {
     // Check if database is correctly set up
@@ -198,11 +201,6 @@ Template.Home.events({
 
         }
 
-        var xaxis = document.getElementById("xaxisMeasure");
-        var selectedX = xaxis.options[xaxis.selectedIndex].value;
-        var yaxis = document.getElementById("yaxisMeasure");
-        var selectedY = yaxis.options[yaxis.selectedIndex].value;
-
         drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
         drawMap(globalFilter.top(Infinity), true);
 
@@ -299,6 +297,81 @@ Template.Home.events({
             }
         }))
     },
+
+    'click .scatterExpand': function(e) {
+        var width = $("#resultBar").width();
+
+        if (iScatter % 2 == 0) {
+            $('.resultScatterPlotView').css({
+                "height" : "100vw",
+                "width" : width,
+                "position" :"fixed"
+            });
+
+            $(".resultListView").hide();
+            $(".resultMapView").hide();
+
+            drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
+
+        } else {
+
+            $(".resultListView").show();
+            $(".resultMapView").show();
+
+            drawMap(globalFilter.top(Infinity), true);
+        }
+        iScatter++;
+    },
+
+    'click .mapExpand': function(e) {
+        var width = $("#resultBar").width();
+
+        if (iMap % 2 == 0) {
+            $('.resultScatterPlotView').css({
+                "height" : "100vw",
+                "width" : width,
+                "position" :"fixed"
+            });
+
+            $(".resultListView").hide();
+            $(".resultScatter").hide();
+
+            drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
+
+        } else {
+
+            $(".resultListView").show();
+            $(".resultMapView").show();
+
+            drawMap(globalFilter.top(Infinity), true);
+        }
+        iMap++;
+    },
+
+    'click .listExpand': function(e) {
+        var width = $("#resultBar").width();
+
+        if (iList % 2 == 0) {
+            $('.resultScatterPlotView').css({
+                "height" : "100vw",
+                "width" : width,
+                "position" :"fixed"
+            });
+
+            $(".resultScatterPlotView").hide();
+            $(".resultMapView").hide();
+
+            drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
+
+        } else {
+
+            $(".resultListView").show();
+            $(".resultMapView").show();
+
+            drawMap(globalFilter.top(Infinity), true);
+        }
+        iList++;
+    }
 });
 
 Template.Home.helpers({
