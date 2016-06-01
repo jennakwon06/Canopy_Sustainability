@@ -9,10 +9,12 @@ Template.Home.rendered = function() {
     $.getScript("/filters.js").done(function(script, textStatus){
         $.getScript("/scatterplot.js");
         $.getScript("/globalFunctions.js");
-        $.getScript("/worldMapInit.js").done(function( script, textStatus ) {
+        $.getScript("/worldMap.js").done(function( script, textStatus ) {
             renderPage();
         });
     });
+
+    //renderPage();
 
 };
 
@@ -137,7 +139,6 @@ Template.Home.events({
     'click .clickableRow': function (e) {
         e.preventDefault();
 
-        var name = $(e.currentTarget).attr('id');
         $(e.currentTarget).addClass('highlight');
         $(e.currentTarget).siblings().removeClass('highlight');
 
@@ -148,6 +149,7 @@ Template.Home.events({
             $target.closest("tr").next().find("td").slideToggle("fast");
         }
 
+        linkData($(e.currentTarget));
     },
 
     'click #closeModalButton': function (e) {
@@ -299,7 +301,6 @@ Template.Home.events({
 
     'click .scatterExpand': function(e) {
         var width = $("#resultBar").width();
-        var height = $("#resultBar").height();
 
         if (iScatter % 2 == 0) {
             $('.resultScatterPlotView').css({
@@ -325,7 +326,6 @@ Template.Home.events({
 
     'click .mapExpand': function(e) {
         var width = $("#resultBar").width();
-        var height = $("#resultBar").height();
 
         if (iMap % 2 == 0) {
             $('.resultMapView').css({

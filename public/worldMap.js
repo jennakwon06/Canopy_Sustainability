@@ -1,9 +1,8 @@
 var path;
 var projection;
-
-function zoomed() {
-    d3.select(".mapSvg g").attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")")
-}
+var radius = d3.scale.sqrt() //accurate encoding https://groups.google.com/forum/#!topic/d3-js/mcJ8GE6_fq4
+    .domain([0, 1e6])
+    .range([0, 15]);
 
 function drawBubbles(results) {
 
@@ -60,10 +59,6 @@ function drawBubbles(results) {
         arrayOfLocations[i].sustIndex /= arrayOfLocations[i].count;
     }
 
-    var radius = d3.scale.sqrt()
-        .domain([0, 1e6])
-        .range([0, 15]);
-
     arrayOfLocations.sort(function (a,b) {
         return b.count - a.count;
     });
@@ -85,7 +80,10 @@ function drawBubbles(results) {
         .attr("data-toggle", "modal")
         .attr("data-target", "#myModal")
         .attr("class", "mapCircle")
-        .attr("locationName", function(d) {
+        .attr("companyName", function(d) {
+            return d.companies
+        })
+        .attr("companyAddress", function(d) {
             return d.address;
         })
         .attr("transform", function(d) {
@@ -109,6 +107,9 @@ function drawBubbles(results) {
             tooltipDiv.transition()
                 .duration(500)
                 .style("opacity", 0);
+        })
+        .on("click", function(d) {
+            linkData(d);
         });
 }
 
@@ -117,19 +118,83 @@ function drawMap(results, inputWidth) {
     if (d3.select(".mapSvg").empty() || inputWidth) {
         d3.select(".mapSvg").remove();
 
+
+//function zoom() {
+//    circle.attr("transform", transform);
+//}
+//
+//function transform(d) {
+//    return "translate(" + x(d[0]) + "," + y(d[1]) + ")";
+//}
+
+
         var width = $(".resultMapView").width();
-        var height = $(".resultMapView").height();
+        var height = $(".resultMapView").height() - 25;
+
+        var x = d3.scale.linear()
+            .domain([0, width])
+            .range([0, width]);
+
+        var y = d3.scale.linear()
+            .domain([0, height])
+            .range([height, 0]);
+
+
+        //function zoomed() {
+        //    d3.select(".mapSvg").attr("transform", transform);
+        //}
+        //
+        //function transform(d) {
+        //    console.log(d);
+        //    return "translate(" + x(d[0]) + "," + y(d[1]) + ")";
+        //}
 
         projection = d3.geo.mercator()
             .translate([width / 2, height / 2])
             .scale((width - 1) / 2 / Math.PI);
 
-        var zoom = d3.behavior.zoom()
-            .scaleExtent([1, 8])
-            .on("zoom", zoomed);
+        //var zoom = d3.behavior.zoom()
+        //    .x(x)
+        //    .y(y)
+        //    .scaleExtent([1, 8])
+        //    .on("zoom", zoomed);
 
-        path = d3.geo.path()
-            .projection(projection);
+        var zoom = d3.behavior.zoom()
+            .scaleExtent([1, 50])
+            .x(x)
+            .y(y)
+            .on("zoom",function() {
+                g.attr("transform", function(d) {
+                    //var panX = d3.event.translate[0];
+                    //var panY = d3.event.translate[1];
+                    //var scale = d3.event.scale;
+                    //
+                    //panX = panX > 10 ? 10 : panX;
+                    //var maxX = -(scale-1)*width-10;
+                    //panX = panX < maxX ? maxX : panX;
+                    //zoom.translate([panX, panY]);
+                    //console.log("x: "+panX+" scale: "+scale);
+                    ////console.log("x: "+(panX/scale));
+                    //
+                    //svg.select(".x.axis").call(xAxis);
+                    //svg.selectAll("path.lines")
+                    //    .attr("d", function(d) { return line(d.values); });
+                    //svg.selectAll("circle")
+                    //    .attr("cx", function(d) { return x(d.date); })
+                    //    .attr("cy", function(d) { return y(d.value); });
+
+
+                    return "translate("+ d3.event.translate.join(",")+ ")scale(" + d3.event.scale + ")"
+                });
+
+                g.selectAll("circle")
+                    .attr("r", function(d){
+                        var self = d3.select(this);
+                        var r = radius(d.count) * 150 / d3.event.scale;
+                        //self.style("stroke-width", r < 4 ? (r < 2 ? 0.5 : 1) : 2);
+                        return r;
+                    });
+            });
 
         var svg = d3.select("#worldMap").append("svg")
             .attr("class", "mapSvg")
@@ -139,8 +204,10 @@ function drawMap(results, inputWidth) {
 
         var g = svg.append("g");
 
-        svg.call(zoom)
-            .call(zoom.event);
+        g.call(zoom);
+
+        path = d3.geo.path()
+            .projection(projection);
 
         var z = color;
 

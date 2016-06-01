@@ -14,6 +14,13 @@ var onChange = function(d) {
     insertBreadCrumb(d);
 };
 
+var linkData = function(d) {
+    console.log(d);
+    //d3.select("[id='" + i + "']")
+
+    //d3.selectAll("")
+}
+
 $.fn.exists = function () {
     return this.length !== 0;
 };

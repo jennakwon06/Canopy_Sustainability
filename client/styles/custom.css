@@ -53,25 +53,24 @@ h4 {
 
 #worldMap {
     width:inherit;
-    height:auto;
+    height:inherit;
 }
 
 .mapSvg {
     width:inherit;
-    height:auto;
+    height:inherit;
 }
 
 .mapCircle {
     opacity: 0.75;
-    stroke: #fff;
-    stroke-width: .5px;
+    /*stroke: #fff;*/
 }
 
 .mapCircle:hover {
     opacity: 0.5;
     cursor: pointer;
     stroke: black;
-    stroke-width: 1px;
+    /*stroke-width: 0.5px;*/
 }
 
 .sphere {
@@ -375,14 +374,14 @@ span.myGlyphicon:hover {
 .mapCircle {
     opacity: 0.75;
     stroke: #fff;
-    stroke-width: .5px;
+    stroke-width: 0px;
 }
 
 .mapCircle:hover {
     opacity: 0.5;
     cursor: pointer;
-    stroke: black;
-    stroke-width: 1px;
+    /*stroke: black;*/
+    /*stroke-width: 0.5px;*/
 }
 
 .scatterPlotCircle:hover {

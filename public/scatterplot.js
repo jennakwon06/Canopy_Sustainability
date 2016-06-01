@@ -43,11 +43,11 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
     //    yMin = d3.min(results, function(d) { return d[yAxisVal]; }),
     //    yMin = yMin > 0 ? 0 : yMin;
 
-    var xMax = d3.extent(globalData, function (d) {return +d[xAxisVal];})[1] * 1.05,
-        xMin = d3.extent(globalData, function (d) {return +d[yAxisVal];})[0],
+    var xMax = d3.extent(results, function (d) {return +d[xAxisVal];})[1] * 1.05,
+        xMin = d3.extent(results, function (d) {return +d[yAxisVal];})[0],
         xMin = xMin > 0 ? 0 : xMin,
-        yMax = d3.extent(globalData, function (d) {return +d[yAxisVal];})[1] * 1.05,
-        yMin = d3.extent(globalData, function (d) {return +d[yAxisVal];})[0],
+        yMax = d3.extent(results, function (d) {return +d[yAxisVal];})[1] * 1.05,
+        yMin = d3.extent(results, function (d) {return +d[yAxisVal];})[0],
         yMin = yMin > 0 ? 0 : yMin;
 
     x.domain([xMin, xMax]);
@@ -82,9 +82,6 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
         .attr("height", outerHeight)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    //.call(zoomBeh);
-
 
     var tooltip = d3.select("body").append("div")
         .attr("class", "tooltip")
@@ -158,10 +155,14 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
             .enter().append("circle")
             .attr("class", "scatterPlotCircle")
             .attr("r", 3.5)
-            //.attr("data-toggle", "modal")
-            //.attr("data-target", "#myModal")
             .attr("transform", function(d) {
                 return "translate(" + x(d[xAxisVal]) + "," + y(d[yAxisVal]) + ")"
+            })
+            .attr("companyName", function(d) {
+                return d.name;
+            })
+            .attr("companyAddress", function(d) {
+                return d.address;
             })
             .style("fill", function (d) {
                 return color(d.sustIndex);
@@ -181,13 +182,7 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
                     .style("opacity", 0);
             })
             .on("click", function(d) {
-                //console.log("ayo");
-                //d3.select(".list-group")
-                //    .append("li")
-                //    .attr("class", "modal-list-item list-group-item")
-                //    .attr("value", 10)
-                //    .attr("id", 10)
-                //    .text("FROM SCATTER PLOT");
+                linkData(d);
             });
     }
 }
