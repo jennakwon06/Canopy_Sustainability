@@ -13,9 +13,6 @@ Template.Home.rendered = function() {
             renderPage();
         });
     });
-
-    //renderPage();
-
 };
 
 var i = 0;
@@ -174,12 +171,12 @@ Template.Home.events({
     },
 
     'click #collapseFilterButton': function(e) {
-        if (i % 2 == 0) {
+        if (i % 2 == 0) { //Expanded version
             $('#filterBar').animate({
                 opacity: 0
             }, 500, function() {});
 
-            $('#resultBar').css({"width" : "100vw","position" :"fixed"});
+            $('#resultBar').css({"width" : "98vw","position" :"fixed"});
 
             $(".glyphicon-arrow-left").addClass( "glyphicon-arrow-right");
             $(".glyphicon-arrow-right").removeClass( "glyphicon-arrow-left");
@@ -188,8 +185,12 @@ Template.Home.events({
                 left: "0px"
             }, 500, function() {});
 
+            $('.resultScatterPlotView').css({"width" : "47.3vw"});
+            $('.resultMapView').css({"width" : "47.3vw"});
+            $('.resultListView').css({"width" : "95.3vw"});
 
-        } else {
+
+        } else { // Non expanded
             $('#filterBar').animate({
                 opacity: 1
             }, 500, function() {});
@@ -200,6 +201,12 @@ Template.Home.events({
             $(".glyphicon-arrow-left").removeClass( "glyphicon-arrow-right");
 
             $('#controlBar').removeAttr("style");
+
+            $('.resultScatterPlotView').css({"width" : "34.9vw"});
+            $('.resultMapView').css({"width" : "34.9vw"});
+            $('.resultListView').css({"width" : "70.5vw"});
+
+
         }
 
         drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
@@ -304,8 +311,8 @@ Template.Home.events({
 
         if (iScatter % 2 == 0) {
             $('.resultScatterPlotView').css({
-                "height" : "90vh",
-                "width" : width
+                "height" : "89vh",
+                "width" : width - 10
             });
             $(".resultListView").hide();
             $(".resultMapView").hide();
@@ -313,8 +320,8 @@ Template.Home.events({
             drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
         } else {
             $('.resultScatterPlotView').css({
-                "height" : "42vh",
-                "width" : "35vw"
+                "height" : "43vh",
+                "width" : "34.9vw"
             });
 
             $(".resultListView").show();
@@ -329,8 +336,8 @@ Template.Home.events({
 
         if (iMap % 2 == 0) {
             $('.resultMapView').css({
-                "height" : "90vh",
-                "width" : width
+                "height" : "89vh",
+                "width" : width - 10
             });
 
             $(".resultListView").hide();
@@ -340,8 +347,8 @@ Template.Home.events({
 
         } else {
             $('.resultMapView').css({
-                "height" : "42vh",
-                "width" : "35vw"
+                "height" : "43vh",
+                "width" : "34.9vw"
             });
 
             $(".resultListView").show();
@@ -359,8 +366,8 @@ Template.Home.events({
         if (iList % 2 == 0) {
             $('.resultListView').css({
                 "margin-top": "0",
-                "height" : "90vh",
-                "width" : width
+                "height" : "89vh",
+                "width" : width - 10
             });
 
             $(".resultScatterPlotView").hide();
@@ -369,7 +376,7 @@ Template.Home.events({
         } else {
             $('.resultListView').css({
                 "margin-top": "10px",
-                "height" : "42vh",
+                "height" : "43vh",
                 "width" : "70.7vw"
             });
 

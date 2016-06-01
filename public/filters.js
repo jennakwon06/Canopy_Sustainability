@@ -116,10 +116,6 @@ d3.csv('/data/master.csv', function (data) {
     data.forEach(function (d) {
 
         //Ticker,Name,address,latitude,longitude,registered Country Location,ISIN,ICB Industry Name,ICB Sector Name
-        d.name = d["Name"];
-        d.latitude = d["latitude"];
-        d.longitude = d["longitude"];
-        d.address = d["address"];
         d.country = d["Registered Country Location"];
         d.industry = d["ICB Industry Name"];
         d.sector = d["ICB Sector Name"];

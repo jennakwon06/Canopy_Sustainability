@@ -16,9 +16,7 @@ var onChange = function(d) {
 
 var linkData = function(d) {
     console.log(d);
-    //d3.select("[id='" + i + "']")
-
-    //d3.selectAll("")
+    console.log(d3.selectAll("[name='" + d.name + "']"));
 }
 
 $.fn.exists = function () {
@@ -75,7 +73,7 @@ var fillTable = function(results){
         var tr = document.createElement('tr');
 
         tr.className += "clickableRow";
-        tr.id += results[i].Name;
+        tr.name += results[i].name;
 
         var td1 = document.createElement('td');
         var td2 = document.createElement('td');

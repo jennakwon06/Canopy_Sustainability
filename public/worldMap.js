@@ -89,7 +89,7 @@ function drawBubbles(results) {
         .attr("transform", function(d) {
             return "translate(" + projection([d.longitude, d.latitude]) + ")"; })
         .attr("r", function(d) {
-            return (radius(d.count) * 150);
+            return (radius(d.count) * 200);
         })
         .style("fill", function(d) {
             return color(d.sustIndex);})
@@ -118,18 +118,8 @@ function drawMap(results, inputWidth) {
     if (d3.select(".mapSvg").empty() || inputWidth) {
         d3.select(".mapSvg").remove();
 
-
-//function zoom() {
-//    circle.attr("transform", transform);
-//}
-//
-//function transform(d) {
-//    return "translate(" + x(d[0]) + "," + y(d[1]) + ")";
-//}
-
-
         var width = $(".resultMapView").width();
-        var height = $(".resultMapView").height() - 25;
+        var height = $(".resultMapView").height();
 
         var x = d3.scale.linear()
             .domain([0, width])
@@ -139,28 +129,13 @@ function drawMap(results, inputWidth) {
             .domain([0, height])
             .range([height, 0]);
 
-
-        //function zoomed() {
-        //    d3.select(".mapSvg").attr("transform", transform);
-        //}
-        //
-        //function transform(d) {
-        //    console.log(d);
-        //    return "translate(" + x(d[0]) + "," + y(d[1]) + ")";
-        //}
-
         projection = d3.geo.mercator()
             .translate([width / 2, height / 2])
             .scale((width - 1) / 2 / Math.PI);
 
-        //var zoom = d3.behavior.zoom()
-        //    .x(x)
-        //    .y(y)
-        //    .scaleExtent([1, 8])
-        //    .on("zoom", zoomed);
-
         var zoom = d3.behavior.zoom()
-            .scaleExtent([1, 50])
+            .scaleExtent([1, 20])
+            .scale(2)
             .x(x)
             .y(y)
             .on("zoom",function() {
@@ -190,7 +165,7 @@ function drawMap(results, inputWidth) {
                 g.selectAll("circle")
                     .attr("r", function(d){
                         var self = d3.select(this);
-                        var r = radius(d.count) * 150 / d3.event.scale;
+                        var r = radius(d.count) * 200 / d3.event.scale;
                         //self.style("stroke-width", r < 4 ? (r < 2 ? 0.5 : 1) : 2);
                         return r;
                     });
@@ -248,9 +223,26 @@ function drawMap(results, inputWidth) {
                 .datum(topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; }))
                 .attr("class", "boundary")
                 .attr("d", path);
+        });
+
+        d3.json("/us.json", function(error, us) {
+            if (error) throw error;
+
+            g.append("path")
+                .datum(topojson.feature(us, us.objects.land))
+                .attr("class", "land")
+                .attr("d", path);
+
+            g.append("path")
+                .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
+                .attr("class", "boundary")
+                .attr("d", path);
 
             drawBubbles(results);
         });
+
+
+
     } else {
         drawBubbles(results);
     }

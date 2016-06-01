@@ -47,8 +47,8 @@ h4 {
 .resultMapView {
     position:relative;
     border: 2px solid black;
-    height: 42vh;
-    width: 35vw;
+    height: 43vh;
+    width: 34.9vw;
 }
 
 #worldMap {
@@ -56,29 +56,31 @@ h4 {
     height:inherit;
 }
 
-.mapSvg {
-    width:inherit;
-    height:inherit;
-}
+.mapSvg {  }
 
 .mapCircle {
     opacity: 0.75;
-    /*stroke: #fff;*/
+    stroke-width: 0.1;
+    stroke: white;
 }
 
 .mapCircle:hover {
     opacity: 0.5;
     cursor: pointer;
+    stroke-width: 0.3;
     stroke: black;
-    /*stroke-width: 0.5px;*/
 }
 
 .sphere {
     fill: #fff;
+    height: inherit;
+    width: inherit;
 }
 
 .land {
     fill: #EEEEEE;
+    height: inherit;
+    width: inherit;
 }
 
 .axis path,
@@ -98,10 +100,10 @@ h4 {
 /*SCATTER PLOT SIZES*/
 
 .resultScatterPlotView {
-    position:relative;
+    position: relative;
     border: 2px solid black;
-    height: 42vh;
-    width: 35vw;
+    height: 43vh;
+    width: 34.9vw;
     float: left;
     margin-right:10px;
 }
@@ -133,8 +135,8 @@ h4 {
 .resultListView {
     position:relative;
     border: 2px solid black;
-    height: 42vh;
-    width: 70.7vw;
+    height: 43vh;
+    width: 70.5vw;
     overflow-y: scroll;
     margin-top: 10px;
 }
@@ -211,7 +213,7 @@ h4 {
 
 #filterBar {
     height:100vh;
-    width:25vw;
+    width: 24.9vw;
     margin-right:-3px;
     background-color: #85BD61;
     overflow-y: scroll;
@@ -369,19 +371,6 @@ span.myGlyphicon.disabled {
 span.myGlyphicon:hover {
     opacity: 0.5;
     cursor: pointer;
-}
-
-.mapCircle {
-    opacity: 0.75;
-    stroke: #fff;
-    stroke-width: 0px;
-}
-
-.mapCircle:hover {
-    opacity: 0.5;
-    cursor: pointer;
-    /*stroke: black;*/
-    /*stroke-width: 0.5px;*/
 }
 
 .scatterPlotCircle:hover {
