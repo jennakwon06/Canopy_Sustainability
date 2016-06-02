@@ -5,6 +5,7 @@ var radius = d3.scale.sqrt() //accurate encoding https://groups.google.com/forum
     .range([0, 15]);
 
 var tooltipMap;
+var zoom;
 
 function drawBubbles(results) {
 
@@ -114,10 +115,9 @@ function drawBubbles(results) {
         });
 }
 
-function drawMap(results, inputWidth) {
+function drawMap(results) {
 
-    if (d3.select(".mapSvg").empty() || inputWidth) {
-        d3.select(".mapSvg").remove();
+    if (d3.select(".mapSvg").empty()) {
 
         var width = $(".resultMapView").width();
         var height = $(".resultMapView").height();
@@ -134,32 +134,13 @@ function drawMap(results, inputWidth) {
             .translate([width / 2, height / 2])
             .scale((width - 1) / 2 / Math.PI);
 
-        var zoom = d3.behavior.zoom()
+        zoom = d3.behavior.zoom()
             .scaleExtent([1, 20])
             .scale(2)
             .x(x)
             .y(y)
             .on("zoom",function() {
                 g.attr("transform", function(d) {
-                    //var panX = d3.event.translate[0];
-                    //var panY = d3.event.translate[1];
-                    //var scale = d3.event.scale;
-                    //
-                    //panX = panX > 10 ? 10 : panX;
-                    //var maxX = -(scale-1)*width-10;
-                    //panX = panX < maxX ? maxX : panX;
-                    //zoom.translate([panX, panY]);
-                    //console.log("x: "+panX+" scale: "+scale);
-                    ////console.log("x: "+(panX/scale));
-                    //
-                    //svg.select(".x.axis").call(xAxis);
-                    //svg.selectAll("path.lines")
-                    //    .attr("d", function(d) { return line(d.values); });
-                    //svg.selectAll("circle")
-                    //    .attr("cx", function(d) { return x(d.date); })
-                    //    .attr("cy", function(d) { return y(d.value); });
-
-
                     return "translate("+ d3.event.translate.join(",")+ ")scale(" + d3.event.scale + ")"
                 });
 
@@ -204,10 +185,7 @@ function drawMap(results, inputWidth) {
             .attr("dy", ".25em")
             .text(String);
 
-
-        d3.json("/world-50m.json", function(error, world) {
-
-            //https://bl.ocks.org/mbostock/9943478
+        d3.json("/map1.json", function(error, world) {
             if (error) throw error;
 
             g.append("path")
@@ -224,25 +202,17 @@ function drawMap(results, inputWidth) {
                 .datum(topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; }))
                 .attr("class", "boundary")
                 .attr("d", path);
-        });
 
-        d3.json("/us.json", function(error, us) {
-            if (error) throw error;
-
-            g.append("path")
-                .datum(topojson.feature(us, us.objects.land))
-                .attr("class", "land")
-                .attr("d", path);
-
-            g.append("path")
-                .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
-                .attr("class", "boundary")
-                .attr("d", path);
+            //g.append("path")
+            //    .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
+            //    .attr("class", "boundary")
+            //    .attr("d", path);
 
             drawBubbles(results);
+
+
+
         });
-
-
 
     } else {
         drawBubbles(results);

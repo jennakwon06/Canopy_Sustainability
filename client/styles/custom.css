@@ -22,8 +22,7 @@ h4 {
     font: 8px Arial,Helvetica Neue,Helvetica ;
 }
 
-/* RESULT BAR */
-
+/********************************* RESULT BAR **********************************/
 #expandIcon {
     float: left;
     position:absolute;
@@ -98,7 +97,6 @@ h4 {
 }
 
 /*SCATTER PLOT SIZES*/
-
 .resultScatterPlotView {
     position: relative;
     border: 2px solid black;
@@ -141,28 +139,11 @@ h4 {
     margin-top: 10px;
 }
 
-/*height:100vh;*/
-/*width: 24.9vw;*/
-/*margin-right:-3px;*/
-/*background-color: #85BD61;*/
-/*overflow-y: scroll;*/
-/*display: inline-block;*/
-/*margin-left:15px;*/
-/*position:fixed;*/
-
 .resultsTable {
     overflow-y: scroll;
     position:relative;
     font: 12px Arial,Helvetica Neue,Helvetica ;
 }
-
-/*.resultsTable tbody tr:nth-child(odd) td {*/
-/*background-color: #EEEEEE;*/
-/*}*/
-
-/*.resultsTable tbody tr.highlight td {*/
-/*background-color: #EEEEEE;*/
-/*}*/
 
 .clickableRow {
     border: 2px darkgray;
@@ -172,7 +153,7 @@ h4 {
     background-color: #EEEEEE;
 }
 
-/* FILTER BAR */
+/********************************* FILTER BAR **********************************/
 .wrapper {
     width: 100%;
     overflow: hidden; /* will contain if #first is longer than #second */
@@ -214,14 +195,6 @@ h4 {
     cursor: pointer;
 }
 
-.controlIcons{
-    color:#599513;
-}
-
-.navbar-brand {
-    font: 25px Arial,Helvetica Neue,Helvetica ;
-}
-
 #filterBar {
     height:100vh;
     width: 24.9vw;
@@ -241,13 +214,25 @@ h4 {
     background-color:#B3E095;
 }
 
-#navbar{
-    background-color: #599513;
+.controlIcons{
+    color:#599513;
 }
+
 
 .filter_container {
     width: inherit;
     overflow-x: hidden;
+}
+
+/********************************* NAV BAR **********************************/
+
+
+.navbar-brand {
+    font: 25px Arial,Helvetica Neue,Helvetica ;
+}
+
+#navbar{
+    background-color: #599513;
 }
 
 .lightText {
@@ -683,14 +668,18 @@ div.tooltipMap {
 
 
 .myMenu {
-    margin-left:250px;
+    width:92%;
+    float: right;
+    margin: 0;
 }
 
 #breadcrumb {
     list-style: none;
     display: inline-block;
     bottom:10px;
-    margin-left:-40px;
+    height: 50px;
+    width: 900px;
+    align-content: flex-end
 }
 
 #breadcrumb .icon {

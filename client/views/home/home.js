@@ -212,7 +212,7 @@ Template.Home.events({
         }
 
         drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
-        drawMap(globalFilter.top(Infinity), true);
+        drawMap(globalFilter.top(Infinity));
 
         i++;
     },
@@ -344,7 +344,7 @@ Template.Home.events({
 
             $(".resultListView").hide();
             $(".resultScatterPlotView").hide();
-            drawMap(globalFilter.top(Infinity), true);
+            drawMap(globalFilter.top(Infinity));
 
 
         } else {
@@ -356,7 +356,7 @@ Template.Home.events({
             $(".resultListView").show();
             $(".resultScatterPlotView").show();
 
-            drawMap(globalFilter.top(Infinity), true);
+            drawMap(globalFilter.top(Infinity));
         }
         iMap++;
     },

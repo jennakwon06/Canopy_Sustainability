@@ -1,15 +1,14 @@
 var renderPage = function() {
     calculateIndex();
     fillTable(globalFilter.top(Infinity).reverse());
-    drawMap(globalFilter.top(Infinity), true);
+    drawMap(globalFilter.top(Infinity));
     drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
 };
-
 
 var onChange = function(d) {
     calculateIndex();
     fillTable(globalFilter.top(Infinity).reverse());
-    drawMap(globalFilter.top(Infinity), false);
+    drawMap(globalFilter.top(Infinity));
     drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
     insertBreadCrumb(d);
 };
@@ -29,14 +28,17 @@ var linkData = function(name, address, scatter, map, list) {
         tooltipMap
             .html("City: " + address);
 
+
+        // Induces bug - when map is zoomed in, it scales every bubble by 200
+        // Make a radius lookup table?
         d3.selectAll("circle.mapCircle")
             .attr("r", function(d) {
-                return (radius(d.count) * 200);
+                return (radius(d.count) * 200) / zoom.scale();
             });
 
         d3.selectAll("circle.mapCircle[address='" + address + "']")
             .attr("r", function(d) {
-                return (radius(d.count) * 1000);
+                return (radius(d.count) * 1000) / zoom.scale();
             });
 
         var tableRow = $(".clickableRow[name='" + name + "']");
@@ -65,6 +67,7 @@ var linkData = function(name, address, scatter, map, list) {
         }, 200);
 
         // Highlight scatter plot
+        // @TODO should each scatter plot bubble have a tooltip?
         d3.selectAll("circle.scatterPlotCircle")
             .attr("r", 3.5);
 
@@ -93,12 +96,12 @@ var linkData = function(name, address, scatter, map, list) {
 
         d3.selectAll("circle.mapCircle")
             .attr("r", function(d) {
-                return (radius(d.count) * 200);
+                return (radius(d.count) * 200) / zoom.scale();
             });
 
         d3.selectAll("circle.mapCircle[address='" + address + "']")
             .attr("r", function(d) {
-                return (radius(d.count) * 1000);
+                return (radius(d.count) * 1000) / zoom.scale();
             });
 
     }
