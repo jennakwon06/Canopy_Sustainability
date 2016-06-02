@@ -20,6 +20,8 @@ function isBlank(str) {
     return (!str || /^\s*$/.test(str));
 }
 
+var tooltipScatter;
+
 function drawScatterPlot(results, xAxisVal, yAxisVal) {
     //clear previous
     d3.select(".scatterSVG").remove();
@@ -83,9 +85,13 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    var tooltip = d3.select("body").append("div")
-        .attr("class", "tooltipScatter")
-        .style("opacity", 0);
+    if (d3.select(".tooltipScatter").empty()){
+        tooltipScatter = d3.select("body").append("div")
+            .attr("class", "tooltipScatter")
+            .style("opacity", 0);
+    } else {
+        tooltipScatter = d3.select(".tooltipScatter");
+    }
 
     function transform(d) {
         return "translate(" + x(d[xAxisVal]) + "," + y(d[yAxisVal]) + ")";
@@ -167,16 +173,17 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
                 return color(d.sustIndex);
             })
             .on("mouseover", function (d) {
-                tooltip.transition()
+                tooltipScatter.transition()
                     .duration(200)
-                    .style("opacity", .9);
-                tooltip.html(d.name + "<br/> (" + +d[xAxisVal]
-                        + ", " + +d[yAxisVal] + ")")
+                    .style("opacity", .9)
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
+
+                tooltipScatter.html(d.name + "<br/> (" + +d[xAxisVal]
+                        + ", " + +d[yAxisVal] + ")");
             })
             .on("mouseout", function (d) {
-                tooltip.transition()
+                tooltipScatter.transition()
                     .duration(500)
                     .style("opacity", 0);
             })

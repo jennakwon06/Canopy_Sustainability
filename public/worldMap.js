@@ -4,6 +4,8 @@ var radius = d3.scale.sqrt() //accurate encoding https://groups.google.com/forum
     .domain([0, 1e6])
     .range([0, 15]);
 
+var tooltipMap;
+
 function drawBubbles(results) {
 
     if (!d3.select(".bubble").empty()) {
@@ -63,9 +65,13 @@ function drawBubbles(results) {
         return b.count - a.count;
     });
 
-    var tooltip = d3.select("body").append("div")
-        .attr("class", "tooltipMap")
-        .style("opacity", 0);
+    if (d3.select(".tooltipMap").empty()){
+        tooltipMap = d3.select("body").append("div")
+            .attr("class", "tooltipMap")
+            .style("opacity", 0);
+    } else {
+        tooltipMap = d3.select(".tooltipMap");
+    }
 
     d3.select(".mapSvg g")
         //.insert('g', '.land + *')
@@ -89,17 +95,17 @@ function drawBubbles(results) {
         .style("fill", function(d) {
             return color(d.sustIndex);})
         .on("mouseover", function(d) {
-            tooltip.transition()
+            tooltipMap.transition()
                 .duration(200)
                 .style("opacity", .9)
                 .style("left", (d3.event.pageX + 5) + "px")
                 .style("top", (d3.event.pageY - 28) + "px");
-            tooltip
+            tooltipMap
                 .html("City: " + d.address
                     + "<br> Sustainability Index: " + Math.round(d.sustIndex * 100) / 100);
         })
         .on("mouseout", function(d) {
-            tooltip.transition()
+            tooltipMap.transition()
                 .duration(500)
                 .style("opacity", 0);
         })

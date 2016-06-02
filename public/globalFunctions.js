@@ -15,60 +15,92 @@ var onChange = function(d) {
 };
 
 var linkData = function(name, address, scatter, map, list) {
-    console.log(name);
-    console.log(address);
-
     var divPos = $("#resultBar").position();
+    
+    if (scatter) {
+        var mapCirclePos = $("circle.mapCircle[address='" + address + "']").position();
 
-    if (scatter) { //both name and address available
+        tooltipMap.transition()
+            .duration(200)
+            .style("opacity", .9)
+            .style("left", (mapCirclePos.left + 5) + "px")
+            .style("top", (mapCirclePos.top - 28) + "px");
 
-        console.log(d3.selectAll("circle.mapCircle[address='" + address + "']"));
+        tooltipMap
+            .html("City: " + address);
 
-        d3.selectAll("circle.mapCircle[name='" + name + "']")
-            .attr("fill", "blue");
+        d3.selectAll("circle.mapCircle")
+            .attr("r", function(d) {
+                return (radius(d.count) * 200);
+            });
+
+        d3.selectAll("circle.mapCircle[address='" + address + "']")
+            .attr("r", function(d) {
+                return (radius(d.count) * 1000);
+            });
 
         var tableRow = $(".clickableRow[name='" + name + "']");
-        $(tableRow).css({"background-color" : "blue"});
+        $(tableRow).css({"background-color" : "darkgrey"});
 
         // scroll div
-        //http://stackoverflow.com/questions/12507120/scrolltop-in-a-div;
         $('.resultListView').animate({
-            scrollTop: tableRow.position().top - divPos.top + 60
+            scrollTop: tableRow.position().top - divPos.top + 60 //http://stackoverflow.com/questions/12507120/scrolltop-in-a-div;
         }, 200);
 
     } else if (map) { //only address available
 
-        console.log(d3.selectAll("circle.scatterPlotCircle[address='" + address + "']"));
-
         // @TODO sort and bring up rows
-        //zoom and bring up tooltips
-
-        // @TODO sort and bring up rows
-        var tableRow = $(".clickableRow[address='" + address + "']");
-        $(tableRow).css({"background-color" : "blue"});
-
+        var listCompaniesWithAddress = globalData.filter(function(d) {
+            return d.address == address;
+        });
+        var listCompaniesWithoutAddress = globalData.filter(function(d) {
+            return d.address != address;
+        });
+        var newlist = listCompaniesWithAddress.concat(listCompaniesWithoutAddress);
+        fillTable(newlist);
+        var tableRows = $(".clickableRow[address='" + address + "']");
+        $(tableRows).css({"background-color" : "darkgrey"});
         $('.resultListView').animate({
-            scrollTop: tableRow.position().top - divPos.top + 60
+            scrollTop: tableRows.position().top - divPos.top + 60
         }, 200);
 
-        // temporary solution to clearing previous effect
+        // Highlight scatter plot
         d3.selectAll("circle.scatterPlotCircle")
-            .attr("r", 3.5)
-            .attr("fill", "blue");
+            .attr("r", 3.5);
 
         d3.selectAll("circle.scatterPlotCircle[address='" + address + "']")
-            .attr("r", 10)
-            .attr("fill", "blue");
+            .attr("r", 15);
 
     } else if (list) { //both name and address available
-
+        //Highlight scatter plot
         d3.selectAll("circle.scatterPlotCircle")
-            .attr("r", 3.5)
-            .attr("fill", "blue");
+            .attr("r", 3.5);
 
         d3.selectAll("circle.scatterPlotCircle[address='" + address + "']")
-            .attr("r", 10)
-            .attr("fill", "blue");
+            .attr("r", 15);
+
+        // Display tooltip on map
+        var mapCirclePos = $("circle.mapCircle[address='" + address + "']").position();
+
+        tooltipMap.transition()
+            .duration(200)
+            .style("opacity", .9)
+            .style("left", (mapCirclePos.left + 5) + "px")
+            .style("top", (mapCirclePos.top - 28) + "px");
+
+        tooltipMap
+            .html("City: " + address);
+
+        d3.selectAll("circle.mapCircle")
+            .attr("r", function(d) {
+                return (radius(d.count) * 200);
+            });
+
+        d3.selectAll("circle.mapCircle[address='" + address + "']")
+            .attr("r", function(d) {
+                return (radius(d.count) * 1000);
+            });
+
     }
 };
 
