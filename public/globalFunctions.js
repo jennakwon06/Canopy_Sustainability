@@ -14,10 +14,63 @@ var onChange = function(d) {
     insertBreadCrumb(d);
 };
 
-var linkData = function(d) {
-    console.log(d);
-    console.log(d3.selectAll("[name='" + d.name + "']"));
-}
+var linkData = function(name, address, scatter, map, list) {
+    console.log(name);
+    console.log(address);
+
+    var divPos = $("#resultBar").position();
+
+    if (scatter) { //both name and address available
+
+        console.log(d3.selectAll("circle.mapCircle[address='" + address + "']"));
+
+        d3.selectAll("circle.mapCircle[name='" + name + "']")
+            .attr("fill", "blue");
+
+        var tableRow = $(".clickableRow[name='" + name + "']");
+        $(tableRow).css({"background-color" : "blue"});
+
+        // scroll div
+        //http://stackoverflow.com/questions/12507120/scrolltop-in-a-div;
+        $('.resultListView').animate({
+            scrollTop: tableRow.position().top - divPos.top + 60
+        }, 200);
+
+    } else if (map) { //only address available
+
+        console.log(d3.selectAll("circle.scatterPlotCircle[address='" + address + "']"));
+
+        // @TODO sort and bring up rows
+        //zoom and bring up tooltips
+
+        // @TODO sort and bring up rows
+        var tableRow = $(".clickableRow[address='" + address + "']");
+        $(tableRow).css({"background-color" : "blue"});
+
+        $('.resultListView').animate({
+            scrollTop: tableRow.position().top - divPos.top + 60
+        }, 200);
+
+        // temporary solution to clearing previous effect
+        d3.selectAll("circle.scatterPlotCircle")
+            .attr("r", 3.5)
+            .attr("fill", "blue");
+
+        d3.selectAll("circle.scatterPlotCircle[address='" + address + "']")
+            .attr("r", 10)
+            .attr("fill", "blue");
+
+    } else if (list) { //both name and address available
+
+        d3.selectAll("circle.scatterPlotCircle")
+            .attr("r", 3.5)
+            .attr("fill", "blue");
+
+        d3.selectAll("circle.scatterPlotCircle[address='" + address + "']")
+            .attr("r", 10)
+            .attr("fill", "blue");
+    }
+};
 
 $.fn.exists = function () {
     return this.length !== 0;
@@ -73,7 +126,13 @@ var fillTable = function(results){
         var tr = document.createElement('tr');
 
         tr.className += "clickableRow";
-        tr.name += results[i].name;
+        var aName = document.createAttribute("name");
+        aName.value = results[i].name;
+        tr.setAttributeNode(aName);
+
+        var aAddress = document.createAttribute("address");
+        aAddress.value = results[i].address;
+        tr.setAttributeNode(aAddress);
 
         var td1 = document.createElement('td');
         var td2 = document.createElement('td');

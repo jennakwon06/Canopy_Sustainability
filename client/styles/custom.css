@@ -141,7 +141,18 @@ h4 {
     margin-top: 10px;
 }
 
+/*height:100vh;*/
+/*width: 24.9vw;*/
+/*margin-right:-3px;*/
+/*background-color: #85BD61;*/
+/*overflow-y: scroll;*/
+/*display: inline-block;*/
+/*margin-left:15px;*/
+/*position:fixed;*/
+
 .resultsTable {
+    overflow-y: scroll;
+    position:relative;
     font: 12px Arial,Helvetica Neue,Helvetica ;
 }
 

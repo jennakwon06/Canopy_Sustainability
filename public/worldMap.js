@@ -63,8 +63,8 @@ function drawBubbles(results) {
         return b.count - a.count;
     });
 
-    var tooltipDiv = d3.select("body").append("div")
-        .attr("class", "tooltip")
+    var tooltip = d3.select("body").append("div")
+        .attr("class", "tooltipMap")
         .style("opacity", 0);
 
     d3.select(".mapSvg g")
@@ -77,13 +77,8 @@ function drawBubbles(results) {
             return b.count - a.count;}) //@SORT BUBBLES BY SIZE
         .enter() //A LOT OF EMPTY CIRCLE TAGS ARE GENERATED - CA THIS BE BETTER ?
         .append("circle")
-        .attr("data-toggle", "modal")
-        .attr("data-target", "#myModal")
         .attr("class", "mapCircle")
-        .attr("companyName", function(d) {
-            return d.companies
-        })
-        .attr("companyAddress", function(d) {
+        .attr("address", function(d) {
             return d.address;
         })
         .attr("transform", function(d) {
@@ -94,22 +89,22 @@ function drawBubbles(results) {
         .style("fill", function(d) {
             return color(d.sustIndex);})
         .on("mouseover", function(d) {
-            tooltipDiv.transition()
+            tooltip.transition()
                 .duration(200)
                 .style("opacity", .9)
                 .style("left", (d3.event.pageX + 5) + "px")
                 .style("top", (d3.event.pageY - 28) + "px");
-            tooltipDiv
+            tooltip
                 .html("City: " + d.address
                     + "<br> Sustainability Index: " + Math.round(d.sustIndex * 100) / 100);
         })
         .on("mouseout", function(d) {
-            tooltipDiv.transition()
+            tooltip.transition()
                 .duration(500)
                 .style("opacity", 0);
         })
         .on("click", function(d) {
-            linkData(d);
+            linkData(false, d.address, false, true, false);
         });
 }
 
@@ -165,7 +160,7 @@ function drawMap(results, inputWidth) {
                 g.selectAll("circle")
                     .attr("r", function(d){
                         var self = d3.select(this);
-                        var r = radius(d.count) * 200 / d3.event.scale;
+                        var r = (radius(d.count) * 200) / d3.event.scale;
                         //self.style("stroke-width", r < 4 ? (r < 2 ? 0.5 : 1) : 2);
                         return r;
                     });

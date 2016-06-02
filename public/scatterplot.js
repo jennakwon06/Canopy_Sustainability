@@ -84,7 +84,7 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     var tooltip = d3.select("body").append("div")
-        .attr("class", "tooltip")
+        .attr("class", "tooltipScatter")
         .style("opacity", 0);
 
     function transform(d) {
@@ -126,7 +126,6 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
         .style("text-anchor", "end")
         .text(yAxisVal);
 
-
     var objects = svg.append("svg")
         .classed("objects", true)
         .attr("width", width)
@@ -158,10 +157,10 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
             .attr("transform", function(d) {
                 return "translate(" + x(d[xAxisVal]) + "," + y(d[yAxisVal]) + ")"
             })
-            .attr("companyName", function(d) {
+            .attr("name", function(d) {
                 return d.name;
             })
-            .attr("companyAddress", function(d) {
+            .attr("address", function(d) {
                 return d.address;
             })
             .style("fill", function (d) {
@@ -182,7 +181,9 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
                     .style("opacity", 0);
             })
             .on("click", function(d) {
-                linkData(d);
+                // @TODO highlight current element
+
+                linkData(d.name, d.address, true, false, false);
             });
     }
 }

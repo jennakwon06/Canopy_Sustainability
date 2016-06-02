@@ -24,9 +24,7 @@ var findPDFs = function(company) {
     // Check if database is correctly set up
     console.log(PDFs.find().count());
     console.log(PDFs.find({}));
-
     var regex = new RegExp('^' + company, 'i');
-
     // @TODO use regex to find a file by name
     return PDFs.find({}).fetch();
 };
@@ -146,7 +144,11 @@ Template.Home.events({
             $target.closest("tr").next().find("td").slideToggle("fast");
         }
 
-        linkData($(e.currentTarget));
+        console.log("from caller");
+        console.log($target.attr("name"));
+        console.log("caller end");
+
+        linkData($target.attr("name"), $target.attr("address"), false, false, true);
     },
 
     'click #closeModalButton': function (e) {
