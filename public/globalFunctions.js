@@ -3,6 +3,7 @@ var renderPage = function() {
     fillTable(globalFilter.top(Infinity).reverse());
     drawMap(globalFilter.top(Infinity));
     drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
+    drawGradientBar();
 };
 
 var onChange = function(d) {

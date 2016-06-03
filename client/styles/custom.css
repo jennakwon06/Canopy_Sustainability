@@ -677,9 +677,10 @@ div.tooltipMap {
     list-style: none;
     display: inline-block;
     bottom:10px;
-    height: 50px;
-    width: 900px;
-    align-content: flex-end
+    height: 40px;
+    width: inherit;
+    align-content: flex-end;
+    float:right;
 }
 
 #breadcrumb .icon {
@@ -771,4 +772,19 @@ div.tooltipMap {
 
 #closeIcon{
     fill:black;
+}
+
+.space {
+    position: absolute;
+}
+
+.space div {
+    position: absolute;
+    top: 0;
+}
+
+#gradientLegend {
+    width:inherit;
+    padding-left: 40px;
+    float:right;
 }

@@ -3,8 +3,7 @@ Template.Home.rendered = function() {
     Meteor.subscribe('userResults');
     Meteor.subscribe('fs.files');
 
-    console.log("from home private");
-
+    $.getScript("/gradientBar.js");
     $.getScript("/utility.js");
     $.getScript("/filters.js").done(function(script, textStatus){
         $.getScript("/scatterplot.js");
