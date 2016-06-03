@@ -205,6 +205,7 @@ var fillTable = function(results){
             html += results[i].dataInfo[j].name + ": " + roundTo100(results[i].dataInfo[j].value)
                 + "(" + results[i].dataInfo[j].weight + ") <br> ";
         }
+        html += results[i].URL + "<br>";
         $(tr2td).html(html);
         $(tr2td).hide();
 

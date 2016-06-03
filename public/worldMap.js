@@ -169,21 +169,21 @@ function drawMap(results) {
         var z = color;
 
         // Add a legend for the color values.
-        var legend = svg.selectAll(".legend")
-            .data(z.ticks(6).slice(1).reverse())
-            .enter().append("g")
-            .attr("class", "legend")
-            .attr("transform", function(d, i) { return "translate(" + (width + 20 - 80) + "," + (20 + i * 20) + ")"; });
-
-        legend.append("rect")
-            .attr("width", 15)
-            .attr("height", 15)
-            .style("fill", z);
-
-        legend.append("text").attr("x", 20)
-            .attr("y", 10)
-            .attr("dy", ".25em")
-            .text(String);
+        //var legend = svg.selectAll(".legend")
+        //    .data(z.ticks(6).slice(1).reverse())
+        //    .enter().append("g")
+        //    .attr("class", "legend")
+        //    .attr("transform", function(d, i) { return "translate(" + (width + 20 - 80) + "," + (20 + i * 20) + ")"; });
+        //
+        //legend.append("rect")
+        //    .attr("width", 15)
+        //    .attr("height", 15)
+        //    .style("fill", z);
+        //
+        //legend.append("text").attr("x", 20)
+        //    .attr("y", 10)
+        //    .attr("dy", ".25em")
+        //    .text(String);
 
         d3.json("/map1.json", function(error, world) {
             if (error) throw error;

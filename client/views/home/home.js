@@ -67,52 +67,41 @@ Template.Home.events({
         //$('.companiesCount').html(globalFilter.top(Infinity).length);
     },
 
-    'click #scrollToGeneral': function(e) {
-        console.log($(".panelGeneral").offset().top);
 
+    'click #scrollToGeneral': function(e) {
         $('#filterBar').animate({
-            scrollTop: 0
+            scrollTop: $(".panelGeneral").position().top
         }, 500);
     },
     
     'click #scrollToEmissions': function(e) {
-        console.log($(".panelEmissions").offset().top);
-
         $('#filterBar').animate({
-            scrollTop: 516 - 120
+            scrollTop: $(".panelEmissions").position().top
         }, 500);
     },
     
 
     'click #scrollToWater': function(e) {
-        console.log($(".panelWater").offset().top);
-
         $('#filterBar').animate({
-            scrollTop: 894 - 120
+            scrollTop: $(".panelWater").position().top
         }, 500);
     },
 
     'click #scrollToWaste': function(e) {
-        console.log($(".panelWaste").offset().top);
-
         $('#filterBar').animate({
-            scrollTop: 1272 - 120
+            scrollTop: $(".panelWaste").position().top
         }, 500);
     },
 
     'click #scrollToEnergy': function(e) {
-        console.log($(".panelEnergy").offset().top);
-
         $('#filterBar').animate({
-            scrollTop: 1650 - 120
+            scrollTop: $(".panelEnergy").position().top
         }, 500);
     },
 
     'click #scrollToMisc': function(e) {
-        console.log($(".panelMisc").offset().top);
-
         $('#filterBar').animate({
-            scrollTop: 1826 - 120
+            scrollTop: $(".panelMisc").position().top 
         }, 500);
     },
 

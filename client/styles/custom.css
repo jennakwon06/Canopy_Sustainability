@@ -222,6 +222,7 @@ h4 {
 .filter_container {
     width: inherit;
     overflow-x: hidden;
+    margin-top:24px;
 }
 
 /********************************* NAV BAR **********************************/
@@ -242,24 +243,25 @@ h4 {
 .filter_topPanel {
     background-color: #D0ECBD;
     display:block;
-    height:auto;
+    height:24px;
+    position:fixed;
     z-index:1030;
     right:0;
     left:0;
     width:inherit;
 }
 
-.filter_container .filter_bottomPanel {
-    background-color: #6B9A33;
-    display:block;
-    height:60px;
-    z-index:1030;
-    position:fixed;
-    bottom:0;
-    right:0;
-    left:0;
-    width:inherit;
-}
+/*.filter_container .filter_bottomPanel {*/
+    /*background-color: #6B9A33;*/
+    /*display:block;*/
+    /*height:60px;*/
+    /*z-index:1030;*/
+    /*position:fixed;*/
+    /*bottom:0;*/
+    /*right:0;*/
+    /*left:0;*/
+    /*width:inherit;*/
+/*}*/
 
 #controlBar{
     height:100vh;
@@ -678,9 +680,10 @@ div.tooltipMap {
     display: inline-block;
     bottom:10px;
     height: 40px;
-    width: inherit;
+    width: 74.75vw;
     align-content: flex-end;
     float:right;
+    font: 11px Arial,Helvetica Neue,Helvetica ;
 }
 
 #breadcrumb .icon {
@@ -736,8 +739,8 @@ div.tooltipMap {
     position: absolute;
     top: 0;
     border: 0 solid darkgreen;
-    border-width: 10px 10px;
-    width: 0;
+    border-width: 10px;
+    width: 15px;
     height: 0;
 }
 #breadcrumb li a:before {
@@ -784,7 +787,7 @@ div.tooltipMap {
 }
 
 #gradientLegend {
-    width:inherit;
+    width:74.75vw;
     padding-left: 40px;
     float:right;
 }

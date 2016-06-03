@@ -1,12 +1,9 @@
 Timeline
 
 May 30th - June 3rd
-    - bug with map ...
     - units on scatter plot
     - Scrape company URLs w/ blockspring https://www.blockspring.com/help/google_sheets
-    - Data linking
     - Each view panel expand
-    - Global color legend
     - Breadcrumbs - width overflow
     - Long filter tooltips
     - How to make weights work more intuitively
