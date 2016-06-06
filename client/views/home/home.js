@@ -7,8 +7,8 @@ Template.Home.rendered = function() {
     $.getScript("/utility.js");
     $.getScript("/filters.js").done(function(script, textStatus){
         $.getScript("/scatterplot.js");
-        $.getScript("/globalFunctions.js");
-        $.getScript("/worldMap.js").done(function( script, textStatus ) {
+        $.getScript("/worldMap.js");
+        $.getScript("/globalFunctions.js").done(function( script, textStatus ) {
             renderPage();
         });
     });

@@ -32,19 +32,6 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
     var width = outerWidth - margin.left - margin.right;
     var height = outerHeight - margin.top - margin.bottom;
 
-    var x = d3.scale.linear()
-        .range([0, width]).nice();
-
-    var y = d3.scale.linear()
-        .range([height, 0]).nice();
-
-    //var xMax = d3.max(results, function(d) { return d[xAxisVal]; }) * 1.05,
-    //    xMin = d3.min(results, function(d) { return d[xAxisVal]; }),
-    //    xMin = xMin > 0 ? 0 : xMin,
-    //    yMax = d3.max(results, function(d) { return d[yAxisVal]; }) * 1.05,
-    //    yMin = d3.min(results, function(d) { return d[yAxisVal]; }),
-    //    yMin = yMin > 0 ? 0 : yMin;
-
     var xMax = d3.extent(results, function (d) {return +d[xAxisVal];})[1] * 1.05,
         xMin = d3.extent(results, function (d) {return +d[yAxisVal];})[0],
         xMin = xMin > 0 ? 0 : xMin,
@@ -52,11 +39,23 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
         yMin = d3.extent(results, function (d) {return +d[yAxisVal];})[0],
         yMin = yMin > 0 ? 0 : yMin;
 
-    x.domain([xMin, xMax]);
-    y.domain([yMin, yMax]);
+    var x = d3.scale
+        //.log()
+        //.clamp(true)
+        .linear()
+        .domain([xMin, xMax])
+        .range([0, width])
+        .nice();
 
-    var xAxisMax = d3.extent(globalData, function (d) {return +d[xAxisVal];})[1];
-    var yAxisMax = d3.extent(globalData, function (d) {return +d[yAxisVal];})[1];
+    //y = d3.scale.log().clamp(true).domain([0.1, max_y _value]).range([h, 0]).nice();
+
+    var y = d3.scale
+        //.log()
+        //.clamp(true)
+        .linear()
+        .domain([yMin, yMax])
+        .range([height, 0])
+        .nice();
 
     var xAxis = d3.svg.axis()
         .scale(x)
@@ -119,7 +118,7 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
         .attr("x", width)
         .attr("y", margin.bottom - 10)
         .style("text-anchor", "end")
-        .text(xAxisVal);
+        .text(xAxisVal + fieldUnits[xAxisVal]);
 
     svg.append("g")
         .classed("y axis", true)
@@ -130,7 +129,7 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
         .attr("y", -margin.left)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
-        .text(yAxisVal);
+        .text(yAxisVal + fieldUnits[yAxisVal]);
 
     var objects = svg.append("svg")
         .classed("objects", true)

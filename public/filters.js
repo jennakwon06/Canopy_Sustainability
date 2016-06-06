@@ -24,22 +24,30 @@ var wasteSentToLandfillChart = dc.barChart("#wasteSentToLandfillChart");
 // ENERGY
 var totalEnergyConsumptionChart = dc.barChart("#totalEnergyConsumptionChart");
 
+var fieldsFilters = ["ghg1", "ghg2", "ghg3"
+    , "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged"
+    , "totalWaste", "wasteRecycled", "wasteSentToLandfill"
+    , "totalEnergyConsumption"];
+
+
 var fields = ["ghg1", "ghg2", "ghg3"
     , "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged"
     , "totalWaste", "wasteRecycled", "wasteSentToLandfill"
-    , "totalEnergyConsumption" ];
+    , "totalEnergyConsumption", "price", "revenue" ];
 
 var fieldUnits = {
     "ghg1" : "(1000MT)",
     "ghg2" : "(1000MT)",
     "ghg3" : "(1000MT)",
-    "totalWaterUse": "(1000m<sup>3</sup>)",
-    "totalWaterWithdrawl" : "(1000m<sup>3</sup>)",
-    "totalWaterDischarged" : "(1000m<sup>3</sup>)",
+    "totalWaterUse": "(1000m³)",
+    "totalWaterWithdrawl" : "(1000m³)",
+    "totalWaterDischarged" : "(1000m³)",
     "totalWaste" : "(1000MT)",
     "wasteRecycled" : "(1000MT)",
     "wasteSentToLandfill" : "(1000MT)",
-    "totalEnergyConsumption" : "(1000MWh)"
+    "totalEnergyConsumption" : "(1000MWh)",
+    "revenue": "($)",
+    "price": "($)"
 };
 
 
@@ -50,8 +58,8 @@ function calculateIndex() {
     // calculate max index;
     var i;
     var maxValues = [];
-    for (i = 0; i < fields.length; i++) {
-        maxValues.push(d3.extent(globalData, function (d) {return +d[fields[i]];})[1]);
+    for (i = 0; i < fieldsFilters.length; i++) {
+        maxValues.push(d3.extent(globalData, function (d) {return +d[fieldsFilters[i]];})[1]);
     }
 
     globalData.forEach(function (d) {
@@ -59,9 +67,9 @@ function calculateIndex() {
         var totalWeight = 0;
 
         // Gather selected scale weights
-        for (i = 0; i < fields.length; i++) {
-            if (+d[fields[i]]) { // nonzero if there's at least one data
-                totalWeight += parseInt(document.getElementById(fields[i] + "Weight").value);
+        for (i = 0; i < fieldsFilters.length; i++) {
+            if (+d[fieldsFilters[i]]) { // nonzero if there's at least one data
+                totalWeight += parseInt(document.getElementById(fieldsFilters[i] + "Weight").value);
             }
         }
 
@@ -70,18 +78,18 @@ function calculateIndex() {
         // @TODO data info stays here if I want to show more than name & value.
         // @TODO if I want to show weights and details of index calculation, then it has to change dynamically.
         var arr = [];
-        for (i = 0; i < fields.length; i++) {
-            if (+d[fields[i]]) {
+        for (i = 0; i < fieldsFilters.length; i++) {
+            if (+d[fieldsFilters[i]]) {
                 var object = {
                     name: "",
                     weight: 0,
                     value: 0
                 };
-                object.name = fields[i];
-                object.weight = document.getElementById(fields[i] + "Weight").value / totalWeight;
-                object.value = +d[fields[i]];
+                object.name = fieldsFilters[i];
+                object.weight = document.getElementById(fieldsFilters[i] + "Weight").value / totalWeight;
+                object.value = +d[fieldsFilters[i]];
                 arr.push(object);
-                var score = Math.log(d[fields[i]]) / Math.log(maxValues[i]);
+                var score = Math.log(d[fieldsFilters[i]]) / Math.log(maxValues[i]);
                 score = score > 0 ? score : 0;
                 curScore += score * object.weight;
             }
@@ -99,8 +107,6 @@ function calculateIndex() {
     });
 }
 
-
-
 d3.csv('/data/master.csv', function (data) {
     globalData = data;
 
@@ -108,10 +114,8 @@ d3.csv('/data/master.csv', function (data) {
     // Chart
     var FULL_CHART_WIDTH = 330;
     var HALF_CHART_WIDTH = 160;
-    var FULL_CHART_HEIGHT = 200;
     var HALF_CHART_HEIGHT = 60;
     var numberFormat = d3.format('.2f');
-
 
     data.forEach(function (d) {
 
