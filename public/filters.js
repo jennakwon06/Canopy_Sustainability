@@ -131,7 +131,7 @@ d3.csv('/data/master.csv', function (data) {
 
             d.dataInfo = arr;
             d.sustIndex = curScore / counter;
-            d.color = color(score);
+            d.color = color(d.sustIndex);
         });
     });
 

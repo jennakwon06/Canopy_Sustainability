@@ -326,8 +326,7 @@ function calculateIndex() {
             d.color = "gray";
         } else {
             d.sustIndex = curScore;
-            console.log(color);
-            d.color = color(10);
+            d.color = color(d.sustIndex);
         }
     });
 }
