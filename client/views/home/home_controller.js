@@ -1,9 +1,7 @@
 this.HomeController = RouteController.extend({
     template: "Home",
 
-
     yieldTemplates: {
-        /*YIELD_TEMPLATES*/
     },
 
     onBeforeAction: function() {
@@ -12,12 +10,9 @@ this.HomeController = RouteController.extend({
 
     action: function() {
         if(this.isReady()) { this.render(); } else { this.render("loading"); }
-        /*ACTION_FUNCTION*/
     },
 
     isReady: function() {
-
-
         var subs = [
         ];
         var ready = true;
@@ -38,6 +33,5 @@ this.HomeController = RouteController.extend({
     },
 
     onAfterAction: function() {
-
     }
 });

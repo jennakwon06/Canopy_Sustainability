@@ -3,13 +3,16 @@ Template.Home.rendered = function() {
     Meteor.subscribe('userResults');
     Meteor.subscribe('fs.files');
 
+    console.log("when does home.js renderpage load");
+
     $.getScript("/gradientBar.js");
+    $.getScript("/globalFunctions.js");
     $.getScript("/utility.js");
-    $.getScript("/filters.js").done(function(script, textStatus){
-        $.getScript("/scatterplot.js");
-        $.getScript("/worldMap.js");
-        $.getScript("/globalFunctions.js").done(function( script, textStatus ) {
+    $.getScript("/scatterplot.js");
+    $.getScript("/filters.js").done(function (script, textStatus) {
+        $.getScript("/worldMap.js").done(function(script, textStatus) {
             renderPage();
+            drawMap(globalFilter.top(Infinity));
         });
     });
 };

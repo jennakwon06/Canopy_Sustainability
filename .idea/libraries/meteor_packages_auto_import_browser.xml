@@ -181,6 +181,7 @@
         <item url="file://$USER_HOME$/.meteor/packages/iron_layout/1.0.12/web.browser/layout.js" />
         <item url="file://$USER_HOME$/.meteor/packages/url/1.0.5/web.browser/url_client.js" />
         <item url="file://$USER_HOME$/.meteor/packages/webapp/1.2.3/web.browser/webapp_client.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/miro_preloader/1.2.4/web.browser/packages/miro_preloader.js" />
         <item url="file://$USER_HOME$/.meteor/packages/iron_location/1.0.11/web.browser/lib/utils.js" />
         <item url="file://$USER_HOME$/.meteor/packages/oauth/1.1.6/web.browser/oauth_client.js" />
         <item url="file://$USER_HOME$/.meteor/packages/iron_location/1.0.11/web.browser/lib/state.js" />
@@ -379,6 +380,7 @@
       <root url="file://$USER_HOME$/.meteor/packages/iron_layout/1.0.12/web.browser/layout.js" />
       <root url="file://$USER_HOME$/.meteor/packages/url/1.0.5/web.browser/url_client.js" />
       <root url="file://$USER_HOME$/.meteor/packages/webapp/1.2.3/web.browser/webapp_client.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/miro_preloader/1.2.4/web.browser/packages/miro_preloader.js" />
       <root url="file://$USER_HOME$/.meteor/packages/iron_location/1.0.11/web.browser/lib/utils.js" />
       <root url="file://$USER_HOME$/.meteor/packages/oauth/1.1.6/web.browser/oauth_client.js" />
       <root url="file://$USER_HOME$/.meteor/packages/iron_location/1.0.11/web.browser/lib/state.js" />

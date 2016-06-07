@@ -1,66 +1,4 @@
-var drawGradientBar2 = function() {
-
-    var spaces = [
-        {name: "HSL", interpolate: d3.interpolateHsl}
-    ];
-
-
-    var y = d3.scale.ordinal()
-        .domain(spaces.map(function (d) {
-            return d.name;
-        }))
-        .rangeRoundBands([0, 500], .09);
-
-
-    var margin = 20,
-        width = 960 - margin - margin,
-        height = 20;
-
-    var color = d3.scale.linear()
-        .domain([0, width])
-        .range(["green", "red"]);
-
-    console.log(d3.select("#gradientLegend"));
-
-    var space = d3.select("#gradientLegend")
-        .data(spaces)
-        .enter().append("div")
-        .attr("class", "space")
-        .style("width", width + "px")
-        .style("height", height + "px")
-        .style("left", margin + "px")
-        .style("top", function (d, i) {
-            console.log(d);
-            return y(d.name) + "px";
-        });
-
-    space.append("canvas")
-        .attr("width", width)
-        .attr("height", 1)
-        .style("width", width + "px")
-        .style("height", height + "px")
-        .each(render);
-
-    space.append("div")
-        .style("line-height", height + "px")
-        .text(function (d) {
-            return d.name;
-        });
-
-    function render(d) {
-        var context = this.getContext("2d"),
-            image = context.createImageData(width, 1);
-        color.interpolate(d.interpolate);
-        for (var i = 0, j = -1, c; i < width; ++i) {
-            c = d3.rgb(color(i));
-            image.data[++j] = c.r;
-            image.data[++j] = c.g;
-            image.data[++j] = c.b;
-            image.data[++j] = 255;
-        }
-        context.putImageData(image, 0, 0);
-    }
-}
+console.log("gradient bar load");
 
 var drawGradientBar = function() {
 
@@ -121,5 +59,4 @@ var drawGradientBar = function() {
         .attr("dy", "0.71em")
         .style("text-anchor", "end");
         //.text("axis title");
-
 };

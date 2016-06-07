@@ -38,3 +38,4 @@ cfs:standard-packages
 cfs:filesystem
 izzilab:shelljs
 accounts-meteor-developer
+miro:preloader

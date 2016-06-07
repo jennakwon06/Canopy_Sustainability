@@ -50,66 +50,16 @@ var fieldUnits = {
     "price": "($)"
 };
 
+var color = d3.scale.linear()
+    .range(["green", "red"])
+    .interpolate(d3.interpolateHsl);
 
-/*
- * Populate sustainability index data field based on selected weights
- */
-function calculateIndex() {
-    // calculate max index;
-    var i;
-    var maxValues = [];
-    for (i = 0; i < fieldsFilters.length; i++) {
-        maxValues.push(d3.extent(globalData, function (d) {return +d[fieldsFilters[i]];})[1]);
-    }
-
-    globalData.forEach(function (d) {
-        var curScore = 0;
-        var totalWeight = 0;
-
-        // Gather selected scale weights
-        for (i = 0; i < fieldsFilters.length; i++) {
-            if (+d[fieldsFilters[i]]) { // nonzero if there's at least one data
-                totalWeight += parseInt(document.getElementById(fieldsFilters[i] + "Weight").value);
-            }
-        }
-
-        // Gather data array
-
-        // @TODO data info stays here if I want to show more than name & value.
-        // @TODO if I want to show weights and details of index calculation, then it has to change dynamically.
-        var arr = [];
-        for (i = 0; i < fieldsFilters.length; i++) {
-            if (+d[fieldsFilters[i]]) {
-                var object = {
-                    name: "",
-                    weight: 0,
-                    value: 0
-                };
-                object.name = fieldsFilters[i];
-                object.weight = document.getElementById(fieldsFilters[i] + "Weight").value / totalWeight;
-                object.value = +d[fieldsFilters[i]];
-                arr.push(object);
-                var score = Math.log(d[fieldsFilters[i]]) / Math.log(maxValues[i]);
-                score = score > 0 ? score : 0;
-                curScore += score * object.weight;
-            }
-        }
-
-        d.dataInfo = arr;
-
-        if (!totalWeight) {
-            d.sustIndex = NaN;
-            d.color = "gray";
-        } else {
-            d.sustIndex = curScore;
-            d.color = color(curScore);
-        }
-    });
-}
 
 d3.csv('/data/master.csv', function (data) {
-    globalData = data;
 
+    console.log("filter load");
+
+    globalData = data;
 
     // Chart
     var FULL_CHART_WIDTH = 330;
@@ -118,7 +68,6 @@ d3.csv('/data/master.csv', function (data) {
     var numberFormat = d3.format('.2f');
 
     data.forEach(function (d) {
-
         //Ticker,Name,address,latitude,longitude,registered Country Location,ISIN,ICB Industry Name,ICB Sector Name
         d.country = d["Registered Country Location"];
         d.industry = d["ICB Industry Name"];

@@ -1,4 +1,5 @@
 //@TODO refactor to take in different x and y axis values
+console.log("scatterplot load");
 
 function changeX() {
     xaxis = document.getElementById("xaxisMeasure");

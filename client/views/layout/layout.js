@@ -1,8 +1,6 @@
 var i = 0;
 
 Template.layout.rendered = function() {
-	$.getScript("/gradientBar.js");
-
 	// scroll to anchor
 	$('body').on('click', 'a', function(e) { 
 		var href = $(this).attr("href");

@@ -1,14 +1,11 @@
 this.App = {};
 this.Helpers = {};
 
+console.log(Meteor);
+
 Meteor.startup(function() {
-	
 });
 
-//App.logout = function() {
-//	Meteor.logout(function(err) {
-//	});
-//};
 
 this.menuItemClass = function(routeName) {
 	if(!routeGranted(routeName)) {

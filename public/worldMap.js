@@ -210,10 +210,8 @@ function drawMap(results) {
 
             drawBubbles(results);
 
-
-
+            console.log("world map load")
         });
-
     } else {
         drawBubbles(results);
     }
