@@ -1,11 +1,4 @@
-console.log("global func load")
-
-var renderPage = function() {
-    calculateIndex();
-    fillTable(globalFilter.top(Infinity).reverse());
-    drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
-    drawGradientBar();
-};
+console.log("global func load");
 
 var onChange = function(d) {
     calculateIndex();

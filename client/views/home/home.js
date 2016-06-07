@@ -10,8 +10,12 @@ Template.Home.rendered = function() {
     $.getScript("/utility.js");
     $.getScript("/scatterplot.js");
     $.getScript("/filters.js").done(function (script, textStatus) {
+        console.log("filter done?");
         $.getScript("/worldMap.js").done(function(script, textStatus) {
-            renderPage();
+            console.log("world map done?");
+            fillTable(globalFilter.top(Infinity).reverse());
+            drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
+            drawGradientBar();
             drawMap(globalFilter.top(Infinity));
         });
     });

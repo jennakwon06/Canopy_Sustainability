@@ -103,6 +103,36 @@ d3.csv('/data/master.csv', function (data) {
         d.ghg2 = d["GHG Scope 2:Y"];
         d.ghg1 = d["GHG Scope 1:Y"]; // thousands of metric tons
 
+        //calculate initial index
+        var maxValues = [];
+        for (var i = 0; i < fieldsFilters.length; i++) {
+            maxValues.push(d3.extent(globalData, function (d) {return +d[fieldsFilters[i]];})[1]);
+        }
+
+        globalData.forEach(function (d) {
+            var curScore = 0;
+            var counter = 0;
+            var arr = [];
+            for (var i = 0; i < fieldsFilters.length; i++) {
+                if (+d[fieldsFilters[i]]) {
+                    counter++;
+                    var object = {
+                        name: "",
+                        value: 0
+                    };
+                    object.name = fieldsFilters[i];
+                    object.value = +d[fieldsFilters[i]];
+                    arr.push(object);
+                    var score = Math.log(d[fieldsFilters[i]]) / Math.log(maxValues[i]);
+                    score = score > 0 ? score : 0;
+                    curScore += score;
+                }
+            }
+
+            d.dataInfo = arr;
+            d.sustIndex = curScore / counter;
+            d.color = color(score);
+        });
     });
 
     //### Create Crossfilter Dimensions and Groups. NOTE: BE CAREFUL OF HOW MANY DIMENSIONS YOU INSTANTIATE
