@@ -24,6 +24,7 @@ var wasteSentToLandfillChart = dc.barChart("#wasteSentToLandfillChart");
 // ENERGY
 var totalEnergyConsumptionChart = dc.barChart("#totalEnergyConsumptionChart");
 
+
 var fieldsFilters = ["ghg1", "ghg2", "ghg3"
     , "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged"
     , "totalWaste", "wasteRecycled", "wasteSentToLandfill"
@@ -54,21 +55,13 @@ var color = d3.scale.linear()
     .range(["green", "red"])
     .interpolate(d3.interpolateHsl);
 
-var firstTime = true;
-
 
 d3.csv('/data/master.csv', function (data) {
+    globalData = data;
 
     console.log("d3 asynchronous call from filters");
 
-    globalData = data;
-
-    // Chart
-    var FULL_CHART_WIDTH = 330;
-    var HALF_CHART_WIDTH = 160;
-    var HALF_CHART_HEIGHT = 60;
-    var numberFormat = d3.format('.2f');
-
+    // data fields preprocess
     data.forEach(function (d) {
         //Ticker,Name,address,latitude,longitude,registered Country Location,ISIN,ICB Industry Name,ICB Sector Name
         d.country = d["Registered Country Location"];
@@ -78,8 +71,8 @@ d3.csv('/data/master.csv', function (data) {
 
         // @TODO implement binary selectors
         //Climate Chg Pol:Y,Equal Opp Pol:Y,Water Policy,Human Rights Pol:Y, Energy Effic Pol:Y,Bus Ethics Pol:Y,Biodiv Pol:Y,
-        //d.ccImplemented = d["Climate Chg Pol:Y"];
-        //d.wasteReductionPolicy = d["Waste Reduc Pol:Y"];
+        d.ccImplemented = d["Climate Chg Pol:Y"];
+        d.wasteReductionPolicy = d["Waste Reduc Pol:Y"];
 
         //Revenue T12M, Price
         d.revenue = d["Revenue T12M"];
@@ -139,66 +132,50 @@ d3.csv('/data/master.csv', function (data) {
         });
     });
 
+    // Chart
+    var FULL_CHART_WIDTH = 330;
+    var HALF_CHART_WIDTH = 160;
+    var HALF_CHART_HEIGHT = 60;
+    var numberFormat = d3.format('.2f');
+
     //### Create Crossfilter Dimensions and Groups. NOTE: BE CAREFUL OF HOW MANY DIMENSIONS YOU INSTANTIATE
     var sp500 = crossfilter(data);
-
     var all = sp500.groupAll();
 
     // GENERAL
-    globalFilter = sp500.dimension(function (d) {
-        return d.name;
-    });
+    globalFilter = sp500.dimension(function (d) {return d.name;});
 
-    var industry = sp500.dimension(function (d) {
-        return d.industry;
-    });
-    var sector = sp500.dimension(function (d) {
-        return d.sector;
-    });
+    // render initial pages
+    fillTable(globalFilter.top(Infinity).reverse());
+    drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
+    drawGradientBar();
+    drawMap(globalFilter.top(Infinity));
+
+    var industry = sp500.dimension(function (d) {return d.industry;});
+    var sector = sp500.dimension(function (d) {return d.sector;});
 
     // EMISSIONS
-
-    var ghg1 = sp500.dimension(function (d) {
-        return +d.ghg1;
-    });
-    var ghg2 = sp500.dimension(function (d) {
-        return +d.ghg2;
-    });
-    var ghg3 = sp500.dimension(function (d) {
-        return +d.ghg3;
-    });
+    var ghg1 = sp500.dimension(function (d) {return +d.ghg1;});
+    var ghg2 = sp500.dimension(function (d) {return +d.ghg2;});
+    var ghg3 = sp500.dimension(function (d) {return +d.ghg3;});
 
     // WATER
-    var totalWaterUse = sp500.dimension(function (d) {
-        return +d.totalWaterUse;
-    });
-    var totalWaterWithdrawl = sp500.dimension(function (d) {
-        return +d.totalWaterWithdrawl;
-    });
-    var totalWaterDischarged = sp500.dimension(function (d) {
-        return +d.totalWaterDischarged;
-    });
+    var totalWaterUse = sp500.dimension(function (d) {return +d.totalWaterUse;});
+    var totalWaterWithdrawl = sp500.dimension(function (d) {return +d.totalWaterWithdrawl;});
+    var totalWaterDischarged = sp500.dimension(function (d) {return +d.totalWaterDischarged;});
 
     // WASTE
-    var totalWaste = sp500.dimension(function (d) {
-        return +d.totalWaste;
-    });
-    var wasteSentToLandfill = sp500.dimension(function (d) {
-        return +d.wasteSentToLandfill;
-    });
-    var wasteRecycled = sp500.dimension(function (d) {
-        return +d.wasteRecycled;
-    });
+    var totalWaste = sp500.dimension(function (d) {return +d.totalWaste;});
+    var wasteSentToLandfill = sp500.dimension(function (d) {return +d.wasteSentToLandfill;});
+    var wasteRecycled = sp500.dimension(function (d) {return +d.wasteRecycled;});
 
     //ENERGY
-    var totalEnergyConsumption = sp500.dimension(function (d) {
-        return +d.totalEnergyConsumption;
-    });
+    var totalEnergyConsumption = sp500.dimension(function (d) {return +d.totalEnergyConsumption;});
 
     //@TODO binary selectors
     //var riskExp = sp500.dimension(function (d) {return d.riskExp == "1" ? 'Yes' : 'No';});
-    //var ccImplemented = sp500.dimension(function (d) {return d.ccImplemented == "1" ? 'Yes' : 'No';});
-    //var WasteReductionPolicy = sp500.dimension(function (d) {return d.wasteReductionPolicy == "1" ? 'Yes' : 'No';});
+    var ccImplemented = sp500.dimension(function (d) {return d.ccImplemented == "1" ? 'Yes' : 'No';});
+    var WasteReductionPolicy = sp500.dimension(function (d) {return d.wasteReductionPolicy == "1" ? 'Yes' : 'No';});
 
     companiesCount
         .dimension(sp500)
@@ -211,14 +188,8 @@ d3.csv('/data/master.csv', function (data) {
     var tooltipDiv = d3.select("body").append("div")
         .attr("class", "tooltip")
         .style("opacity", 0);
-
-    //var tip = d3.tip()
-    //    .attr('class', 'd3-tip')
-    //    .offset([-10, 0])
-    //    .html(function(d) {
-    //        return "<strong>Frequency:</strong> <span style='color:red'>" + d.frequency + "</span>";
-    //    })
-    var fieldMap = {
+    
+    var fieldMetadata = {
         "sector": "sector info",
         "industry": "industry info",
         "ghg1": "Scope 1/Direct Greenhouse Gas (GHG) Emissions of the company, in thousands of metric tons. " +
@@ -255,16 +226,11 @@ d3.csv('/data/master.csv', function (data) {
         "Field is part of the Environmental, Social and Governance (ESG) group of fields."
     };
 
+    // attach tooltips on all filter graphs
     d3.select("#filterBar")
         .selectAll("strong")
         .on("mouseover", function (d) {
-            var text = "";
-
-            for (var i = 0; i < Object.keys(fieldMap).length; i++) {
-                if (fieldMap[$(this).attr("id")]) {
-                    text = fieldMap[$(this).attr("id")];
-                }
-            }
+            var text = fieldMetadata[$(this).attr("id")];
             tooltipDiv.transition()
                 .duration(200)
                 .style("opacity", .9)
@@ -278,15 +244,6 @@ d3.csv('/data/master.csv', function (data) {
                 .style("opacity", 0);
         });
 
-
-
-    if (firstTime) {
-        fillTable(globalFilter.top(Infinity).reverse());
-        drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
-        drawGradientBar();
-        drawMap(globalFilter.top(Infinity));
-        firstTime = false;
-    }
 
     //ROW CHART: INDUSTRY CHART
     (function () {
@@ -339,6 +296,20 @@ d3.csv('/data/master.csv', function (data) {
 
     }());
 
+    function reduceAdd(p, v) {
+        if (p == 1) {
+            return v;
+        }
+        return p + 1;
+    }
+
+    function reduceRemove(p, v) {
+        return p - 1;
+    }
+
+    function reduceInitial() {
+        return 0;
+    }
 
     (function () {
 
@@ -371,30 +342,12 @@ d3.csv('/data/master.csv', function (data) {
 
         var ghg1Group = ghg1.group().reduce(reduceAdd, reduceRemove, reduceInitial);
 
-        function reduceAdd(p, v) {
-            if (p == 1) {
-                return v;
-            }
-            return p + 1;
-        }
-
-        function reduceRemove(p, v) {
-            return p - 1;
-        }
-
-        function reduceInitial() {
-            return 0;
-        };
-
         //var ghg1UndefinedGroup = ghg1.group(function(d) {
         //    if (!d) {
         //        return d;
         //    }
         //});
         //
-        //console.log("printing ghg1 group");
-        //console.log(ghg1Group.all());
-        //console.log(ghg1Group.top(2)[1]);
 
         ghg1Chart
             .chartId("ghg1")
@@ -433,21 +386,6 @@ d3.csv('/data/master.csv', function (data) {
         var binWidth = (max - min) / binCount;
         var ghg2Group = ghg2.group().reduce(reduceAdd, reduceRemove, reduceInitial);
 
-        function reduceAdd(p, v) {
-            if (p == 1) {
-                return v;
-            }
-            return p + 1;
-        }
-
-        function reduceRemove(p, v) {
-            return p - 1;
-        }
-
-        function reduceInitial() {
-            return 0;
-        };
-
         ghg2Chart
             .chartId("ghg2")
             .width(FULL_CHART_WIDTH)
@@ -473,22 +411,6 @@ d3.csv('/data/master.csv', function (data) {
         var max = minMax[1];
         var binWidth = (max - min) / binCount;
         var ghg3Group = ghg3.group().reduce(reduceAdd, reduceRemove, reduceInitial);
-
-        function reduceAdd(p, v) {
-            if (p == 1) {
-                return v;
-            }
-
-            return p + 1;
-        }
-
-        function reduceRemove(p, v) {
-            return p - 1;
-        }
-
-        function reduceInitial() {
-            return 0;
-        }
 
         ghg3Chart
             .chartId("ghg3")
@@ -517,22 +439,6 @@ d3.csv('/data/master.csv', function (data) {
         var binWidth = (max - min) / binCount;
         var waterIntensityGroup = totalWaterUse.group().reduce(reduceAdd, reduceRemove, reduceInitial);
 
-        function reduceAdd(p, v) {
-            if (p == 1) {
-                return v;
-            }
-
-            return p + 1;
-        }
-
-        function reduceRemove(p, v) {
-            return p - 1;
-        }
-
-        function reduceInitial() {
-            return 0;
-        };
-
         totalWaterUseChart
             .chartId("totalWaterUse")
             .width(FULL_CHART_WIDTH)
@@ -560,22 +466,6 @@ d3.csv('/data/master.csv', function (data) {
         var binWidth = (max - min) / binCount;
         var tWWGroup = totalWaterWithdrawl.group().reduce(reduceAdd, reduceRemove, reduceInitial);
 
-        function reduceAdd(p, v) {
-            if (p == 1) {
-                return v;
-            }
-
-            return p + 1;
-        }
-
-        function reduceRemove(p, v) {
-            return p - 1;
-        }
-
-        function reduceInitial() {
-            return 0;
-        };
-
         totalWaterWithdrawlChart
             .chartId("totalWaterWithdrawl")
             .width(FULL_CHART_WIDTH)
@@ -601,22 +491,6 @@ d3.csv('/data/master.csv', function (data) {
         var max = minMax[1];
         var binWidth = (max - min) / binCount;
         var totalWaterDischargedGroup = totalWaterDischarged.group().reduce(reduceAdd, reduceRemove, reduceInitial);
-
-        function reduceAdd(p, v) {
-            if (p == 1) {
-                return v;
-
-            }
-            return p + 1;
-        }
-
-        function reduceRemove(p, v) {
-            return p - 1;
-        }
-
-        function reduceInitial() {
-            return 0;
-        };
 
         totalWaterDischargedChart
             .chartId("totalWaterDischarged")
@@ -644,21 +518,6 @@ d3.csv('/data/master.csv', function (data) {
         var binWidth = (max - min) / binCount;
         var wasteIntensityGroup = totalWaste.group().reduce(reduceAdd, reduceRemove, reduceInitial);
 
-        function reduceAdd(p, v) {
-            if (p == 1) {
-                return v;
-            }
-            return p + 1;
-        }
-
-        function reduceRemove(p, v) {
-            return p - 1;
-        }
-
-        function reduceInitial() {
-            return 0;
-        };
-
         totalWasteChart
             .chartId("totalWaste")
             .width(FULL_CHART_WIDTH)
@@ -684,21 +543,6 @@ d3.csv('/data/master.csv', function (data) {
         var max = minMax[1];
         var binWidth = (max - min) / binCount;
         var wasteSentToLandFillGroup = wasteSentToLandfill.group().reduce(reduceAdd, reduceRemove, reduceInitial);
-
-        function reduceAdd(p, v) {
-            if (p == 1) {
-                return v;
-            }
-            return p + 1;
-        }
-
-        function reduceRemove(p, v) {
-            return p - 1;
-        }
-
-        function reduceInitial() {
-            return 0;
-        };
 
         wasteSentToLandfillChart
             .chartId("wasteSentToLandfill")
@@ -726,21 +570,6 @@ d3.csv('/data/master.csv', function (data) {
         var binWidth = (max - min) / binCount;
         var wgGroup = wasteRecycled.group().reduce(reduceAdd, reduceRemove, reduceInitial);
 
-        function reduceAdd(p, v) {
-            if (p == 1) {
-                return v;
-            }
-            return p + 1;
-        }
-
-        function reduceRemove(p, v) {
-            return p - 1;
-        }
-
-        function reduceInitial() {
-            return 0;
-        };
-
         wasteRecycledChart
             .chartId("wasteRecycled")
             .width(FULL_CHART_WIDTH)
@@ -767,21 +596,6 @@ d3.csv('/data/master.csv', function (data) {
         var binWidth = (max - min) / binCount;
         var group = totalEnergyConsumption.group().reduce(reduceAdd, reduceRemove, reduceInitial);
 
-        function reduceAdd(p, v) {
-            if (p == 1) {
-                return v;
-            }
-            return p + 1;
-        }
-
-        function reduceRemove(p, v) {
-            return p - 1;
-        }
-
-        function reduceInitial() {
-            return 0;
-        };
-
         totalEnergyConsumptionChart
             .chartId("totalEnergyConsumption")
             .width(FULL_CHART_WIDTH)
@@ -798,56 +612,68 @@ d3.csv('/data/master.csv', function (data) {
     }());
 
 
-    // BINARY BARS
-    //(function() {
-    //    // Produce counts records in the dimension
-    //    var ccImplementedGroup = ccImplemented.group();
-    //
-    //    //reply to http://stackoverflow.com/questions/29360042/how-to-create-stacked-row-chart-with-one-row-with-dc-js
-    //
-    //    var chart = d3.select("#ccPolicyImplRowChart");
-    //
-    //    console.log(chart);
-    //    console.log(ccImplementedGroup);
-    //
-    //    var bar = chart.selectAll("div")
-    //        .data(ccImplementedGroup)
-    //        .enter().append("div")
-    //        .attr('data-tooltip',function(d,i){ return d.Name} )
-    //        .attr('style',function(d,i){
-    //            console.log(ccImplementedGroup);
-    //            return (
-    //                'flex:' + d.value + '; '
-    //                + 'background:' + color(i) + ';'
-    //            )
-    //        }).on("click",function(d,i){
-    //            updateElements(data);
-    //            d3.select("#rowChart")
-    //                .selectAll("div")
-    //                .attr("class", function(e, j) { return j != i ? "deselected" : "selected";
-    //                });
-    //        });
-    //
-    //    function updateElements(data){
-    //    }
-    //
-    //    //ccPolicyImplRowChart
-    //    //    .width(150)// (optional) define chart height, `default = 200`
-    //    //    .height(150)// Define pie radius
-    //    //    .radius(75)// Set dimension
-    //    //    .dimension(ccImplemented)
-    //    //    .group(ccImplementedGroup)
-    //    //    .label(function (d) {
-    //    //        if (ccPolicyImplChart.hasFilter() && !ccPolicyImplChart.hasFilter(d.key)) {
-    //    //            return d.key + '(0%)';
-    //    //        }
-    //    //        var label = d.key;
-    //    //        if (all.value()) {
-    //    //            label += '(' + Math.floor(d.value / all.value() * 100) + '%)';
-    //    //        }
-    //    //        return label;
-    //    //    });
-    //}());
+    (function() {
+        // Produce counts records in the dimension
+        var ccImplementedGroup = ccImplemented.group();
+
+        //reply to http://stackoverflow.com/questions/29360042/how-to-create-stacked-row-chart-with-one-row-with-dc-js
+
+        var chart = d3.select("#ccPolicyImplRowChart");
+
+        console.log(chart);
+        console.log(ccImplementedGroup);
+
+        //reply to http://stackoverflow.com/questions/29360042/how-to-create-stacked-row-chart-with-one-row-with-dc-js
+
+
+        //var bar = chart.selectAll("div")
+        //    .data(data)
+        //    .enter().append("div")
+        //    .attr('style',function(d,i){
+        //        return (
+        //            'flex:' + d.Quantity + '; '
+        //            + 'background:' + color(i) + ';'
+        //        )
+        //    })
+
+        var bar = chart.selectAll("div")
+            .data(ccImplementedGroup)
+            .enter().append("div")
+            .attr('data-tooltip',function(d,i){ return d.Name} )
+            .attr('style',function(d,i){
+                console.log(ccImplementedGroup);
+                return (
+                    'flex:' + d.value + '; '
+                    + 'background:' + color(i) + ';'
+                )
+            }).on("click",function(d,i){
+                updateElements(data);
+                d3.select("#rowChart")
+                    .selectAll("div")
+                    .attr("class", function(e, j) { return j != i ? "deselected" : "selected";
+                    });
+            });
+
+        function updateElements(data){
+        }
+
+        //ccPolicyImplRowChart
+        //    .width(150)// (optional) define chart height, `default = 200`
+        //    .height(150)// Define pie radius
+        //    .radius(75)// Set dimension
+        //    .dimension(ccImplemented)
+        //    .group(ccImplementedGroup)
+        //    .label(function (d) {
+        //        if (ccPolicyImplChart.hasFilter() && !ccPolicyImplChart.hasFilter(d.key)) {
+        //            return d.key + '(0%)';
+        //        }
+        //        var label = d.key;
+        //        if (all.value()) {
+        //            label += '(' + Math.floor(d.value / all.value() * 100) + '%)';
+        //        }
+        //        return label;
+        //    });
+    }());
 
 
     //#### Rendering

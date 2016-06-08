@@ -791,3 +791,17 @@ div.tooltipMap {
     padding-left: 40px;
     float:right;
 }
+
+.binaryBars {
+    width:100%;
+    /* flexbox specific properties */
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+}
+
+.binaryBars div{
+    flex:1;
+    height:20px;
+}

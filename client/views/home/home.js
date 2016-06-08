@@ -340,7 +340,6 @@ Template.Home.events({
 
             $(".resultListView").show();
             $(".resultScatterPlotView").show();
-
             drawMap(globalFilter.top(Infinity));
         }
         iMap++;
