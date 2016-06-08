@@ -54,10 +54,12 @@ var color = d3.scale.linear()
     .range(["green", "red"])
     .interpolate(d3.interpolateHsl);
 
+var firstTime = true;
+
 
 d3.csv('/data/master.csv', function (data) {
 
-    console.log("filter load");
+    console.log("d3 asynchronous call from filters");
 
     globalData = data;
 
@@ -106,7 +108,9 @@ d3.csv('/data/master.csv', function (data) {
         //calculate initial index
         var maxValues = [];
         for (var i = 0; i < fieldsFilters.length; i++) {
-            maxValues.push(d3.extent(globalData, function (d) {return +d[fieldsFilters[i]];})[1]);
+            maxValues.push(d3.extent(globalData, function (d) {
+                return +d[fieldsFilters[i]];
+            })[1]);
         }
 
         globalData.forEach(function (d) {
@@ -141,29 +145,55 @@ d3.csv('/data/master.csv', function (data) {
     var all = sp500.groupAll();
 
     // GENERAL
-    globalFilter = sp500.dimension(function (d) {return d.name;});
+    globalFilter = sp500.dimension(function (d) {
+        return d.name;
+    });
 
-    var industry = sp500.dimension(function (d) {return d.industry;});
-    var sector = sp500.dimension(function (d) {return d.sector;});
+    var industry = sp500.dimension(function (d) {
+        return d.industry;
+    });
+    var sector = sp500.dimension(function (d) {
+        return d.sector;
+    });
 
     // EMISSIONS
 
-    var ghg1 = sp500.dimension(function (d) {return +d.ghg1;});
-    var ghg2 = sp500.dimension(function (d) {return +d.ghg2;});
-    var ghg3 = sp500.dimension(function (d) {return +d.ghg3;});
+    var ghg1 = sp500.dimension(function (d) {
+        return +d.ghg1;
+    });
+    var ghg2 = sp500.dimension(function (d) {
+        return +d.ghg2;
+    });
+    var ghg3 = sp500.dimension(function (d) {
+        return +d.ghg3;
+    });
 
     // WATER
-    var totalWaterUse = sp500.dimension(function (d) {return +d.totalWaterUse;});
-    var totalWaterWithdrawl = sp500.dimension(function (d) {return +d.totalWaterWithdrawl;});
-    var totalWaterDischarged = sp500.dimension(function (d) {return +d.totalWaterDischarged;});
+    var totalWaterUse = sp500.dimension(function (d) {
+        return +d.totalWaterUse;
+    });
+    var totalWaterWithdrawl = sp500.dimension(function (d) {
+        return +d.totalWaterWithdrawl;
+    });
+    var totalWaterDischarged = sp500.dimension(function (d) {
+        return +d.totalWaterDischarged;
+    });
 
     // WASTE
-    var totalWaste = sp500.dimension(function (d) {return +d.totalWaste;});
-    var wasteSentToLandfill = sp500.dimension(function (d) {return +d.wasteSentToLandfill;});
-    var wasteRecycled = sp500.dimension(function (d) {return +d.wasteRecycled;});
+    var totalWaste = sp500.dimension(function (d) {
+        return +d.totalWaste;
+    });
+    var wasteSentToLandfill = sp500.dimension(function (d) {
+        return +d.wasteSentToLandfill;
+    });
+    var wasteRecycled = sp500.dimension(function (d) {
+        return +d.wasteRecycled;
+    });
 
     //ENERGY
-    var totalEnergyConsumption = sp500.dimension(function (d) {return +d.totalEnergyConsumption;});
+    var totalEnergyConsumption = sp500.dimension(function (d) {
+        return +d.totalEnergyConsumption;
+    });
 
     //@TODO binary selectors
     //var riskExp = sp500.dimension(function (d) {return d.riskExp == "1" ? 'Yes' : 'No';});
@@ -191,50 +221,43 @@ d3.csv('/data/master.csv', function (data) {
     var fieldMap = {
         "sector": "sector info",
         "industry": "industry info",
-        "ghg1":
-            "Scope 1/Direct Greenhouse Gas (GHG) Emissions of the company, in thousands of metric tons. " +
-            "GHG are defined as those gases which contribute to the trapping of heat in the Earth's atmosphere and they include Carbon Dioxide (CO2), Methane, and Nitrous Oxide. " +
-            "Scope 1 Emissions are those emitted from sources that are owned or controlled by the reporting entity. " +
-            "Examples of Direct Emissions include emissions from combustion in owned or controlled boilers, furnaces, vehicles, emissions from chemical production in owned or controlled process equipment. " +
-            "Emissions reported as CO2 only will NOT be captured in this field. Emissions reported as generic GHG emissions or CO2 equivalents (CO2e) will be captured in this field. ",
-        "ghg2":
-            "Scope 2/Indirect Greenhouse Gas (GHG) Emissions of the company in thousands of metric tons. " +
-            "Greenhouse Gases are defined as those gases which contribute to the trapping of heat in the Earth's atmosphere and they include Carbon Dioxide (CO2), Methane, and Nitrous Oxide. " +
-            "Scope 2 Emissions are those emitted that are a consequence of the activities of the reporting entity, but occur at sources owned or controlled by another entity. " +
-            "The principle source of Indirect Emissions is emissions from purchased electricity, steam and/or heating/cooling. " +
-            "These emissions physically occur at the facility where electricity/steam/heating/cooling is generated. " +
-            "Emissions reported as CO2 only will NOT be captured in this field. " +
-            "Emissions reported as generic GHG emissions or CO2 equivalents (CO2e) will be captured in this field. " ,
-        "ghg3":
-            "Scope 3 Greenhouse Gas (GHG) Emissions of the company, in thousands of metric ton. " +
-            "Greenhouse Gases are defined as those gases which contribute to the trapping of heat in the Earth's atmosphere and they include Carbon Dioxide (CO2), Methane, and Nitrous Oxide. " +
-            "Scope 3 emissions are all non-scope 2, indirect emissions, such as the extraction and production of purchased materials and fuels, " +
-            "transport-related activities in vehicles not owned or controlled by the reporting entity, electricity-related activities" +
-            " (e.g. Transmission & Distribution losses) not covered in Scope 2, outsourced activities, waste disposal, etc. " +
-            "Emissions reported as CO2 only will NOT be captured in this field. " +
-            "Emissions reported as generic GHG emissions or CO2 equivalents (CO2e) will be captured in this field. ",
-        "totalWaterUse" :
-            "Total amount of water used to support a company's operational processes, in thousands of cubic meters. " +
-            "The sum of all water withdrawls for process water and cooling water and all water retained by company facilities through recycling.",
-        "totalWaterWithdrawl" : "Unavailable",
-        "totalWaterDischarged" : "Total volume of liquid waste and process water discharged by the corporation, in thousands of cubic meters. " +
-            "Includes treated and untreated effluents returned toa ny water source. " +
-            "The volume of cooling water discharged is specifically reported as the field coolinG water outflow.",
-        "totalWaste" :
-            "Total amount of waste the company discards, both hazardous and non-hazardous, in thousands of metric tons. ",
-        "wasteRecycled" :
-            "Total amount of waste the company recycles, in thousands of metric tons. ",
-        "wasteSentToLandfill" :
-            "Amount of company waste sent to landfills, in thousands of metric tons",
-        "totalEnergyConsumption" : "Total Energy Consumption Figure in thousands of megawatt hours (MWh). " +
-            "This field might include energy directly consumed through combustion in owned or controlled boilers, furnaces, vehicles, or through chemical production in owned or controlled process equipment. " +
-            "It also includes energy consumed as electricity. " +
-            "Field is part of the Environmental, Social and Governance (ESG) group of fields."
+        "ghg1": "Scope 1/Direct Greenhouse Gas (GHG) Emissions of the company, in thousands of metric tons. " +
+        "GHG are defined as those gases which contribute to the trapping of heat in the Earth's atmosphere and they include Carbon Dioxide (CO2), Methane, and Nitrous Oxide. " +
+        "Scope 1 Emissions are those emitted from sources that are owned or controlled by the reporting entity. " +
+        "Examples of Direct Emissions include emissions from combustion in owned or controlled boilers, furnaces, vehicles, emissions from chemical production in owned or controlled process equipment. " +
+        "Emissions reported as CO2 only will NOT be captured in this field. Emissions reported as generic GHG emissions or CO2 equivalents (CO2e) will be captured in this field. ",
+        "ghg2": "Scope 2/Indirect Greenhouse Gas (GHG) Emissions of the company in thousands of metric tons. " +
+        "Greenhouse Gases are defined as those gases which contribute to the trapping of heat in the Earth's atmosphere and they include Carbon Dioxide (CO2), Methane, and Nitrous Oxide. " +
+        "Scope 2 Emissions are those emitted that are a consequence of the activities of the reporting entity, but occur at sources owned or controlled by another entity. " +
+        "The principle source of Indirect Emissions is emissions from purchased electricity, steam and/or heating/cooling. " +
+        "These emissions physically occur at the facility where electricity/steam/heating/cooling is generated. " +
+        "Emissions reported as CO2 only will NOT be captured in this field. " +
+        "Emissions reported as generic GHG emissions or CO2 equivalents (CO2e) will be captured in this field. ",
+        "ghg3": "Scope 3 Greenhouse Gas (GHG) Emissions of the company, in thousands of metric ton. " +
+        "Greenhouse Gases are defined as those gases which contribute to the trapping of heat in the Earth's atmosphere and they include Carbon Dioxide (CO2), Methane, and Nitrous Oxide. " +
+        "Scope 3 emissions are all non-scope 2, indirect emissions, such as the extraction and production of purchased materials and fuels, " +
+        "transport-related activities in vehicles not owned or controlled by the reporting entity, electricity-related activities" +
+        " (e.g. Transmission & Distribution losses) not covered in Scope 2, outsourced activities, waste disposal, etc. " +
+        "Emissions reported as CO2 only will NOT be captured in this field. " +
+        "Emissions reported as generic GHG emissions or CO2 equivalents (CO2e) will be captured in this field. ",
+        "totalWaterUse": "Total amount of water used to support a company's operational processes, in thousands of cubic meters. " +
+        "The sum of all water withdrawls for process water and cooling water and all water retained by company facilities through recycling.",
+        "totalWaterWithdrawl": "Unavailable",
+        "totalWaterDischarged": "Total volume of liquid waste and process water discharged by the corporation, in thousands of cubic meters. " +
+        "Includes treated and untreated effluents returned toa ny water source. " +
+        "The volume of cooling water discharged is specifically reported as the field coolinG water outflow.",
+        "totalWaste": "Total amount of waste the company discards, both hazardous and non-hazardous, in thousands of metric tons. ",
+        "wasteRecycled": "Total amount of waste the company recycles, in thousands of metric tons. ",
+        "wasteSentToLandfill": "Amount of company waste sent to landfills, in thousands of metric tons",
+        "totalEnergyConsumption": "Total Energy Consumption Figure in thousands of megawatt hours (MWh). " +
+        "This field might include energy directly consumed through combustion in owned or controlled boilers, furnaces, vehicles, or through chemical production in owned or controlled process equipment. " +
+        "It also includes energy consumed as electricity. " +
+        "Field is part of the Environmental, Social and Governance (ESG) group of fields."
     };
 
     d3.select("#filterBar")
         .selectAll("strong")
-        .on("mouseover", function(d) {
+        .on("mouseover", function (d) {
             var text = "";
 
             for (var i = 0; i < Object.keys(fieldMap).length; i++) {
@@ -249,7 +272,7 @@ d3.csv('/data/master.csv', function (data) {
                 .style("top", (d3.event.pageY - 28) + "px");
             tooltipDiv.html(text);
         })
-        .on("mouseout", function(d) {
+        .on("mouseout", function (d) {
             tooltipDiv.transition()
                 .duration(500)
                 .style("opacity", 0);
@@ -257,8 +280,16 @@ d3.csv('/data/master.csv', function (data) {
 
 
 
-        //ROW CHART: INDUSTRY CHART
-    (function() {
+    if (firstTime) {
+        fillTable(globalFilter.top(Infinity).reverse());
+        drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
+        drawGradientBar();
+        drawMap(globalFilter.top(Infinity));
+        firstTime = false;
+    }
+
+    //ROW CHART: INDUSTRY CHART
+    (function () {
         var industryGroup = industry.group();
 
         industryChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
@@ -283,7 +314,7 @@ d3.csv('/data/master.csv', function (data) {
     }());
 
     //ROW CHART: SECTOR CHART
-    (function() {
+    (function () {
         var sectorGroup = sector.group();
 
         sectorChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
@@ -309,7 +340,7 @@ d3.csv('/data/master.csv', function (data) {
     }());
 
 
-    (function() {
+    (function () {
 
         //http://stackoverflow.com/questions/15191258/properly-display-bin-width-in-barchart-using-dc-js-and-crossfilter-js
         //console.log("printing ghg1");
@@ -324,7 +355,9 @@ d3.csv('/data/master.csv', function (data) {
         //console.log(hist);
 
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {return +d.ghg1;});
+        var minMax = d3.extent(data, function (d) {
+            return +d.ghg1;
+        });
         var min = minMax[0];
         var max = minMax[1];
         var binWidth = (max - min) / binCount;
@@ -382,7 +415,6 @@ d3.csv('/data/master.csv', function (data) {
         ghg1Chart.yAxis().ticks(0);
 
 
-
         //Note: for log scales, the number of ticks cannot be customized;
         // however, the number of tick labels can be customized via ticks.
         // Likewise, the tick formatter for log scales is typically specified via ticks rather than tickFormat,
@@ -391,9 +423,11 @@ d3.csv('/data/master.csv', function (data) {
     }());
 
 //    BAR CHART: ghg2
-    (function() {
+    (function () {
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {return +d.ghg2;});
+        var minMax = d3.extent(data, function (d) {
+            return +d.ghg2;
+        });
         var min = minMax[0];
         var max = minMax[1];
         var binWidth = (max - min) / binCount;
@@ -430,9 +464,11 @@ d3.csv('/data/master.csv', function (data) {
     }());
 
     //BAR CHART: GHG3
-    (function(){
+    (function () {
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {return +d.ghg3;});
+        var minMax = d3.extent(data, function (d) {
+            return +d.ghg3;
+        });
         var min = minMax[0];
         var max = minMax[1];
         var binWidth = (max - min) / binCount;
@@ -471,9 +507,11 @@ d3.csv('/data/master.csv', function (data) {
     }());
 
     //BAR CHART: WATER INTENSITY PER SALES
-    (function() {
+    (function () {
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {return +d.totalWaterUse;});
+        var minMax = d3.extent(data, function (d) {
+            return +d.totalWaterUse;
+        });
         var min = minMax[0];
         var max = minMax[1];
         var binWidth = (max - min) / binCount;
@@ -512,9 +550,11 @@ d3.csv('/data/master.csv', function (data) {
     }());
 
     //BAR CHART: WATER WITHDRAWL
-    (function() {
+    (function () {
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {return +d.totalWaterWithdrawl;});
+        var minMax = d3.extent(data, function (d) {
+            return +d.totalWaterWithdrawl;
+        });
         var min = minMax[0];
         var max = minMax[1];
         var binWidth = (max - min) / binCount;
@@ -552,9 +592,11 @@ d3.csv('/data/master.csv', function (data) {
     }());
 
     //BAR CHART: WATER DISCHARGED
-    (function() {
+    (function () {
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {return +d.totalWaterDischarged;});
+        var minMax = d3.extent(data, function (d) {
+            return +d.totalWaterDischarged;
+        });
         var min = minMax[0];
         var max = minMax[1];
         var binWidth = (max - min) / binCount;
@@ -592,9 +634,11 @@ d3.csv('/data/master.csv', function (data) {
     }());
 
     //BAR CHART: WASTE INTENSITY PER SALES
-    (function() {
+    (function () {
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {return +d.totalWaste;});
+        var minMax = d3.extent(data, function (d) {
+            return +d.totalWaste;
+        });
         var min = minMax[0];
         var max = minMax[1];
         var binWidth = (max - min) / binCount;
@@ -631,9 +675,11 @@ d3.csv('/data/master.csv', function (data) {
     }());
 
     //BAR CHART: WASTE SENT TO LANDFILL
-    (function() {
+    (function () {
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {return +d.wasteSentToLandfill;});
+        var minMax = d3.extent(data, function (d) {
+            return +d.wasteSentToLandfill;
+        });
         var min = minMax[0];
         var max = minMax[1];
         var binWidth = (max - min) / binCount;
@@ -670,9 +716,11 @@ d3.csv('/data/master.csv', function (data) {
     }());
 
     //BAR CHART: WASTE RECYCLED
-    (function() {
+    (function () {
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {return +d.wasteRecycled;});
+        var minMax = d3.extent(data, function (d) {
+            return +d.wasteRecycled;
+        });
         var min = minMax[0];
         var max = minMax[1];
         var binWidth = (max - min) / binCount;
@@ -709,9 +757,11 @@ d3.csv('/data/master.csv', function (data) {
     }());
 
     //BAR CHART: total energy consumped
-    (function() {
+    (function () {
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {return +d.totalEnergyConsumption;});
+        var minMax = d3.extent(data, function (d) {
+            return +d.totalEnergyConsumption;
+        });
         var min = minMax[0];
         var max = minMax[1];
         var binWidth = (max - min) / binCount;
@@ -800,7 +850,6 @@ d3.csv('/data/master.csv', function (data) {
     //}());
 
 
-
     //#### Rendering
 
     //simply call `.renderAll()` to render all charts on the page
@@ -829,64 +878,63 @@ function rotateLabels() {
         });
 }
 
-histogram = function(vector,options) {
-
-    options = options || {};
-    options.copy = options.copy === undefined ? true : options.copy;
-    options.pretty = options.pretty === undefined ? true : options.pretty;
-
-    var s = vector;
-    if (options.copy) s = s.slice();
-    s.sort(function (a, b) { return a - b; });
-
-    // TODO: use http://www.austinrochford.com/posts/2013-10-28-median-of-medians.html
-    // without sorting
-    function quantile(p) {
-        var idx = 1 + (s.length - 1) * p,
-            lo = Math.floor(idx),
-            hi = Math.ceil(idx),
-            h  = idx - lo;
-        return (1-h) * s[lo] + h * s[hi];
-    }
-
-    function freedmanDiaconis() {
-        var iqr = quantile(0.75) - quantile(0.25);
-        return 2 * iqr * Math.pow(s.length,-1/3);
-    }
-
-    function pretty(x) {
-        var scale = Math.pow(10, Math.floor(Math.log(x/10) / Math.LN10)),
-            err   = 10 / x * scale;
-        if (err <= 0.15) scale *= 10;
-        else if (err <= 0.35) scale *= 5;
-        else if (err <= 0.75) scale *= 2;
-        return scale * 10;
-    }
-
-    var h = freedmanDiaconis();
-    if (options.pretty) h = pretty(h);
-
-    function bucket(d) {
-        return h * Math.floor(d / h);
-    }
-
-    function tickRange(n) {
-        var extent  = [bucket(s[0]), h + bucket(s[s.length-1])],
-            buckets = Math.round((extent[1] - extent[0]) / h),
-            step    = buckets > n ? Math.round(buckets / n) : 1,
-            pad     = buckets % step; // to center whole step markings
-        return [extent[0] + h * Math.floor(pad/2),
-            extent[1] - h * Math.ceil(pad/2) + h*0.5, // pad upper extent for d3.range
-            h * step];
-    }
-
-    return {
-        size: h,
-        fun: bucket,
-        tickRange: tickRange
-    };
-};
-
+//histogram = function(vector,options) {
+//
+//    options = options || {};
+//    options.copy = options.copy === undefined ? true : options.copy;
+//    options.pretty = options.pretty === undefined ? true : options.pretty;
+//
+//    var s = vector;
+//    if (options.copy) s = s.slice();
+//    s.sort(function (a, b) { return a - b; });
+//
+//    // TODO: use http://www.austinrochford.com/posts/2013-10-28-median-of-medians.html
+//    // without sorting
+//    function quantile(p) {
+//        var idx = 1 + (s.length - 1) * p,
+//            lo = Math.floor(idx),
+//            hi = Math.ceil(idx),
+//            h  = idx - lo;
+//        return (1-h) * s[lo] + h * s[hi];
+//    }
+//
+//    function freedmanDiaconis() {
+//        var iqr = quantile(0.75) - quantile(0.25);
+//        return 2 * iqr * Math.pow(s.length,-1/3);
+//    }
+//
+//    function pretty(x) {
+//        var scale = Math.pow(10, Math.floor(Math.log(x/10) / Math.LN10)),
+//            err   = 10 / x * scale;
+//        if (err <= 0.15) scale *= 10;
+//        else if (err <= 0.35) scale *= 5;
+//        else if (err <= 0.75) scale *= 2;
+//        return scale * 10;
+//    }
+//
+//    var h = freedmanDiaconis();
+//    if (options.pretty) h = pretty(h);
+//
+//    function bucket(d) {
+//        return h * Math.floor(d / h);
+//    }
+//
+//    function tickRange(n) {
+//        var extent  = [bucket(s[0]), h + bucket(s[s.length-1])],
+//            buckets = Math.round((extent[1] - extent[0]) / h),
+//            step    = buckets > n ? Math.round(buckets / n) : 1,
+//            pad     = buckets % step; // to center whole step markings
+//        return [extent[0] + h * Math.floor(pad/2),
+//            extent[1] - h * Math.ceil(pad/2) + h*0.5, // pad upper extent for d3.range
+//            h * step];
+//    }
+//
+//    return {
+//        size: h,
+//        fun: bucket,
+//        tickRange: tickRange
+//    };
+//};
 
 //#### Versions
 

@@ -297,8 +297,6 @@ function calculateIndex() {
             }
         }
 
-        // Gather data array
-
         // @TODO data info stays here if I want to show more than name & value.
         // @TODO if I want to show weights and details of index calculation, then it has to change dynamically.
         var arr = [];

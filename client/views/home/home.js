@@ -3,22 +3,12 @@ Template.Home.rendered = function() {
     Meteor.subscribe('userResults');
     Meteor.subscribe('fs.files');
 
-    console.log("when does home.js renderpage load");
-
     $.getScript("/gradientBar.js");
     $.getScript("/globalFunctions.js");
     $.getScript("/utility.js");
     $.getScript("/scatterplot.js");
-    $.getScript("/filters.js").done(function (script, textStatus) {
-        console.log("filter done?");
-        $.getScript("/worldMap.js").done(function(script, textStatus) {
-            console.log("world map done?");
-            fillTable(globalFilter.top(Infinity).reverse());
-            drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
-            drawGradientBar();
-            drawMap(globalFilter.top(Infinity));
-        });
-    });
+    $.getScript("/worldMap.js");
+    $.getScript("/filters.js");
 };
 
 var i = 0;
@@ -222,7 +212,7 @@ Template.Home.events({
 
     'click #resetAllScalesButton': function(e) {
         for (var i = 0; i < fields.length; i++) {
-            document.getElementById(fields[i] + "Weight").value = "100";
+            document.getElementById(fieldsFilters[i] + "Weight").value = "100";
         }
         onChange();
         $("#breadcrumb li").remove();

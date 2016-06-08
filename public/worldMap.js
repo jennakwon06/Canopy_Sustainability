@@ -186,6 +186,9 @@ function drawMap(results) {
         //    .text(String);
 
         d3.json("/map1.json", function(error, world) {
+
+            console.log("d3 asynchronous call for map");
+
             if (error) throw error;
 
             g.append("path")
@@ -209,8 +212,6 @@ function drawMap(results) {
             //    .attr("d", path);
 
             drawBubbles(results);
-
-            console.log("world map load")
         });
     } else {
         drawBubbles(results);
