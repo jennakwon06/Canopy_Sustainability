@@ -140,6 +140,16 @@ var selectedX = xaxis.options[xaxis.selectedIndex].value;
 var yaxis = document.getElementById("yaxisMeasure");
 var selectedY = yaxis.options[yaxis.selectedIndex].value;
 
+function img_create(src, alt, title) {
+    var img = document.createElement('img');
+    img.src= src;
+    img.height = 30;
+    img.width = 30;
+    if (alt!=null) img.alt= alt;
+    if (title!=null) img.title= title;
+    return img;
+}
+
 /*
  * Interact with list view
  */
@@ -152,45 +162,48 @@ var fillTable = function(results){
     for (var i = 0; i <= results.length - 1; i++) {
         var tr = document.createElement('tr');
 
+        // set up rows with name and address for data linking
         tr.className += "clickableRow";
         var aName = document.createAttribute("name");
         aName.value = results[i].name;
         tr.setAttributeNode(aName);
-
         var aAddress = document.createAttribute("address");
         aAddress.value = results[i].address;
         tr.setAttributeNode(aAddress);
 
-        var td1 = document.createElement('td');
-        var td2 = document.createElement('td');
-        var td3 = document.createElement('td');
-        var td4 = document.createElement('td');
-        var td5 = document.createElement('td');
+        var tdLogo = img_create("https://logo.clearbit.com/" + results[i].URL);
+        var tdName = document.createElement('td');
+        var tdIndustry = document.createElement('td');
+        var tdSector = document.createElement('td');
+        var tdCountry = document.createElement('td');
+        var tdSustIndex = document.createElement('td');
         var a0 = document.createAttribute("class");
         a0.value = "sustIndexCell";
-        td5.setAttributeNode(a0);
+        tdSustIndex.setAttributeNode(a0);
 
-        td1.appendChild(document.createTextNode(results[i].name));
-        td2.appendChild(document.createTextNode(results[i].industry));
-        td3.appendChild(document.createTextNode(results[i].sector));
-        td4.appendChild(document.createTextNode(results[i].country));
-        td5.appendChild(document.createTextNode(Math.round(results[i].sustIndex * 1000) / 1000));
+        tdName.appendChild(document.createTextNode(results[i].name));
+        tdIndustry.appendChild(document.createTextNode(results[i].industry));
+        tdSector.appendChild(document.createTextNode(results[i].sector));
+        tdCountry.appendChild(document.createTextNode(results[i].country));
+        tdSustIndex.appendChild(document.createTextNode(Math.round(results[i].sustIndex * 1000) / 1000));
+        d3.select(tdSustIndex).append("svg").style("position", "relative").attr("width", 15)
+            .attr("height", 15).append("g").append("rect").attr("width", 15).attr("height", 15)
+            .style("fill", results[i].color);
 
-        tr.appendChild(td1);
-        tr.appendChild(td2);
-        tr.appendChild(td3);
-        tr.appendChild(td4);
-        tr.appendChild(td5);
+        tr.appendChild(tdLogo);
+        tr.appendChild(tdName);
+        tr.appendChild(tdIndustry);
+        tr.appendChild(tdSector);
+        tr.appendChild(tdCountry);
+        tr.appendChild(tdSustIndex);
 
+        // Set up secondary rows that expand upon click of primary rows
         var tr2 = document.createElement('tr');
-
         tr2.id = "rowInfo";
         var tr2td = document.createElement('td');
         var a1 = document.createAttribute("colspan");
         a1.value = 5;
         tr2td.setAttributeNode(a1);
-        //$(tr2).hide();
-
         var html = "";
         for (var j = 0; j < results[i].dataInfo.length; j++) { // j iterates dataInfo array
             html += results[i].dataInfo[j].name + ": " + roundTo100(results[i].dataInfo[j].value)
@@ -199,19 +212,6 @@ var fillTable = function(results){
         html += results[i].URL + "<br>";
         $(tr2td).html(html);
         $(tr2td).hide();
-
-        d3.select(td5)
-            .append("svg")
-            .style("position", "relative")
-            .attr("width", 15)
-            .attr("height", 15)
-            .append("g")
-            .append("rect")
-            .attr("width", 15)
-            .attr("height", 15)
-            .style("fill", results[i].color);
-
-        //$(tr).css("background-color", results[i].color);
 
         tr2.appendChild(tr2td);
 

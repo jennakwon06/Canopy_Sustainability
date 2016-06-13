@@ -1,6 +1,3 @@
-var ccImplemented;
-var ccImplementedGroup;
-
 var globalFilter;
 var globalData;
 var sp500;
@@ -30,8 +27,6 @@ var totalEnergyConsumptionChart = dc.barChart("#totalEnergyConsumptionChart");
 
 // BINARY
 var ccPolicyImplRowChart2 = dc.stackedRowChart('#ccPolicyImplRowChart2');
-
-
 
 var fieldsFilters = ["ghg1", "ghg2", "ghg3"
     , "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged"
@@ -188,10 +183,8 @@ d3.csv('/data/master.csv', function (data) {
 
     //@TODO binary selectors
     //var riskExp = sp500.dimension(function (d) {return d.riskExp == "1" ? 'Yes' : 'No';});
-    console.log("ccImplementedVariable")
-    ccImplemented = sp500.dimension(function (d) {return +d.ccImplemented == 1 ? 'Yes' : 'No';});
+    var ccImplemented = sp500.dimension(function (d) {return +d.ccImplemented == 1 ? 'Yes' : 'No';});
     //var WasteReductionPolicy = sp500.dimension(function (d) {return d.wasteReductionPolicy == "1" ? 'Yes' : 'No';});
-    console.log(ccImplemented);
 
 
     companiesCount
@@ -634,51 +627,12 @@ d3.csv('/data/master.csv', function (data) {
 
     (function() {
         // Produce counts records in the dimension
-        ccImplementedGroup = ccImplemented.group();
-        console.log("ccImplementedGroup");
-        console.log(ccImplementedGroup); //empty
+        var ccImplementedGroup = ccImplemented.group();
 
         //reply to http://stackoverflow.com/questions/29360042/how-to-create-stacked-row-chart-with-one-row-with-dc-js
-
         //reply to http://stackoverflow.com/questions/29360042/how-to-create-stacked-row-chart-with-one-row-with-dc-js
-
-
-        //var bar = chart.selectAll("div")
-        //    .data(data)
-        //    .enter().append("div")
-        //    .attr('style',function(d,i){
-        //        return (
-        //            'flex:' + d.Quantity + '; '
-        //            + 'background:' + color(i) + ';'
-        //        )
-        //    })
 
         var binaryColors = ["red", "blue"];
-
-        //d3.select("#ccPolicyImplRowChart")
-        //    .selectAll("div")
-        //    .data(ccImplementedGroup.top(Infinity))
-        //    .enter()
-        //    .append("div")
-        //    .attr('data-tooltip', function(d,i){
-        //        console.log(d);
-        //        return d;
-        //        //return d.Name
-        //    } )
-        //    .attr('style',function(d,i){
-        //        console.log(ccImplementedGroup);
-        //        return (
-        //            'flex:' + d.value + '; '
-        //            + 'background:' + binaryColors[i] + ';'
-        //        )
-        //    }).on("click",function(d,i) {
-        //        updateElements(d);
-        //    });
-        //
-        //
-        ////@TODO link with dcjs
-        //function updateElements(data){
-        //}
 
         ccPolicyImplRowChart2 /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
             .chartId("ccPolicy")
@@ -686,6 +640,7 @@ d3.csv('/data/master.csv', function (data) {
             .height(HALF_CHART_HEIGHT)
             .margins({top: 0, left: 0, right: 0, bottom: 20})
             .group(ccImplementedGroup)
+            //.group(ccImplementedGroup, "1", sel_stack('1'))
             .dimension(ccImplemented)
             // Assign colors to each value in the x scale domain
             .ordinalColors(['#3C8D2F', '#3C8D2F'])
@@ -699,6 +654,16 @@ d3.csv('/data/master.csv', function (data) {
             .elasticX(true)
             .controlsUseVisibility(true)
             .xAxis().ticks(8, ",.1s").tickSize(6, 0).ticks(4);
+
+        //function sel_stack(i) {
+        //    return function(d) {
+        //        return d.value[i];
+        //    };
+        //}
+        //
+        ////
+        //for(var i = 2; i < 3; ++i)
+        //    ccPolicyImplRowChart2.stack(ccImplementedGroup, ''+i, sel_stack(i));
 
     }());
 
