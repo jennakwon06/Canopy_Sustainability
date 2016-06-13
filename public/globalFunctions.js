@@ -31,10 +31,10 @@ var linkData = function(name, address, scatter, map, list) {
                 return (radius(d.count) * 200) / zoom.scale();
             });
 
-        d3.selectAll("circle.mapCircle[address='" + address + "']")
-            .attr("r", function(d) {
-                return (radius(d.count) * 1000) / zoom.scale();
-            });
+        //d3.selectAll("circle.mapCircle[address='" + address + "']")
+        //    .attr("r", function(d) {
+        //        return (radius(d.count) * 1000) / zoom.scale();
+        //    });
 
         var tableRow = $(".clickableRow[name='" + name + "']");
         $(tableRow).css({"background-color" : "darkgrey"});
@@ -128,6 +128,7 @@ var insertBreadCrumb = function(d) {
             $(this).remove();
             window[this.id+"Chart"].filterAll();
             dc.redrawAll();
+            onChange();
         });
 
         breadCrumb.append(li);

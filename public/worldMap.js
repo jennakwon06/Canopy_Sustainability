@@ -15,52 +15,66 @@ function drawBubbles(results) {
 
     var arrayOfLocations = [];
 
+    //@TODO figure out how to create an array of results?
     for (var i = 0; i < results.length; i++) {
         var temp = {
             "name": "",
             "address": "",
-            "count": 0,
+            "count": 1,
             "latitude": 0,
             "longitude": 0,
             "sustIndex": 0,
             "sustIndexCount": 0,
-            "companies": []
+            "companyInfo" : "",
+            //"companies": []
         };
 
         temp.name = results[i].name;
         temp.address = results[i].address;
         temp.latitude = results[i].latitude;
         temp.longitude = results[i].longitude;
-        temp.count = 1;
-        temp.sustIndex += results[i].sustIndex;
-        temp.companies.push(results[i]);
-        arrayOfLocations.push(temp);
+        temp.sustIndex = isNaN(results[i].sustIndex) ? 0 : results[i].sustIndex;
+        temp.sustIndexCount = results[i].sustIndex ? 1 : 0;
+        temp.companyInfo = results[i];
+
+        console.log(temp);
+
+        arrayOfLocations[i] = temp;
+        //arrayOfLocations
     }
 
-    // location accumulator
+    console.log("individual companies?");
+    console.log(arrayOfLocations);
 
+
+    // location accumulator
     arrayOfLocations.sort(function(a,b) {
         return (a.address > b.address) ? 1 : ((b.address > a.address) ? -1 : 0);} ); //SORT BY ADDRESS
 
+
+    console.log(arrayOfLocations);
+
+    // pairwise merge from the back
     for (i = arrayOfLocations.length - 1; i > 0; i--) {
         if (arrayOfLocations[i - 1].address == arrayOfLocations[i].address) {
             arrayOfLocations[i - 1].count += arrayOfLocations[i].count;
-            arrayOfLocations[i - 1].companies.push.apply(arrayOfLocations[i - 1].companies, arrayOfLocations[i].companies);
-            // Some companies have NaN index
-            if (arrayOfLocations[i].sustIndex) {
-                arrayOfLocations[i - 1].sustIndexCount += arrayOfLocations[i].sustIndexCount;
-                arrayOfLocations[i - 1].sustIndex += arrayOfLocations[i].sustIndex;
-            }
+            arrayOfLocations[i - 1].sustIndex += arrayOfLocations[i].sustIndex;
+            arrayOfLocations[i - 1].sustIndexCount += arrayOfLocations[i].sustIndexCount;
             arrayOfLocations[i] = null;
         }
     }
 
     arrayOfLocations = arrayOfLocations.filter(Boolean);
 
+    console.log(arrayOfLocations);
+
     // normalize sust index
     for (i = arrayOfLocations.length - 1; i > 0; i--) {
-        arrayOfLocations[i].sustIndex /= arrayOfLocations[i].count;
+        arrayOfLocations[i].sustIndex /= arrayOfLocations[i].sustIndexCount;
     }
+
+    // is sustindex normalized now
+    console.log(arrayOfLocations);
 
     arrayOfLocations.sort(function (a,b) {
         return b.count - a.count;
@@ -91,7 +105,7 @@ function drawBubbles(results) {
         .attr("transform", function(d) {
             return "translate(" + projection([d.longitude, d.latitude]) + ")"; })
         .attr("r", function(d) {
-            return (radius(d.count) * 200);
+            return (radius(d.count) * 200 / zoom.scale());
         })
         .style("fill", function(d) {
             return color(d.sustIndex);})
@@ -141,13 +155,13 @@ function drawMap(results) {
             .y(y)
             .on("zoom",function() {
                 g.attr("transform", function(d) {
-                    return "translate("+ d3.event.translate.join(",")+ ")scale(" + d3.event.scale + ")"
+                    return "translate("+ d3.event.translate.join(",")+ ")scale(" + zoom.scale() + ")"
                 });
 
                 g.selectAll("circle")
                     .attr("r", function(d){
                         var self = d3.select(this);
-                        var r = (radius(d.count) * 200) / d3.event.scale;
+                        var r = (radius(d.count) * 200) / zoom.scale();
                         //self.style("stroke-width", r < 4 ? (r < 2 ? 0.5 : 1) : 2);
                         return r;
                     });

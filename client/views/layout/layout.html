@@ -19,6 +19,8 @@
 					</a>
 
                 </div>
+                {{> PrivateLayoutRightMenu}}
+
                 {{> PrivateLayoutLeftMenu}}
 			</div>
 		</div>
@@ -28,6 +30,16 @@
 	</div>
 
 </template>
+
+<template name="PrivateLayoutRightMenu">
+    <ul class="nav navbar-nav pull-left">
+        <a href="{{pathFor 'about'}}" class="navbar-brand navbar-about">
+            About
+        </a>
+    </ul>
+
+</template>
+
 
 <template name="PrivateLayoutLeftMenu">
 
