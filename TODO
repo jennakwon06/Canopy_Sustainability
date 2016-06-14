@@ -1,20 +1,17 @@
 Timeline
 
+- How to integrate pdf viewers
+
+
+
 May 30th - June 3rd
     - Each view panel expand
     - Long filter tooltips
     - How to make weights work more intuitively
     - Logo for each filter panel
     - Logo for canopy
-    - Company logos
-
-June 6th - June 10th
-    - Expansion of each table row
     - PDF integration & viewer / download
     - Scrape company URLs
-
-* 10 hours / week*
-
     - Company logos
     - PDF viewer
     - Analytics; different mechanisms for variable weighing?
@@ -22,6 +19,7 @@ June 6th - June 10th
 
 
 June 13rd - June 17th
+
 - Binary selectors for binary variables (ex. Climate change policy implemented), integrate with existing weighing mechanisms
 
 June 20th - June 24th

@@ -634,7 +634,7 @@ d3.csv('/data/master.csv', function (data) {
 
         var binaryColors = ["red", "blue"];
 
-        ccPolicyImplRowChart2 /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
+        ccPolicyImplRowChart2
             .chartId("ccPolicy")
             .width(FULL_CHART_WIDTH)
             .height(HALF_CHART_HEIGHT)
@@ -642,7 +642,6 @@ d3.csv('/data/master.csv', function (data) {
             .group(ccImplementedGroup)
             //.group(ccImplementedGroup, "1", sel_stack('1'))
             .dimension(ccImplemented)
-            // Assign colors to each value in the x scale domain
             .ordinalColors(['#3C8D2F', '#3C8D2F'])
             .label(function (d) {
                 return d.key;

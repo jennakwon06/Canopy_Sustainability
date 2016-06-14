@@ -10,10 +10,14 @@ var onChange = function(d) {
 
 var linkData = function(name, address, scatter, map, list) {
     var divPos = $("#resultBar").position();
-    
-    if (scatter) {
-        var mapCirclePos = $("circle.mapCircle[address='" + address + "']").position();
 
+    var mapCirclePos = $("circle.mapCircle[address='" + address + "']").position();
+    var scatterCirclePosName = $("circle.scatterPlotCircle[name='" + name + "']").position();
+    var scatterCirclePosAddress = $("circle.scatterPlotCircle[name='" + name + "']").position();
+
+
+    if (scatter) {
+        // move tooltip map
         tooltipMap.transition()
             .duration(200)
             .style("opacity", .9)
@@ -23,36 +27,26 @@ var linkData = function(name, address, scatter, map, list) {
         tooltipMap
             .html("City: " + address);
 
+        d3.selectAll("circle.scatterPlotCircle")
+            .attr("r", 3.5);
 
-        // Induces bug - when map is zoomed in, it scales every bubble by 200
-        // Make a radius lookup table?
-        d3.selectAll("circle.mapCircle")
-            .attr("r", function(d) {
-                return (radius(d.count) * 200) / zoom.scale();
-            });
-
-        //d3.selectAll("circle.mapCircle[address='" + address + "']")
+        //d3.selectAll("circle.mapCircle")
         //    .attr("r", function(d) {
-        //        return (radius(d.count) * 1000) / zoom.scale();
+        //        return (radius(d.count) * 200) / zoom.scale();
         //    });
 
+        // scroll to specific company in list
         var tableRow = $(".clickableRow[name='" + name + "']");
         $(tableRow).css({"background-color" : "darkgrey"});
-
-        // scroll div
         $('.resultListView').animate({
             scrollTop: tableRow.position().top - divPos.top + 60 //http://stackoverflow.com/questions/12507120/scrolltop-in-a-div;
         }, 200);
 
     } else if (map) { //only address available
 
-        // @TODO sort and bring up rows
-        var listCompaniesWithAddress = globalData.filter(function(d) {
-            return d.address == address;
-        });
-        var listCompaniesWithoutAddress = globalData.filter(function(d) {
-            return d.address != address;
-        });
+        // Sorting and refilling tables
+        var listCompaniesWithAddress = globalData.filter(function(d) {return d.address == address;});
+        var listCompaniesWithoutAddress = globalData.filter(function(d) {return d.address != address;});
         var newlist = listCompaniesWithAddress.concat(listCompaniesWithoutAddress);
         fillTable(newlist);
         var tableRows = $(".clickableRow[address='" + address + "']");
@@ -61,24 +55,71 @@ var linkData = function(name, address, scatter, map, list) {
             scrollTop: tableRows.position().top - divPos.top + 60
         }, 200);
 
-        // Highlight scatter plot
-        // @TODO should each scatter plot bubble have a tooltip?
+        // interaction method with scatter plot circles
         d3.selectAll("circle.scatterPlotCircle")
             .attr("r", 3.5);
 
         d3.selectAll("circle.scatterPlotCircle[address='" + address + "']")
             .attr("r", 15);
+
+        console.log("is scatter plot selection working");
+        console.log(d3.selectAll("circle.scatterPlotCircle[address='" + address + "']"));
+
+
+        //@TODO instead of resizing scatterplot circles, maybe attach tooltip to individual bubble?
+        //d3.selectAll("circle.scatterPlotCircle[address='" + address + "']")
+        //    .append("div")
+        //    .attr("class", "tooltipScatter")
+        //    .style("opacity", 0.9)
+        //    .style("left", function(d) {
+        //        console.log("HELLO");
+        //        console.log(d);
+        //        console.log(this);
+        //        return d.position().left + 5 + "px";
+        //    })
+        //    .style("top", function(d) {
+        //        console.log(d);
+        //        return d.position().top - 28 + "px";
+        //    });
+
+
+        //d3.selectAll("circle.scatterPlotCircle[address='" + address + "']")
+        //    .append("div")
+        //    .attr("class", "tooltipScatter")
+        //    .style("opacity", 0.9)
+        //    .style("left", function(d) {
+        //        console.log("HELLO");
+        //        console.log(d);
+        //        console.log(this);
+        //        return d.position().left + 5 + "px";
+        //    })
+        //    .style("top", function(d) {
+        //        console.log(d);
+        //        return d.position().top - 28 + "px";
+        //    });
+
+
+
+        //$("circle.scatterPlotCircle[name='" + name + "']").position();
+        //tooltipScatter.transition()
+        //    .duration(200)
+        //    .style("opacity", .9)
+        //    .style("left", (scatterCirclePosAddress.left + 5) + "px")
+        //    .style("top", (scatterCirclePosAddress.top - 28) + "px");
+        //
+        //tooltipScatter
+        //    .html("City: " + address);
+
+
+
 
     } else if (list) { //both name and address available
         //Highlight scatter plot
         d3.selectAll("circle.scatterPlotCircle")
             .attr("r", 3.5);
 
-        d3.selectAll("circle.scatterPlotCircle[address='" + address + "']")
+        d3.selectAll("circle.scatterPlotCircle[name='" + name + "']")
             .attr("r", 15);
-
-        // Display tooltip on map
-        var mapCirclePos = $("circle.mapCircle[address='" + address + "']").position();
 
         tooltipMap.transition()
             .duration(200)
@@ -89,15 +130,15 @@ var linkData = function(name, address, scatter, map, list) {
         tooltipMap
             .html("City: " + address);
 
-        d3.selectAll("circle.mapCircle")
-            .attr("r", function(d) {
-                return (radius(d.count) * 200) / zoom.scale();
-            });
-
-        d3.selectAll("circle.mapCircle[address='" + address + "']")
-            .attr("r", function(d) {
-                return (radius(d.count) * 1000) / zoom.scale();
-            });
+        //d3.selectAll("circle.mapCircle")
+        //    .attr("r", function(d) {
+        //        return (radius(d.count) * 200) / zoom.scale();
+        //    });
+        //
+        //d3.selectAll("circle.mapCircle[address='" + address + "']")
+        //    .attr("r", function(d) {
+        //        return (radius(d.count) * 1000) / zoom.scale();
+        //    });
 
     }
 };

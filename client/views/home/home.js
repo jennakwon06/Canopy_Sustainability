@@ -26,6 +26,13 @@ var findPDFs = function(company) {
 };
 
 Template.Home.events({
+
+    'error' : function(e) {
+        return false;
+        //e.preventDefault();
+        //console.log(e);
+    },
+
 //<!------ CONTROL BAR ---->
     'click #resetEmissions' : function (e) {
         ghg1Chart.filterAll();

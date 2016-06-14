@@ -37,22 +37,14 @@ function drawBubbles(results) {
         temp.sustIndexCount = results[i].sustIndex ? 1 : 0;
         temp.companyInfo = results[i];
 
-        console.log(temp);
-
         arrayOfLocations[i] = temp;
         //arrayOfLocations
     }
-
-    console.log("individual companies?");
-    console.log(arrayOfLocations);
-
 
     // location accumulator
     arrayOfLocations.sort(function(a,b) {
         return (a.address > b.address) ? 1 : ((b.address > a.address) ? -1 : 0);} ); //SORT BY ADDRESS
 
-
-    console.log(arrayOfLocations);
 
     // pairwise merge from the back
     for (i = arrayOfLocations.length - 1; i > 0; i--) {
@@ -66,15 +58,10 @@ function drawBubbles(results) {
 
     arrayOfLocations = arrayOfLocations.filter(Boolean);
 
-    console.log(arrayOfLocations);
-
     // normalize sust index
     for (i = arrayOfLocations.length - 1; i > 0; i--) {
         arrayOfLocations[i].sustIndex /= arrayOfLocations[i].sustIndexCount;
     }
-
-    // is sustindex normalized now
-    console.log(arrayOfLocations);
 
     arrayOfLocations.sort(function (a,b) {
         return b.count - a.count;
