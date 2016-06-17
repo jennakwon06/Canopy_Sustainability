@@ -242,7 +242,8 @@ d3.csv('/data/master.csv', function (data) {
         .on("mouseover", function (d) {
             var text = fieldMetadata[$(this).attr("id")];
 
-            console.log(fieldMetaData)
+            console.log(fieldMetadata);
+
             console.log(text);
             tooltipDiv.transition()
                 .duration(200)

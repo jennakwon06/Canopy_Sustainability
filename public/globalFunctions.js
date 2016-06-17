@@ -189,6 +189,8 @@ function img_create(src, alt, title) {
     if (alt!=null) img.alt= alt;
     if (title!=null) img.title= title;
     return img;
+
+    //https://jsfiddle.net/maccman/2kxxgjk8/3/
 }
 
 /*

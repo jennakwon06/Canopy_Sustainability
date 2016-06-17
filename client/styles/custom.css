@@ -25,7 +25,8 @@ h4 {
 /********************************* RESULT BAR **********************************/
 #expandIcon {
     float: left;
-    position:absolute;
+    position:fixed;
+    z-index: 1000;
 }
 
 #expandIcon:hover {
@@ -143,6 +144,7 @@ h4 {
     overflow-y: scroll;
     position:relative;
     font: 12px Arial,Helvetica Neue,Helvetica ;
+    z-index: 1;
 }
 
 .clickableRow {

@@ -3,9 +3,9 @@ Template.Home.rendered = function() {
     Meteor.subscribe('userResults');
     Meteor.subscribe('fs.files');
 
+    $.getScript("/utility.js");
     $.getScript("/gradientBar.js");
     $.getScript("/globalFunctions.js");
-    $.getScript("/utility.js");
     $.getScript("/scatterplot.js");
     $.getScript("/worldMap.js");
     $.getScript("/filters.js");
@@ -315,7 +315,7 @@ Template.Home.events({
         } else {
             $('.resultScatterPlotView').css({
                 "height" : "43vh",
-                "width" : "34.9vw"
+                "width" : (width / 2) - 10
             });
 
             $(".resultListView").show();
@@ -342,7 +342,7 @@ Template.Home.events({
         } else {
             $('.resultMapView').css({
                 "height" : "43vh",
-                "width" : "34.9vw"
+                "width" : (width / 2) - 10
             });
 
             $(".resultListView").show();
@@ -354,7 +354,6 @@ Template.Home.events({
 
     'click .listExpand': function(e) {
         var width = $("#resultBar").width();
-        var height = $("#resultBar").height();
 
         if (iList % 2 == 0) {
             $('.resultListView').css({
@@ -370,7 +369,7 @@ Template.Home.events({
             $('.resultListView').css({
                 "margin-top": "10px",
                 "height" : "43vh",
-                "width" : "70.7vw"
+                "width" : width - 10
             });
 
             $(".resultScatterPlotView").show();

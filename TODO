@@ -1,26 +1,25 @@
 Timeline
 
-- How to integrate pdf viewers
+
+- One company may only have one low data point. Companies with many data points may be "penalized"
+    - calculate "Richness" metric. This may differ for each industry. Some measures may not be suitable for one or the other.
+
+- Scale for the whole subsection
+- information on what metrics are more relevant for which industry / sector
 
 
-
-May 30th - June 3rd
-    - Each view panel expand
-    - Long filter tooltips
-    - How to make weights work more intuitively
-    - Logo for each filter panel
-    - Logo for canopy
-    - PDF integration & viewer / download
-    - Scrape company URLs
-    - Company logos
-    - PDF viewer
-    - Analytics; different mechanisms for variable weighing?
-
-
+- Upon list expand, what information is interesting to see?
+- How to integrate pdf viewers for sustainability reports
+- Intuitive variable weighing & explanation for each variable
+- Pre download logo images? python urllib2 is failing
+- ways to weigh variable / incorporate explanations about ESG data into the platform
+- binary selectors
+- Why are sust indices undefined
+- Logos for general / emission / water / waste / energy / misc
+- Map won't resize upon zoom
+- image error
 
 June 13rd - June 17th
-
-- Binary selectors for binary variables (ex. Climate change policy implemented), integrate with existing weighing mechanisms
 
 June 20th - June 24th
 
@@ -28,11 +27,6 @@ June 27th - July 1st
 
 
 July 4th - July 8th
-- "About" page explaining each variable / data source / etc
-
-
-- Binary selectors for binary variables (ex. Climate change policy implemented)
-- Analytics; different mechanisms for variable weighing?
 - "About" page explaining each variable / data source / etc
 
 
