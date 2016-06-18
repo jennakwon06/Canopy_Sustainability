@@ -4,9 +4,12 @@ this.Helpers = {};
 console.log(Meteor);
 
 Meteor.startup(function() {
-	//console.log("pre load from client?");
-	//$.getScript("/filters.js");
-	//$.getScript("/worldMap.js");
+	$.getScript("/utility.js");
+	$.getScript("/gradientBar.js");
+	$.getScript("/globalFunctions.js");
+	$.getScript("/scatterplot.js");
+	$.getScript("/worldMap.js");
+	$.getScript("/filters.js");
 });
 
 

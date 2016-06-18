@@ -1,13 +1,16 @@
 Timeline
 
+"About"
+"Raw Data"
+""
+
+
+
 
 - One company may only have one low data point. Companies with many data points may be "penalized"
     - calculate "Richness" metric. This may differ for each industry. Some measures may not be suitable for one or the other.
-
-- Scale for the whole subsection
 - information on what metrics are more relevant for which industry / sector
-
-
+- Save company functionality
 - Upon list expand, what information is interesting to see?
 - How to integrate pdf viewers for sustainability reports
 - Intuitive variable weighing & explanation for each variable
@@ -18,8 +21,9 @@ Timeline
 - Logos for general / emission / water / waste / energy / misc
 - Map won't resize upon zoom
 - image error
+- "About" page explaining each variable / data source / etc
 
-June 13rd - June 17th
+
 
 June 20th - June 24th
 
@@ -27,7 +31,5 @@ June 27th - July 1st
 
 
 July 4th - July 8th
-- "About" page explaining each variable / data source / etc
-
 
 

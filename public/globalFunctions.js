@@ -214,7 +214,7 @@ var fillTable = function(results){
         aAddress.value = results[i].address;
         tr.setAttributeNode(aAddress);
 
-        var tdLogo = img_create("https://logo.clearbit.com/" + results[i].URL);
+        var tdLogo = img_create("/images/companylogos/" + results[i].name + ".png");
         var tdName = document.createElement('td');
         var tdIndustry = document.createElement('td');
         var tdSector = document.createElement('td');

@@ -2,13 +2,6 @@ Template.Home.rendered = function() {
     Meteor.subscribe('userFilters');
     Meteor.subscribe('userResults');
     Meteor.subscribe('fs.files');
-
-    $.getScript("/utility.js");
-    $.getScript("/gradientBar.js");
-    $.getScript("/globalFunctions.js");
-    $.getScript("/scatterplot.js");
-    $.getScript("/worldMap.js");
-    $.getScript("/filters.js");
 };
 
 var i = 0;
