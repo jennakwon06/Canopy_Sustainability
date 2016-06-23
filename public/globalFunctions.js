@@ -1,202 +1,9 @@
 console.log("global func load");
 
-var onChange = function(d) {
-    calculateIndex();
-    fillTable(globalFilter.top(Infinity).reverse());
-    drawMap(globalFilter.top(Infinity));
-    drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
-    insertBreadCrumb(d);
-};
-
-var linkData = function(name, address, scatter, map, list) {
-    var divPos = $("#resultBar").position();
-
-    var mapCirclePos = $("circle.mapCircle[address='" + address + "']").position();
-    var scatterCirclePosName = $("circle.scatterPlotCircle[name='" + name + "']").position();
-    var scatterCirclePosAddress = $("circle.scatterPlotCircle[name='" + name + "']").position();
-
-
-    if (scatter) {
-        // move tooltip map
-        tooltipMap.transition()
-            .duration(200)
-            .style("opacity", .9)
-            .style("left", (mapCirclePos.left + 5) + "px")
-            .style("top", (mapCirclePos.top - 28) + "px");
-
-        tooltipMap
-            .html("City: " + address);
-
-        d3.selectAll("circle.scatterPlotCircle")
-            .attr("r", 3.5);
-
-        //d3.selectAll("circle.mapCircle")
-        //    .attr("r", function(d) {
-        //        return (radius(d.count) * 200) / zoom.scale();
-        //    });
-
-        // scroll to specific company in list
-        var tableRow = $(".clickableRow[name='" + name + "']");
-        $(tableRow).css({"background-color" : "darkgrey"});
-        $('.resultListView').animate({
-            scrollTop: tableRow.position().top - divPos.top + 60 //http://stackoverflow.com/questions/12507120/scrolltop-in-a-div;
-        }, 200);
-
-    } else if (map) { //only address available
-
-        // Sorting and refilling tables
-        var listCompaniesWithAddress = globalData.filter(function(d) {return d.address == address;});
-        var listCompaniesWithoutAddress = globalData.filter(function(d) {return d.address != address;});
-        var newlist = listCompaniesWithAddress.concat(listCompaniesWithoutAddress);
-        fillTable(newlist);
-        var tableRows = $(".clickableRow[address='" + address + "']");
-        $(tableRows).css({"background-color" : "darkgrey"});
-        $('.resultListView').animate({
-            scrollTop: tableRows.position().top - divPos.top + 60
-        }, 200);
-
-        // interaction method with scatter plot circles
-        d3.selectAll("circle.scatterPlotCircle")
-            .attr("r", 3.5);
-
-        d3.selectAll("circle.scatterPlotCircle[address='" + address + "']")
-            .attr("r", 15);
-
-        console.log("is scatter plot selection working");
-        console.log(d3.selectAll("circle.scatterPlotCircle[address='" + address + "']"));
-
-
-        //@TODO instead of resizing scatterplot circles, maybe attach tooltip to individual bubble?
-        //d3.selectAll("circle.scatterPlotCircle[address='" + address + "']")
-        //    .append("div")
-        //    .attr("class", "tooltipScatter")
-        //    .style("opacity", 0.9)
-        //    .style("left", function(d) {
-        //        console.log("HELLO");
-        //        console.log(d);
-        //        console.log(this);
-        //        return d.position().left + 5 + "px";
-        //    })
-        //    .style("top", function(d) {
-        //        console.log(d);
-        //        return d.position().top - 28 + "px";
-        //    });
-
-
-        //d3.selectAll("circle.scatterPlotCircle[address='" + address + "']")
-        //    .append("div")
-        //    .attr("class", "tooltipScatter")
-        //    .style("opacity", 0.9)
-        //    .style("left", function(d) {
-        //        console.log("HELLO");
-        //        console.log(d);
-        //        console.log(this);
-        //        return d.position().left + 5 + "px";
-        //    })
-        //    .style("top", function(d) {
-        //        console.log(d);
-        //        return d.position().top - 28 + "px";
-        //    });
-
-
-
-        //$("circle.scatterPlotCircle[name='" + name + "']").position();
-        //tooltipScatter.transition()
-        //    .duration(200)
-        //    .style("opacity", .9)
-        //    .style("left", (scatterCirclePosAddress.left + 5) + "px")
-        //    .style("top", (scatterCirclePosAddress.top - 28) + "px");
-        //
-        //tooltipScatter
-        //    .html("City: " + address);
-
-
-
-
-    } else if (list) { //both name and address available
-        //Highlight scatter plot
-        d3.selectAll("circle.scatterPlotCircle")
-            .attr("r", 3.5);
-
-        d3.selectAll("circle.scatterPlotCircle[name='" + name + "']")
-            .attr("r", 15);
-
-        tooltipMap.transition()
-            .duration(200)
-            .style("opacity", .9)
-            .style("left", (mapCirclePos.left + 5) + "px")
-            .style("top", (mapCirclePos.top - 28) + "px");
-
-        tooltipMap
-            .html("City: " + address);
-
-        //d3.selectAll("circle.mapCircle")
-        //    .attr("r", function(d) {
-        //        return (radius(d.count) * 200) / zoom.scale();
-        //    });
-        //
-        //d3.selectAll("circle.mapCircle[address='" + address + "']")
-        //    .attr("r", function(d) {
-        //        return (radius(d.count) * 1000) / zoom.scale();
-        //    });
-
-    }
-};
-
-$.fn.exists = function () {
-    return this.length !== 0;
-};
-
-var insertBreadCrumb = function(d) {
-    if (!$("li#" + d).exists() && d !== undefined) {
-        var breadCrumb = $("#breadcrumb");
-
-        //<li><a href="#">ghg1 <span id="closeIcon"> &#10006; </span></a></li>
-
-        var li = document.createElement('li');
-        li.id = d;
-        var a = document.createElement('a');
-        var span = document.createElement('span');
-        span.id = "closeIcon";
-
-        a.appendChild(document.createTextNode(d));
-        span.appendChild(document.createTextNode(" ✖"));
-
-        li.appendChild(a);
-        a.appendChild(span);
-
-        $(li).click(function() {
-            $(this).remove();
-            window[this.id+"Chart"].filterAll();
-            dc.redrawAll();
-            onChange();
-        });
-
-        breadCrumb.append(li);
-    }
-};
-
-var xaxis = document.getElementById("xaxisMeasure");
-var selectedX = xaxis.options[xaxis.selectedIndex].value;
-var yaxis = document.getElementById("yaxisMeasure");
-var selectedY = yaxis.options[yaxis.selectedIndex].value;
-
-function img_create(src, alt, title) {
-    var img = document.createElement('img');
-    img.src= src;
-    img.height = 30;
-    img.width = 30;
-    if (alt!=null) img.alt= alt;
-    if (title!=null) img.title= title;
-    return img;
-
-    //https://jsfiddle.net/maccman/2kxxgjk8/3/
-}
-
 /*
  * Interact with list view
  */
-var fillTable = function(results){
+var fillTable = function(results) {
     var table = $(".resultsTable");
 
     //clear table
@@ -261,10 +68,183 @@ var fillTable = function(results){
         table.append(tr);
         table.append(tr2);
     }
-
-
 };
 
+var onChange = function(d) {
+    calculateIndex();
+    fillTable(globalFilter.top(Infinity).reverse());
+    drawMap(globalFilter.top(Infinity));
+    drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
+    insertBreadCrumb(d);
+};
+
+var linkData = function(name, address, scatter, map, list) {
+    var divPos = $("#resultBar").position();
+
+    var mapCirclePos = $("circle.mapCircle[address='" + address + "']").position();
+    var scatterCirclePosName = $("circle.scatterPlotCircle[name='" + name + "']").position();
+    var scatterCirclePosAddress = $("circle.scatterPlotCircle[name='" + name + "']").position();
+
+    if (scatter) {
+        // move tooltip map
+        tooltipMap.transition()
+            .duration(200)
+            .style("opacity", .9)
+            .style("left", (mapCirclePos.left + 5) + "px")
+            .style("top", (mapCirclePos.top - 28) + "px");
+
+        tooltipMap
+            .html("City: " + address);
+
+        d3.selectAll("circle.scatterPlotCircle")
+            .attr("r", 3.5);
+
+        // scroll to specific company in list
+        var tableRow = $(".clickableRow[name='" + name + "']");
+        $(tableRow).css({"background-color" : "darkgrey"});
+        $('.resultListView').animate({
+            scrollTop: tableRow.position().top - divPos.top + 60 //http://stackoverflow.com/questions/12507120/scrolltop-in-a-div;
+        }, 200);
+
+    } else if (map) { //only address available
+
+        // Sorting and refilling tables
+        var listCompaniesWithAddress = globalData.filter(function(d) {return d.address == address;});
+        var listCompaniesWithoutAddress = globalData.filter(function(d) {return d.address != address;});
+        var newlist = listCompaniesWithAddress.concat(listCompaniesWithoutAddress);
+        fillTable(newlist);
+        var tableRows = $(".clickableRow[address='" + address + "']");
+        $(tableRows).css({"background-color" : "darkgrey"});
+        $('.resultListView').animate({
+            scrollTop: tableRows.position().top - divPos.top + 60
+        }, 200);
+
+        // interaction method with scatter plot circles
+        d3.selectAll("circle.scatterPlotCircle")
+            .attr("r", 3.5);
+
+        d3.selectAll("circle.scatterPlotCircle[address='" + address + "']")
+            .attr("r", 15);
+
+        //@TODO instead of resizing scatterplot circles, maybe attach tooltip to individual bubble?
+        //d3.selectAll("circle.scatterPlotCircle[address='" + address + "']")
+        //    .append("div")
+        //    .attr("class", "tooltipScatter")
+        //    .style("opacity", 0.9)
+        //    .style("left", function(d) {
+        //        console.log("HELLO");
+        //        console.log(d);
+        //        console.log(this);
+        //        return d.position().left + 5 + "px";
+        //    })
+        //    .style("top", function(d) {
+        //        console.log(d);
+        //        return d.position().top - 28 + "px";
+        //    });
+
+
+        //d3.selectAll("circle.scatterPlotCircle[address='" + address + "']")
+        //    .append("div")
+        //    .attr("class", "tooltipScatter")
+        //    .style("opacity", 0.9)
+        //    .style("left", function(d) {
+        //        console.log("HELLO");
+        //        console.log(d);
+        //        console.log(this);
+        //        return d.position().left + 5 + "px";
+        //    })
+        //    .style("top", function(d) {
+        //        console.log(d);
+        //        return d.position().top - 28 + "px";
+        //    });
+
+
+
+        //$("circle.scatterPlotCircle[name='" + name + "']").position();
+        //tooltipScatter.transition()
+        //    .duration(200)
+        //    .style("opacity", .9)
+        //    .style("left", (scatterCirclePosAddress.left + 5) + "px")
+        //    .style("top", (scatterCirclePosAddress.top - 28) + "px");
+        //
+        //tooltipScatter
+        //    .html("City: " + address);
+    } else if (list) { //both name and address available
+        //Highlight scatter plot
+        d3.selectAll("circle.scatterPlotCircle")
+            .attr("r", 3.5);
+
+        d3.selectAll("circle.scatterPlotCircle[name='" + name + "']")
+            .attr("r", 15);
+
+        tooltipMap.transition()
+            .duration(200)
+            .style("opacity", .9)
+            .style("left", (mapCirclePos.left + 5) + "px")
+            .style("top", (mapCirclePos.top - 28) + "px");
+
+        tooltipMap
+            .html("City: " + address);
+
+        //d3.selectAll("circle.mapCircle")
+        //    .attr("r", function(d) {
+        //        return (radius(d.count) * 200) / zoom.scale();
+        //    });
+        //
+        //d3.selectAll("circle.mapCircle[address='" + address + "']")
+        //    .attr("r", function(d) {
+        //        return (radius(d.count) * 1000) / zoom.scale();
+        //    });
+    }
+};
+
+$.fn.exists = function () {
+    return this.length !== 0;
+};
+
+var insertBreadCrumb = function(d) {
+    if (!$("li#" + d).exists() && d !== undefined) {
+        var breadCrumb = $("#breadcrumb");
+
+        var li = document.createElement('li');
+        li.id = d;
+        var a = document.createElement('a');
+        var span = document.createElement('span');
+        span.id = "closeIcon";
+
+        a.appendChild(document.createTextNode(d));
+        span.appendChild(document.createTextNode(" ✖"));
+
+        li.appendChild(a);
+        a.appendChild(span);
+
+        $(li).click(function() {
+            $(this).remove();
+            window[this.id+"Chart"].filterAll();
+            dc.redrawAll();
+            onChange();
+        });
+
+        breadCrumb.append(li);
+    }
+};
+
+var xaxis = document.getElementById("xaxisMeasure");
+var selectedX = xaxis.options[xaxis.selectedIndex].value;
+var yaxis = document.getElementById("yaxisMeasure");
+var selectedY = yaxis.options[yaxis.selectedIndex].value;
+
+function img_create(src, alt, title) {
+    var img = document.createElement('img');
+    img.src= src;
+    img.height = 30;
+    img.width = 30;
+    if (alt!=null) img.alt= alt;
+    if (title!=null) img.title= title;
+    return img;
+
+    //https://jsfiddle.net/maccman/2kxxgjk8/3/
+}
 /**
  * Monitor the scales
  */

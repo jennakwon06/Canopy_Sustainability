@@ -11,13 +11,8 @@
 		<div id="navbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
 			<div class="navbar-container container">
 				<div class="navbar-header">
-
                     <!--<img src="/images/logo.png" alt="Smiley face" height="42" width="42" style="left: 0px;">-->
-
-                    <a href="{{pathFor 'home'}}" class="navbar-brand">
-						Canopy
-					</a>
-
+                    <a class="navbar-brand navbar-canopy">Canopy</a>
                 </div>
                 {{> PrivateLayoutRightMenu}}
 
@@ -33,7 +28,7 @@
 
 <template name="PrivateLayoutRightMenu">
     <ul class="nav navbar-nav pull-left">
-        <a href="{{pathFor 'about'}}" class="navbar-brand navbar-about"> About </a>
+        <a class="navbar-brand navbar-about"> About </a>
         <a class="navbar-brand navbar-raw-data"> Raw Data </a>
     </ul>
 

@@ -154,11 +154,12 @@ d3.csv('/data/master.csv', function (data) {
     // GENERAL
     globalFilter = sp500.dimension(function (d) {return d.name;});
 
-    // render initial pages
-    fillTable(globalFilter.top(Infinity).reverse());
-    drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
-    drawGradientBar();
-    drawMap(globalFilter.top(Infinity));
+    if (!jQuery.isFunction(fillTable)) { // load failing somehow
+        console.log("pre loader not working properly?");
+        fillTable(globalFilter.top(Infinity).reverse());
+        drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
+        drawGradientBar();
+        drawMap(globalFilter.top(Infinity));}
 
     var industry = sp500.dimension(function (d) {return d.industry;});
     var sector = sp500.dimension(function (d) {return d.sector;});

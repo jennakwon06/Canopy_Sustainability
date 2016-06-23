@@ -26,37 +26,33 @@ Template.Home.events({
         //console.log(e);
     },
 
+    'click .navbar-about': function (e) {
+        //var mainPage = $(".page-container");
+        //mainPage.style.display = (mainPage.style.display != 'none' ? 'none' : '' );
+        //
+        //var aboutPage = (".about");
+        //aboutPage.style.display = (aboutPage.style.display != 'none' ? 'none' : '' );
+        $('.page-container').attr("style", "display: none");
+        $('.about').attr("style", "display: block");
+    },
+
+    'click .navbar-canopy': function (e) {
+        //var mainPage = $(".page-container");
+        //mainPage.style.display = (mainPage.style.display != 'none' ? 'none' : '' );
+        //
+        //var aboutPage = (".about");
+        //aboutPage.style.display = (aboutPage.style.display != 'none' ? 'none' : '' );
+
+        $('.page-container').attr("style", "display: block");
+        $('.about').attr("style", "display: none");
+    },
+
 //<!------ CONTROL BAR ---->
     'click #resetEmissions' : function (e) {
         ghg1Chart.filterAll();
         ghg2Chart.filterAll();
         ghg3Chart.filterAll();
     },
-
-    //// Switch between views
-    //'click #resultListViewButton': function (e) {
-    //    $('.resultListView').attr("style", "display: block");
-    //    $('.resultMapView').attr("style", "display: none");
-    //    $('.resultScatterPlotView').attr("style", "display: none");
-    //
-    //},
-    //'click #resultMapViewButton': function (e) {
-    //    $('.resultListView').attr("style", "display: none");
-    //    $('.resultMapView').attr("style", "display: block");
-    //    $('.resultScatterPlotView').attr("style", "display: none");
-    //
-    //},
-    //'click #resultScatterPlotViewButton': function (e) {
-    //    $('.resultListView').attr("style", "display: none");
-    //    $('.resultMapView').attr("style", "display: none");
-    //    $('.resultScatterPlotView').attr("style", "display: block");
-    //},
-    //
-    // Update number counter button
-    //'click rect': function (e) {
-    //    $('.companiesCount').empty();
-    //    $('.companiesCount').html(globalFilter.top(Infinity).length);
-    //},
 
     'click #resetAllFiltersButton': function(e) {
         dc.redrawAll();
@@ -76,7 +72,6 @@ Template.Home.events({
             scrollTop: $(".panelEmissions").position().top
         }, 500);
     },
-    
 
     'click #scrollToWater': function(e) {
         $('#filterBar').animate({

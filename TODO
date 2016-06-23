@@ -1,11 +1,6 @@
-Timeline
-
+"Timeline"
 "About"
 "Raw Data"
-""
-
-
-
 
 - One company may only have one low data point. Companies with many data points may be "penalized"
     - calculate "Richness" metric. This may differ for each industry. Some measures may not be suitable for one or the other.
