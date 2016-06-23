@@ -22,27 +22,14 @@ Template.Home.events({
 
     'error' : function(e) {
         return false;
-        //e.preventDefault();
-        //console.log(e);
     },
 
     'click .navbar-about': function (e) {
-        //var mainPage = $(".page-container");
-        //mainPage.style.display = (mainPage.style.display != 'none' ? 'none' : '' );
-        //
-        //var aboutPage = (".about");
-        //aboutPage.style.display = (aboutPage.style.display != 'none' ? 'none' : '' );
         $('.page-container').attr("style", "display: none");
         $('.about').attr("style", "display: block");
     },
 
     'click .navbar-canopy': function (e) {
-        //var mainPage = $(".page-container");
-        //mainPage.style.display = (mainPage.style.display != 'none' ? 'none' : '' );
-        //
-        //var aboutPage = (".about");
-        //aboutPage.style.display = (aboutPage.style.display != 'none' ? 'none' : '' );
-
         $('.page-container').attr("style", "display: block");
         $('.about').attr("style", "display: none");
     },
