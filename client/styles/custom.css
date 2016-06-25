@@ -22,6 +22,11 @@ h4 {
     font: 8px Arial,Helvetica Neue,Helvetica ;
 }
 
+#content-subpage {
+    margin: 10px;
+    overflow-x:scroll
+}
+
 /********************************* RESULT BAR **********************************/
 #expandIcon {
     float: left;
@@ -48,7 +53,7 @@ h4 {
     position:relative;
     border: 2px solid black;
     height: 43vh;
-    width: 34.9vw;
+    width: 34vw;
 }
 
 #worldMap {
@@ -102,7 +107,7 @@ h4 {
     position: relative;
     border: 2px solid black;
     height: 43vh;
-    width: 34.9vw;
+    width: 34vw;
     float: left;
     margin-right:10px;
 }
@@ -135,7 +140,7 @@ h4 {
     position:relative;
     border: 2px solid black;
     height: 43vh;
-    width: 70.5vw;
+    width: 68.7vw;
     overflow-y: scroll;
     margin-top: 10px;
 }
@@ -145,6 +150,31 @@ h4 {
     position:relative;
     font: 12px Arial,Helvetica Neue,Helvetica ;
     z-index: 1;
+}
+
+.rawDataTable {
+    overflow-y: scroll;
+    overflow-x: scroll;
+    position:relative;
+    font: 10px Arial,Helvetica Neue,Helvetica ;
+    z-index: 1;
+}
+
+.rawDataTable th {
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border: 1px solid black;
+
+}
+
+.rawDataTable td {
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border: 1px solid black;
 }
 
 .clickableRow {

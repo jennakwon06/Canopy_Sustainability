@@ -24,15 +24,26 @@ Template.Home.events({
         return false;
     },
 
-    'click .navbar-about': function (e) {
-        $('.page-container').attr("style", "display: none");
-        $('.about').attr("style", "display: block");
-    },
+    //'click .navbar-about': function (e) {
+    //    $('.main_page').attr("style", "display: none");
+    //    $('.about').attr("style", "display: block");
+    //    $('.raw_data').attr("style", "display: none");
+    //},
+    //
+    //'click .navbar-canopy': function (e) {
+    //    $('.main_page').attr("style", "display: block");
+    //    $('.about').attr("style", "display: none");
+    //    $('.raw_data').attr("style", "display: none");
+    //},
+    //
+    //'click .navbar-raw-data': function (e) {
+    //    $('.main_page').attr("style", "display: none");
+    //    $('.about').attr("style", "display: none");
+    //    $('.raw_data').attr("style", "display: block");
+    //},
 
-    'click .navbar-canopy': function (e) {
-        $('.page-container').attr("style", "display: block");
-        $('.about').attr("style", "display: none");
-    },
+
+
 
 //<!------ CONTROL BAR ---->
     'click #resetEmissions' : function (e) {

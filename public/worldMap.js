@@ -15,7 +15,6 @@ function drawBubbles(results) {
 
     var arrayOfLocations = [];
 
-    //@TODO figure out how to create an array of results?
     for (var i = 0; i < results.length; i++) {
         var temp = {
             "name": "",
@@ -26,7 +25,6 @@ function drawBubbles(results) {
             "sustIndex": 0,
             "sustIndexCount": 0,
             "companyInfo" : ""
-            //"companies": []
         };
 
         temp.name = results[i].name;
@@ -38,7 +36,6 @@ function drawBubbles(results) {
         temp.companyInfo = results[i];
 
         arrayOfLocations[i] = temp;
-        //arrayOfLocations
     }
 
     // location accumulator
@@ -63,9 +60,7 @@ function drawBubbles(results) {
         arrayOfLocations[i].sustIndex /= arrayOfLocations[i].sustIndexCount;
     }
 
-    arrayOfLocations.sort(function (a,b) {
-        return b.count - a.count;
-    });
+    arrayOfLocations.sort(function (a,b) {return b.count - a.count;});
 
     if (d3.select(".tooltipMap").empty()){
         tooltipMap = d3.select("body").append("div")
@@ -118,18 +113,13 @@ function drawBubbles(results) {
 
 function drawMap(results) {
 
+    // HAVE TO remove / redraw for resizing map. Cannot dynamically resize svg with css.
     if (!d3.select(".mapSvg").empty()) {
         d3.select(".mapSvg").remove();
     }
 
     var width = $(".resultMapView").width();
     var height = $(".resultMapView").height();
-
-    console.log("width to draw at");
-    console.log(width);
-
-    console.log("height to draw at");
-    console.log(height);
 
     var x = d3.scale.linear()
         .domain([0, width])

@@ -70,6 +70,24 @@ var fillTable = function(results) {
     }
 };
 
+var fillRawDataTable = function(results) {
+    var table = $(".rawDataTable");
+
+    var columns = ["name", "ticker", "address", "latitude", "longitude", "price", "revenue",
+    "isin", "industry", "sector", "ghg1", "ghg2", "ghg3", "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged",
+    "totalWaste", "wasteRecycled", "wasteSentToLandfill", "totalEnergyConsumption"];
+
+    for (var i = 0; i <= results.length - 1; i++) {
+        var tr = document.createElement('tr');
+        for (var j = 0; j < columns.length; j++) {
+            var td = document.createElement('td');
+            td.appendChild(document.createTextNode(results[i][columns[j]]));
+            tr.appendChild(td);
+        }
+        table.append(tr);
+    }
+};
+
 var onChange = function(d) {
     calculateIndex();
     fillTable(globalFilter.top(Infinity).reverse());

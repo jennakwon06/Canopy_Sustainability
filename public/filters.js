@@ -71,6 +71,7 @@ d3.csv('/data/master.csv', function (data) {
         d.industry = d["ICB Industry Name"];
         d.sector = d["ICB Sector Name"];
         d.isin = d["ISIN"];
+        d.ticker = d["Ticker"];
 
         // @TODO implement binary selectors
         //Climate Chg Pol:Y,Equal Opp Pol:Y,Water Policy,Human Rights Pol:Y, Energy Effic Pol:Y,Bus Ethics Pol:Y,Biodiv Pol:Y,
@@ -160,7 +161,9 @@ d3.csv('/data/master.csv', function (data) {
         $.getScript("/globalFunctions.js");
     }
 
+
     fillTable(globalFilter.top(Infinity).reverse());
+    fillRawDataTable(globalFilter.top(Infinity).reverse());
     drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
     drawGradientBar();
     drawMap(globalFilter.top(Infinity));

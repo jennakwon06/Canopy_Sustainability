@@ -1,5 +1,5 @@
 <template name="Home">
-    <div class="page-container" id="content">
+    <div class="page-container main_page" id="content">
         <div id="page_menu" class="pull-right"></div>
         <div class="row">
             <div id="filterBar" >
@@ -435,9 +435,51 @@
         </div>
     </div>
 
-    <div class="about">
-        <div class="col-md-12" style="display: none">
-            Explanation about canopy
+    <div class="about" id="content" style="display: none">
+        <div class="col-md-12">
+            <p id="content">
+                Explanation about canopy
+            </p>
         </div>
     </div>
+
+    <div class="raw_data" id="content" style="display: none">
+        <div class="col-md-12">
+            <p id="content-subpage">
+
+            <a href="/data/master.csv" download> Download as CSV! </a>
+
+            <table class="rawDataTable">
+                <thead class="thead-inverse">
+                <tr>
+                    <th>Company Name</th>
+                    <th>Ticker</th>
+                    <th>Headquarter Address</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th>Price</th>
+                    <th>Revenue</th>
+                    <th>ISIN</th>
+                    <th>Industry</th>
+                    <th>Sector</th>
+                    <th>GHG Scope 1</th>
+                    <th>GHG Scope 2</th>
+                    <th>GHG Scope 3</th>
+                    <th>Total Water Use</th>
+                    <th>Water Withdrawal</th>
+                    <th>Water Discharged</th>
+                    <th>Total Waste</th>
+                    <th>Waste Recycled</th>
+                    <th>Waste Sent to Landfill</th>
+                    <th>Total Energy Consumption</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            </p>
+        </div>
+    </div>
+
 </template>
