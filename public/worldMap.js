@@ -8,7 +8,6 @@ var tooltipMap;
 var zoom;
 
 function drawBubbles(results) {
-
     if (!d3.select(".bubble").empty()) {
         d3.select(".bubble").remove();
     }
