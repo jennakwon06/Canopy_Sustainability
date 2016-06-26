@@ -91,7 +91,7 @@ var fillRawDataTable = function(results) {
 var onChange = function(d) {
     calculateIndex();
     fillTable(globalFilter.top(Infinity).reverse());
-    drawMap(globalFilter.top(Infinity));
+    drawBubbles(globalFilter.top(Infinity));
     drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
     insertBreadCrumb(d);
 };

@@ -412,6 +412,109 @@
         <div class="col-md-12">
             <p id="content-subpage">
                 <h1> Canopy is an data visualization tool for interacting with SP500 companies' sustainability-related data. </h1>
+
+                <h2> Data Source </h2>
+                The environmental data was gathered from Bloomberg Terminal that included ESG (Environmental, Social, Governance) data fields.
+                These data fields are compilations of fields scraped from GRI (Global Reporting Initiatives) sustainability reports.
+
+                <h2> Data Fields </h2>
+
+            <!--var fieldUnits = {-->
+            <!--"ghg1" : "(1000MT)",-->
+            <!--"ghg2" : "(1000MT)",-->
+            <!--"ghg3" : "(1000MT)",-->
+            <!--"totalWaterUse": "(1000m³)",-->
+            <!--"totalWaterWithdrawl" : "(1000m³)",-->
+            <!--"totalWaterDischarged" : "(1000m³)",-->
+            <!--"totalWaste" : "(1000MT)",-->
+            <!--"wasteRecycled" : "(1000MT)",-->
+            <!--"wasteSentToLandfill" : "(1000MT)",-->
+            <!--"totalEnergyConsumption" : "(1000MWh)",-->
+            <!--"revenue": "($)",-->
+            <!--"price": "($)"-->
+            <!--};-->
+
+                You may categorize each company by the following:
+                    1) Industry
+                    2) Sector
+
+                Out of several hundreds of ESG fields, 10 Environmental data fields were selected for this visualization tool. They are the following:
+                a. Emission Related Fields </br>
+                    1) GHG Scope 1 Emissions :
+                    2) GHG Scope 2 Emissions :
+                    3) GHG Scope 3 Emissions  :
+                b. Water Usage Related Fields
+                    4) Total Water Use :
+                    5) Total Water Withdrawl :
+                    6) Total Water Discharged :
+                c. Waste Related Fields
+                    7) Total Waste :
+                    8) Waste Recycled :
+                    9) Waste Sent to Landfill :
+                d. Energy Usage Related Fields
+                    10) Total Energy Consumption :
+
+                Raw data fields may not be good enough. You may want to normalize these fields by indicators of size / impact of company. Therefore, the following                          metadata about each company may be used to normalize environmental data fields.
+                11) Revenue of Company
+                12) Number of Employees (To be gathered)
+                13) Assets owned by company
+
+                In addition, descriptive data about each company in SP500 list were gathered by various mechanisms. They are the following:
+                11) Headquarter Address
+                    - Source: Wikipedia
+                12) Latitude / Longitude of headquarter
+                    - API requests to Photon (https://github.com/komoot/photon) through Geopy (https://github.com/geopy/geopy)
+
+
+
+
+            <!--var fieldMetadata = {-->
+            <!--"sector": "sector info",-->
+            <!--"industry": "industry info",-->
+            <!--"ghg1": "Scope 1/Direct Greenhouse Gas (GHG) Emissions of the company, in thousands of metric tons. " +-->
+            <!--"GHG are defined as those gases which contribute to the trapping of heat in the Earth's atmosphere and they include Carbon Dioxide (CO2), Methane, and Nitrous Oxide. " +-->
+            <!--"Scope 1 Emissions are those emitted from sources that are owned or controlled by the reporting entity. " +-->
+            <!--"Examples of Direct Emissions include emissions from combustion in owned or controlled boilers, furnaces, vehicles, emissions from chemical production in owned or controlled process equipment. " +-->
+            <!--"Emissions reported as CO2 only will NOT be captured in this field. Emissions reported as generic GHG emissions or CO2 equivalents (CO2e) will be captured in this field. ",-->
+            <!--"ghg2": "Scope 2/Indirect Greenhouse Gas (GHG) Emissions of the company in thousands of metric tons. " +-->
+            <!--"Greenhouse Gases are defined as those gases which contribute to the trapping of heat in the Earth's atmosphere and they include Carbon Dioxide (CO2), Methane, and Nitrous Oxide. " +-->
+            <!--"Scope 2 Emissions are those emitted that are a consequence of the activities of the reporting entity, but occur at sources owned or controlled by another entity. " +-->
+            <!--"The principle source of Indirect Emissions is emissions from purchased electricity, steam and/or heating/cooling. " +-->
+            <!--"These emissions physically occur at the facility where electricity/steam/heating/cooling is generated. " +-->
+            <!--"Emissions reported as CO2 only will NOT be captured in this field. " +-->
+            <!--"Emissions reported as generic GHG emissions or CO2 equivalents (CO2e) will be captured in this field. ",-->
+            <!--"ghg3": "Scope 3 Greenhouse Gas (GHG) Emissions of the company, in thousands of metric ton. " +-->
+            <!--"Greenhouse Gases are defined as those gases which contribute to the trapping of heat in the Earth's atmosphere and they include Carbon Dioxide (CO2), Methane, and Nitrous Oxide. " +-->
+            <!--"Scope 3 emissions are all non-scope 2, indirect emissions, such as the extraction and production of purchased materials and fuels, " +-->
+            <!--"transport-related activities in vehicles not owned or controlled by the reporting entity, electricity-related activities" +-->
+            <!--" (e.g. Transmission & Distribution losses) not covered in Scope 2, outsourced activities, waste disposal, etc. " +-->
+            <!--"Emissions reported as CO2 only will NOT be captured in this field. " +-->
+            <!--"Emissions reported as generic GHG emissions or CO2 equivalents (CO2e) will be captured in this field. ",-->
+            <!--"totalWaterUse": "Total amount of water used to support a company's operational processes, in thousands of cubic meters. " +-->
+            <!--"The sum of all water withdrawls for process water and cooling water and all water retained by company facilities through recycling.",-->
+            <!--"totalWaterWithdrawl": "Unavailable",-->
+            <!--"totalWaterDischarged": "Total volume of liquid waste and process water discharged by the corporation, in thousands of cubic meters. " +-->
+            <!--"Includes treated and untreated effluents returned toa ny water source. " +-->
+            <!--"The volume of cooling water discharged is specifically reported as the field coolinG water outflow.",-->
+            <!--"totalWaste": "Total amount of waste the company discards, both hazardous and non-hazardous, in thousands of metric tons. ",-->
+            <!--"wasteRecycled": "Total amount of waste the company recycles, in thousands of metric tons. ",-->
+            <!--"wasteSentToLandfill": "Amount of company waste sent to landfills, in thousands of metric tons",-->
+            <!--"totalEnergyConsumption": "Total Energy Consumption Figure in thousands of megawatt hours (MWh). " +-->
+            <!--"This field might include energy directly consumed through combustion in owned or controlled boilers, furnaces, vehicles, or through chemical production in owned or controlled process equipment. " +-->
+            <!--"It also includes energy consumed as electricity. " +-->
+            <!--"Field is part of the Environmental, Social and Governance (ESG) group of fields."-->
+            <!--};-->
+
+            <!--, "totalEnergyConsumption", "price", "revenue" ];-->
+
+                <h2> Ways to Use This Tool </h2>
+
+                Select subsets of data
+                Weigh each environmental variable for calculating "Sustainability Index"
+
+                <h2> About Sustainability Index Calculation </h2>
+
+
             </p>
         </div>
     </div>

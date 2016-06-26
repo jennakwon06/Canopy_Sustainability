@@ -137,9 +137,11 @@ d3.csv('/data/master.csv', function (data) {
             }
 
             d.dataInfo = arr;
-            d.sustIndex = curScore / counter;
+            d.sustIndex = curScore / counter; // AVERAGING
             d.color = color(d.sustIndex);
         });
+
+        // Initial sustainability index is calculated by...
     });
 
     // Chart

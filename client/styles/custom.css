@@ -14,8 +14,18 @@ th {
     border: 1px black solid;
 }
 
-h4 {
+h1 {
+    font: 20px Arial,Helvetica Neue,Helvetica ;
+}
+
+h2 {
+    font: 18px Arial,Helvetica Neue,Helvetica ;
+}
+
+h3 {
     font: 16px Arial,Helvetica Neue,Helvetica ;
+    font-weight: bold;
+
 }
 
 .cityCompanies {
