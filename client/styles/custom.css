@@ -260,6 +260,17 @@ h4 {
 
 .navbar-brand {
     font: 25px Arial,Helvetica Neue,Helvetica ;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+}
+
+.navbar-raw-data {
+    padding-top:15px;
+}
+
+.navbar-about {
+    padding-top:15px;
 }
 
 #navbar{

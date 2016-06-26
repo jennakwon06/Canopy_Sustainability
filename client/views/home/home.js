@@ -317,7 +317,7 @@ Template.Home.events({
         if (iMap % 2 == 0) {
             $('.resultMapView').css({
                 "height" : "89vh",
-                "width" : "34vw"
+                "width" : width - 10
             });
 
             $(".resultListView").hide();
@@ -328,7 +328,7 @@ Template.Home.events({
         } else {
             $('.resultMapView').css({
                 "height" : "43vh",
-                "width" : (width / 2) - 10
+                "width" : "34vw"
             });
 
             $(".resultListView").show();
@@ -355,7 +355,7 @@ Template.Home.events({
             $('.resultListView').css({
                 "margin-top": "10px",
                 "height" : "43vh",
-                "width" : width - 10
+                "width" : "68.7vw"
             });
 
             $(".resultScatterPlotView").show();
