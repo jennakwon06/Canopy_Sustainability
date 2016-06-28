@@ -57,7 +57,7 @@ var fillTable = function(results) {
         var html = "";
         for (var j = 0; j < results[i].dataInfo.length; j++) { // j iterates dataInfo array
             html += results[i].dataInfo[j].name + ": " + roundTo100(results[i].dataInfo[j].value)
-                + "(" + results[i].dataInfo[j].weight + ") <br> ";
+                + "(" + roundTo100(results[i].dataInfo[j].weight) + ") <br> ";
         }
         html += results[i].URL + "<br>";
         $(tr2td).html(html);
@@ -86,6 +86,14 @@ var fillRawDataTable = function(results) {
         }
         table.append(tr);
     }
+};
+
+var onChangeNormalize = function(fieldToNormalizeWith) {
+    calculateIndex();
+    fillTable(globalFilter.top(Infinity).reverse()); //wouldn't change
+    drawBubbles(globalFilter.top(Infinity)); //wouldn't change
+    drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY); //wouldn't change
+    insertBreadCrumb(d);
 };
 
 var onChange = function(d) {

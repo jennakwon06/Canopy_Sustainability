@@ -4,7 +4,6 @@ Template.Home.rendered = function() {
     Meteor.subscribe('fs.files');
 };
 
-var i = 0;
 var iScatter = 0;
 var iMap = 0;
 var iList = 0;
@@ -24,28 +23,7 @@ Template.Home.events({
         return false;
     },
 
-    //'click .navbar-about': function (e) {
-    //    $('.main_page').attr("style", "display: none");
-    //    $('.about').attr("style", "display: block");
-    //    $('.raw_data').attr("style", "display: none");
-    //},
-    //
-    //'click .navbar-canopy': function (e) {
-    //    $('.main_page').attr("style", "display: block");
-    //    $('.about').attr("style", "display: none");
-    //    $('.raw_data').attr("style", "display: none");
-    //},
-    //
-    //'click .navbar-raw-data': function (e) {
-    //    $('.main_page').attr("style", "display: none");
-    //    $('.about').attr("style", "display: none");
-    //    $('.raw_data').attr("style", "display: block");
-    //},
-
-
-
-
-//<!------ CONTROL BAR ---->
+    //<!------ CONTROL BAR ---->
     'click #resetEmissions' : function (e) {
         ghg1Chart.filterAll();
         ghg2Chart.filterAll();
@@ -57,7 +35,6 @@ Template.Home.events({
         dc.filterAll();
         //$('.companiesCount').html(globalFilter.top(Infinity).length);
     },
-
 
     'click #scrollToGeneral': function(e) {
         $('#filterBar').animate({
@@ -151,49 +128,110 @@ Template.Home.events({
     },
 
     'click #collapseFilterButton': function(e) {
-        if (i % 2 == 0) { //Expanded version
-            $('#filterBar').animate({
-                opacity: 0
-            }, 500, function() {});
-
-            $('#resultBar').css({"width" : "98vw","position" :"fixed"});
-
-            $(".glyphicon-arrow-left").addClass( "glyphicon-arrow-right");
-            $(".glyphicon-arrow-right").removeClass( "glyphicon-arrow-left");
-
-            $('#controlBar').animate({
-                left: "0px"
-            }, 500, function() {});
-
-            $('.resultScatterPlotView').css({"width" : "47.3vw"});
-            $('.resultMapView').css({"width" : "47.3vw"});
-            $('.resultListView').css({"width" : "95.3vw"});
-
-
-        } else { // Non expanded
-            $('#filterBar').animate({
-                opacity: 1
-            }, 500, function() {});
-
-            $('#resultBar').removeAttr("style");
-
-            $(".glyphicon-arrow-right").addClass( "glyphicon-arrow-left");
-            $(".glyphicon-arrow-left").removeClass( "glyphicon-arrow-right");
-
-            $('#controlBar').removeAttr("style");
-
-            $('.resultScatterPlotView').css({"width" : "34.9vw"});
-            $('.resultMapView').css({"width" : "34.9vw"});
-            $('.resultListView').css({"width" : "70.5vw"});
-
-
-        }
+        $('#filterBar').animate({
+            opacity: 0
+        }, 500, function() {});
+        $('#resultBar').css({"width" : "98vw","position" :"fixed"});
+        $(".glyphicon-arrow-left").addClass( "glyphicon-arrow-right");
+        $(".glyphicon-arrow-right").removeClass( "glyphicon-arrow-left");
+        $('#controlBar').animate({
+            left: "0px"
+        }, 500, function() {});
+        $('.resultScatterPlotView').css({"width" : "47.3vw"});
+        $('.resultMapView').css({"width" : "47.3vw"});
+        $('.resultListView').css({"width" : "95.3vw"});
+        $("#collapseFilterButton").attr("style", "display: none");
+        $("#expandFilterButton").attr("style", "display: visible");
 
         drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
         drawMap(globalFilter.top(Infinity));
-
-        i++;
     },
+
+
+    'click #expandFilterButton': function(e) {
+        $('#filterBar').animate({
+            opacity: 1
+        }, 500, function() {});
+        $('#resultBar').removeAttr("style");
+        $(".glyphicon-arrow-right").addClass( "glyphicon-arrow-left");
+        $(".glyphicon-arrow-left").removeClass( "glyphicon-arrow-right");
+        $('#controlBar').removeAttr("style");
+        $('.resultScatterPlotView').css({"width" : "34.9vw"});
+        $('.resultMapView').css({"width" : "34.9vw"});
+        $('.resultListView').css({"width" : "70.5vw"});
+        $("#collapseFilterButton").attr("style", "display: visible");
+        $("#expandFilterButton").attr("style", "display: none");
+
+        drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
+        drawMap(globalFilter.top(Infinity));
+    },
+
+    //'click .fa-caret-down' : function(e) {
+    //    var current = e.target;
+    //    var arrowDown = e;
+    //
+    //    if(current && current.nodeName == "SPAN") {
+    //        var header = e.target.parentNode.parentNode;
+    //        var item = header.nextSibling;
+    //
+    //        // select the .item element from the siblings
+    //        while (!item || !item.classList || !item.classList.contains('item')) {
+    //            item = item.nextSibling;
+    //        }
+    //
+    //        // hide or show the .item element
+    //        item.classList.toggle('none');
+    //
+    //        // if the .item is going to be shown then imcrease is opacity
+    //        // every 20 milliseconds to make a fadeIn effect
+    //        if (!item.classList.contains('none')) {
+    //            var id = setInterval(function () {
+    //                item.style.opacity = parseFloat(item.style.opacity) + 0.09;
+    //                if (parseFloat(item.style.opacity) >= 1) {
+    //                    clearInterval(id);
+    //                }
+    //            }, 20);
+    //        } else {
+    //            item.style.opacity = 0;
+    //        }
+    //
+    //        current.classList.toggle('fa-caret-right');
+    //        current.classList.toggle('fa-caret-down');
+    //    }
+    //},
+    //
+    //'click .fa-caret-right' : function(e) {
+    //    var current = e.target;
+    //
+    //    if(current && current.nodeName == "SPAN") {
+    //        var header = e.target.parentNode.parentNode;
+    //        var item = header.nextSibling;
+    //
+    //        // select the .item element from the siblings
+    //        while (!item || !item.classList || !item.classList.contains('item')) {
+    //            item = item.nextSibling;
+    //        }
+    //
+    //        // hide or show the .item element
+    //        item.classList.toggle('none');
+    //
+    //        // if the .item is going to be shown then imcrease is opacity
+    //        // every 20 milliseconds to make a fadeIn effect
+    //        if (!item.classList.contains('none')) {
+    //            var id = setInterval(function () {
+    //                item.style.opacity = parseFloat(item.style.opacity) + 0.09;
+    //                if (parseFloat(item.style.opacity) >= 1) {
+    //                    clearInterval(id);
+    //                }
+    //            }, 20);
+    //        } else {
+    //            item.style.opacity = 0;
+    //        }
+    //
+    //        current.classList.toggle('fa-caret-right');
+    //        current.classList.toggle('fa-caret-down');
+    //    }
+    //},
 
     'click #resetAllFiltersButton': function(e) {
         dc.filterAll();
@@ -247,7 +285,6 @@ Template.Home.events({
         fillTable(globalFilter.top(Infinity).sort(function(a,b) {
             return a.industry.localeCompare(b.industry);
         }))
-
     },
 
     'click #sortBySectorButton': function(e) {
@@ -264,16 +301,6 @@ Template.Home.events({
 
     'click #sortByScoreButton': function(e) {
         fillTable(globalFilter.top(Infinity).sort(function(a,b) {
-            //if( !isFinite(a.sustIndex) && !isFinite(b.sustIndex) ) {
-            //	return 0;
-            //}
-            //if( !isFinite(a.sustIndex) ) {
-            //	return 1;
-            //}
-            //if( !isFinite(b.sustIndex) ) {
-            //	return -1;
-            //}
-            //return a.sustIndex - b.sustIndex;
             if (isNaN(a.sustIndex) && isNaN(b.sustIndex)) {
                 return 0;
             } else if (isNaN(a.sustIndex)) {

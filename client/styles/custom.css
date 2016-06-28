@@ -1,12 +1,12 @@
 html, body {
     max-width: 100%;
     overflow-x: hidden;
-    font: 12px Arial,Helvetica Neue,Helvetica ;
+    font: 14px Arial,Helvetica Neue,Helvetica ;
 }
 
 p {
     font: 14px Arial,Helvetica Neue,Helvetica ;
-    margin-bottom: 0px;
+    margin: 0;
 }
 
 th {
@@ -15,17 +15,22 @@ th {
 }
 
 h1 {
-    font: 20px Arial,Helvetica Neue,Helvetica ;
+    font: 26px Arial,Helvetica Neue,Helvetica ;
 }
 
 h2 {
-    font: 18px Arial,Helvetica Neue,Helvetica ;
+    font: 22px Arial,Helvetica Neue,Helvetica ;
 }
 
 h3 {
-    font: 16px Arial,Helvetica Neue,Helvetica ;
+    font: 18px Arial,Helvetica Neue,Helvetica ;
     font-weight: bold;
+}
 
+.content-text{
+    font: 16px Arial,Helvetica Neue,Helvetica ;
+    margin-top: 10px ;
+    margin-bottom: 10px ;
 }
 
 .cityCompanies {
@@ -34,7 +39,8 @@ h3 {
 
 #content-subpage {
     margin: 10px;
-    overflow-x:scroll
+    overflow-x:scroll;
+    font: 14px Arial,Helvetica Neue,Helvetica ;
 }
 
 /********************************* RESULT BAR **********************************/
@@ -260,11 +266,6 @@ h3 {
 }
 
 
-.filter_container {
-    width: inherit;
-    overflow-x: hidden;
-}
-
 /********************************* NAV BAR **********************************/
 
 
@@ -292,7 +293,8 @@ h3 {
 }
 
 .filter_topPanel {
-    background-color: #D0ECBD;
+    background-color: black;
+    opacity:0.7;
     display:block;
     height:24px;
     position:fixed;
@@ -300,19 +302,16 @@ h3 {
     right:0;
     left:0;
     width:inherit;
+    color: white;
 }
 
-/*.filter_container .filter_bottomPanel {*/
-    /*background-color: #6B9A33;*/
-    /*display:block;*/
-    /*height:60px;*/
-    /*z-index:1030;*/
-    /*position:fixed;*/
-    /*bottom:0;*/
-    /*right:0;*/
-    /*left:0;*/
-    /*width:inherit;*/
-/*}*/
+.filter_container {
+    width: inherit;
+    overflow-x: hidden;
+    margin-top:24px;
+    height: 2000px;
+}
+
 
 #controlBar{
     height:100vh;
@@ -407,9 +406,7 @@ hr {
     font-size: 2em;
     margin-top: 5px;
     opacity: 0.7;
-
 }
-
 
 .myGlyphicon:hover {
     opacity: 0.3;
@@ -862,4 +859,38 @@ div.tooltipMap {
 
 .navbar-raw-data{
     font-size: 20px;
+}
+
+.fieldName{
+    display: inline-block;
+}
+
+.item {
+    padding: .5em 0;
+}
+
+.highlights{
+    margin-top:15px;
+}
+
+
+#expandableText:hover{
+    opacity:0.5;
+    color:darkgreen;
+}
+
+#expandableTextDetail {
+    font: 12px Arial,Helvetica Neue,Helvetica ;
+}
+
+td.upper_line {
+    border-top:solid 1px black;
+}
+
+table.fraction {
+    text-align: left;
+    vertical-align: middle;
+    margin-top:0.5em;
+    margin-bottom:0.5em;
+    line-height: 2em;
 }
