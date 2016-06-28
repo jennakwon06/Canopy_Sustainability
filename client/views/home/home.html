@@ -432,14 +432,20 @@
 
                 <h2> Data Source </h2>
                 <div class="content-text">
-                    &#8226; The environmental data was gathered through queries to Bloomberg Terminal and are compilations of fields scraped from GRI (Global Reporting Initiatives) sustainability reports.
+                    Environmental and financial data were gathered through queries to Bloomberg Terminal and are compilations of fields scraped from GRI (Global Reporting Initiatives) sustainability reports. Oehter
                     <br>
+                    <a href="https://en.wikipedia.org/wiki/List_of_S%26P_500_companies">Wikipedia </a> provided headquarter addresses, which were then queried with API requests to <a href="https://github.com/komoot/photon">Photon </a> through <a href="https://github.com/geopy/geopy">Geopy </a> for lat/long coordinates. These coordinates were used for mapping companies.
+
+                    <br>
+
+                    Company logos were gathered through queries to <a href="https://logo.clearbit.com">Clearbit Logo API</a>
+
                     <!--&#8226; Logos were gathered through queries to -->
                 </div>
 
-                <h2> Data Fields </h2>
+                <h2> Data Fields (lick on each field view description) </h2>
                 <div class="content-text">
-                    You may categorize each company by the following (Click on each field view description of each field)
+                    Categorize companies geographically and sectorally
                 </div>
 
                 <p data-toggle="collapse" href="#collapseIndustry" aria-expanded="false"
@@ -450,8 +456,18 @@
                    id="expandableText"> &#8226; Sector </p>
                 <div id="collapseSector" class="collapse" >ISBN Sector</div>
 
+                <p data-toggle="collapse" href="#collapseAddress" aria-expanded="false"
+                   id="expandableText"> &#8226;  Headquarter Address </p>
+                <div id="collapseAddress" class="collapse">
+                </div>
+
+                <p data-toggle="collapse" href="#collapseLatLong" aria-expanded="false"
+                   id="expandableText"> &#8226;  Latitude / Longitude of headquarter </p>
+                <div id="collapseLatLong" class="collapse">
+                </div>
+
                 <div class="content-text">
-                    Out of several hundreds of ESG fields, 10 Environmental data fields were selected for this visualization tool. They are the following
+                    View each company's raw environmental data
                 </div>
 
                 <p data-toggle="collapse" href="#collapseGHG1" aria-expanded="false"
@@ -505,7 +521,7 @@
                     Amount of company waste sent to landfills, in thousands of metric tons. </div>
 
                 <div class="content-text">
-                    Raw data fields may not be good enough. You may want to normalize these fields by indicators of size / impact of company. Therefore, the following metadata about each company may be used to normalize environmental data fields.
+                    Normalize raw data with indicators of company impact
                 </div>
 
                 <p data-toggle="collapse" href="#collapseRevenue" aria-expanded="false"
@@ -524,23 +540,10 @@
                 <div id="collapseAssets" class="collapse">
                     Text </div>
 
-                <div class="content-text">
-                    In addition, following descriptive data about each company in SP500 list were gathered by various mechanisms.
-                </div>
-
-                <p data-toggle="collapse" href="#collapseAddress" aria-expanded="false"
-                   id="expandableText"> &#8226;  Headquarter Address </p>
-                <div id="collapseAddress" class="collapse">
-                    Source: Wikipedia </div>
-
-                <p data-toggle="collapse" href="#collapseLatLong" aria-expanded="false"
-                   id="expandableText"> &#8226;  Latitude / Longitude of headquarter </p>
-                <div id="collapseLatLong" class="collapse">
-                    API requests to <a href="https://github.com/komoot/photon">
-                    Photon </a> through <a href="https://github.com/geopy/geopy">Geopy </a> </div>
-
 
                 <h2> Ways to Use This Tool </h2>
+
+                
 
 
                 <h2> About Sustainability Index Calculation </h2>
