@@ -23,28 +23,32 @@ var fillTable = function(results) {
 
         var tdLogo = img_create("/images/companylogos/" + results[i].name + ".png");
         var tdName = document.createElement('td');
-        var tdIndustry = document.createElement('td');
-        var tdSector = document.createElement('td');
-        var tdCountry = document.createElement('td');
+        var tdNameALink = document.createElement('a');
+        tdNameALink.href = results[i].URL;
+        tdNameALink.appendChild(document.createTextNode(results[i].name));
+        tdName.appendChild(tdNameALink);
+
         var tdSustIndex = document.createElement('td');
         var a0 = document.createAttribute("class");
         a0.value = "sustIndexCell";
         tdSustIndex.setAttributeNode(a0);
-
-        tdName.appendChild(document.createTextNode(results[i].name));
-        tdIndustry.appendChild(document.createTextNode(results[i].industry));
-        tdSector.appendChild(document.createTextNode(results[i].sector));
-        tdCountry.appendChild(document.createTextNode(results[i].country));
         tdSustIndex.appendChild(document.createTextNode(Math.round(results[i].sustIndex * 1000) / 1000));
         d3.select(tdSustIndex).append("svg").style("position", "relative").attr("width", 15)
             .attr("height", 15).append("g").append("rect").attr("width", 15).attr("height", 15)
             .style("fill", results[i].color);
 
+        //var tdIndustry = document.createElement('td');
+        //var tdSector = document.createElement('td');
+        //var tdCountry = document.createElement('td');
+        //tdIndustry.appendChild(document.createTextNode(results[i].industry));
+        //tdSector.appendChild(document.createTextNode(results[i].sector));
+        //tdCountry.appendChild(document.createTextNode(results[i].country));
+
         tr.appendChild(tdLogo);
         tr.appendChild(tdName);
-        tr.appendChild(tdIndustry);
-        tr.appendChild(tdSector);
-        tr.appendChild(tdCountry);
+        //tr.appendChild(tdIndustry);
+        //tr.appendChild(tdSector);
+        //tr.appendChild(tdCountry);
         tr.appendChild(tdSustIndex);
 
         // Set up secondary rows that expand upon click of primary rows
@@ -59,7 +63,7 @@ var fillTable = function(results) {
             html += results[i].dataInfo[j].name + ": " + roundTo100(results[i].dataInfo[j].value)
                 + "(" + roundTo100(results[i].dataInfo[j].weight) + ") <br> ";
         }
-        html += results[i].URL + "<br>";
+        //html += results[i].URL + "<br>";
         $(tr2td).html(html);
         $(tr2td).hide();
 

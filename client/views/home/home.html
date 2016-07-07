@@ -403,15 +403,15 @@
                         <th>Company Name
                             <i class="fa fa-sort-alpha-asc pull-right" id="sortByCompanyButton"></i>
                         </th>
-                        <th>Industry
-                            <i class="fa fa-sort-alpha-asc pull-right" id="sortByIndustryButton"></i>
-                        </th>
-                        <th>Sector
-                            <i class="fa fa-sort-alpha-asc pull-right" id="sortBySectorButton"></i>
-                        </th>
-                        <th>Country
-                            <i class="fa fa-sort-alpha-asc pull-right" id="sortByCountryButton"></i>
-                        </th>
+                        <!--<th>Industry-->
+                            <!--<i class="fa fa-sort-alpha-asc pull-right" id="sortByIndustryButton"></i>-->
+                        <!--</th>-->
+                        <!--<th>Sector-->
+                            <!--<i class="fa fa-sort-alpha-asc pull-right" id="sortBySectorButton"></i>-->
+                        <!--</th>-->
+                        <!--<th>Country-->
+                            <!--<i class="fa fa-sort-alpha-asc pull-right" id="sortByCountryButton"></i>-->
+                        <!--</th>-->
                         <th>Sustainability Score
                             <i class="fa fa-sort-numeric-asc pull-right" id="sortByScoreButton"></i>
                         </th>
@@ -428,19 +428,23 @@
         <div class="col-md-12">
             <div id="content-subpage">
 
-            <h1> Canopy is an data visualization tool for interacting with SP500 companies' sustainability-related data. </h1>
+            <h1> Canopy is an <b>interactive data visualization tool</b> for analyzing S&P 500 companies' sustainability-related data. <br>
+                <a href="http://entsci.gatech.edu/">We</a> aim to increase the accessibility and visibility of <b> corporate sustainability</b>.</h1>
+
+                <h2> Ways to Use This Tool </h2>
+
+                <div class="content-text">
+                    Through the interactive filters on the left, users can select subsets of data based on values and immediately view companies that match criterion on the right. Three different visualization panels support analytics which are of scatterplot, geomap and expandable list. The scatterplot panel allows users to plot data dimensions on 2D cartesian coordinates and discover relationships between dimensions. The geomap panel allows users to view the locations of companies. The expandable list allows users to view raw data values and calculated sustainability index.
+                    The interactive filters act as density or distribution charts, themselves encoding data. For example, you can explore where in the emissions spectrum companies in one industry lie versus another.
+                    
+                    <!--The panels support data linking. -->
+                </div>
 
                 <h2> Data Source </h2>
                 <div class="content-text">
-                    Environmental and financial data were gathered through queries to Bloomberg Terminal and are compilations of fields scraped from GRI (Global Reporting Initiatives) sustainability reports. Oehter
-                    <br>
-                    <a href="https://en.wikipedia.org/wiki/List_of_S%26P_500_companies">Wikipedia </a> provided headquarter addresses, which were then queried with API requests to <a href="https://github.com/komoot/photon">Photon </a> through <a href="https://github.com/geopy/geopy">Geopy </a> for lat/long coordinates. These coordinates were used for mapping companies.
-
-                    <br>
-
-                    Company logos were gathered through queries to <a href="https://logo.clearbit.com">Clearbit Logo API</a>
-
-                    <!--&#8226; Logos were gathered through queries to -->
+                    Environmental data were gathered through queries to Bloomberg Terminal and are compilations of fields scraped from GRI (Global Reporting Initiatives) sustainability reports. Company metadata such as revenue, number of employees, and assets owned by each company were also gathered through Bloomberg Terminal. Headquarter addresses were listed in
+                    <a href="https://en.wikipedia.org/wiki/List_of_S%26P_500_companies">Wikipedia </a>, which were then used to gather lat/long coordinates by sending API requests to <a href="https://github.com/komoot/photon">Photon</a> through <a href="https://github.com/geopy/geopy">Geopy </a>. These coordinates used for creating company geomap.
+                    Company logos were gathered through queries to <a href="https://logo.clearbit.com">Clearbit Logo API.</a>
                 </div>
 
                 <h2> Data Fields (lick on each field view description) </h2>
@@ -450,20 +454,20 @@
 
                 <p data-toggle="collapse" href="#collapseIndustry" aria-expanded="false"
                    id="expandableText"> &#8226; Industry </p>
-                <div id="collapseIndustry" class="collapse" >ISBN Industry</div>
+                <div id="collapseIndustry" class="collapse collapseSubTexts" >ISBN Industry</div>
 
                 <p data-toggle="collapse" href="#collapseSector" aria-expanded="false"
                    id="expandableText"> &#8226; Sector </p>
-                <div id="collapseSector" class="collapse" >ISBN Sector</div>
+                <div id="collapseSector" class="collapse collapseSubTexts" >ISBN Sector</div>
 
                 <p data-toggle="collapse" href="#collapseAddress" aria-expanded="false"
                    id="expandableText"> &#8226;  Headquarter Address </p>
-                <div id="collapseAddress" class="collapse">
+                <div id="collapseAddress" class="collapse collapseSubTexts">
                 </div>
 
                 <p data-toggle="collapse" href="#collapseLatLong" aria-expanded="false"
                    id="expandableText"> &#8226;  Latitude / Longitude of headquarter </p>
-                <div id="collapseLatLong" class="collapse">
+                <div id="collapseLatLong" class="collapse collapseSubTexts">
                 </div>
 
                 <div class="content-text">
@@ -472,52 +476,52 @@
 
                 <p data-toggle="collapse" href="#collapseGHG1" aria-expanded="false"
                    id="expandableText"> &#8226; GHG Scope 1 Emissions </p>
-                <div id="collapseGHG1" class="collapse">
+                <div id="collapseGHG1" class="collapse collapseSubTexts">
                     Scope 1 Emissions are those emitted from sources that are owned or controlled by the reporting entity. Examples of Direct Emissions include                     emissions from combustion in owned or controlled boilers, furnaces, vehicles, emissions from chemical production in owned or controlled process                         equipment.</div>
 
                 <p data-toggle="collapse" href="#collapseGHG2" aria-expanded="false"
                    id="expandableText"> &#8226; GHG Scope 2 Emissions </p>
-                <div id="collapseGHG2" class="collapse">
+                <div id="collapseGHG2" class="collapse collapseSubTexts">
                     Scope 2 Emissions are those emitted that are a consequence of the activities of the reporting entity, but occur at sources owned or controlled by another entity. The principle source of Indirect Emissions is emissions from purchased electricity, steam and/or heating/cooling. These emissions physically occur at the facility where electricity/steam/heating/cooling is generated.</div>
 
                 <p data-toggle="collapse" href="#collapseGHG3" aria-expanded="false"
                    id="expandableText"> &#8226; GHG Scope 3 Emissions </p>
-                <div id="collapseGHG3" class="collapse">
+                <div id="collapseGHG3" class="collapse collapseSubTexts">
                     Scope 3 emissions are all non-scope 2, indirect emissions, such as the extraction and production of purchased materials and fuels, transport-related activities in vehicles not owned or controlled by the reporting entity, electricity-related activities (e.g. Transmission & Distribution losses) not covered in Scope 2, outsourced activities, waste disposal, etc.</div>
 
                 <p data-toggle="collapse" href="#collapseTotalWaterUse" aria-expanded="false"
                    id="expandableText"> &#8226; Total Water Use </p>
-                <div id="collapseTotalWaterUse" class="collapse">
+                <div id="collapseTotalWaterUse" class="collapse collapseSubTexts">
                     Total amount of water used to support a company's operational processes, in thousands of cubic meters. The sum of all water withdrawls for process                  water and cooling water and all water retained by company facilities through recycling.</div>
 
                 <p data-toggle="collapse" href="#collapseTotalWaterWithdrawl" aria-expanded="false"
                    id="expandableText"> &#8226; Total Water Withdrawl </p>
-                <div id="collapseTotalWaterWithdrawl" class="collapse">
+                <div id="collapseTotalWaterWithdrawl" class="collapse collapseSubTexts">
                     Total amount of water used to support a company's operational processes, in thousands of cubic meters. The sum of all water withdrawls for process                  water and cooling water and all water retained by company facilities through recycling.</div>
 
                 <p data-toggle="collapse" href="#collapseTotalWaterDischarged" aria-expanded="false"
                    id="expandableText"> &#8226; Total Water Discharged </p>
-                <div id="collapseTotalWaterDischarged" class="collapse">
+                <div id="collapseTotalWaterDischarged" class="collapse collapseSubTexts">
                     Total volume of liquid waste and process water discharged by the corporation, in thousands of cubic meters. Includes treated and untreated effluents returned to any water source. The volume of cooling water discharged is specifically reported as the field cooling water outflow. </div>
 
                 <p data-toggle="collapse" href="#collapseTotalWaste" aria-expanded="false"
                    id="expandableText"> &#8226; Total Waste </p>
-                <div id="collapseTotalWaste" class="collapse">
+                <div id="collapseTotalWaste" class="collapse collapseSubTexts">
                     Total amount of waste the company discards, both hazardous and non-hazardous, in thousands of metric tons.</div>
 
                 <p data-toggle="collapse" href="#collapseWasteRecycled" aria-expanded="false"
                    id="expandableText"> &#8226; Waste Recycled </p>
-                <div id="collapseWasteRecycled" class="collapse">
+                <div id="collapseWasteRecycled" class="collapse collapseSubTexts">
                     Total amount of waste the company discards, both hazardous and non-hazardous, in thousands of metric tons. </div>
 
                 <p data-toggle="collapse" href="#collapseWasteSentToLandfill" aria-expanded="false"
                    id="expandableText"> &#8226; Waste Sent to Landfill </p>
-                <div id="collapseWasteSentToLandfill" class="collapse">
+                <div id="collapseWasteSentToLandfill" class="collapse collapseSubTexts">
                     Amount of company waste sent to landfills, in thousands of metric tons. </div>
 
                 <p data-toggle="collapse" href="#collapseEnergyConsumption" aria-expanded="false"
                    id="expandableText"> &#8226; Total Energy Consumption </p>
-                <div id="collapseEnergyConsumption" class="collapse">
+                <div id="collapseEnergyConsumption" class="collapse collapseSubTexts">
                     Amount of company waste sent to landfills, in thousands of metric tons. </div>
 
                 <div class="content-text">
@@ -526,24 +530,21 @@
 
                 <p data-toggle="collapse" href="#collapseRevenue" aria-expanded="false"
                    id="expandableText"> &#8226;  Revenue of Company </p>
-                <div id="collapseRevenue" class="collapse">
+                <div id="collapseRevenue" class="collapse collapseSubTexts">
                     Text </div>
 
                 <p data-toggle="collapse" href="#collapseNumEmployees" aria-expanded="false"
                    id="expandableText"> &#8226;  Number of Employees (To be gathered) </p>
-                <div id="collapseNumEmployees" class="collapse">
+                <div id="collapseNumEmployees" class="collapse collapseSubTexts">
                     Text </div>
 
 
                 <p data-toggle="collapse" href="#collapseAssets" aria-expanded="false"
                    id="expandableText"> &#8226;  Assets owned by company </p>
-                <div id="collapseAssets" class="collapse">
+                <div id="collapseAssets" class="collapse collapseSubTexts">
                     Text </div>
 
 
-                <h2> Ways to Use This Tool </h2>
-
-                
 
 
                 <h2> About Sustainability Index Calculation </h2>

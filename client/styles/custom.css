@@ -4,6 +4,10 @@ html, body {
     font: 14px Arial,Helvetica Neue,Helvetica ;
 }
 
+a {
+    text-decoration:none;
+}
+
 p {
     font: 14px Arial,Helvetica Neue,Helvetica ;
     margin: 0;
@@ -31,6 +35,7 @@ h3 {
     font: 16px Arial,Helvetica Neue,Helvetica ;
     margin-top: 10px ;
     margin-bottom: 10px ;
+    padding-left:15px;
 }
 
 .cityCompanies {
@@ -38,7 +43,7 @@ h3 {
 }
 
 #content-subpage {
-    margin: 10px;
+    margin: 25px;
     overflow-x:scroll;
     font: 14px Arial,Helvetica Neue,Helvetica ;
 }
@@ -893,4 +898,9 @@ table.fraction {
     margin-top:0.5em;
     margin-bottom:0.5em;
     line-height: 2em;
+}
+
+.collapseSubTexts {
+    padding-left: 20px;
+    font-size: 13px;
 }
