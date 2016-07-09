@@ -35,12 +35,13 @@
                             <div class="panel-body">
 
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <p id="sector"> Sector </p>
                                     </div>
-                                    <div class="col-md-6">
-                                        <p id="industry"> Industry </p>
-                                    </div>
+
+                                    <!--<div class="col-md-6">-->
+                                        <!--<p id="industry"> Industry </p>-->
+                                    <!--</div>-->
 
                                 </div>
 
@@ -57,17 +58,17 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6" style="top:5px">
-                                        <div id="industry_chart" style="overflow-y: scroll; height: 300px">
-                                            <!--<div class="clearfix"></div>-->
+                                    <!--Decided to obmit industry chart -->
+                                    <!--<div class="col-md-6" style="top:5px">-->
+                                        <!--<div id="industry_chart" style="overflow-y: scroll; height: 300px">-->
+                                            <!--&lt;!&ndash;<div class="clearfix"></div>&ndash;&gt;-->
 
-                                            <!--<div>-->
-                                            <!--<a class="reset" href="javascript:industryChart.filterAll();dc.redrawAll();"-->
-                                            <!--style="visibility: hidden; position: absolute; height: 5px; right:0;"> reset</a>-->
-                                            <!--</div>-->
-                                        </div>
-                                    </div>
-
+                                            <!--&lt;!&ndash;<div>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<a class="reset" href="javascript:industryChart.filterAll();dc.redrawAll();"&ndash;&gt;-->
+                                            <!--&lt;!&ndash;style="visibility: hidden; position: absolute; height: 5px; right:0;"> reset</a>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                        <!--</div>-->
+                                    <!--</div>-->
 
                                 </div>
                             </div>
@@ -436,7 +437,7 @@
                 <div class="content-text">
                     Through the interactive filters on the left, users can select subsets of data based on values and immediately view companies that match criterion on the right. Three different visualization panels support analytics which are of scatterplot, geomap and expandable list. The scatterplot panel allows users to plot data dimensions on 2D cartesian coordinates and discover relationships between dimensions. The geomap panel allows users to view the locations of companies. The expandable list allows users to view raw data values and calculated sustainability index.
                     The interactive filters act as density or distribution charts, themselves encoding data. For example, you can explore where in the emissions spectrum companies in one industry lie versus another.
-                    
+
                     <!--The panels support data linking. -->
                 </div>
 
@@ -578,6 +579,7 @@
             <p id="content-subpage">
 
             <a href="/data/master.csv" download> Download as CSV! </a>
+            <a href="/data/reports/Apple Inc208c0.pdf" download> Download sample report! </a>
 
             <table class="rawDataTable">
                 <thead class="thead-inverse">

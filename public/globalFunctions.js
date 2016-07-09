@@ -63,6 +63,7 @@ var fillTable = function(results) {
             html += results[i].dataInfo[j].name + ": " + roundTo100(results[i].dataInfo[j].value)
                 + "(" + roundTo100(results[i].dataInfo[j].weight) + ") <br> ";
         }
+
         //html += results[i].URL + "<br>";
         $(tr2td).html(html);
         $(tr2td).hide();
@@ -72,6 +73,8 @@ var fillTable = function(results) {
         table.append(tr);
         table.append(tr2);
     }
+
+    table.DataTable()
 };
 
 var fillRawDataTable = function(results) {
@@ -90,6 +93,16 @@ var fillRawDataTable = function(results) {
         }
         table.append(tr);
     }
+
+    // attach data table
+    table.DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+        colReorder: true
+    } );
+
 };
 
 var onChangeNormalize = function(fieldToNormalizeWith) {

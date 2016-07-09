@@ -157,8 +157,6 @@ d3.csv('/data/master.csv', function (data) {
     // GENERAL
     globalFilter = sp500.dimension(function (d) {return d.name;});
 
-
-
     if (!jQuery.isFunction(fillTable)) {
         $.getScript("/globalFunctions.js");
     }
@@ -300,7 +298,7 @@ d3.csv('/data/master.csv', function (data) {
 
         sectorChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
             .chartId("sector")
-            .width(HALF_CHART_WIDTH)
+            .width(FULL_CHART_WIDTH)
             .height(HALF_CHART_HEIGHT)
             .margins({top: 0, left: 0, right: 0, bottom: 20})
             .group(sectorGroup)
