@@ -99,10 +99,6 @@ Template.Home.events({
             $target.closest("tr").next().find("td").slideToggle("fast");
         }
 
-        console.log("from caller");
-        console.log($target.attr("name"));
-        console.log("caller end");
-
         linkData($target.attr("name"), $target.attr("address"), false, false, true);
     },
 

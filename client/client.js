@@ -4,6 +4,7 @@ this.Helpers = {};
 console.log(Meteor);
 
 Meteor.startup(function() {
+	$.getScript("/datatables.min.js");
 	$.getScript("/utility.js");
 	$.getScript("/gradientBar.js");
 	$.getScript("/globalFunctions.js");

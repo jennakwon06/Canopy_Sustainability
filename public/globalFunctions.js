@@ -74,7 +74,7 @@ var fillTable = function(results) {
         table.append(tr2);
     }
 
-    table.DataTable()
+    //table.DataTable()
 };
 
 var fillRawDataTable = function(results) {
@@ -98,8 +98,10 @@ var fillRawDataTable = function(results) {
     table.DataTable( {
         dom: 'Bfrtip',
         buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
+            'copy', 'csv', 'excel'
         ],
+        "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
+        "scrollX": true,
         colReorder: true
     } );
 
