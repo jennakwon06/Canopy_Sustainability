@@ -115,15 +115,32 @@ var fillRawDataTable = function(results) {
         ],
         "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
         "scrollX": true,
-        //"scrollX": "100%",
+        "scrollX": "100%",
         colReorder: true
-    } );
+    }).draw();
 
-    //https://datatables.net/forums/discussion/14342/column-header-not-aligned-with-column-data-with-horizontal-scrolling/p2
-    //
+    console.log("what makes it redraw");
     $(".dataTables_scrollHeadInner").css({"width":"100%"});
     $(".table ").css({"width":"100%"});
 
+    //
+    //console.log("what makes it redraw?");
+    //table.DataTable().draw();
+
+    //https://datatables.net/forums/discussion/14342/column-header-not-aligned-with-column-data-with-horizontal-scrolling/p2
+
+    var ths = $(".dataTables_scrollHeadInner").children('table').children('thead').children('tr').children('th');
+    var tds = $(".dataTables_scrollBody").children('table').children('tbody').children('tr:first-child').children('td');
+
+    for (var i = 0; i < ths.length; i++) {
+        var newOuterWidth = $(tds[i]).outerWidth();
+        var newWidth = $(tds[i]).width();
+        $(ths[i]).width(newWidth);
+        $(ths[i]).outerWidth(newOuterWidth);
+    }
+
+    $(".rawDataTable").css({"table-layout": "fixed"});
+    $(".rawDataTable").css({"display": "none"});
 };
 
 var onChangeNormalize = function(fieldToNormalizeWith) {

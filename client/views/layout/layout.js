@@ -57,9 +57,15 @@ Template.layout.events({
 	},
 
 	'click .navbar-raw-data': function (e) {
-		$('.main_page').attr("style", "display: none");
-		$('.about').attr("style", "display: none");
-		$('.raw_data').attr("style", "display: block");
+		$.when( $(".sorting").click() ).done(function() {
+			$(".rawDataTable").css({"display": ""});
+			$(".sorting").click();
+			$('.main_page').attr("style", "display: none");
+			$('.about').attr("style", "display: none");
+			$('.raw_data').attr("style", "display: block");
+		});
+
+
 	},
 
 

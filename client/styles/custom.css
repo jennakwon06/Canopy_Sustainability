@@ -929,3 +929,12 @@ table.fraction {
 .fraction-cell {
     font: 16px Arial,Helvetica Neue,Helvetica !important;
 }
+
+table.dataTable,
+table.dataTable th,
+table.dataTable td {
+    /*table-layout: fixed;*/
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
