@@ -1,5 +1,7 @@
 console.log("global func load");
 
+var globalRawDataTable;
+
 /*
  * Interact with list view
  */
@@ -97,7 +99,7 @@ var fillRawDataTable = function(results) {
     }
 
     // attach data table
-    table.DataTable( {
+    globalRawDataTable = table.DataTable({
         dom: 'Bfrtip',
         buttons: [
             {
@@ -113,33 +115,36 @@ var fillRawDataTable = function(results) {
                 filename: 'canopy_rawdata'
             }
         ],
-        "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
+        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
         "scrollX": true,
         "scrollX": "100%",
         colReorder: true
-    }).draw();
+    });
 
-    console.log("what makes it redraw");
-    $(".dataTables_scrollHeadInner").css({"width":"100%"});
-    $(".table ").css({"width":"100%"});
+    //globalRawDataTable.draw().
+    //    $(".dataTables_scrollHeadInner").css({"width":"100%"});
+    //    $(".table ").css({"width":"100%"});
+    //});
 
+    //console.log("what makes it redraw");
+
+    ////
+    ////console.log("what makes it redraw?");
+    ////table.DataTable().draw();
     //
-    //console.log("what makes it redraw?");
-    //table.DataTable().draw();
-
-    //https://datatables.net/forums/discussion/14342/column-header-not-aligned-with-column-data-with-horizontal-scrolling/p2
-
-    var ths = $(".dataTables_scrollHeadInner").children('table').children('thead').children('tr').children('th');
-    var tds = $(".dataTables_scrollBody").children('table').children('tbody').children('tr:first-child').children('td');
-
-    for (var i = 0; i < ths.length; i++) {
-        var newOuterWidth = $(tds[i]).outerWidth();
-        var newWidth = $(tds[i]).width();
-        $(ths[i]).width(newWidth);
-        $(ths[i]).outerWidth(newOuterWidth);
-    }
-
-    $(".rawDataTable").css({"table-layout": "fixed"});
+    ////https://datatables.net/forums/discussion/14342/column-header-not-aligned-with-column-data-with-horizontal-scrolling/p2
+    //
+    //var ths = $(".dataTables_scrollHeadInner").children('table').children('thead').children('tr').children('th');
+    //var tds = $(".dataTables_scrollBody").children('table').children('tbody').children('tr:first-child').children('td');
+    //
+    //for (var i = 0; i < ths.length; i++) {
+    //    var newOuterWidth = $(tds[i]).outerWidth();
+    //    var newWidth = $(tds[i]).width();
+    //    $(ths[i]).width(newWidth);
+    //    $(ths[i]).outerWidth(newOuterWidth);
+    //}
+    //
+    //$(".rawDataTable").css({"table-layout": "fixed"});
     $(".rawDataTable").css({"display": "none"});
 };
 

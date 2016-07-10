@@ -57,14 +57,14 @@ Template.layout.events({
 	},
 
 	'click .navbar-raw-data': function (e) {
-		$.when( $(".sorting").click() ).done(function() {
+		$.when( globalRawDataTable.draw() ).done(function() {
+			$(".dataTables_scrollHeadInner").css({"width":"100%"});
+			$(".table ").css({"width":"100%"});
 			$(".rawDataTable").css({"display": ""});
-			$(".sorting").click();
 			$('.main_page').attr("style", "display: none");
 			$('.about').attr("style", "display: none");
 			$('.raw_data').attr("style", "display: block");
 		});
-
 
 	},
 
