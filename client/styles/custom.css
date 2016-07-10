@@ -13,11 +13,18 @@ p {
     margin: 0;
 }
 
-th, td {
+th {
     font: 12px Arial,Helvetica Neue,Helvetica ;
     border: 1px black solid;
     padding: 4px;
-    width: 50px;
+    width: 50px !important;
+}
+
+td {
+    font: 12px Arial,Helvetica Neue,Helvetica ;
+    border: 1px black solid;
+    padding: 4px;
+    width: 50px !important;
 }
 
 h1 {
@@ -895,10 +902,12 @@ div.tooltipMap {
 #expandableText:hover{
     opacity:0.5;
     color:darkgreen;
+    margin-left:20px;
 }
 
 #expandableTextDetail {
     font: 12px Arial,Helvetica Neue,Helvetica ;
+    margin-left:30px;
 }
 
 td.upper_line {

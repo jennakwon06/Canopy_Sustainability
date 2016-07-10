@@ -98,7 +98,18 @@ var fillRawDataTable = function(results) {
     table.DataTable( {
         dom: 'Bfrtip',
         buttons: [
-            'copy', 'csv', 'excel'
+            {
+                extend: 'copy',
+                filename: 'canopy_rawdata'
+            },
+            {
+                extend: 'csv',
+                filename: 'canopy_rawdata'
+            },
+            {
+                extend: 'excel',
+                filename: 'canopy_rawdata'
+            }
         ],
         "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
         "scrollX": true,
