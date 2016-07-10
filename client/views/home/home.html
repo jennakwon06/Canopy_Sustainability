@@ -209,7 +209,7 @@
 
                                 <div style="display: inline-block">
                                     <p id="totalWaste">Total Waste (1000MT)</p>
-                                </div> 
+                                </div>
 
                                 <div id="totalWasteChart"></div>
 
@@ -435,12 +435,21 @@
                 <h2> Ways to Use This Tool </h2>
 
                 <div class="content-text">
-                    Through the interactive data filters on the left panel, users can select subsets of data based on their sector then data values and immediately view the filtered companies on the right panel. These filters are themselves data visualizations; they show the distribution of companies along different data dimensions. The filters are linked, meaning filtering on one dimension will filter data on other dimensions. Users can incrementally select subsets of companies incrementally along all filters or choose to use only a few filters. The sector filter enables sectoral analysis along different types of environmental data.
+                    On the left panel, users can dynamically select subsets of companies with filters on 1 categorical dimension (sector) and 9 numerical dimensions (environmental data). The filtered result immediately reflects on the right panel. These filters are themselves data visualizations; they show the distribution of companies along different data dimensions. The filters are linked; filtering on one dimension will filter data on other dimensions. Users can incrementally filter companies along all dimensions or choose to use only a few filters. An example usage is to use sector filter first, then select environmental data for sectoral analysis. Users can give weights to each dimension based on their opinions on relative importance of dimensions. These weights affect calculation of sustainability index.
 
                     <br>
                     <br>
 
-                    On the right panel, three different visualization panels (scatterplot, geo map, and expandable list) support data analytics of filtered companies. The scatterplot panel allows users to plot data dimensions on 2D cartesian coordinates and discover linear relationships between dimensions. The geo map panel allows users to view the locations of companies and see how geographical distributions of companies change with different filters. The expandable list allows users to view calculated sustainability index as well as respective raw data by expanding on rows. These panels can be sized to full screen by clicking on expand ( &#8226; ) icon.
+                    On the right panel, three different visualization panels (scatterplot, geo map, and expandable list) support data analytics of filtered companies. The scatterplot panel allows users to plot data dimensions on 2D cartesian coordinates and discover linear relationships between dimensions. The geo map panel allows users to view the locations of companies and see how geographical distributions of companies change with different filters. The expandable list allows users to view calculated sustainability index as well as respective raw data by expanding on rows. These panels can be sized to full screen by clicking on expand <svg fill="#000000" height="15" viewBox="0 0 24 24" width="15" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <defs>
+                        <path d="M0 0h24v24H0z" id="a"/>
+                    </defs>
+                    <clipPath id="b">
+                        <use overflow="visible" xlink:href="#a"/>
+                    </clipPath>
+                    <path clip-path="url(#b)" d="M15 3l2.3 2.3-2.89 2.87 1.42 1.42L18.7 6.7 21 9V3zM3 9l2.3-2.3 2.87 2.89 1.42-1.42L6.7 5.3 9 3H3zm6 12l-2.3-2.3 2.89-2.87-1.42-1.42L5.3 17.3 3 15v6zm12-6l-2.3 2.3-2.87-2.89-1.42 1.42 2.89 2.87L15 21h6z"/>
+                    <path clip-path="url(#b)" d="M0 0h24v24H0z" fill="none"/>
+                </svg> icon.
 
                     <!--The panels support data linking. -->
                 </div>
@@ -451,7 +460,7 @@
 
                     Other metadata were gathered from various sources. Headquarter addresses were listed in
                     <a href="https://en.wikipedia.org/wiki/List_of_S%26P_500_companies">Wikipedia </a>, which were then used to gather lat/long coordinates by sending API requests to <a href="https://github.com/komoot/photon">Photon</a> through <a href="https://github.com/geopy/geopy">Geopy </a>. These coordinates used for creating company geomap.
-                    Company URLs were gathered through using  <a href="https://www.blockspring.com/"> BlockSpring's </a> Google Sheets Plug-in.
+                    Company URLs were gathered through using  <a href="https://www.blockspring.com/"> BlockSpring </a>'s Google Sheets Plug-in.
                     Company logos were gathered through queries to <a href="https://logo.clearbit.com">Clearbit Logo API.</a>
 
                 </div>
@@ -461,121 +470,178 @@
                     Categorize companies geographically and sectorally
                 </div>
 
-                <p data-toggle="collapse" href="#collapseIndustry" aria-expanded="false"
-                   id="expandableText"> &#8226; Industry </p>
-                <div id="collapseIndustry" class="collapse collapseSubTexts" >ISBN Industry</div>
-
-                <p data-toggle="collapse" href="#collapseSector" aria-expanded="false"
-                   id="expandableText"> &#8226; Sector </p>
-                <div id="collapseSector" class="collapse collapseSubTexts" >ISBN Sector</div>
-
-                <p data-toggle="collapse" href="#collapseAddress" aria-expanded="false"
-                   id="expandableText"> &#8226;  Headquarter Address </p>
-                <div id="collapseAddress" class="collapse collapseSubTexts">
+                <div class="dataDimension">
+                    <p data-toggle="collapse" href="#collapseIndustry" aria-expanded="false"
+                       id="expandableText"> &#8226; Industry </p>
+                    <div id="collapseIndustry" class="collapse collapseSubTexts" >ISBN Industry</div>
                 </div>
 
-                <p data-toggle="collapse" href="#collapseLatLong" aria-expanded="false"
-                   id="expandableText"> &#8226;  Latitude / Longitude of headquarter </p>
-                <div id="collapseLatLong" class="collapse collapseSubTexts">
+                <div class="dataDimension">
+                    <p data-toggle="collapse" href="#collapseSector" aria-expanded="false"
+                       id="expandableText"> &#8226; Sector </p>
+                    <div id="collapseSector" class="collapse collapseSubTexts" >ISBN Sector</div>
+                </div>
+
+                <div class="dataDimension">
+                    <p data-toggle="collapse" href="#collapseAddress" aria-expanded="false"
+                       id="expandableText"> &#8226;  Headquarter Address </p>
+                    <div id="collapseAddress" class="collapse collapseSubTexts"></div>
+                </div>
+
+                <div class="dataDimension">
+                    <p data-toggle="collapse" href="#collapseLatLong" aria-expanded="false"
+                       id="expandableText"> &#8226;  Latitude / Longitude of headquarter </p>
+                    <div id="collapseLatLong" class="collapse collapseSubTexts"></div>
                 </div>
 
                 <div class="content-text">
                     View each company's raw environmental data
                 </div>
 
-                <p data-toggle="collapse" href="#collapseGHG1" aria-expanded="false"
-                   id="expandableText"> &#8226; GHG Scope 1 Emissions </p>
-                <div id="collapseGHG1" class="collapse collapseSubTexts">
-                    Scope 1 Emissions are those emitted from sources that are owned or controlled by the reporting entity. Examples of Direct Emissions include                     emissions from combustion in owned or controlled boilers, furnaces, vehicles, emissions from chemical production in owned or controlled process                         equipment.</div>
+                <div class="dataDimension">
+                    <p data-toggle="collapse" href="#collapseGHG1" aria-expanded="false"
+                       id="expandableText"> &#8226; GHG Scope 1 Emissions </p>
+                    <div id="collapseGHG1" class="collapse collapseSubTexts">
+                        Scope 1 Emissions are those emitted from sources that are owned or controlled by the reporting entity. Examples of Direct Emissions include                     emissions from combustion in owned or controlled boilers, furnaces, vehicles, emissions from chemical production in owned or controlled process                         equipment.</div>
+                </div>
 
-                <p data-toggle="collapse" href="#collapseGHG2" aria-expanded="false"
-                   id="expandableText"> &#8226; GHG Scope 2 Emissions </p>
-                <div id="collapseGHG2" class="collapse collapseSubTexts">
-                    Scope 2 Emissions are those emitted that are a consequence of the activities of the reporting entity, but occur at sources owned or controlled by another entity. The principle source of Indirect Emissions is emissions from purchased electricity, steam and/or heating/cooling. These emissions physically occur at the facility where electricity/steam/heating/cooling is generated.</div>
+                <div class="dataDimension">
+                    <p data-toggle="collapse" href="#collapseGHG2" aria-expanded="false"
+                       id="expandableText"> &#8226; GHG Scope 2 Emissions </p>
+                    <div id="collapseGHG2" class="collapse collapseSubTexts">
+                        Scope 2 Emissions are those emitted that are a consequence of the activities of the reporting entity, but occur at sources owned or controlled by another entity. The principle source of Indirect Emissions is emissions from purchased electricity, steam and/or heating/cooling. These emissions physically occur at the facility where electricity/steam/heating/cooling is generated.</div>
+                </div>
 
-                <p data-toggle="collapse" href="#collapseGHG3" aria-expanded="false"
-                   id="expandableText"> &#8226; GHG Scope 3 Emissions </p>
-                <div id="collapseGHG3" class="collapse collapseSubTexts">
-                    Scope 3 emissions are all non-scope 2, indirect emissions, such as the extraction and production of purchased materials and fuels, transport-related activities in vehicles not owned or controlled by the reporting entity, electricity-related activities (e.g. Transmission & Distribution losses) not covered in Scope 2, outsourced activities, waste disposal, etc.</div>
+                <div class="dataDimension">
+                    <p data-toggle="collapse" href="#collapseGHG3" aria-expanded="false"
+                       id="expandableText"> &#8226; GHG Scope 3 Emissions </p>
+                    <div id="collapseGHG3" class="collapse collapseSubTexts">
+                        Scope 3 emissions are all non-scope 2, indirect emissions, such as the extraction and production of purchased materials and fuels, transport-related activities in vehicles not owned or controlled by the reporting entity, electricity-related activities (e.g. Transmission & Distribution losses) not covered in Scope 2, outsourced activities, waste disposal, etc.</div>
+                </div>
 
-                <p data-toggle="collapse" href="#collapseTotalWaterUse" aria-expanded="false"
-                   id="expandableText"> &#8226; Total Water Use </p>
-                <div id="collapseTotalWaterUse" class="collapse collapseSubTexts">
-                    Total amount of water used to support a company's operational processes, in thousands of cubic meters. The sum of all water withdrawls for process                  water and cooling water and all water retained by company facilities through recycling.</div>
+                <div class="dataDimension">
+                    <p data-toggle="collapse" href="#collapseTotalWaterUse" aria-expanded="false"
+                       id="expandableText"> &#8226; Total Water Use </p>
+                    <div id="collapseTotalWaterUse" class="collapse collapseSubTexts">
+                        Total amount of water used to support a company's operational processes, in thousands of cubic meters. The sum of all water withdrawls for process                  water and cooling water and all water retained by company facilities through recycling.</div>
+                </div>
 
-                <p data-toggle="collapse" href="#collapseTotalWaterWithdrawl" aria-expanded="false"
-                   id="expandableText"> &#8226; Total Water Withdrawl </p>
-                <div id="collapseTotalWaterWithdrawl" class="collapse collapseSubTexts">
-                    Total amount of water used to support a company's operational processes, in thousands of cubic meters. The sum of all water withdrawls for process                  water and cooling water and all water retained by company facilities through recycling.</div>
+                <div class="dataDimension">
+                    <p data-toggle="collapse" href="#collapseTotalWaterWithdrawl" aria-expanded="false"
+                       id="expandableText"> &#8226; Total Water Withdrawl </p>
+                    <div id="collapseTotalWaterWithdrawl" class="collapse collapseSubTexts">
+                        Total amount of water used to support a company's operational processes, in thousands of cubic meters. The sum of all water withdrawls for process                  water and cooling water and all water retained by company facilities through recycling.</div>
+                </div>
 
-                <p data-toggle="collapse" href="#collapseTotalWaterDischarged" aria-expanded="false"
-                   id="expandableText"> &#8226; Total Water Discharged </p>
-                <div id="collapseTotalWaterDischarged" class="collapse collapseSubTexts">
-                    Total volume of liquid waste and process water discharged by the corporation, in thousands of cubic meters. Includes treated and untreated effluents returned to any water source. The volume of cooling water discharged is specifically reported as the field cooling water outflow. </div>
+                <div class="dataDimension">
+                    <p data-toggle="collapse" href="#collapseTotalWaterDischarged" aria-expanded="false"
+                       id="expandableText"> &#8226; Total Water Discharged </p>
+                    <div id="collapseTotalWaterDischarged" class="collapse collapseSubTexts">
+                        Total volume of liquid waste and process water discharged by the corporation, in thousands of cubic meters. Includes treated and untreated effluents returned to any water source. The volume of cooling water discharged is specifically reported as the field cooling water outflow. </div>
+                </div>
 
-                <p data-toggle="collapse" href="#collapseTotalWaste" aria-expanded="false"
-                   id="expandableText"> &#8226; Total Waste </p>
-                <div id="collapseTotalWaste" class="collapse collapseSubTexts">
-                    Total amount of waste the company discards, both hazardous and non-hazardous, in thousands of metric tons.</div>
+                <div class="dataDimension">
+                    <p data-toggle="collapse" href="#collapseTotalWaste" aria-expanded="false"
+                       id="expandableText"> &#8226; Total Waste </p>
+                    <div id="collapseTotalWaste" class="collapse collapseSubTexts">
+                        Total amount of waste the company discards, both hazardous and non-hazardous, in thousands of metric tons.</div>
+                </div>
 
-                <p data-toggle="collapse" href="#collapseWasteRecycled" aria-expanded="false"
-                   id="expandableText"> &#8226; Waste Recycled </p>
-                <div id="collapseWasteRecycled" class="collapse collapseSubTexts">
-                    Total amount of waste the company discards, both hazardous and non-hazardous, in thousands of metric tons. </div>
 
-                <p data-toggle="collapse" href="#collapseWasteSentToLandfill" aria-expanded="false"
-                   id="expandableText"> &#8226; Waste Sent to Landfill </p>
-                <div id="collapseWasteSentToLandfill" class="collapse collapseSubTexts">
-                    Amount of company waste sent to landfills, in thousands of metric tons. </div>
+                <div class="dataDimension">
+                    <p data-toggle="collapse" href="#collapseWasteRecycled" aria-expanded="false"
+                       id="expandableText"> &#8226; Waste Recycled </p>
+                    <div id="collapseWasteRecycled" class="collapse collapseSubTexts">
+                        Total amount of waste the company discards, both hazardous and non-hazardous, in thousands of metric tons. </div>
+                </div>
 
-                <p data-toggle="collapse" href="#collapseEnergyConsumption" aria-expanded="false"
-                   id="expandableText"> &#8226; Total Energy Consumption </p>
-                <div id="collapseEnergyConsumption" class="collapse collapseSubTexts">
-                    Amount of company waste sent to landfills, in thousands of metric tons. </div>
+                <div class="dataDimension">
+                    <p data-toggle="collapse" href="#collapseWasteSentToLandfill" aria-expanded="false"
+                       id="expandableText"> &#8226; Waste Sent to Landfill </p>
+                    <div id="collapseWasteSentToLandfill" class="collapse collapseSubTexts">
+                        Amount of company waste sent to landfills, in thousands of metric tons. </div>
+                </div>
+
+
+
+                <div class="dataDimension">
+                    <p data-toggle="collapse" href="#collapseEnergyConsumption" aria-expanded="false"
+                        id="expandableText"> &#8226; Total Energy Consumption </p>
+                    <div id="collapseEnergyConsumption" class="collapse collapseSubTexts">
+                        Amount of company waste sent to landfills, in thousands of metric tons. </div>
+                </div>
+
+
 
                 <div class="content-text">
                     Normalize raw data with indicators of company impact
                 </div>
 
-                <p data-toggle="collapse" href="#collapseRevenue" aria-expanded="false"
-                   id="expandableText"> &#8226;  Revenue of Company </p>
-                <div id="collapseRevenue" class="collapse collapseSubTexts">
-                    Text </div>
-
-                <p data-toggle="collapse" href="#collapseNumEmployees" aria-expanded="false"
-                   id="expandableText"> &#8226;  Number of Employees (To be gathered) </p>
-                <div id="collapseNumEmployees" class="collapse collapseSubTexts">
-                    Text </div>
-
-
-                <p data-toggle="collapse" href="#collapseAssets" aria-expanded="false"
-                   id="expandableText"> &#8226;  Assets owned by company </p>
-                <div id="collapseAssets" class="collapse collapseSubTexts">
-                    Text </div>
+                <div class="dataDimension">
+                    <p data-toggle="collapse" href="#collapseRevenue" aria-expanded="false"
+                       id="expandableText"> &#8226;  Revenue of Company </p>
+                    <div id="collapseRevenue" class="collapse collapseSubTexts">
+                        Text </div>
+                </div>
 
 
 
+                <div class="dataDimension">
+                    <p data-toggle="collapse" href="#collapseNumEmployees" aria-expanded="false"
+                       id="expandableText"> &#8226;  Number of Employees (To be gathered) </p>
+                    <div id="collapseNumEmployees" class="collapse collapseSubTexts">
+                        Text </div>
+                </div>
+
+
+
+                <div class="dataDimension">
+                    <p data-toggle="collapse" href="#collapseAssets" aria-expanded="false"
+                       id="expandableText"> &#8226;  Assets owned by company </p>
+                    <div id="collapseAssets" class="collapse collapseSubTexts">
+                        Text </div>
+                </div>
 
                 <h2> About Sustainability Index Calculation </h2>
 
-                <!--<div class="content-text">-->
-                    <!--<table class="fraction" align="center" cellpadding="0" cellspacing="0">-->
-                        <!--<tr>-->
-                            <!--<td rowspan="2" nowrap="nowrap">-->
-                                <!--<i>x</i> =-->
-                            <!--</td>-->
-                            <!--<td nowrap="nowrap">-->
-                                <!--<i>x</i><sup>2</sup> + <i>x</i> + 1-->
-                            <!--</td>-->
-                        <!--</tr>-->
-                        <!--<tr>-->
-                            <!--<td class="upper_line">-->
-                                <!--2 cos(<i>x</i>)-->
-                            <!--</td>-->
-                        <!--</tr>-->
-                    <!--</table>-->
-                <!--</div>-->
+                <div class="content-text">
+                    <table class="fraction" align="center" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td class="fraction-cell" rowspan="2" nowrap="nowrap" align="center">
+                                <i>Sustainability Index</i> =
+                            </td>
+                            <td class="fraction-cell" nowrap="nowrap" align="center">
+                                <i>w<sub>1</sub> &times; x</i><sub>1</sub> + ... + <i>w<sub>1</sub> &times; x</i><sub>k</sub>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fraction-cell upper_line" align="center">
+                                i (<i>x</i>)
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="fraction" align="center" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td class="fraction-cell" rowspan="2" nowrap="nowrap" align="center">
+                                <i>x</i> =
+                            </td>
+                            <td class="fraction-cell" nowrap="nowrap" align="center">
+                                <i>log(raw value of the dimension)</i>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fraction-cell upper_line" align="center">
+                                <i>log(max value of the dimension in the data set)</i>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
 
+                <div class="content-text">
+                    As shown above, sustainability index of a company is a linear combination of available (and selected) normalized values of a dimension times the weight given to that dimension, normalized by the number of dimensions.
+                    <br>
+                    Dimensions' values were normalized on a log scale by the max values in respective dimensions.
+                </div>
             </div>
 
 
@@ -588,7 +654,9 @@
 
             <!--<a href="/data/master.csv" download> Download as CSV! </a>-->
 
-            <table class="rawDataTable display" cellspacing="0" width="100%" title="canopy_rawdata">
+                <!--https://datatables.net/forums/discussion/14342/column-header-not-aligned-with-column-data-with-horizontal-scrolling/p2-->
+            <div class="rawDataTableOuter">
+                <table class="rawDataTable display" cellspacing="0" width="100%" title="canopy_rawdata">
                 <thead>
                 <tr>
                     <th>Company Name</th>
@@ -598,7 +666,6 @@
                     <th>Longitude</th>
                     <th>Price</th>
                     <th>Revenue</th>
-                    <th>ISIN</th>
                     <th>Industry</th>
                     <th>Sector</th>
                     <th>GHG Scope 1</th>
@@ -611,6 +678,7 @@
                     <th>Waste Recycled</th>
                     <th>Waste Sent to Landfill</th>
                     <th>Total Energy Consumption</th>
+                    <th>ISIN</th>
                 </tr>
                 </thead>
 
@@ -618,7 +686,7 @@
                 </tbody>
 
             </table>
-
+            </div>
 
             </p>
         </div>

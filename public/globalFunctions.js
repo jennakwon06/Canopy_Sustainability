@@ -80,9 +80,8 @@ var fillTable = function(results) {
 var fillRawDataTable = function(results) {
     var table = $(".rawDataTable");
 
-    var columns = ["name", "ticker", "address", "latitude", "longitude", "price", "revenue",
-    "isin", "industry", "sector", "ghg1", "ghg2", "ghg3", "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged",
-    "totalWaste", "wasteRecycled", "wasteSentToLandfill", "totalEnergyConsumption"];
+    var columns = ["name", "ticker", "address", "latitude", "longitude", "price", "revenue", "industry", "sector", "ghg1", "ghg2", "ghg3", "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged",
+    "totalWaste", "wasteRecycled", "wasteSentToLandfill", "totalEnergyConsumption", "isin"];
 
     for (var i = 0; i <= results.length - 1; i++) {
         var tr = document.createElement('tr');
@@ -92,6 +91,9 @@ var fillRawDataTable = function(results) {
             tr.appendChild(td);
         }
         table.append(tr);
+        //asdfasdfasdfa
+        //asdfasdfasdfasdf
+
     }
 
     // attach data table
@@ -113,8 +115,14 @@ var fillRawDataTable = function(results) {
         ],
         "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
         "scrollX": true,
+        //"scrollX": "100%",
         colReorder: true
     } );
+
+    //https://datatables.net/forums/discussion/14342/column-header-not-aligned-with-column-data-with-horizontal-scrolling/p2
+    //
+    $(".dataTables_scrollHeadInner").css({"width":"100%"});
+    $(".table ").css({"width":"100%"});
 
 };
 
