@@ -898,16 +898,18 @@ div.tooltipMap {
     margin-top:15px;
 }
 
+#expandableText{
+    margin-left:20px;
+}
 
 #expandableText:hover{
     opacity:0.5;
     color:darkgreen;
-    margin-left:20px;
 }
 
 #expandableTextDetail {
     font: 12px Arial,Helvetica Neue,Helvetica ;
-    margin-left:30px;
+    margin-left:40px;
 }
 
 td.upper_line {
