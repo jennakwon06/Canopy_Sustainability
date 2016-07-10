@@ -13,9 +13,11 @@ p {
     margin: 0;
 }
 
-th {
+th, td {
     font: 12px Arial,Helvetica Neue,Helvetica ;
     border: 1px black solid;
+    padding: 4px;
+    width: 50px;
 }
 
 h1 {
