@@ -4,8 +4,8 @@ html, body {
     font: 14px Arial,Helvetica Neue,Helvetica ;
 }
 
-a {
-    text-decoration:none;
+.navbar-brand:hover {
+    color:black;
 }
 
 p {
@@ -54,7 +54,19 @@ h3 {
     font: 14px Arial,Helvetica Neue,Helvetica ;
 }
 
-/********************************* RESULT BAR **********************************/
+/********************************* Overriding bootstrap **********************************/
+.pagination {
+    background-color:#599513;
+}
+
+a {
+    text-decoration:none;
+    color:#599513;
+}
+
+
+
+    /********************************* RESULT BAR **********************************/
 #expandIcon {
     float: left;
     position:fixed;
@@ -290,6 +302,10 @@ div.dataTables_wrapper {
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 10px;
+}
+
+.navbar-brand > a {
+    color : black;
 }
 
 .navbar-raw-data {
@@ -923,7 +939,7 @@ table.fraction {
 }
 
 .dataDimension {
-    margin-bottom: 5px;
+    /*margin-bottom: 5px;*/
 }
 
 .fraction-cell {

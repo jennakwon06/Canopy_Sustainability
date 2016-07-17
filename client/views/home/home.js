@@ -99,7 +99,9 @@ Template.Home.events({
             $target.closest("tr").next().find("td").slideToggle("fast");
         }
 
-        linkData($target.attr("name"), $target.attr("address"), false, false, true);
+
+
+        showInteractionElements($target.attr("name"), $target.attr("address"), false, false, true);
     },
 
     'click #closeModalButton': function (e) {
@@ -162,21 +164,32 @@ Template.Home.events({
         drawMap(globalFilter.top(Infinity));
     },
 
-    'click #resetAllFiltersButton': function(e) {
-        dc.filterAll();
-        dc.redrawAll();
-        onChange();
-        $("#breadcrumb li").remove();
-        //$('.companiesCount').html(globalFilter.top(Infinity).length);
-    },
-
-    'click #resetAllScalesButton': function(e) {
-        for (var i = 0; i < fields.length; i++) {
+    'click #resetFilters': function(e) {
+        for (var i = 0; i < fieldsFilters.length; i++) {
             document.getElementById(fieldsFilters[i] + "Weight").value = "100";
         }
-        onChange();
+        dc.filterAll();
+        dc.redrawAll();
+        refreshPage();
         $("#breadcrumb li").remove();
     },
+
+
+    //'click #resetAllFiltersButton': function(e) {
+    //    dc.filterAll();
+    //    dc.redrawAll();
+    //    onChange();
+    //    $("#breadcrumb li").remove();
+    //    //$('.companiesCount').html(globalFilter.top(Infinity).length);
+    //},
+    //
+    //'click #resetAllScalesButton': function(e) {
+    //    for (var i = 0; i < fields.length; i++) {
+    //        document.getElementById(fieldsFilters[i] + "Weight").value = "100";
+    //    }
+    //    onChange();
+    //    $("#breadcrumb li").remove();
+    //},
 
     //'click #applyFilterButton': function (e) {
     //	console.log('checking database connection');

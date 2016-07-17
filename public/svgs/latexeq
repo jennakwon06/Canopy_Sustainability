@@ -1,0 +1,8 @@
+\\ \sum_{j = 0}^{n} w_{j} \left ( \frac{ \mathrm{X}_{i,j} }{   \underset{0 \leq i \leq n }{ \textsc{max}} \left( \mathrm{X}_{i,j}  \right) }   \right)
+\\ \\ \\
+\sum_{j = 0}^{n} w_{j} \left ( \frac{ \mathrm{X}_{i,j} / rev_{i} }{   \underset{0 \leq i \leq n }{ \textsc{max}} \left( \mathrm{X}_{i,j} / rev_{i}  \right) }   \right)
+\\ \\ \\
+W = \mathrm{n \ dimensional \  weight \  vector} \\
+X = \mathrm{m \ \times n \  matrix; data \ values \ of \ m \ companies \ along \ n \ dimensions } \\
+\mathrm{n = number \ of \ variables}\\
+\mathrm{m = number \ of \ companies}

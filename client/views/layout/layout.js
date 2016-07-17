@@ -48,6 +48,7 @@ Template.layout.events({
 		$('.main_page').attr("style", "display: none");
 		$('.about').attr("style", "display: block");
 		$('.raw_data').attr("style", "display: none");
+		//$(".tooltipMap").hide();
 	},
 
 	'click .navbar-canopy': function (e) {
@@ -64,6 +65,8 @@ Template.layout.events({
 			$('.main_page').attr("style", "display: none");
 			$('.about').attr("style", "display: none");
 			$('.raw_data').attr("style", "display: block");
+			//$(".tooltipMap").hide();
+
 		});
 
 	},

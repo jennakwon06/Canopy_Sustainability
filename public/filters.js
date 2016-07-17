@@ -60,7 +60,6 @@ var color = d3.scale.linear()
 
 
 d3.csv('/data/master.csv', function (data) {
-    globalData = data;
 
     console.log("d3 asynchronous call from filters");
 
@@ -82,7 +81,6 @@ d3.csv('/data/master.csv', function (data) {
         //Climate Chg Pol:Y,Equal Opp Pol:Y,Water Policy,Human Rights Pol:Y, Energy Effic Pol:Y,Bus Ethics Pol:Y,Biodiv Pol:Y,
         //Climate Chg Pol:Y,Equal Opp Pol:Y,Water Policy,Human Rights Pol:Y, Energy Effic Pol:Y,Bus Ethics Pol:Y,Biodiv Pol:Y,
         //Climate Chg Pol:Y,Equal Opp Pol:Y,Water Policy,Human Rights Pol:Y, Energy Effic Pol:Y,Bus Ethics Pol:Y,Biodiv Pol:Y,
-
 
         //Revenue T12M, Price
         d.revenue = d["Revenue T12M"];
@@ -111,12 +109,12 @@ d3.csv('/data/master.csv', function (data) {
         //calculate initial index
         var maxValues = [];
         for (var i = 0; i < fieldsFilters.length; i++) {
-            maxValues.push(d3.extent(globalData, function (d) {
+            maxValues.push(d3.extent(data, function (d) {
                 return +d[fieldsFilters[i]];
             })[1]);
         }
 
-        globalData.forEach(function (d) {
+        data.forEach(function (d) {
             var curScore = 0;
             var counter = 0;
             var arr = [];
@@ -140,13 +138,13 @@ d3.csv('/data/master.csv', function (data) {
             d.sustIndex = curScore / counter; // AVERAGING
             d.color = color(d.sustIndex);
         });
-
-        // Initial sustainability index is calculated by...
     });
 
+    globalData = data;
+
     // Chart
-    var FULL_CHART_WIDTH = 330;
-    var HALF_CHART_WIDTH = 160;
+    var FULL_CHART_WIDTH = $(".filter_container").width();
+    var HALF_CHART_WIDTH = ($(".filter_container").width() - 10) / 2;
     var HALF_CHART_HEIGHT = 60;
     var numberFormat = d3.format('.2f');
 

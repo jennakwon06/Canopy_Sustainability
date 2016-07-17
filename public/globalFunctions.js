@@ -75,8 +75,6 @@ var fillTable = function(results) {
         table.append(tr);
         table.append(tr2);
     }
-
-    //table.DataTable()
 };
 
 var fillRawDataTable = function(results) {
@@ -148,12 +146,11 @@ var fillRawDataTable = function(results) {
     $(".rawDataTable").css({"display": "none"});
 };
 
-var onChangeNormalize = function(fieldToNormalizeWith) {
-    calculateIndex();
+var normalizeSustIndex = function(d, fieldToNormalizeWith) {
+    calculateNormalizedIndex();
     fillTable(globalFilter.top(Infinity).reverse()); //wouldn't change
     drawBubbles(globalFilter.top(Infinity)); //wouldn't change
     drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY); //wouldn't change
-    insertBreadCrumb(d);
 };
 
 var onChange = function(d) {
@@ -164,7 +161,14 @@ var onChange = function(d) {
     insertBreadCrumb(d);
 };
 
-var linkData = function(name, address, scatter, map, list) {
+var refreshPage = function(d) {
+    calculateIndex();
+    fillTable(globalFilter.top(Infinity).reverse());
+    drawBubbles(globalFilter.top(Infinity));
+    drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
+};
+
+var showInteractionElements = function(name, address, scatter, map, list) {
     var divPos = $("#resultBar").position();
 
     var mapCirclePos = $("circle.mapCircle[address='" + address + "']").position();
@@ -173,6 +177,13 @@ var linkData = function(name, address, scatter, map, list) {
 
     if (scatter) {
         // move tooltip map
+
+        tooltipScatter.transition()
+            .duration(200)
+            .style("opacity", .9)
+            .style("left", (d3.event.pageX + 5) + "px")
+            .style("top", (d3.event.pageY - 28) + "px");
+
         tooltipMap.transition()
             .duration(200)
             .style("opacity", .9)
@@ -193,6 +204,12 @@ var linkData = function(name, address, scatter, map, list) {
         }, 200);
 
     } else if (map) { //only address available
+
+        tooltipMap.transition()
+            .duration(200)
+            .style("opacity", .9)
+            .style("left", (d3.event.pageX + 5) + "px")
+            .style("top", (d3.event.pageY - 28) + "px");
 
         // Sorting and refilling tables
         var listCompaniesWithAddress = globalData.filter(function(d) {return d.address == address;});
@@ -256,7 +273,8 @@ var linkData = function(name, address, scatter, map, list) {
         //tooltipScatter
         //    .html("City: " + address);
     } else if (list) { //both name and address available
-        //Highlight scatter plot
+
+    // Highlight scatter plot
         d3.selectAll("circle.scatterPlotCircle")
             .attr("r", 3.5);
 
@@ -282,6 +300,17 @@ var linkData = function(name, address, scatter, map, list) {
         //        return (radius(d.count) * 1000) / zoom.scale();
         //    });
     }
+};
+
+var hideInteractionElements = function(){
+    tooltipScatter.transition()
+        .duration(500)
+        .style("opacity", 0);
+
+    tooltipMap.transition()
+        .duration(500)
+        .style("opacity", 0);
+
 };
 
 $.fn.exists = function () {
@@ -389,7 +418,7 @@ function totalEnergyConsumptionCount() {
  * Populate sustainability index data field based on selected weights
  */
 function calculateIndex() {
-    // calculate max index;
+    // calculate maximum field values across all dimensions
     var i;
     var maxValues = [];
     for (i = 0; i < fieldsFilters.length; i++) {
@@ -411,6 +440,60 @@ function calculateIndex() {
         // @TODO if I want to show weights and details of index calculation, then it has to change dynamically.
         var arr = [];
         for (i = 0; i < fieldsFilters.length; i++) {
+            if (+d[fieldsFilters[i]]) { //only count values that are available
+                var object = {
+                    name: "",
+                    weight: 0,
+                    value: 0
+                };
+                object.name = fieldsFilters[i];
+                object.weight = document.getElementById(fieldsFilters[i] + "Weight").value / totalWeight;
+                object.value = +d[fieldsFilters[i]];
+                arr.push(object);
+                var score = Math.log(d[fieldsFilters[i]]) / Math.log(maxValues[i]); // divide value by the max value in the data field
+                score = score > 0 ? score : 0;
+                curScore += score * object.weight;
+            }
+        }
+
+        d.dataInfo = arr;
+
+        if (!totalWeight) {
+            d.sustIndex = NaN;
+            d.color = "gray";
+        } else {
+            d.sustIndex = curScore;
+            d.color = color(d.sustIndex);
+        }
+    });
+}
+
+
+/*
+ * Populate sustainability index data field based on selected weights and chosen field to normalize values with
+ */
+function calculateNormalizedIndex(fieldToNormalizeWith) {
+
+    // calculate maximum normalized field values across all dimensions ;
+    var i;
+    var maxValues = [];
+    for (i = 0; i < fieldsFilters.length; i++) {
+        maxValues.push(d3.extent(globalData, function (d) {return +d[fieldsFilters[i]] / +d.revenue;})[1]);
+    }
+
+    globalData.forEach(function (d) {
+        var curScore = 0;
+        var totalWeight = 0;
+
+        // Gather selected scale weights
+        for (i = 0; i < fieldsFilters.length; i++) {
+            if (+d[fieldsFilters[i]]) { // nonzero if there's at least one data
+                totalWeight += parseInt(document.getElementById(fieldsFilters[i] + "Weight").value);
+            }
+        }
+
+        var arr = [];
+        for (i = 0; i < fieldsFilters.length; i++) {
             if (+d[fieldsFilters[i]]) {
                 var object = {
                     name: "",
@@ -421,7 +504,7 @@ function calculateIndex() {
                 object.weight = document.getElementById(fieldsFilters[i] + "Weight").value / totalWeight;
                 object.value = +d[fieldsFilters[i]];
                 arr.push(object);
-                var score = Math.log(d[fieldsFilters[i]]) / Math.log(maxValues[i]);
+                var score = Math.log((d[fieldsFilters[i]]) / d.revenue) / Math.log(maxValues[i]);
                 score = score > 0 ? score : 0;
                 curScore += score * object.weight;
             }

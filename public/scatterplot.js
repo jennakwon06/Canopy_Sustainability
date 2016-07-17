@@ -48,8 +48,6 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
         .range([0, width])
         .nice();
 
-    //y = d3.scale.log().clamp(true).domain([0.1, max_y _value]).range([h, 0]).nice();
-
     var y = d3.scale
         //.log()
         //.clamp(true)
@@ -85,13 +83,9 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    if (d3.select(".tooltipScatter").empty()){
-        tooltipScatter = d3.select("body").append("div")
-            .attr("class", "tooltipScatter")
-            .style("opacity", 0);
-    } else {
-        tooltipScatter = d3.select(".tooltipScatter");
-    }
+    tooltipScatter = d3.select(".tooltipScatter").empty() ?
+        d3.select("body").append("div").attr("class", "tooltipScatter").style("opacity", 0)
+        : d3.select(".tooltipScatter");
 
     function transform(d) {
         return "translate(" + x(d[xAxisVal]) + "," + y(d[yAxisVal]) + ")";
@@ -152,9 +146,17 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
         .attr("x2", 0)
         .attr("y2", height);
 
+
+//<----- Code for draw trend line; credit to http://bl.ocks.org/benvandyke/8459843 -->
+    // get the x and y values for least squares
+    var xSeries = results.map(function(d) { return parseFloat(d[xAxisVal]); });
+    var ySeries = results.map(function(d) { return parseFloat(d[yAxisVal]); });
+
+    var leastSquaresCoeff = leastSquares(xSeries, ySeries);
+
+    // Draw scatter plot
     if (xAxisVal !== undefined && yAxisVal !== undefined
         && !isBlank(xAxisVal) && !isBlank(yAxisVal)) {
-
         objects.selectAll(".scatterPlotCircle")
             .data(results)
             .enter().append("circle")
@@ -173,24 +175,47 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
                 return color(d.sustIndex);
             })
             .on("mouseover", function (d) {
-                tooltipScatter.transition()
-                    .duration(200)
-                    .style("opacity", .9)
-                    .style("left", (d3.event.pageX + 5) + "px")
-                    .style("top", (d3.event.pageY - 28) + "px");
-
                 tooltipScatter.html(d.name + "<br/> (" + +d[xAxisVal]
-                        + ", " + +d[yAxisVal] + ")");
+                    + ", " + +d[yAxisVal] + ")");
+
+                showInteractionElements(d.name, d.address, true, false, false);
             })
             .on("mouseout", function (d) {
-                tooltipScatter.transition()
-                    .duration(500)
-                    .style("opacity", 0);
+                hideInteractionElements();
             })
             .on("click", function(d) {
-                // @TODO highlight current element
-
-                linkData(d.name, d.address, true, false, false);
+                showInteractionElements(d.name, d.address, true, false, false);
             });
+    }
+
+//    IDEA; implement LINEAR, POWER, and LOGARITHMIC
+
+    /**
+     * Least Squares Trendline
+     *
+     * @param xSeries
+     * @param ySeries
+     * @returns slope, intercept, and r-square of the line
+     */
+    function leastSquares(xSeries, ySeries) {
+        var reduceSumFunc = function(prev, cur) { return prev + cur; };
+
+        var xBar = xSeries.reduce(reduceSumFunc) * 1.0 / xSeries.length;
+        var yBar = ySeries.reduce(reduceSumFunc) * 1.0 / ySeries.length;
+
+        var ssXX = xSeries.map(function(d) { return Math.pow(d - xBar, 2); })
+            .reduce(reduceSumFunc);
+
+        var ssYY = ySeries.map(function(d) { return Math.pow(d - yBar, 2); })
+            .reduce(reduceSumFunc);
+
+        var ssXY = xSeries.map(function(d, i) { return (d - xBar) * (ySeries[i] - yBar); })
+            .reduce(reduceSumFunc);
+
+        var slope = ssXY / ssXX;
+        var intercept = yBar - (xBar * slope);
+        var rSquare = Math.pow(ssXY, 2) / (ssXX * ssYY);
+
+        return [slope, intercept, rSquare];
     }
 }

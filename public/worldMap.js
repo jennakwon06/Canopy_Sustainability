@@ -91,22 +91,19 @@ function drawBubbles(results) {
         .style("fill", function(d) {
             return color(d.sustIndex);})
         .on("mouseover", function(d) {
-            tooltipMap.transition()
-                .duration(200)
-                .style("opacity", .9)
-                .style("left", (d3.event.pageX + 5) + "px")
-                .style("top", (d3.event.pageY - 28) + "px");
             tooltipMap
                 .html("City: " + d.address
                     + "<br> Sustainability Index: " + Math.round(d.sustIndex * 100) / 100);
+
+            showInteractionElements(d.name, d.address, false, true, false);
+
         })
         .on("mouseout", function(d) {
-            tooltipMap.transition()
-                .duration(500)
-                .style("opacity", 0);
+            hideInteractionElements();
+
         })
         .on("click", function(d) {
-            linkData(false, d.address, false, true, false);
+            showInteractionElements(d.name, d.address, false, true, false);
         });
 }
 
