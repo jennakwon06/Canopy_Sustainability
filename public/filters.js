@@ -143,8 +143,8 @@ d3.csv('/data/master.csv', function (data) {
     globalData = data;
 
     // Chart
-    var FULL_CHART_WIDTH = $(".filter_container").width();
-    var HALF_CHART_WIDTH = ($(".filter_container").width() - 10) / 2;
+    var FULL_CHART_WIDTH = $(".filter_container").width() - 30;
+    var HALF_CHART_WIDTH = ($(".filter_container").width() - 30) / 2;
     var HALF_CHART_HEIGHT = 60;
     var numberFormat = d3.format('.2f');
 
