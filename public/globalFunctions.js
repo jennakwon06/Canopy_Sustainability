@@ -71,16 +71,18 @@ var fillTable = function(results) {
         var a2 = document.createAttribute("colspan");
         a2.value = 1;
         tr2tdPdf.setAttributeNode(a2);
-        for (j = 1; j <= results[i].numReports.length; j++) {
-            var pdfLink = document.createElement('a');
-            pdfLink.href = "/reports/" + results[i].name + "/" + j + ".pdf";
-            tr2tdPdf.appendChild(pdfLink);
-            html = "Report " + j ;
-            $(tr2tdPdf).html(html);
-        }
 
-        $(tr2tdPdf).hide(); //show on toggle
-        tr2.appendChild(tr2tdPdf);
+        if (+results[i].numReports) {
+            for (j = 1; j <= +results[i].numReports; j++) {
+                var pdfLink = document.createElement('a');
+                pdfLink.href = "/reports/" + results[i].name + "/" + j + ".pdf";
+                tr2tdPdf.appendChild(pdfLink);
+                html = "Report " + j ;
+                $(tr2tdPdf).html(html);
+            }
+            $(tr2tdPdf).hide(); //show on toggle
+            tr2.appendChild(tr2tdPdf);
+        }
 
         table.append(tr);
         table.append(tr2);

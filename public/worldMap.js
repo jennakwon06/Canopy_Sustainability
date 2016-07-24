@@ -6,6 +6,10 @@ function drawMap(results) {
         d3.select(".mapSvg").remove();
     }
 
+    var radius = d3.scale.sqrt() //accurate encoding https://groups.google.com/forum/#!topic/d3-js/mcJ8GE6_fq4
+        .domain([0, 1e6])
+        .range([0, 15]);
+
     var width = $(".resultMapView").width();
     var height = $(".resultMapView").height();
 
@@ -78,6 +82,10 @@ function drawBubbles(results) {
     if (!d3.select(".bubble").empty()) {
         d3.select(".bubble").remove();
     }
+
+    var radius = d3.scale.sqrt() //accurate encoding https://groups.google.com/forum/#!topic/d3-js/mcJ8GE6_fq4
+        .domain([0, 1e6])
+        .range([0, 15]);
 
     var arrayOfLocations = [];
 

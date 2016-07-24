@@ -1,5 +1,3 @@
-console.log("loading global var file");
-
 var globalFilter; // filter maintained on name field
 var globalData; // holds all data objects
 
@@ -50,22 +48,23 @@ var color = d3.scale.linear()
 d3.csv('/data/master.csv', function (data) {
     globalData = [];
 
-    console.log("loading filters var file");
-
     // Preprocess raw data field headers and store them
     data.forEach(function (d) {
 
         var obj = {};
-
         // metadata
         obj.name = d.name;
         obj.address = d.address;
-        obj.latitute = d.latitude;
+        obj.latitude = d.latitude;
         obj.longitude = d.longitude;
+
+        obj.numReports = d["Number of Available Reports"];
 
         //Revenue T12M, Price
         obj.revenue = d["Revenue T12M"];
         obj.price = d["Price"];
+
+        //Ticker,GR_name,name,address,latitude,longitude,Price,Revenue T12M,ISIN,ICB Industry Name,ICB Sector Name,Registered Country Location,Total Water Withdrawal,Tot Wtr Dschgd:Y,Wtr Intens/Sls:Y,Wste Per Sls:Y,Engy Intens/Sls:Y,Energy Intensity per Assets,Wste Sent to Ldflls:Y,Waste Generated per Assets,GHG Scope 3:Y,GHG Scope 2:Y,GHG Scope 1:Y,Tot Wtr Use:Y,Waste Recycl:Y,Total Waste:Y,Energy Consump:Y,Wste Sent to Ldflls:Y,URL,Climate Chg Pol:Y,Equal Opp Pol:Y,Water Policy,Human Rights Pol:Y,Energy Effic Pol:Y,Bus Ethics Pol:Y,Biodiv Pol:Y,# Available Reports,# Available Reports
 
         obj.country = d["Registered Country Location"];
         obj.industry = d["ICB Industry Name"];
@@ -79,7 +78,6 @@ d3.csv('/data/master.csv', function (data) {
         obj.ccImplemented = d["Climate Chg Pol:Y"];
         obj.equalOpp = d["Equal Opp Pol:Y"];
         obj.waterPolicy = d["Water Policy"];
-
 
         // Total Water Withdrawal Tot Wtr Dschgd:Y Tot Wtr Use:Y
         obj.totalWaterUse = d["Tot Wtr Use:Y"]; // total water use * 1,000,000 / sales, ESO16
@@ -99,26 +97,22 @@ d3.csv('/data/master.csv', function (data) {
         obj.ghg2 = d["GHG Scope 2:Y"];
         obj.ghg1 = d["GHG Scope 1:Y"];
 
-        obj.numReports = d["# Available Reports"];
-
         globalData.push(obj);
     });
 
     for (var i = 0; i < globalData.length; i++) {
         var maxValues = [];
-        for (var j = 0; i < fieldsFilters.length; j++) {
+        for (var j = 0; j < fieldsFilters.length; j++) {
             maxValues.push(d3.extent(globalData, function (d) {
                 return +d[fieldsFilters[j]];
             })[1]);
         }
 
-        console.log(maxValues);
-
         // calculate initial index
         var curScore = 0;
         var counter = 0;
         var arr = [];
-        for (j = 0; i < fieldsFilters.length; j++) {
+        for (j = 0; j < fieldsFilters.length; j++) {
             if (+globalData[i][fieldsFilters[j]]) {
                 counter++;
                 var temp = {
@@ -148,6 +142,7 @@ d3.csv('/data/master.csv', function (data) {
     //### Create Crossfilter Dimensions and Groups. NOTE: BE CAREFUL OF HOW MANY DIMENSIONS YOU INSTANTIATE
     var sp500 = crossfilter(globalData);
     var all = sp500.groupAll();
+
 
     // GENERAL
     globalFilter = sp500.dimension(function (d) {return d.name;});
@@ -325,7 +320,7 @@ d3.csv('/data/master.csv', function (data) {
 
     (function () {
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {
+        var minMax = d3.extent(globalData, function (d) {
             return +d.ghg1;
         });
         var min = minMax[0];
@@ -363,7 +358,7 @@ d3.csv('/data/master.csv', function (data) {
 //    BAR CHART: ghg2
     (function () {
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {
+        var minMax = d3.extent(globalData, function (d) {
             return +d.ghg2;
         });
         var min = minMax[0];
@@ -389,7 +384,7 @@ d3.csv('/data/master.csv', function (data) {
     //BAR CHART: GHG3
     (function () {
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {
+        var minMax = d3.extent(globalData, function (d) {
             return +d.ghg3;
         });
         var min = minMax[0];
@@ -416,7 +411,7 @@ d3.csv('/data/master.csv', function (data) {
     //BAR CHART: WATER INTENSITY PER SALES
     (function () {
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {
+        var minMax = d3.extent(globalData, function (d) {
             return +d.totalWaterUse;
         });
         var min = minMax[0];
@@ -443,7 +438,7 @@ d3.csv('/data/master.csv', function (data) {
     //BAR CHART: WATER WITHDRAWL
     (function () {
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {
+        var minMax = d3.extent(globalData, function (d) {
             return +d.totalWaterWithdrawl;
         });
         var min = minMax[0];
@@ -469,7 +464,7 @@ d3.csv('/data/master.csv', function (data) {
     //BAR CHART: WATER DISCHARGED
     (function () {
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {
+        var minMax = d3.extent(globalData, function (d) {
             return +d.totalWaterDischarged;
         });
         var min = minMax[0];
@@ -495,7 +490,7 @@ d3.csv('/data/master.csv', function (data) {
     //BAR CHART: WASTE INTENSITY PER SALES
     (function () {
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {
+        var minMax = d3.extent(globalData, function (d) {
             return +d.totalWaste;
         });
         var min = minMax[0];
@@ -521,7 +516,7 @@ d3.csv('/data/master.csv', function (data) {
     //BAR CHART: WASTE SENT TO LANDFILL
     (function () {
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {
+        var minMax = d3.extent(globalData, function (d) {
             return +d.wasteSentToLandfill;
         });
         var min = minMax[0];
@@ -547,7 +542,7 @@ d3.csv('/data/master.csv', function (data) {
     //BAR CHART: WASTE RECYCLED
     (function () {
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {
+        var minMax = d3.extent(globalData, function (d) {
             return +d.wasteRecycled;
         });
         var min = minMax[0];
@@ -573,7 +568,7 @@ d3.csv('/data/master.csv', function (data) {
     //BAR CHART: total energy consumped
     (function () {
         var binCount = 100;
-        var minMax = d3.extent(data, function (d) {
+        var minMax = d3.extent(globalData, function (d) {
             return +d.totalEnergyConsumption;
         });
         var min = minMax[0];
@@ -644,28 +639,7 @@ d3.csv('/data/master.csv', function (data) {
     //simply call `.renderAll()` to render all charts on the page
     dc.renderAll();
     dc.redrawAll();
-
-    /*
-     // Or you can render charts belonging to a specific chart group
-     dc.renderAll('group');
-     // Once rendered you can call `.redrawAll()` to update charts incrementally when the data
-     // changes, without re-rendering everything
-     // Or you can choose to redraw only those charts associated with a specific chart group
-     dc.redrawAll('group');
-     */
-
-    //rotateLabels();
-
 });
-
-function rotateLabels() {
-    d3.selectAll(".axis.x").selectAll(".tick text").style("text-anchor", "end")
-        .attr("dx", "-.8em")
-        .attr("dy", ".15em")
-        .attr("transform", function(d) {
-            return "rotate(-65)"
-        });
-}
 
 //histogram = function(vector,options) {
 //

@@ -32,9 +32,6 @@ var iList = 0;
  */
 var path;
 var projection;
-var radius = d3.scale.sqrt() //accurate encoding https://groups.google.com/forum/#!topic/d3-js/mcJ8GE6_fq4
-    .domain([0, 1e6])
-    .range([0, 15]);
 var tooltipMap;
 var zoom;
 
