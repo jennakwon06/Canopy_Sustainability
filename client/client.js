@@ -6,6 +6,7 @@ console.log(Meteor);
 Meteor.startup(function() {
 	$.getScript("/datatables.min.js");
 	$.getScript("/utility.js");
+	$.getScript("/globalVariables.js");
 	$.getScript("/gradientBar.js");
 	$.getScript("/globalFunctions.js");
 	$.getScript("/scatterplot.js");

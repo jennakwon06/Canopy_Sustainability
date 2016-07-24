@@ -1,7 +1,4 @@
-console.log("gradient bar load");
-
 var drawGradientBar = function() {
-
     if (d3.select(".gradientBar").empty()) {
         var w = $("#gradientLegend").width();
         var h = 15;
@@ -40,15 +37,6 @@ var drawGradientBar = function() {
             .orient("top")
             .tickPadding(-6);
 
-        //.call(xAxis)
-        //    .append("text")
-        //    .classed("label", true)
-        //    .attr("x", width)
-        //    .attr("y", margin.bottom - 10)
-        //    .style("text-anchor", "end")
-        //    .text(xAxisVal);
-        //
-
         key.append("g")
             .attr("class", "x axis")
             .attr("transform", "translate(41,10)")
@@ -60,6 +48,5 @@ var drawGradientBar = function() {
             .attr("dx", "0")
             .attr("dy", "0.71em")
             .style("text-anchor", "end");
-        //.text("axis title");
     }
 };

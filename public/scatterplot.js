@@ -1,6 +1,3 @@
-//@TODO refactor to take in different x and y axis values
-console.log("scatterplot load");
-
 function changeX() {
     xaxis = document.getElementById("xaxisMeasure");
     selectedX = xaxis.options[xaxis.selectedIndex].value;
@@ -16,12 +13,6 @@ function changeY() {
     selectedY = yaxis.options[yaxis.selectedIndex].value;
     drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY)
 }
-
-function isBlank(str) {
-    return (!str || /^\s*$/.test(str));
-}
-
-var tooltipScatter;
 
 function drawScatterPlot(results, xAxisVal, yAxisVal) {
     //clear previous

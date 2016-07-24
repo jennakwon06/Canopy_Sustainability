@@ -1,12 +1,9 @@
 Template.Home.rendered = function() {
+    // subscribe to databases
     Meteor.subscribe('userFilters');
     Meteor.subscribe('userResults');
     Meteor.subscribe('fs.files');
 };
-
-var iScatter = 0;
-var iMap = 0;
-var iList = 0;
 
 var findPDFs = function(company) {
     // Check if database is correctly set up
@@ -165,82 +162,17 @@ Template.Home.events({
     },
 
     'click #resetFilters': function(e) {
-        for (var i = 0; i < fieldsFilters.length; i++) {
-            document.getElementById(fieldsFilters[i] + "Weight").value = "100";
-        }
         dc.filterAll();
         dc.redrawAll();
-        refreshPage();
-        $("#breadcrumb li").remove();
+        resetWeightSelectors();
+        resetPage();
+        removeBreadCrumb();
     },
-
-
-    //'click #resetAllFiltersButton': function(e) {
-    //    dc.filterAll();
-    //    dc.redrawAll();
-    //    onChange();
-    //    $("#breadcrumb li").remove();
-    //    //$('.companiesCount').html(globalFilter.top(Infinity).length);
-    //},
-    //
-    //'click #resetAllScalesButton': function(e) {
-    //    for (var i = 0; i < fields.length; i++) {
-    //        document.getElementById(fieldsFilters[i] + "Weight").value = "100";
-    //    }
-    //    onChange();
-    //    $("#breadcrumb li").remove();
-    //},
-
-    //'click #applyFilterButton': function (e) {
-    //	console.log('checking database connection');
-    //	console.log(Filters.find().count());
-    //	console.log(Results.find().count());
-    //	console.log(PDFs.find().count());
-    //
-    //	$('#saveResultButton').removeClass("disabled");
-    //	$('#resultListViewButton').removeClass("disabled");
-    //	$('#resultMapViewButton').removeClass("disabled");
-    //	$('#resultScatterPlotViewButton').removeClass("disabled");
-    //
-    //	e.preventDefault();
-    //
-    //	//$('.initView').attr("style", "display: none");
-    //	//$('.resultListView').attr("style", "display: block");
-    //
-    //	calculateIndex();
-    //
-    //	fillTable(globalFilter.top(Infinity).reverse());
-    //	$(".rowInfo").hide();
-    //
-    //	drawBubblesOnMap(globalFilter.top(Infinity));
-    //	drawScatterPlot(globalFilter.top(Infinity));
-    //
-    //	Filters.insert({
-    //	});
-    //},
 
     'click #sortByCompanyButton': function(e) {
         fillTable(globalFilter.top(Infinity).reverse())
     },
-
-    'click #sortByIndustryButton': function(e) {
-        fillTable(globalFilter.top(Infinity).sort(function(a,b) {
-            return a.industry.localeCompare(b.industry);
-        }))
-    },
-
-    'click #sortBySectorButton': function(e) {
-        fillTable(globalFilter.top(Infinity).sort(function(a,b) {
-            return a.sector.localeCompare(b.sector);
-        }))
-    },
-
-    'click #sortByCountryButton': function(e) {
-        fillTable(globalFilter.top(Infinity).sort(function(a,b) {
-            return a.country.localeCompare(b.country);
-        }))
-    },
-
+    
     'click #sortByScoreButton': function(e) {
         fillTable(globalFilter.top(Infinity).sort(function(a,b) {
             if (isNaN(a.sustIndex) && isNaN(b.sustIndex)) {
@@ -253,6 +185,20 @@ Template.Home.events({
                 return a.sustIndex - b.sustIndex;
             }
         }))
+    },
+    
+    'click #sortByNumPDFReport': function(e) {
+        fillTable(globalFilter.top(Infinity).sort(function(a,b) {
+            if (isNaN(a["# Available Reports"]) && isNaN(b["# Available Reports"])) {
+                return 0;
+            } else if (isNaN(a["# Available Reports"])) {
+                return 1;
+            } else if (isNaN(b["# Available Reports"])) {
+                return -1;
+            } else {
+                return a["# Available Reports"] - b["# Available Reports"];
+            }
+        }))  
     },
 
     'click .scatterExpand': function(e) {

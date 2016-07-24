@@ -1,9 +1,6 @@
-console.log("global func load");
-
-var globalRawDataTable;
-
 /*
- * Interact with list view
+ * Populate list entries on the list panel based on filtered results
+ * @param results filtered results
  */
 var fillTable = function(results) {
     var table = $(".resultsTable");
@@ -12,9 +9,8 @@ var fillTable = function(results) {
     $('.resultsTable > tbody').empty();
 
     for (var i = 0; i <= results.length - 1; i++) {
+        // attach name and address to a row
         var tr = document.createElement('tr');
-
-        // set up rows with name and address for data linking
         tr.className += "clickableRow";
         var aName = document.createAttribute("name");
         aName.value = results[i].name;
@@ -23,6 +19,7 @@ var fillTable = function(results) {
         aAddress.value = results[i].address;
         tr.setAttributeNode(aAddress);
 
+        // attach logo and company link
         var tdLogo = img_create("/images/companylogos/" + results[i].name + ".png");
         var tdName = document.createElement('td');
         var tdNameALink = document.createElement('a');
@@ -30,6 +27,7 @@ var fillTable = function(results) {
         tdNameALink.appendChild(document.createTextNode(results[i].name));
         tdName.appendChild(tdNameALink);
 
+        // attach sustainability index and a rectangular indicator
         var tdSustIndex = document.createElement('td');
         var a0 = document.createAttribute("class");
         a0.value = "sustIndexCell";
@@ -39,61 +37,75 @@ var fillTable = function(results) {
             .attr("height", 15).append("g").append("rect").attr("width", 15).attr("height", 15)
             .style("fill", results[i].color);
 
-        //var tdIndustry = document.createElement('td');
-        //var tdSector = document.createElement('td');
-        //var tdCountry = document.createElement('td');
-        //tdIndustry.appendChild(document.createTextNode(results[i].industry));
-        //tdSector.appendChild(document.createTextNode(results[i].sector));
-        //tdCountry.appendChild(document.createTextNode(results[i].country));
+        // attach pdf informations
+        var tdPdf = document.createElement('td');
+        tdPdf.appendChild(document.createTextNode(results[i]["# Available Reports"]));
 
         tr.appendChild(tdLogo);
         tr.appendChild(tdName);
-        //tr.appendChild(tdIndustry);
-        //tr.appendChild(tdSector);
-        //tr.appendChild(tdCountry);
         tr.appendChild(tdSustIndex);
+        tr.appendChild(tdPdf);
 
         // Set up secondary rows that expand upon click of primary rows
+
+        // raw data information
         var tr2 = document.createElement('tr');
         tr2.id = "rowInfo";
+
         var tr2td = document.createElement('td');
         var a1 = document.createAttribute("colspan");
-        a1.value = 5;
+        a1.value = 3;
         tr2td.setAttributeNode(a1);
         var html = "";
-        for (var j = 0; j < results[i].dataInfo.length; j++) { // j iterates dataInfo array
-            html += results[i].dataInfo[j].name + ": " + roundTo100(results[i].dataInfo[j].value)
+        for (var j = 0; j < results[i].dataInfo.length; j++) {
+            html += results[i].dataInfo[j].name + ": "
+                + roundTo100(results[i].dataInfo[j].value)
                 + "(" + roundTo100(results[i].dataInfo[j].weight) + ") <br> ";
         }
-
-        //html += results[i].URL + "<br>";
         $(tr2td).html(html);
-        $(tr2td).hide();
-
+        $(tr2td).hide(); //show on toggle
         tr2.appendChild(tr2td);
+
+        // pdf information
+        var tr2tdPdf = document.createElement('td');
+        var a2 = document.createAttribute("colspan");
+        a2.value = 1;
+        tr2tdPdf.setAttributeNode(a2);
+        for (j = 1; j <= results[i].numReports.length; j++) {
+            var pdfLink = document.createElement('a');
+            pdfLink.href = "/reports/" + results[i].name + "/" + j + ".pdf";
+            tr2tdPdf.appendChild(pdfLink);
+            html = "Report " + j ;
+            $(tr2tdPdf).html(html);
+        }
+
+        $(tr2tdPdf).hide(); //show on toggle
+        tr2.appendChild(tr2tdPdf);
 
         table.append(tr);
         table.append(tr2);
     }
 };
 
-var fillRawDataTable = function(results) {
+
+/**
+ * Populate raw data table with all available data of S & P 500 companies
+ * @param data
+ */
+var fillRawDataTable = function(data) {
     var table = $(".rawDataTable");
 
     var columns = ["name", "ticker", "address", "latitude", "longitude", "price", "revenue", "industry", "sector", "ghg1", "ghg2", "ghg3", "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged",
     "totalWaste", "wasteRecycled", "wasteSentToLandfill", "totalEnergyConsumption", "isin"];
 
-    for (var i = 0; i <= results.length - 1; i++) {
+    for (var i = 0; i <= data.length - 1; i++) {
         var tr = document.createElement('tr');
         for (var j = 0; j < columns.length; j++) {
             var td = document.createElement('td');
-            td.appendChild(document.createTextNode(results[i][columns[j]]));
+            td.appendChild(document.createTextNode(data[i][columns[j]]));
             tr.appendChild(td);
         }
         table.append(tr);
-        //asdfasdfasdfa
-        //asdfasdfasdfasdf
-
     }
 
     // attach data table
@@ -119,40 +131,25 @@ var fillRawDataTable = function(results) {
         colReorder: true
     });
 
-    //globalRawDataTable.draw().
-    //    $(".dataTables_scrollHeadInner").css({"width":"100%"});
-    //    $(".table ").css({"width":"100%"});
-    //});
-
-    //console.log("what makes it redraw");
-
-    ////
-    ////console.log("what makes it redraw?");
-    ////table.DataTable().draw();
-    //
-    ////https://datatables.net/forums/discussion/14342/column-header-not-aligned-with-column-data-with-horizontal-scrolling/p2
-    //
-    //var ths = $(".dataTables_scrollHeadInner").children('table').children('thead').children('tr').children('th');
-    //var tds = $(".dataTables_scrollBody").children('table').children('tbody').children('tr:first-child').children('td');
-    //
-    //for (var i = 0; i < ths.length; i++) {
-    //    var newOuterWidth = $(tds[i]).outerWidth();
-    //    var newWidth = $(tds[i]).width();
-    //    $(ths[i]).width(newWidth);
-    //    $(ths[i]).outerWidth(newOuterWidth);
-    //}
-    //
-    //$(".rawDataTable").css({"table-layout": "fixed"});
     $(".rawDataTable").css({"display": "none"});
 };
 
-var normalizeSustIndex = function(d, fieldToNormalizeWith) {
-    calculateNormalizedIndex();
+/**
+ * Upon selection of "Normalize with..." option, calculate normalized sustainability index
+ * @param d
+ * @param fieldToNormalizeWith
+ */
+var normalizeSustIndex = function(fieldToNormalizeWith) {
+    calculateNormalizedIndex(fieldToNormalizeWith.value);
     fillTable(globalFilter.top(Infinity).reverse()); //wouldn't change
     drawBubbles(globalFilter.top(Infinity)); //wouldn't change
     drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY); //wouldn't change
 };
 
+/**
+ * Change filtered results upon the change in filter / weight elements
+ * @param d
+ */
 var onChange = function(d) {
     calculateIndex();
     fillTable(globalFilter.top(Infinity).reverse());
@@ -161,11 +158,21 @@ var onChange = function(d) {
     insertBreadCrumb(d);
 };
 
-var refreshPage = function(d) {
+/**
+ * Reset all viz after click on resetFilters button
+ * @param d
+ */
+var resetPage = function(d) {
     calculateIndex();
     fillTable(globalFilter.top(Infinity).reverse());
     drawBubbles(globalFilter.top(Infinity));
     drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
+};
+
+var resetWeightSelectors = function(d) {
+    for (var i = 0; i < fieldsFilters.length; i++) {
+        document.getElementById(fieldsFilters[i] + "Weight").value = "100";
+    }
 };
 
 var showInteractionElements = function(name, address, scatter, map, list) {
@@ -313,10 +320,6 @@ var hideInteractionElements = function(){
 
 };
 
-$.fn.exists = function () {
-    return this.length !== 0;
-};
-
 var insertBreadCrumb = function(d) {
     if (!$("li#" + d).exists() && d !== undefined) {
         var breadCrumb = $("#breadcrumb");
@@ -344,22 +347,10 @@ var insertBreadCrumb = function(d) {
     }
 };
 
-var xaxis = document.getElementById("xaxisMeasure");
-var selectedX = xaxis.options[xaxis.selectedIndex].value;
-var yaxis = document.getElementById("yaxisMeasure");
-var selectedY = yaxis.options[yaxis.selectedIndex].value;
+var removeBreadCrumb = function() {
+    $("#breadcrumb li").remove();
+};
 
-function img_create(src, alt, title) {
-    var img = document.createElement('img');
-    img.src= src;
-    img.height = 30;
-    img.width = 30;
-    if (alt!=null) img.alt= alt;
-    if (title!=null) img.title= title;
-    return img;
-
-    //https://jsfiddle.net/maccman/2kxxgjk8/3/
-}
 /**
  * Monitor the scales
  */
@@ -439,6 +430,8 @@ function calculateIndex() {
         // @TODO data info stays here if I want to show more than name & value.
         // @TODO if I want to show weights and details of index calculation, then it has to change dynamically.
         var arr = [];
+        console.log("how long is the fieldsfilters" + fieldsFilters.length);
+
         for (i = 0; i < fieldsFilters.length; i++) {
             if (+d[fieldsFilters[i]]) { //only count values that are available
                 var object = {
@@ -457,35 +450,28 @@ function calculateIndex() {
         }
 
         d.dataInfo = arr;
-
-        if (!totalWeight) {
-            d.sustIndex = NaN;
-            d.color = "gray";
-        } else {
-            d.sustIndex = curScore;
-            d.color = color(d.sustIndex);
-        }
+        d.sustIndex = totalWeight ? curScore : NaN;
+        d.color = totalWeight ? color(d.sustIndex) : "gray";
     });
 }
-
 
 /*
  * Populate sustainability index data field based on selected weights and chosen field to normalize values with
  */
 function calculateNormalizedIndex(fieldToNormalizeWith) {
 
-    // calculate maximum normalized field values across all dimensions ;
+    // calculate maximum normalized field values across all dimensions;
     var i;
     var maxValues = [];
     for (i = 0; i < fieldsFilters.length; i++) {
-        maxValues.push(d3.extent(globalData, function (d) {return +d[fieldsFilters[i]] / +d.revenue;})[1]);
+        maxValues.push(d3.extent(globalData, function (d) {return +d[fieldsFilters[i]];})[1]);
     }
 
     globalData.forEach(function (d) {
         var curScore = 0;
-        var totalWeight = 0;
 
         // Gather selected scale weights
+        var totalWeight = 0;
         for (i = 0; i < fieldsFilters.length; i++) {
             if (+d[fieldsFilters[i]]) { // nonzero if there's at least one data
                 totalWeight += parseInt(document.getElementById(fieldsFilters[i] + "Weight").value);
@@ -504,20 +490,14 @@ function calculateNormalizedIndex(fieldToNormalizeWith) {
                 object.weight = document.getElementById(fieldsFilters[i] + "Weight").value / totalWeight;
                 object.value = +d[fieldsFilters[i]];
                 arr.push(object);
-                var score = Math.log((d[fieldsFilters[i]]) / d.revenue) / Math.log(maxValues[i]);
+                var score = Math.log((d[fieldsFilters[i]]) / d[fieldToNormalizeWith]) / Math.log(maxValues[i] / d[fieldToNormalizeWith]);
                 score = score > 0 ? score : 0;
                 curScore += score * object.weight;
             }
         }
 
         d.dataInfo = arr;
-
-        if (!totalWeight) {
-            d.sustIndex = NaN;
-            d.color = "gray";
-        } else {
-            d.sustIndex = curScore;
-            d.color = color(d.sustIndex);
-        }
+        d.sustIndex = totalWeight ? curScore : NaN;
+        d.color = totalWeight ? color(d.sustIndex) : "gray";
     });
 }

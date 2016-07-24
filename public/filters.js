@@ -1,43 +1,32 @@
-var globalFilter;
-var globalData;
-var sp500;
+console.log("loading global var file");
 
-// Filter chart objects
+var globalFilter; // filter maintained on name field
+var globalData; // holds all data objects
+
 var companiesCount = dc.dataCount('.companiesCount');
-
 var industryChart = dc.scrollableRowChart('#industry_chart');
 var sectorChart = dc.scrollableRowChart('#sector_chart');
-
-var ghg1Chart = dc.barChart('#ghg1Chart');
+var ghg1Chart = dc.barChart('#ghg1Chart'); // EMISSIONS
 var ghg2Chart = dc.barChart('#ghg2Chart');
 var ghg3Chart = dc.barChart('#ghg3Chart');
-
-// WATER
-var totalWaterUseChart = dc.barChart('#totalWaterUseChart');
+var totalWaterUseChart = dc.barChart('#totalWaterUseChart'); //WATER
 var totalWaterWithdrawlChart = dc.barChart('#totalWaterWithdrawlChart');
 var totalWaterDischargedChart = dc.barChart('#totalWaterDischargedChart');
-
-// WASTE
-var totalWasteChart = dc.barChart("#totalWasteChart");
+var totalWasteChart = dc.barChart("#totalWasteChart"); //WASTE
 var wasteRecycledChart = dc.barChart("#wasteRecycledChart");
 var wasteSentToLandfillChart = dc.barChart("#wasteSentToLandfillChart");
-
-// ENERGY
-var totalEnergyConsumptionChart = dc.barChart("#totalEnergyConsumptionChart");
-
-// BINARY
-var ccPolicyImplRowChart2 = dc.stackedRowChart('#ccPolicyImplRowChart2');
-
-var fieldsFilters = ["ghg1", "ghg2", "ghg3"
-    , "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged"
-    , "totalWaste", "wasteRecycled", "wasteSentToLandfill"
-    , "totalEnergyConsumption"];
-
+var totalEnergyConsumptionChart = dc.barChart("#totalEnergyConsumptionChart"); //ENERGY
+var ccPolicyImplRowChart2 = dc.stackedRowChart('#ccPolicyImplRowChart2'); //BINAR YBARS
 
 var fields = ["ghg1", "ghg2", "ghg3"
     , "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged"
     , "totalWaste", "wasteRecycled", "wasteSentToLandfill"
     , "totalEnergyConsumption", "price", "revenue" ];
+
+var fieldsFilters = ["ghg1", "ghg2", "ghg3"
+    , "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged"
+    , "totalWaste", "wasteRecycled", "wasteSentToLandfill"
+    , "totalEnergyConsumption"];
 
 var fieldUnits = {
     "ghg1" : "(1000MT)",
@@ -58,98 +47,106 @@ var color = d3.scale.linear()
     .range(["green", "red"])
     .interpolate(d3.interpolateHsl);
 
-
 d3.csv('/data/master.csv', function (data) {
+    globalData = [];
 
-    console.log("d3 asynchronous call from filters");
+    console.log("loading filters var file");
 
-    // data fields preprocess
+    // Preprocess raw data field headers and store them
     data.forEach(function (d) {
-        //Ticker,Name,address,latitude,longitude,registered Country Location,ISIN,ICB Industry Name,ICB Sector Name
-        d.country = d["Registered Country Location"];
-        d.industry = d["ICB Industry Name"];
-        d.sector = d["ICB Sector Name"];
-        d.isin = d["ISIN"];
-        d.ticker = d["Ticker"];
+
+        var obj = {};
+
+        // metadata
+        obj.name = d.name;
+        obj.address = d.address;
+        obj.latitute = d.latitude;
+        obj.longitude = d.longitude;
+
+        //Revenue T12M, Price
+        obj.revenue = d["Revenue T12M"];
+        obj.price = d["Price"];
+
+        obj.country = d["Registered Country Location"];
+        obj.industry = d["ICB Industry Name"];
+        obj.sector = d["ICB Sector Name"];
+        obj.isin = d["ISIN"];
+        obj.ticker = d["Ticker"];
+        obj.URL = d["URL"];
 
         // @TODO implement binary selectors
         //Climate Chg Pol:Y,Equal Opp Pol:Y,Water Policy,Human Rights Pol:Y, Energy Effic Pol:Y,Bus Ethics Pol:Y,Biodiv Pol:Y,
-        d.ccImplemented = d["Climate Chg Pol:Y"];
-        d.equalOpp = d["Equal Opp Pol:Y"];
-        d.waterPolicy = d["Water Policy"];
+        obj.ccImplemented = d["Climate Chg Pol:Y"];
+        obj.equalOpp = d["Equal Opp Pol:Y"];
+        obj.waterPolicy = d["Water Policy"];
 
-        //Climate Chg Pol:Y,Equal Opp Pol:Y,Water Policy,Human Rights Pol:Y, Energy Effic Pol:Y,Bus Ethics Pol:Y,Biodiv Pol:Y,
-        //Climate Chg Pol:Y,Equal Opp Pol:Y,Water Policy,Human Rights Pol:Y, Energy Effic Pol:Y,Bus Ethics Pol:Y,Biodiv Pol:Y,
-        //Climate Chg Pol:Y,Equal Opp Pol:Y,Water Policy,Human Rights Pol:Y, Energy Effic Pol:Y,Bus Ethics Pol:Y,Biodiv Pol:Y,
 
-        //Revenue T12M, Price
-        d.revenue = d["Revenue T12M"];
-        d.price = d["Price"];
-
-        // Total Water Withdrawal
-        // Tot Wtr Dschgd:Y
-        // Tot Wtr Use:Y
-        d.totalWaterUse = d["Tot Wtr Use:Y"]; // total water use * 1,000,000 / sales, ESO16
-        d.totalWaterWithdrawl = d["Total Water Withdrawal"]; // thousands of cubic meters
-        d.totalWaterDischarged = d["Tot Wtr Dschgd:Y"]; // thousands of cubic meters
+        // Total Water Withdrawal Tot Wtr Dschgd:Y Tot Wtr Use:Y
+        obj.totalWaterUse = d["Tot Wtr Use:Y"]; // total water use * 1,000,000 / sales, ESO16
+        obj.totalWaterWithdrawl = d["Total Water Withdrawal"]; // thousands of cubic meters
+        obj.totalWaterDischarged = d["Tot Wtr Dschgd:Y"]; // thousands of cubic meters
 
         //Waste Recycl:Y,Total Waste:Y,Wste Sent to Ldflls:Y
-        d.totalWaste = d["Total Waste:Y"];         //Total waste is ESO20
-        d.wasteSentToLandfill = d["Wste Sent to Ldflls:Y"]; //thousands of metric tons
-        d.wasteRecycled = d["Waste Recycl:Y"]; //total waste / total assets
+        obj.totalWaste = d["Total Waste:Y"];         //Total waste is ESO20
+        obj.wasteSentToLandfill = d["Wste Sent to Ldflls:Y"]; //thousands of metric tons
+        obj.wasteRecycled = d["Waste Recycl:Y"]; //total waste / total assets
 
         // Energy Consump:Y
-        d.totalEnergyConsumption = d["Energy Consump:Y"]; //  ESO14 : thousands of megawatt hours
+        obj.totalEnergyConsumption = d["Energy Consump:Y"]; //  ESO14 : thousands of megawatt hours
 
         //GHG Scope 3:Y,GHG Scope 2:Y,GHG Scope 1:Y
-        d.ghg3 = d["GHG Scope 3:Y"]; // thousands of metric tons
-        d.ghg2 = d["GHG Scope 2:Y"];
-        d.ghg1 = d["GHG Scope 1:Y"]; // thousands of metric tons
+        obj.ghg3 = d["GHG Scope 3:Y"];
+        obj.ghg2 = d["GHG Scope 2:Y"];
+        obj.ghg1 = d["GHG Scope 1:Y"];
 
-        //calculate initial index
+        obj.numReports = d["# Available Reports"];
+
+        globalData.push(obj);
+    });
+
+    for (var i = 0; i < globalData.length; i++) {
         var maxValues = [];
-        for (var i = 0; i < fieldsFilters.length; i++) {
-            maxValues.push(d3.extent(data, function (d) {
-                return +d[fieldsFilters[i]];
+        for (var j = 0; i < fieldsFilters.length; j++) {
+            maxValues.push(d3.extent(globalData, function (d) {
+                return +d[fieldsFilters[j]];
             })[1]);
         }
 
-        data.forEach(function (d) {
-            var curScore = 0;
-            var counter = 0;
-            var arr = [];
-            for (var i = 0; i < fieldsFilters.length; i++) {
-                if (+d[fieldsFilters[i]]) {
-                    counter++;
-                    var object = {
-                        name: "",
-                        value: 0
-                    };
-                    object.name = fieldsFilters[i];
-                    object.value = +d[fieldsFilters[i]];
-                    arr.push(object);
-                    var score = Math.log(d[fieldsFilters[i]]) / Math.log(maxValues[i]);
-                    score = score > 0 ? score : 0;
-                    curScore += score;
-                }
+        console.log(maxValues);
+
+        // calculate initial index
+        var curScore = 0;
+        var counter = 0;
+        var arr = [];
+        for (j = 0; i < fieldsFilters.length; j++) {
+            if (+globalData[i][fieldsFilters[j]]) {
+                counter++;
+                var temp = {
+                    name: "",
+                    value: 0
+                };
+                temp.name = fieldsFilters[j];
+                temp.weight = document.getElementById(fieldsFilters[j] + "Weight").value;
+                temp.value = +globalData[i][fieldsFilters[j]];
+                arr.push(temp);
+                var score = Math.log(globalData[i][fieldsFilters[j]]) / Math.log(maxValues[j]);
+                score = score > 0 ? score : 0;
+                curScore += score;
             }
+        }
 
-            d.dataInfo = arr;
-            d.sustIndex = curScore / counter; // AVERAGING
-            d.color = color(d.sustIndex);
-        });
-    });
-
-    globalData = data;
-
+        globalData[i].dataInfo = arr;
+        globalData[i].sustIndex = curScore / counter; // AVERAGING
+        globalData[i].color = color(globalData[i].sustIndex);
+    }
+    
     // Chart
     var FULL_CHART_WIDTH = $(".filter_container").width() - 30;
     var HALF_CHART_WIDTH = ($(".filter_container").width() - 30) / 2;
     var HALF_CHART_HEIGHT = 60;
-    var numberFormat = d3.format('.2f');
 
     //### Create Crossfilter Dimensions and Groups. NOTE: BE CAREFUL OF HOW MANY DIMENSIONS YOU INSTANTIATE
-    sp500 = crossfilter(data);
+    var sp500 = crossfilter(globalData);
     var all = sp500.groupAll();
 
     // GENERAL
@@ -158,7 +155,6 @@ d3.csv('/data/master.csv', function (data) {
     if (!jQuery.isFunction(fillTable)) {
         $.getScript("/globalFunctions.js");
     }
-
 
     fillTable(globalFilter.top(Infinity).reverse());
     fillRawDataTable(globalFilter.top(Infinity).reverse());
@@ -191,7 +187,6 @@ d3.csv('/data/master.csv', function (data) {
     //var riskExp = sp500.dimension(function (d) {return d.riskExp == "1" ? 'Yes' : 'No';});
     var ccImplemented = sp500.dimension(function (d) {return +d.ccImplemented == 1 ? 'Yes' : 'No';});
     //var WasteReductionPolicy = sp500.dimension(function (d) {return d.wasteReductionPolicy == "1" ? 'Yes' : 'No';});
-
 
     companiesCount
         .dimension(sp500)
@@ -246,11 +241,8 @@ d3.csv('/data/master.csv', function (data) {
     d3.select("#filterBar")
         .selectAll("strong")
         .on("mouseover", function (d) {
+
             var text = fieldMetadata[$(this).attr("id")];
-
-            console.log(fieldMetadata);
-
-            console.log(text);
             tooltipDiv.transition()
                 .duration(200)
                 .style("opacity", .9)
@@ -332,19 +324,6 @@ d3.csv('/data/master.csv', function (data) {
     }
 
     (function () {
-
-        //http://stackoverflow.com/questions/15191258/properly-display-bin-width-in-barchart-using-dc-js-and-crossfilter-js
-        //console.log("printing ghg1");
-        //console.log(ghg1.top(Infinity));
-        //var arr = [];
-        //ghg1.forEach(function (x) {
-        //    console.log(x);
-        //    //arr.push(+x.ghg1);
-        //});
-        //http://jrideout.github.io/histogram-pretty/
-        //var hist = histogram(arr);
-        //console.log(hist);
-
         var binCount = 100;
         var minMax = d3.extent(data, function (d) {
             return +d.ghg1;
@@ -353,21 +332,7 @@ d3.csv('/data/master.csv', function (data) {
         var max = minMax[1];
         var binWidth = (max - min) / binCount;
 
-
-        //var ghg1Group = ghg1.group(function(d) {
-        //    if (d) {
-        //        return Math.floor(+d / binWidth) * binWidth;
-        //    }
-        //});
-
         var ghg1Group = ghg1.group().reduce(reduceAdd, reduceRemove, reduceInitial);
-
-        //var ghg1UndefinedGroup = ghg1.group(function(d) {
-        //    if (!d) {
-        //        return d;
-        //    }
-        //});
-        //
 
         ghg1Chart
             .chartId("ghg1")
