@@ -39,7 +39,7 @@ var fillTable = function(results) {
 
         // attach pdf informations
         var tdPdf = document.createElement('td');
-        tdPdf.appendChild(document.createTextNode(results[i]["# Available Reports"]));
+        tdPdf.appendChild(document.createTextNode(results[i].numReports));
 
         tr.appendChild(tdLogo);
         tr.appendChild(tdName);
@@ -141,7 +141,11 @@ var fillRawDataTable = function(data) {
  * @param d
  * @param fieldToNormalizeWith
  */
-var normalizeSustIndex = function(fieldToNormalizeWith) {
+var performSustIndexNormalization = function(fieldToNormalizeWith) {
+    console.log(fieldToNormalizeWith);
+    //if ($('#checkArray:checkbox:checked').length > 0;) {
+
+    //}
     calculateNormalizedIndex(fieldToNormalizeWith.value);
     fillTable(globalFilter.top(Infinity).reverse()); //wouldn't change
     drawBubbles(globalFilter.top(Infinity)); //wouldn't change
