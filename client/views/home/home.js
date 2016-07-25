@@ -257,7 +257,7 @@ Template.Home.events({
     'click #exportButton' : function(e) {
         var outputFile = "result.csv";
         exportToCsv.apply(this, [$('.resultListView > table'), outputFile]);
-        //exportToCsv($('.resultListView > table'), outputFile);
+
     }
 });
 
@@ -279,9 +279,7 @@ function findPDFs(company) {
 }
 
 function exportToCsv($table, filename) {
-    var $headers = $table.find('tr:has(th)')
-        ,$rows = $table.find('tr:nth-child(odd)')
-
+    var $rows = $table.find('tr:nth-child(odd)')
     // Temporary delimiter characters unlikely to be typed by keyboard
     // This is to avoid accidentally splitting the actual contents
         ,tmpColDelim = String.fromCharCode(11) // vertical tab character
@@ -291,13 +289,10 @@ function exportToCsv($table, filename) {
         ,colDelim = '","'
         ,rowDelim = '"\r\n"';
 
-    console.log($headers);
-    console.log($rows);
+    $rows[0].removeChild($rows[0].childNodes[0]);
 
     // Grab text from table into CSV formatted string
     var csv = '"';
-    csv += formatRows($headers.map(grabRow));
-    csv += rowDelim;
     csv += formatRows($rows.map(grabRow)) + '"';
 
     // Data URI
@@ -310,14 +305,11 @@ function exportToCsv($table, filename) {
         });
         navigator.msSaveBlob(blob, filename);
     } else {
-        console.log("filename and csvdata");
-        console.log(filename)
-        console.log(csvData)
-        $(this)
+        $("#exportButton")
             .attr({
                 'download': filename
                 ,'href': csvData
-                //,'target' : '_blank' //if you want it to open in a new window
+                ,'target' : '_blank' //if you want it to open in a new window
             });
     }
 
@@ -332,11 +324,12 @@ function exportToCsv($table, filename) {
     }
     // Grab and format a row from the table
     function grabRow(i,row){
+        var first = true;
 
         var $row = $(row);
         //for some reason $cols = $row.find('td') || $row.find('th') won't work...
         var $cols = $row.find('td');
-        if(!$cols.length) $cols = $row.find('th');
+        if(!$cols.length) $cols = $row.find('th:gt(0)');
 
         return $cols.map(grabCol)
             .get().join(tmpColDelim);

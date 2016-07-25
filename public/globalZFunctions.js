@@ -1,10 +1,5 @@
 // !-------- Functions that are used across various JS scripts in public directory and client/views directory ------!
 
-var fieldsFilters = ["ghg1", "ghg2", "ghg3"
-    , "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged"
-    , "totalWaste", "wasteRecycled", "wasteSentToLandfill"
-    , "totalEnergyConsumption"];
-
 /*
  * Populate list entries on the list panel based on filtered results
  * @param results filtered results
@@ -367,9 +362,7 @@ function calculateIndex() {
     for (i = 0; i < fieldsFilters.length; i++) {
         maxValues.push(d3.extent(globalData, function (d) {return +d[fieldsFilters[i]];})[1]);
     }
-
-    console.log(fieldsFilters);
-
+    
     globalData.forEach(function (d) {
         var curScore = 0;
         var totalWeight = 0;
@@ -412,15 +405,17 @@ function calculateIndex() {
  * Populate sustainability index data field based on selected weights and chosen field to normalize values with
  */
 function calculateNormalizedIndex(fieldToNormalizeWith) {
-
     var i;
 
-    // calculate a company whose normalized value is maximum
+    // calculate normalized max values
     var maxValues = [];
     for (i = 0; i < fieldsFilters.length; i++) {
         var curMax = 0;
         globalData.forEach(function(d) {
-           curMax = Math.max((+d[fieldsFilters[i]] / d[fieldToNormalizeWith]) , curMax);
+            if (+d[fieldsFilters[i]]) {
+                var revenueInBil = +d[fieldToNormalizeWith] / 1000000000;
+                curMax = Math.max((+d[fieldsFilters[i]] / revenueInBil) , curMax);
+            }
         });
         maxValues.push(curMax);
     }
@@ -448,7 +443,8 @@ function calculateNormalizedIndex(fieldToNormalizeWith) {
                 object.weight = document.getElementById(fieldsFilters[i] + "Weight").value / totalWeight;
                 object.value = +d[fieldsFilters[i]];
                 arr.push(object);
-                var score = Math.log(d[fieldsFilters[i]] / d[fieldToNormalizeWith]) / Math.log(maxValues[i] / d[fieldToNormalizeWith]);
+                var revenueInBil = +d[fieldToNormalizeWith] / 1000000000;
+                var score = Math.log(+d[fieldsFilters[i]] / revenueInBil) / Math.log(maxValues[i]);
                 score = score > 0 ? score : 0;
                 curScore += score * object.weight;
             }

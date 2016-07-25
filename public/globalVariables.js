@@ -14,6 +14,11 @@ var tooltipMap;
 var globalFilter; // filter maintained on name field
 var globalData; // holds all data objects
 
+var fieldsFilters = ["ghg1", "ghg2", "ghg3"
+    , "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged"
+    , "totalWaste", "wasteRecycled", "wasteSentToLandfill"
+    , "totalEnergyConsumption"];
+
 
 var sustIndexColorScale = d3.scale.linear()
     .range(["green", "red"])

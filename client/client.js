@@ -7,7 +7,7 @@ Meteor.startup(function() {
 	$.getScript("/utility.js");
 	$.getScript("/globalVariables.js");
 	$.getScript("/gradientBar.js");
-	$.getScript("/globalFunctions.js");
+	$.getScript("/globalZFunctions.js");
 	$.getScript("/scatterplot.js");
 	$.getScript("/worldMap.js");
 	$.getScript("/filters.js");

@@ -91,9 +91,9 @@ d3.csv('/data/master.csv', function (data) {
     // GENERAL
     globalFilter = sp500.dimension(function (d) {return d.name;});
 
-    if (!jQuery.isFunction(fillListViewTable)) {
-        $.getScript("/globalFunctions.js");
-    }
+    //if (!jQuery.isFunction(fillListViewTable)) {
+    //    $.getScript("/globalZFunctions.js");
+    //}
 
     fillListViewTable(globalFilter.top(Infinity).reverse());
     fillRawDataTable(globalFilter.top(Infinity).reverse());
