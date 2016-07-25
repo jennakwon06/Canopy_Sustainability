@@ -272,6 +272,10 @@
                 <!--title="Expand filters" id="expandFilterButton"-->
                 <img class="myGlyphicon" title="Collapse filters" id="collapseFilterButton" src="/svgs/collapseLeft.svg" alt="test">
                 <img class="myGlyphicon" title="Expand filters" id="expandFilterButton" style="display:none" src="/svgs/collapseRight.svg" alt="test">
+                <a href="#" id ="exportButton">
+                    <img class="myGlyphicon" title="Export result table to a csv file" src="/svgs/export_csv.svg" alt="test">
+                </a>
+
             </div>
         </div>
         <div id="resultBar">
@@ -286,7 +290,7 @@
 
                 <!--style="display: none"-->
                 <div id="axisSelectors">
-                    <select id="xaxisMeasure" onchange="changeX()">
+                    <select id="xaxisMeasure" onchange="changeAxisAndDrawScatterPlot()">
                         <option value="ghg1" selected="selected">GHG1</option>
                         <option value="ghg2">GHG2</option>
                         <option value="ghg3">GHG3</option>
@@ -301,7 +305,7 @@
                         <option value="totalEnergyConsumption">Energy Intensity Per Sales</option>
                     </select>
 
-                    <select id="yaxisMeasure" onchange="changeY()">
+                    <select id="yaxisMeasure" onchange="changeAxisAndDrawScatterPlot()">
                         <option value="ghg1" selected="selected">GHG1</option>
                         <option value="ghg2">GHG2</option>
                         <option value="ghg3">GHG3</option>

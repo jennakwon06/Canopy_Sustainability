@@ -1,8 +1,15 @@
+// !-------- Functions that are used across various JS scripts in public directory and client/views directory ------!
+
+var fieldsFilters = ["ghg1", "ghg2", "ghg3"
+    , "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged"
+    , "totalWaste", "wasteRecycled", "wasteSentToLandfill"
+    , "totalEnergyConsumption"];
+
 /*
  * Populate list entries on the list panel based on filtered results
  * @param results filtered results
  */
-var fillTable = function(results) {
+function fillListViewTable(results) {
     var table = $(".resultsTable");
 
     //clear table
@@ -73,13 +80,14 @@ var fillTable = function(results) {
         tr2tdPdf.setAttributeNode(a2);
 
         if (+results[i].numReports) {
+            html = ""
             for (j = 1; j <= +results[i].numReports; j++) {
                 var pdfLink = document.createElement('a');
                 pdfLink.href = "/reports/" + results[i].name + "/" + j + ".pdf";
                 tr2tdPdf.appendChild(pdfLink);
-                html = "Report " + j ;
-                $(tr2tdPdf).html(html);
+                html += "Report " + j + "<br>" ;
             }
+            $(tr2tdPdf).html(html);
             $(tr2tdPdf).hide(); //show on toggle
             tr2.appendChild(tr2tdPdf);
         }
@@ -87,14 +95,13 @@ var fillTable = function(results) {
         table.append(tr);
         table.append(tr2);
     }
-};
-
+}
 
 /**
  * Populate raw data table with all available data of S & P 500 companies
  * @param data
  */
-var fillRawDataTable = function(data) {
+function fillRawDataTable(data) {
     var table = $(".rawDataTable");
 
     var columns = ["name", "ticker", "address", "latitude", "longitude", "price", "revenue", "industry", "sector", "ghg1", "ghg2", "ghg3", "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged",
@@ -134,63 +141,57 @@ var fillRawDataTable = function(data) {
     });
 
     $(".rawDataTable").css({"display": "none"});
-};
+}
 
 /**
  * Upon selection of "Normalize with..." option, calculate normalized sustainability index
  * @param d
  * @param fieldToNormalizeWith
  */
-var performSustIndexNormalization = function(fieldToNormalizeWith) {
-    console.log(fieldToNormalizeWith);
-    //if ($('#checkArray:checkbox:checked').length > 0;) {
-
-    //}
-    calculateNormalizedIndex(fieldToNormalizeWith.value);
-    fillTable(globalFilter.top(Infinity).reverse()); //wouldn't change
-    drawBubbles(globalFilter.top(Infinity)); //wouldn't change
-    drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY); //wouldn't change
-};
+function performSustIndexNormalization(fieldToNormalizeWith) {
+    fieldToNormalizeWith.checked ? calculateNormalizedIndex(fieldToNormalizeWith.value) : calculateIndex();
+    fillListViewTable(globalFilter.top(Infinity).reverse());
+    drawBubbles(globalFilter.top(Infinity));
+    changeAxisAndDrawScatterPlot()
+}
 
 /**
  * Change filtered results upon the change in filter / weight elements
  * @param d
  */
-var onChange = function(d) {
+function onChange (d) {
     calculateIndex();
-    fillTable(globalFilter.top(Infinity).reverse());
+    fillListViewTable(globalFilter.top(Infinity).reverse());
     drawBubbles(globalFilter.top(Infinity));
-    drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
+    changeAxisAndDrawScatterPlot();
     insertBreadCrumb(d);
-};
+}
 
 /**
  * Reset all viz after click on resetFilters button
  * @param d
  */
-var resetPage = function(d) {
+function resetPage(d) {
     calculateIndex();
-    fillTable(globalFilter.top(Infinity).reverse());
+    fillListViewTable(globalFilter.top(Infinity).reverse());
     drawBubbles(globalFilter.top(Infinity));
-    drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
-};
+    changeAxisAndDrawScatterPlot();
+}
 
-var resetWeightSelectors = function(d) {
+function resetWeightSelectors(d) {
     for (var i = 0; i < fieldsFilters.length; i++) {
         document.getElementById(fieldsFilters[i] + "Weight").value = "100";
     }
-};
+}
 
-var showInteractionElements = function(name, address, scatter, map, list) {
+function showInteractionElements (name, address, scatter, map, list) {
     var divPos = $("#resultBar").position();
 
     var mapCirclePos = $("circle.mapCircle[address='" + address + "']").position();
     var scatterCirclePosName = $("circle.scatterPlotCircle[name='" + name + "']").position();
-    var scatterCirclePosAddress = $("circle.scatterPlotCircle[name='" + name + "']").position();
+    var scatterCirclePosAddress = $("circle.scatterPlotCircle[address='" + address + "']").position();
 
     if (scatter) {
-        // move tooltip map
-
         tooltipScatter.transition()
             .duration(200)
             .style("opacity", .9)
@@ -200,11 +201,10 @@ var showInteractionElements = function(name, address, scatter, map, list) {
         tooltipMap.transition()
             .duration(200)
             .style("opacity", .9)
-            .style("left", (mapCirclePos.left + 5) + "px")
             .style("top", (mapCirclePos.top - 28) + "px");
 
         tooltipMap
-            .html("City: " + address);
+            .html("City: " + address)
 
         d3.selectAll("circle.scatterPlotCircle")
             .attr("r", 3.5);
@@ -228,7 +228,7 @@ var showInteractionElements = function(name, address, scatter, map, list) {
         var listCompaniesWithAddress = globalData.filter(function(d) {return d.address == address;});
         var listCompaniesWithoutAddress = globalData.filter(function(d) {return d.address != address;});
         var newlist = listCompaniesWithAddress.concat(listCompaniesWithoutAddress);
-        fillTable(newlist);
+        fillListViewTable(newlist);
         var tableRows = $(".clickableRow[address='" + address + "']");
         $(tableRows).css({"background-color" : "darkgrey"});
         $('.resultListView').animate({
@@ -313,9 +313,9 @@ var showInteractionElements = function(name, address, scatter, map, list) {
         //        return (radius(d.count) * 1000) / zoom.scale();
         //    });
     }
-};
+}
 
-var hideInteractionElements = function(){
+function hideInteractionElements (){
     tooltipScatter.transition()
         .duration(500)
         .style("opacity", 0);
@@ -324,9 +324,9 @@ var hideInteractionElements = function(){
         .duration(500)
         .style("opacity", 0);
 
-};
+}
 
-var insertBreadCrumb = function(d) {
+function insertBreadCrumb(d) {
     if (!$("li#" + d).exists() && d !== undefined) {
         var breadCrumb = $("#breadcrumb");
 
@@ -351,11 +351,114 @@ var insertBreadCrumb = function(d) {
 
         breadCrumb.append(li);
     }
-};
+}
 
-var removeBreadCrumb = function() {
+function removeBreadCrumb () {
     $("#breadcrumb li").remove();
-};
+}
+
+/*
+ * Populate sustainability index data field based on selected weights
+ */
+function calculateIndex() {
+    // calculate maximum field values across all dimensions
+    var i;
+    var maxValues = [];
+    for (i = 0; i < fieldsFilters.length; i++) {
+        maxValues.push(d3.extent(globalData, function (d) {return +d[fieldsFilters[i]];})[1]);
+    }
+
+    console.log(fieldsFilters);
+
+    globalData.forEach(function (d) {
+        var curScore = 0;
+        var totalWeight = 0;
+
+        // Gather selected scale weights
+        for (i = 0; i < fieldsFilters.length; i++) {
+            if (+d[fieldsFilters[i]]) { // nonzero if there's at least one data
+                totalWeight += parseInt(document.getElementById(fieldsFilters[i] + "Weight").value);
+            }
+        }
+
+        // @TODO data info stays here if I want to show more than name & value.
+        // @TODO if I want to show weights and details of index calculation, then it has to change dynamically.
+        var arr = [];
+
+        for (i = 0; i < fieldsFilters.length; i++) {
+            if (+d[fieldsFilters[i]]) { //only count values that are available
+                var object = {
+                    name: "",
+                    weight: 0,
+                    value: 0
+                };
+                object.name = fieldsFilters[i];
+                object.weight = document.getElementById(fieldsFilters[i] + "Weight").value / totalWeight;
+                object.value = +d[fieldsFilters[i]];
+                arr.push(object);
+                var score = Math.log(d[fieldsFilters[i]]) / Math.log(maxValues[i]); // divide value by the max value in the data field
+                score = score > 0 ? score : 0;
+                curScore += score * object.weight;
+            }
+        }
+
+        d.dataInfo = arr;
+        d.sustIndex = totalWeight ? curScore : NaN;
+        d.color = totalWeight ? sustIndexColorScale(d.sustIndex) : "gray";
+    });
+}
+
+/*
+ * Populate sustainability index data field based on selected weights and chosen field to normalize values with
+ */
+function calculateNormalizedIndex(fieldToNormalizeWith) {
+
+    var i;
+
+    // calculate a company whose normalized value is maximum
+    var maxValues = [];
+    for (i = 0; i < fieldsFilters.length; i++) {
+        var curMax = 0;
+        globalData.forEach(function(d) {
+           curMax = Math.max((+d[fieldsFilters[i]] / d[fieldToNormalizeWith]) , curMax);
+        });
+        maxValues.push(curMax);
+    }
+
+    globalData.forEach(function (d) {
+        var curScore = 0;
+
+        // Gather selected scale weights
+        var totalWeight = 0;
+        for (i = 0; i < fieldsFilters.length; i++) {
+            if (+d[fieldsFilters[i]]) { // nonzero if there's at least one data
+                totalWeight += parseInt(document.getElementById(fieldsFilters[i] + "Weight").value);
+            }
+        }
+
+        var arr = [];
+        for (i = 0; i < fieldsFilters.length; i++) {
+            if (+d[fieldsFilters[i]]) {
+                var object = {
+                    name: "",
+                    weight: 0,
+                    value: 0
+                };
+                object.name = fieldsFilters[i];
+                object.weight = document.getElementById(fieldsFilters[i] + "Weight").value / totalWeight;
+                object.value = +d[fieldsFilters[i]];
+                arr.push(object);
+                var score = Math.log(d[fieldsFilters[i]] / d[fieldToNormalizeWith]) / Math.log(maxValues[i] / d[fieldToNormalizeWith]);
+                score = score > 0 ? score : 0;
+                curScore += score * object.weight;
+            }
+        }
+
+        d.dataInfo = arr;
+        d.sustIndex = totalWeight ? curScore : NaN;
+        d.color = totalWeight ? sustIndexColorScale(d.sustIndex) : "gray";
+    });
+}
 
 /**
  * Monitor the scales
@@ -409,101 +512,4 @@ function totalEnergyConsumptionCount() {
     var x = "Weight: " + document.getElementById("totalEnergyConsumptionWeight").value;
     document.getElementById("totalEnergyConsumptionCount").innerHTML = x;
     onChange("totalEnergyConsumption");
-}
-
-/*
- * Populate sustainability index data field based on selected weights
- */
-function calculateIndex() {
-    // calculate maximum field values across all dimensions
-    var i;
-    var maxValues = [];
-    for (i = 0; i < fieldsFilters.length; i++) {
-        maxValues.push(d3.extent(globalData, function (d) {return +d[fieldsFilters[i]];})[1]);
-    }
-
-    globalData.forEach(function (d) {
-        var curScore = 0;
-        var totalWeight = 0;
-
-        // Gather selected scale weights
-        for (i = 0; i < fieldsFilters.length; i++) {
-            if (+d[fieldsFilters[i]]) { // nonzero if there's at least one data
-                totalWeight += parseInt(document.getElementById(fieldsFilters[i] + "Weight").value);
-            }
-        }
-
-        // @TODO data info stays here if I want to show more than name & value.
-        // @TODO if I want to show weights and details of index calculation, then it has to change dynamically.
-        var arr = [];
-        console.log("how long is the fieldsfilters" + fieldsFilters.length);
-
-        for (i = 0; i < fieldsFilters.length; i++) {
-            if (+d[fieldsFilters[i]]) { //only count values that are available
-                var object = {
-                    name: "",
-                    weight: 0,
-                    value: 0
-                };
-                object.name = fieldsFilters[i];
-                object.weight = document.getElementById(fieldsFilters[i] + "Weight").value / totalWeight;
-                object.value = +d[fieldsFilters[i]];
-                arr.push(object);
-                var score = Math.log(d[fieldsFilters[i]]) / Math.log(maxValues[i]); // divide value by the max value in the data field
-                score = score > 0 ? score : 0;
-                curScore += score * object.weight;
-            }
-        }
-
-        d.dataInfo = arr;
-        d.sustIndex = totalWeight ? curScore : NaN;
-        d.color = totalWeight ? color(d.sustIndex) : "gray";
-    });
-}
-
-/*
- * Populate sustainability index data field based on selected weights and chosen field to normalize values with
- */
-function calculateNormalizedIndex(fieldToNormalizeWith) {
-
-    // calculate maximum normalized field values across all dimensions;
-    var i;
-    var maxValues = [];
-    for (i = 0; i < fieldsFilters.length; i++) {
-        maxValues.push(d3.extent(globalData, function (d) {return +d[fieldsFilters[i]];})[1]);
-    }
-
-    globalData.forEach(function (d) {
-        var curScore = 0;
-
-        // Gather selected scale weights
-        var totalWeight = 0;
-        for (i = 0; i < fieldsFilters.length; i++) {
-            if (+d[fieldsFilters[i]]) { // nonzero if there's at least one data
-                totalWeight += parseInt(document.getElementById(fieldsFilters[i] + "Weight").value);
-            }
-        }
-
-        var arr = [];
-        for (i = 0; i < fieldsFilters.length; i++) {
-            if (+d[fieldsFilters[i]]) {
-                var object = {
-                    name: "",
-                    weight: 0,
-                    value: 0
-                };
-                object.name = fieldsFilters[i];
-                object.weight = document.getElementById(fieldsFilters[i] + "Weight").value / totalWeight;
-                object.value = +d[fieldsFilters[i]];
-                arr.push(object);
-                var score = Math.log((d[fieldsFilters[i]]) / d[fieldToNormalizeWith]) / Math.log(maxValues[i] / d[fieldToNormalizeWith]);
-                score = score > 0 ? score : 0;
-                curScore += score * object.weight;
-            }
-        }
-
-        d.dataInfo = arr;
-        d.sustIndex = totalWeight ? curScore : NaN;
-        d.color = totalWeight ? color(d.sustIndex) : "gray";
-    });
 }

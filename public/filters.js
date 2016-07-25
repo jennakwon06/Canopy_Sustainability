@@ -1,30 +1,11 @@
-var globalFilter; // filter maintained on name field
-var globalData; // holds all data objects
-
-var companiesCount = dc.dataCount('.companiesCount');
-var industryChart = dc.scrollableRowChart('#industry_chart');
-var sectorChart = dc.scrollableRowChart('#sector_chart');
-var ghg1Chart = dc.barChart('#ghg1Chart'); // EMISSIONS
-var ghg2Chart = dc.barChart('#ghg2Chart');
-var ghg3Chart = dc.barChart('#ghg3Chart');
-var totalWaterUseChart = dc.barChart('#totalWaterUseChart'); //WATER
-var totalWaterWithdrawlChart = dc.barChart('#totalWaterWithdrawlChart');
-var totalWaterDischargedChart = dc.barChart('#totalWaterDischargedChart');
-var totalWasteChart = dc.barChart("#totalWasteChart"); //WASTE
-var wasteRecycledChart = dc.barChart("#wasteRecycledChart");
-var wasteSentToLandfillChart = dc.barChart("#wasteSentToLandfillChart");
-var totalEnergyConsumptionChart = dc.barChart("#totalEnergyConsumptionChart"); //ENERGY
-var ccPolicyImplRowChart2 = dc.stackedRowChart('#ccPolicyImplRowChart2'); //BINAR YBARS
-
+/**
+ * Initialized here for use across multiple files
+ * @type {string[]}
+ */
 var fields = ["ghg1", "ghg2", "ghg3"
     , "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged"
     , "totalWaste", "wasteRecycled", "wasteSentToLandfill"
     , "totalEnergyConsumption", "price", "revenue" ];
-
-var fieldsFilters = ["ghg1", "ghg2", "ghg3"
-    , "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged"
-    , "totalWaste", "wasteRecycled", "wasteSentToLandfill"
-    , "totalEnergyConsumption"];
 
 var fieldUnits = {
     "ghg1" : "(1000MT)",
@@ -41,14 +22,8 @@ var fieldUnits = {
     "price": "($)"
 };
 
-var color = d3.scale.linear()
-    .range(["green", "red"])
-    .interpolate(d3.interpolateHsl);
-
 d3.csv('/data/master.csv', function (data) {
     globalData = [];
-
-    console.log(data);
 
     // Preprocess raw data field headers and store them
     data.forEach(function (d) {
@@ -102,60 +77,27 @@ d3.csv('/data/master.csv', function (data) {
         globalData.push(obj);
     });
 
-    for (var i = 0; i < globalData.length; i++) {
-        var maxValues = [];
-        for (var j = 0; j < fieldsFilters.length; j++) {
-            maxValues.push(d3.extent(globalData, function (d) {
-                return +d[fieldsFilters[j]];
-            })[1]);
-        }
+    calculateIndex();
 
-        // calculate initial index
-        var curScore = 0;
-        var counter = 0;
-        var arr = [];
-        for (j = 0; j < fieldsFilters.length; j++) {
-            if (+globalData[i][fieldsFilters[j]]) {
-                counter++;
-                var temp = {
-                    name: "",
-                    value: 0
-                };
-                temp.name = fieldsFilters[j];
-                temp.weight = document.getElementById(fieldsFilters[j] + "Weight").value;
-                temp.value = +globalData[i][fieldsFilters[j]];
-                arr.push(temp);
-                var score = Math.log(globalData[i][fieldsFilters[j]]) / Math.log(maxValues[j]);
-                score = score > 0 ? score : 0;
-                curScore += score;
-            }
-        }
-
-        globalData[i].dataInfo = arr;
-        globalData[i].sustIndex = curScore / counter; // AVERAGING
-        globalData[i].color = color(globalData[i].sustIndex);
-    }
-    
     // Chart
     var FULL_CHART_WIDTH = $(".filter_container").width() - 30;
     var HALF_CHART_WIDTH = ($(".filter_container").width() - 30) / 2;
     var HALF_CHART_HEIGHT = 60;
 
-    //### Create Crossfilter Dimensions and Groups. NOTE: BE CAREFUL OF HOW MANY DIMENSIONS YOU INSTANTIATE
+    // Create Crossfilter Dimensions and Groups. NOTE: BE CAREFUL OF HOW MANY DIMENSIONS YOU INSTANTIATE
     var sp500 = crossfilter(globalData);
     var all = sp500.groupAll();
-
 
     // GENERAL
     globalFilter = sp500.dimension(function (d) {return d.name;});
 
-    if (!jQuery.isFunction(fillTable)) {
+    if (!jQuery.isFunction(fillListViewTable)) {
         $.getScript("/globalFunctions.js");
     }
 
-    fillTable(globalFilter.top(Infinity).reverse());
+    fillListViewTable(globalFilter.top(Infinity).reverse());
     fillRawDataTable(globalFilter.top(Infinity).reverse());
-    drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
+    changeAxisAndDrawScatterPlot();
     drawGradientBar();
     drawMap(globalFilter.top(Infinity));
 

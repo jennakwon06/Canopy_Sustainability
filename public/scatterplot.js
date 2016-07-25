@@ -1,18 +1,9 @@
-function changeX() {
-    xaxis = document.getElementById("xaxisMeasure");
-    selectedX = xaxis.options[xaxis.selectedIndex].value;
-    yaxis = document.getElementById("yaxisMeasure");
-    selectedY = yaxis.options[yaxis.selectedIndex].value;
+function changeAxisAndDrawScatterPlot() {
+    var selectedX = document.getElementById("xaxisMeasure").options[document.getElementById("xaxisMeasure").selectedIndex].value;
+    var selectedY = document.getElementById("yaxisMeasure").options[document.getElementById("yaxisMeasure").selectedIndex].value;
     drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY)
 }
 
-function changeY() {
-    xaxis = document.getElementById("xaxisMeasure");
-    selectedX = xaxis.options[xaxis.selectedIndex].value;
-    yaxis = document.getElementById("yaxisMeasure");
-    selectedY = yaxis.options[yaxis.selectedIndex].value;
-    drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY)
-}
 
 function drawScatterPlot(results, xAxisVal, yAxisVal) {
     //clear previous
@@ -163,7 +154,7 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
                 return d.address;
             })
             .style("fill", function (d) {
-                return color(d.sustIndex);
+                return sustIndexColorScale(d.sustIndex);
             })
             .on("mouseover", function (d) {
                 tooltipScatter.html(d.name + "<br/> (" + +d[xAxisVal]
@@ -178,8 +169,6 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
                 showInteractionElements(d.name, d.address, true, false, false);
             });
     }
-
-//    IDEA; implement LINEAR, POWER, and LOGARITHMIC
 
     /**
      * Least Squares Trendline

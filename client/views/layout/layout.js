@@ -58,19 +58,12 @@ Template.layout.events({
 	},
 
 	'click .navbar-raw-data': function (e) {
-		$.when( globalRawDataTable.draw() ).done(function() {
-			//$(".dataTables_scrollHeadInner").css({"width":"100%"});
-			//$(".table ").css({"width":"100%"});
-
-			$(".rawDataTable").css({"display": ""});
-			$('.main_page').attr("style", "display: none");
-			$('.about').attr("style", "display: none");
-			$('.raw_data').attr("style", "display: block");
-			//$(".tooltipMap").hide();
-		});
+		$(".rawDataTable").css({"display": ""});
+		$('.main_page').attr("style", "display: none");
+		$('.about').attr("style", "display: none");
+		$('.raw_data').attr("style", "display: block");
+		$(".tooltipMap").hide();
 	},
-
-
 });
 
 Template.PrivateLayoutLeftMenu.rendered = function() {

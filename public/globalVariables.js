@@ -1,42 +1,38 @@
-console.log("loading global var file")
-
 /**
- * Used to pass around raw data table between client calls and js calls
- */
-var globalRawDataTable;
-
-
-/**
- * Used to pass around changes in scatter plot axes selection
- * @type {Element}
- */
-var xaxis = document.getElementById("xaxisMeasure");
-var selectedX = xaxis.options[xaxis.selectedIndex].value;
-var yaxis = document.getElementById("yaxisMeasure");
-var selectedY = yaxis.options[yaxis.selectedIndex].value;
-
-/**
- * Tooltips on applications
+ * Initialized in scatterplot.js
  */
 var tooltipScatter;
 
 /**
- * Used to toggle viz panels
+ * Initialized in worldMap.js
  */
-var iScatter = 0;
-var iMap = 0;
-var iList = 0;
-
-/**
- * Used in map files
- */
-var path;
-var projection;
 var tooltipMap;
-var zoom;
-
-
 
 /**
- * These are initialized in filters.js
+ * Initialized in filters.js
  */
+var globalFilter; // filter maintained on name field
+var globalData; // holds all data objects
+
+
+var sustIndexColorScale = d3.scale.linear()
+    .range(["green", "red"])
+    .interpolate(d3.interpolateHsl);
+
+/**
+ * Chart objects
+ */
+var companiesCount = dc.dataCount('.companiesCount');
+var industryChart = dc.scrollableRowChart('#industry_chart');
+var sectorChart = dc.scrollableRowChart('#sector_chart');
+var ghg1Chart = dc.barChart('#ghg1Chart'); // EMISSIONS
+var ghg2Chart = dc.barChart('#ghg2Chart');
+var ghg3Chart = dc.barChart('#ghg3Chart');
+var totalWaterUseChart = dc.barChart('#totalWaterUseChart'); //WATER
+var totalWaterWithdrawlChart = dc.barChart('#totalWaterWithdrawlChart');
+var totalWaterDischargedChart = dc.barChart('#totalWaterDischargedChart');
+var totalWasteChart = dc.barChart("#totalWasteChart"); //WASTE
+var wasteRecycledChart = dc.barChart("#wasteRecycledChart");
+var wasteSentToLandfillChart = dc.barChart("#wasteSentToLandfillChart");
+var totalEnergyConsumptionChart = dc.barChart("#totalEnergyConsumptionChart"); //ENERGY
+var ccPolicyImplRowChart2 = dc.stackedRowChart('#ccPolicyImplRowChart2'); //BINAR YBARS

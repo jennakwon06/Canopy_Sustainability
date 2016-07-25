@@ -1,3 +1,7 @@
+var path;
+var projection;
+var zoom;
+
 function drawMap(results) {
 
     // Must remove / redraw for resizing map even though this makes loading slow
@@ -51,8 +55,6 @@ function drawMap(results) {
     g.call(zoom);
 
     path = d3.geo.path().projection(projection);
-
-    var z = color;
 
     d3.json("/map1.json", function (error, world) {
         if (error) throw error;
@@ -160,7 +162,7 @@ function drawBubbles(results) {
             return (radius(d.count) * 200 / zoom.scale());
         })
         .style("fill", function(d) {
-            return color(d.sustIndex);})
+            return sustIndexColorScale(d.sustIndex);})
         .on("mouseover", function(d) {
             tooltipMap.html("City: " + d.address
                 + "<br> Sustainability Index: " + Math.round(d.sustIndex * 100) / 100);

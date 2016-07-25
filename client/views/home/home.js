@@ -5,16 +5,12 @@ Template.Home.rendered = function() {
     Meteor.subscribe('fs.files');
 };
 
-var findPDFs = function(company) {
-    // Check if database is correctly set up
-    console.log(PDFs.find().count());
-    console.log(PDFs.find({}));
-    var regex = new RegExp('^' + company, 'i');
-    // @TODO use regex to find a file by name
-    return PDFs.find({}).fetch();
-};
-
 Template.Home.events({
+
+
+    iScatter : 0,
+    iMap : 0,
+    iList : 0,
 
     'error' : function(e) {
         return false;
@@ -96,52 +92,31 @@ Template.Home.events({
             $target.closest("tr").next().find("td").slideToggle("fast");
         }
 
-
-
         showInteractionElements($target.attr("name"), $target.attr("address"), false, false, true);
     },
 
-    'click #closeModalButton': function (e) {
-        $('.list-group').empty();
-
-        $('tbody > .clickableRow').removeClass('highlight');
-    },
-
-// @TODO MAP STUFF
-    'click .mapCircle': function (e) {
-        d3.select(".list-group")
-            .append("li")
-            .attr("class", "modal-list-item list-group-item")
-            .attr("value", 10)
-            .attr("id", 10);
-    },
-
-
-    'click #submitDropdown' : function(e) {
-    //    http://www.w3schools.com/jsref/coll_select_options.asp
-
-    },
 
     'click #collapseFilterButton': function(e) {
         $('#filterBar').animate({
             opacity: 0
         }, 500, function() {});
+
         $('#resultBar').css({"width" : "98vw","position" :"fixed"});
         $(".glyphicon-arrow-left").addClass( "glyphicon-arrow-right");
         $(".glyphicon-arrow-right").removeClass( "glyphicon-arrow-left");
         $('#controlBar').animate({
             left: "0px"
         }, 500, function() {});
+
         $('.resultScatterPlotView').css({"width" : "47.3vw"});
         $('.resultMapView').css({"width" : "47.3vw"});
         $('.resultListView').css({"width" : "95.3vw"});
         $("#collapseFilterButton").attr("style", "display: none");
         $("#expandFilterButton").attr("style", "display: visible");
 
-        drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
+        changeAxisAndDrawScatterPlot();
         drawMap(globalFilter.top(Infinity));
     },
-
 
     'click #expandFilterButton': function(e) {
         $('#filterBar').animate({
@@ -157,7 +132,7 @@ Template.Home.events({
         $("#collapseFilterButton").attr("style", "display: visible");
         $("#expandFilterButton").attr("style", "display: none");
 
-        drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
+        changeAxisAndDrawScatterPlot();
         drawMap(globalFilter.top(Infinity));
     },
 
@@ -170,11 +145,11 @@ Template.Home.events({
     },
 
     'click #sortByCompanyButton': function(e) {
-        fillTable(globalFilter.top(Infinity).reverse())
+        fillListViewTable(globalFilter.top(Infinity).reverse())
     },
     
     'click #sortByScoreButton': function(e) {
-        fillTable(globalFilter.top(Infinity).sort(function(a,b) {
+        fillListViewTable(globalFilter.top(Infinity).sort(function(a,b) {
             if (isNaN(a.sustIndex) && isNaN(b.sustIndex)) {
                 return 0;
             } else if (isNaN(a.sustIndex)) {
@@ -188,7 +163,7 @@ Template.Home.events({
     },
     
     'click #sortByNumPDFReport': function(e) {
-        fillTable(globalFilter.top(Infinity).sort(function(a,b) {
+        fillListViewTable(globalFilter.top(Infinity).sort(function(a,b) {
             if (isNaN(a["# Available Reports"]) && isNaN(b["# Available Reports"])) {
                 return 0;
             } else if (isNaN(a["# Available Reports"])) {
@@ -212,7 +187,7 @@ Template.Home.events({
             $(".resultListView").hide();
             $(".resultMapView").hide();
 
-            drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
+            changeAxisAndDrawScatterPlot()
         } else {
             $('.resultScatterPlotView').css({
                 "height" : "43vh",
@@ -221,7 +196,7 @@ Template.Home.events({
 
             $(".resultListView").show();
             $(".resultMapView").show();
-            drawScatterPlot(globalFilter.top(Infinity), selectedX, selectedY);
+            changeAxisAndDrawScatterPlot()
         }
         iScatter++;
     },
@@ -277,6 +252,12 @@ Template.Home.events({
             $(".resultMapView").show();
         }
         iList++;
+    },
+
+    'click #exportButton' : function(e) {
+        var outputFile = "result.csv";
+        exportToCsv.apply(this, [$('.resultListView > table'), outputFile]);
+        //exportToCsv($('.resultListView > table'), outputFile);
     }
 });
 
@@ -286,3 +267,86 @@ Template.Home.helpers({
     }
 
 });
+
+
+function findPDFs(company) {
+    // Check if database is correctly set up
+    console.log(PDFs.find().count());
+    console.log(PDFs.find({}));
+    var regex = new RegExp('^' + company, 'i');
+    // @TODO use regex to find a file by name
+    return PDFs.find({}).fetch();
+}
+
+function exportToCsv($table, filename) {
+    var $headers = $table.find('tr:has(th)')
+        ,$rows = $table.find('tr:nth-child(odd)')
+
+    // Temporary delimiter characters unlikely to be typed by keyboard
+    // This is to avoid accidentally splitting the actual contents
+        ,tmpColDelim = String.fromCharCode(11) // vertical tab character
+        ,tmpRowDelim = String.fromCharCode(0) // null character
+
+    // actual delimiter characters for CSV format
+        ,colDelim = '","'
+        ,rowDelim = '"\r\n"';
+
+    console.log($headers);
+    console.log($rows);
+
+    // Grab text from table into CSV formatted string
+    var csv = '"';
+    csv += formatRows($headers.map(grabRow));
+    csv += rowDelim;
+    csv += formatRows($rows.map(grabRow)) + '"';
+
+    // Data URI
+    var csvData = 'data:application/csv;charset=utf-8,' + encodeURIComponent(csv);
+
+    // For IE (tested 10+)
+    if (window.navigator.msSaveOrOpenBlob) {
+        var blob = new Blob([decodeURIComponent(encodeURI(csv))], {
+            type: "text/csv;charset=utf-8;"
+        });
+        navigator.msSaveBlob(blob, filename);
+    } else {
+        console.log("filename and csvdata");
+        console.log(filename)
+        console.log(csvData)
+        $(this)
+            .attr({
+                'download': filename
+                ,'href': csvData
+                //,'target' : '_blank' //if you want it to open in a new window
+            });
+    }
+
+    //------------------------------------------------------------
+    // Helper Functions
+    //------------------------------------------------------------
+    // Format the output so it has the appropriate delimiters
+    function formatRows(rows){
+        return rows.get().join(tmpRowDelim)
+            .split(tmpRowDelim).join(rowDelim)
+            .split(tmpColDelim).join(colDelim);
+    }
+    // Grab and format a row from the table
+    function grabRow(i,row){
+
+        var $row = $(row);
+        //for some reason $cols = $row.find('td') || $row.find('th') won't work...
+        var $cols = $row.find('td');
+        if(!$cols.length) $cols = $row.find('th');
+
+        return $cols.map(grabCol)
+            .get().join(tmpColDelim);
+    }
+    // Grab and format a column from the table
+    function grabCol(j,col){
+        var $col = $(col),
+            $text = $col.text();
+
+        return $text.replace('"', '""'); // escape double quotes
+
+    }
+}
