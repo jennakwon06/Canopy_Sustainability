@@ -445,7 +445,6 @@ hr {
 
 #resetFilters {
     fill:white;
-
 }
 
 .myGlyphicon:hover {
@@ -749,19 +748,6 @@ div.tooltipMap {
     border-radius: 8px;
     pointer-events: none;
 }
-
-
-/*.leftNavbarMenu {*/
-    /*width:24%;*/
-    /*float: left;*/
-    /*margin: 0;*/
-/*}*/
-
-/*.rightNavbarMenu {*/
-    /*width:74%;*/
-    /*float: right;*/
-    /*margin: 0;*/
-/*}*/
 
 #breadcrumb {
     list-style: none;

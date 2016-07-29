@@ -5,13 +5,11 @@ Template.Home.rendered = function() {
     Meteor.subscribe('fs.files');
 };
 
+var iMap = 0;
+var iScatter = 0;
+var iList = 0;
+
 Template.Home.events({
-
-
-    iScatter : 0,
-    iMap : 0,
-    iList : 0,
-
     'error' : function(e) {
         return false;
     },
@@ -186,7 +184,6 @@ Template.Home.events({
             });
             $(".resultListView").hide();
             $(".resultMapView").hide();
-
             changeAxisAndDrawScatterPlot()
         } else {
             $('.resultScatterPlotView').css({

@@ -362,7 +362,7 @@ function calculateIndex() {
     for (i = 0; i < fieldsFilters.length; i++) {
         maxValues.push(d3.extent(globalData, function (d) {return +d[fieldsFilters[i]];})[1]);
     }
-    
+
     globalData.forEach(function (d) {
         var curScore = 0;
         var totalWeight = 0;
