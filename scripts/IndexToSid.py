@@ -1095,7 +1095,6 @@ sids = {
  (45521, 'RNG'),  
  (45526, 'PEGI')}
 
-
 csvfile = '../public/data/master.csv'
 csvfile_new = '../public/data/master_temp.csv'
 
@@ -1110,31 +1109,12 @@ with open(csvfile, 'r+') as csvinput:
         all.append(row)
 
         for row in reader:
-            row[0].split()
-
-            if row[1].strip():
-                path = '../public/reports/' + row[1]
-                d = os.path.dirname(path)
-                print d
-                print os.path.exists(path)
-                if not os.path.exists(path):
-                    os.makedirs(path)
-
-                try:
-                    # folders = ([name for name in os.listdir(path) if os.path.isdir(os.path.join(path, name)) ])
-                    # for folder in folders:
-                    contents = os.listdir(path) # get list of contents
-                    print(path, len(contents))
-                    row.append(len(contents))
-                    all.append(row)
-
-                except IndexError:
-                    print "IND EXRROR HAPPENED"
-                    continue
-
-            else:# append 0
-                row.append(0)
-                all.append(row)
+            ticker = row[0].split()[0]
+            print row[0].split()[0]
+            sid = list(i for i, v in enumerate(sids) if v[1] == ticker)
+            if (len(sid) >= 1):
+                row.append(sid[0])
+            all.append(row)
 
         writer.writerows(all)
 

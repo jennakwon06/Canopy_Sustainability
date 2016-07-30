@@ -159,7 +159,34 @@ Template.Home.events({
             }
         }))
     },
-    
+
+    'click #sortBySIDButton': function(e) {
+        fillListViewTable(globalFilter.top(Infinity).sort(function(a,b) {
+            if (isNaN(a.sid) && isNaN(b.sid)) {
+                return 0;
+            } else if (isNaN(a.sid)) {
+                return 1;
+            } else if (isNaN(b.sid)) {
+                return -1;
+            } else {
+                return a.sid - b.sid;
+            }
+        }))
+    },
+
+    'click #sortByTickerButton': function(e) {
+        fillListViewTable(globalFilter.top(Infinity).sort(function(a,b) {
+            if (isNaN(a.ticker) && isNaN(b.ticker)) {
+                return 0;
+            } else if (isNaN(a.ticker)) {
+                return 1;
+            } else if (isNaN(b.ticker)) {
+                return -1;
+            } else {
+                return a.ticker - b.ticker;
+            }
+        }))
+    },
     'click #sortByNumPDFReport': function(e) {
         fillListViewTable(globalFilter.top(Infinity).sort(function(a,b) {
             if (isNaN(a["# Available Reports"]) && isNaN(b["# Available Reports"])) {

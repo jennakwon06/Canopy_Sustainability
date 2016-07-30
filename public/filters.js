@@ -49,6 +49,7 @@ d3.csv('/data/master.csv', function (data) {
         obj.isin = d["ISIN"];
         obj.ticker = d["Ticker"];
         obj.URL = d["URL"];
+        obj.sid = d["sid"];
 
         // @TODO implement binary selectors
         //Climate Chg Pol:Y,Equal Opp Pol:Y,Water Policy,Human Rights Pol:Y, Energy Effic Pol:Y,Bus Ethics Pol:Y,Biodiv Pol:Y,
