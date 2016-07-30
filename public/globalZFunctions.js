@@ -35,6 +35,9 @@ function fillListViewTable(results) {
         var tdTicker = document.createElement('td');
         tdTicker.appendChild(document.createTextNode(results[i].ticker));
 
+        var tdSID = document.createElement('td');
+        tdSID.appendChild(document.createTextNode(results[i].sid));
+
         // attach sustainability index and a rectangular indicator
         var tdSustIndex = document.createElement('td');
         var a0 = document.createAttribute("class");
@@ -52,6 +55,7 @@ function fillListViewTable(results) {
         tr.appendChild(tdLogo);
         tr.appendChild(tdName);
         tr.appendChild(tdTicker);
+        tr.appendChild(tdSID);
         tr.appendChild(tdSustIndex);
         tr.appendChild(tdPdf);
 
