@@ -21,13 +21,19 @@ function fillListViewTable(results) {
         aAddress.value = results[i].address;
         tr.setAttributeNode(aAddress);
 
-        // attach logo and company link
+        // attach logo
         var tdLogo = img_create("/images/companylogos/" + results[i].name + ".png");
+
+        // attach company name & url
         var tdName = document.createElement('td');
         var tdNameALink = document.createElement('a');
         tdNameALink.href = results[i].URL;
         tdNameALink.appendChild(document.createTextNode(results[i].name));
         tdName.appendChild(tdNameALink);
+
+        // attach ticker
+        var tdTicker = document.createElement('td');
+        tdTicker.appendChild(document.createTextNode(results[i].ticker));
 
         // attach sustainability index and a rectangular indicator
         var tdSustIndex = document.createElement('td');
@@ -45,6 +51,7 @@ function fillListViewTable(results) {
 
         tr.appendChild(tdLogo);
         tr.appendChild(tdName);
+        tr.appendChild(tdTicker);
         tr.appendChild(tdSustIndex);
         tr.appendChild(tdPdf);
 
