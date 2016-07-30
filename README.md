@@ -1,1 +1,1 @@
-www.canopysustainability.heroku.com
+www.canopysustainability.herokuapp.com
