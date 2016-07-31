@@ -393,7 +393,8 @@
                 <h2> Ways to Use This Tool </h2>
 
                 <div class="content-text">
-                    On the left panel, users can dynamically select subsets of companies with 1 categorical filter (sector) and 9 numerical filters (environmental data). These filters are themselves data visualizations; they show the distribution of companies along different data dimensions. The filters are linked with each other and with result panel; filtering on one dimension will filter data on other dimensions, and the filters dynamically update results on the right panel. Users can incrementally filter companies along all dimensions or choose to use only a few filters. An example usage is to use sector filter first, then move filters on environmental data for sectoral analysis. Users can give weights to each dimension based on their perceived relative importance of dimensions. These weights affect calculation of sustainability index.
+                    On the left panel, users can dynamically select subsets of companies with 1 categorical filter (Sector) and 9 numerical filters (Environmental data). These filters are themselves data visualizations; they show the distribution of companies along different data dimensions. Log scale was chosen to show this distribution as most companies cluster around lower end of the environmental data. The filters are linked with each other; filtering on one dimension will filter data on other dimensions. Users can incrementally filter companies along all dimensions or choose to use only a few filters. An example usage is to use sector filter first, then use filters on environmental data for sectoral analysis. Users can give weights to each dimension based on their perceived relative importance of dimensions. These weights affect calculation of sustainability index and its formula is shown on the bottom of this page.
+                    The filters dynamically update results on the right panel.
 
                     <br>
                     <br>
@@ -562,14 +563,14 @@
 
                 <h2> About Sustainability Index Calculation </h2>
 
-                <!--\\ \textup{Sustainability Index of company \textit{i} } = \left ( \sum_{j = 0}^{n} w_{j}  \frac{ \mathrm{X}_{i,j} }{   \underset{0 \leq i \leq n }{ \textsc{max}} \left( \mathrm{X}_{i,j}  \right) }   \right)-->
+                <!--\\ \textup{Sustainability Index of company \textit{i} } = \left ( \sum_{j = 0}^{n} w_{j}  \frac{ log (\mathrm{X}_{i,j} ) }{   log( \underset{0 \leq i \leq n }{ \textsc{max}} \left( \mathrm{X}_{i,j}  \right) )}   \right)-->
                 <!--\\ \\ \\-->
-                <!--\textup{Sustainability Index company (Normalized by field {f}) \textit{i} } =\left (  \sum_{j = 0}^{n} w_{j} \frac{ \mathrm{X}_{i,j} / f_{i} }{   \underset{0 \leq i \leq n }{ \textsc{max}} \left( \mathrm{X}_{i,j} / f_{i}  \right) }   \right)-->
+                <!--\textup{Sustainability Index company (Normalized by field {f}) \textit{i} } =\left (  \sum_{j = 0}^{n} w_{j} \frac{ log( \mathrm{X}_{i,j} / f_{i} ) }{ log (  \underset{0 \leq i \leq n }{ \textsc{max}} \left( \mathrm{X}_{i,j} / f_{i}  \right) ) }   \right)-->
                 <!--\\ \\ \\-->
                 <!--W = \mathrm{n \ dimensional \  weight \  vector \ whose \ componts \ sum \ to \ 0} \\-->
                 <!--X = \mathrm{m \ \times n \  data \ matrix.\  Entry \ (i, j) \ holds \ the \ data \ value \ of \ i^{t} \ company \ at \ j^{th} \  dimension} \\-->
                 <!--\mathrm{n = number \ of \ dimensions}\\-->
-                <!--\mathrm{m = number \ of \ companies}-->
+                <!--\mathrm{m = number \ of \ companies}&ndash;&gt;-->
 
                 <div class="content-text"><img src="/svgs/sustIndexEq1.svg"></div>
 
