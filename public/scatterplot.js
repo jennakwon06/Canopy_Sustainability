@@ -38,9 +38,6 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
         .range([height, 0])
         .nice();
 
-    var x;
-
-
     var xAxis = d3.svg.axis()
         .scale(xScale)
         .orient("bottom")
@@ -171,40 +168,58 @@ function drawScatterPlot(results, xAxisVal, yAxisVal) {
     var xSeries = results.map(function(d) { return parseFloat(d[xAxisVal]); });
     var ySeries = results.map(function(d) { return parseFloat(d[yAxisVal]); });
 
+    xSeries = xSeries.filter(Boolean);
+    ySeries = ySeries.filter(Boolean);
+
+    xSeries.sort();
+    ySeries.sort();
+
     var leastSquaresCoeff = leastSquares(xSeries, ySeries);
+
+    console.log(leastSquaresCoeff);
+    console.log(xSeries.length);
+
+    console.log(xSeries);
+    console.log(ySeries);
+
 
     var x1 = xSeries[0];
     var y1 = leastSquaresCoeff[0] + leastSquaresCoeff[1];
-    var x2 = xSeries[xSeries.length - 1];
+    var x2 = xSeries.slice(-1)[0]; // 6
     var y2 = leastSquaresCoeff[0] * xSeries.length + leastSquaresCoeff[1];
+
     var trendData = [[x1,y1,x2,y2]];
+
+    console.log(trendData);
 
     var trendline = svg.selectAll(".trendline")
         .data(trendData);
 
-    trendline.enter()
-        .append("line")
-        .attr("class", "trendline")
-        .attr("x1", function(d) { return xScale(d[0]); })
-        .attr("y1", function(d) { return yScale(d[1]); })
-        .attr("x2", function(d) { return xScale(d[2]); })
-        .attr("y2", function(d) { return yScale(d[3]); })
-        .attr("stroke", "black")
-        .attr("stroke-width", 1);
+    var decimalFormat = d3.format("0.2f");
 
-    svg.append("text")
-        .text("eq: " + decimalFormat(leastSquaresCoeff[0]) + "x + " +
-            decimalFormat(leastSquaresCoeff[1]))
-        .attr("class", "text-label")
-        .attr("x", function(d) {return xScale(x2) - 60;})
-        .attr("y", function(d) {return yScale(y2) - 30;});
-
-    // display r-square on the chart
-    svg.append("text")
-        .text("r-sq: " + decimalFormat(leastSquaresCoeff[2]))
-        .attr("class", "text-label")
-        .attr("x", function(d) {return xScale(x2) - 60;})
-        .attr("y", function(d) {return yScale(y2) - 10;});
+    //trendline.enter()
+    //    .append("line")
+    //    .attr("class", "trendline")
+    //    .attr("x1", function(d) { return xScale(d[0]); })
+    //    .attr("y1", function(d) { return yScale(d[1]); })
+    //    .attr("x2", function(d) { return xScale(d[2]); })
+    //    .attr("y2", function(d) { return yScale(d[3]); })
+    //    .attr("stroke", "black")
+    //    .attr("stroke-width", 1);
+    //
+    //svg.append("text")
+    //    .text("eq: " + decimalFormat(leastSquaresCoeff[0]) + "x + " +
+    //        decimalFormat(leastSquaresCoeff[1]))
+    //    .attr("class", "text-label")
+    //    .attr("x", function(d) {return xScale(x2) - 60;})
+    //    .attr("y", function(d) {return yScale(y2) - 30;});
+    //
+    //// display r-square on the chart
+    //svg.append("text")
+    //    .text("r-sq: " + decimalFormat(leastSquaresCoeff[2]))
+    //    .attr("class", "text-label")
+    //    .attr("x", function(d) {return xScale(x2) - 60;})
+    //    .attr("y", function(d) {return yScale(y2) - 10;});
 }
 
 /**

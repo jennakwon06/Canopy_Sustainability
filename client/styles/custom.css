@@ -937,3 +937,12 @@ td.upper_line {
 .fraction-cell {
     font: 16px Arial,Helvetica Neue,Helvetica !important;
 }
+
+
+/*TRNEDLINE*/
+
+.line {
+    stroke: blue;
+    fill:none;
+    stroke-width: 3;
+}

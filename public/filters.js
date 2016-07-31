@@ -25,9 +25,6 @@ var fieldUnits = {
 d3.csv('/data/master.csv', function (data) {
     globalData = [];
 
-
-    console.log(data);
-
     // Preprocess raw data field headers and store them
     data.forEach(function (d) {
 
@@ -80,8 +77,6 @@ d3.csv('/data/master.csv', function (data) {
 
         globalData.push(obj);
     });
-
-    console.log(globalData);
 
     calculateIndex();
 
