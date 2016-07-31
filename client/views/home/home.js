@@ -3,6 +3,40 @@ Template.Home.rendered = function() {
     Meteor.subscribe('userFilters');
     Meteor.subscribe('userResults');
     Meteor.subscribe('fs.files');
+
+    var oTable = $(".rawDataTable").dataTable(
+        {
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'copy',
+                    filename: 'canopy_rawdata'
+                },
+                {
+                    extend: 'csv',
+                    filename: 'canopy_rawdata'
+                },
+                {
+                    extend: 'excel',
+                    filename: 'canopy_rawdata'
+                }
+            ],
+                "lengthMenu": [[25, 50, -1], [25, 50, "All"]],
+            "sScrollY":  ( 0.6 * $(window).height() ),
+            "bPaginate": false,
+            "bJQueryUI": true,
+            "bScrollCollapse": true,
+            "bAutoWidth": true,
+            "sScrollX": "100%",
+            "sScrollXInner": "100%",
+            colReorder: true
+        });
+
+    setTimeout(function ()
+    {
+        oTable.fnAdjustColumnSizing();
+    }, 10 );
+
 };
 
 var iMap = 0;

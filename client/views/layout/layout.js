@@ -24,6 +24,8 @@ Template.layout.rendered = function() {
 			}
 		}
 	});
+
+
 };
 
 Template.layout.events({ 
@@ -58,12 +60,13 @@ Template.layout.events({
 	},
 
 	'click .navbar-raw-data': function (e) {
-		$(".rawDataTable").css({"display": ""});
 		$('.main_page').attr("style", "display: none");
 		$('.about').attr("style", "display: none");
 		$('.raw_data').attr("style", "display: block");
 		$(".tooltipMap").hide();
 	},
+
+
 });
 
 Template.PrivateLayoutLeftMenu.rendered = function() {

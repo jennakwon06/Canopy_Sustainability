@@ -15,14 +15,20 @@ p {
 
 th {
     font: 12px Arial,Helvetica Neue,Helvetica ;
-    border: 1px black solid;
-    padding: 4px;
+    padding-bottom: 4px !important;
+    padding-top: 4px !important;
+
 }
 
 tr {
     font: 12px Arial,Helvetica Neue,Helvetica ;
-    /*border: 1px black solid;*/
-    padding: 4px;
+    padding-bottom: 4px !important;
+    padding-top: 4px !important;
+}
+
+td {
+    padding-bottom: 4px !important;
+    padding-top: 4px !important;
 }
 
 h1 {
@@ -198,28 +204,22 @@ div.dataTables_wrapper {
 }
 
 .dataTables_scrollHead{
-    scroll:auto;
+    overflow:scroll !important;
 }
 
-.rawDataTableOuter {
-    overflow-x: hidden;
-}
+/*.rawDataTable {*/
+    /*overflow-x:scroll;*/
+    /*margin:40px auto 0px auto;*/
+    /*font: 12px Arial,Helvetica Neue,Helvetica ;*/
+/*}*/
 
-.rawDataTable {
-    overflow-x:scroll;
-    width:100%;
-    margin:40px auto 0px auto;
-    font: 12px Arial,Helvetica Neue,Helvetica ;
-}
+/*.rawDataTable th {*/
+    /*border: 1px solid black;*/
+/*}*/
 
-.rawDataTable th {
-    border: 1px solid black;
-
-}
-
-.rawDataTable td {
-    border: 1px solid black;
-}
+/*.rawDataTable td {*/
+    /*border: 1px solid black;*/
+/*}*/
 
 .clickableRow {
     border: 2px darkgray;
@@ -925,16 +925,6 @@ td.upper_line {
     border-top:solid 1px black;
 }
 
-table.fraction {
-    text-align: left;
-    vertical-align: middle;
-    margin-top:0.5em;
-    margin-bottom:0.5em;
-    line-height: 2em;
-    border-style:hidden;
-    font: 14px Arial,Helvetica Neue,Helvetica ;
-}
-
 .collapseSubTexts {
     padding-left: 20px;
     font-size: 13px;
@@ -946,13 +936,4 @@ table.fraction {
 
 .fraction-cell {
     font: 16px Arial,Helvetica Neue,Helvetica !important;
-}
-
-table.dataTable,
-table.dataTable th,
-table.dataTable td {
-    /*table-layout: fixed;*/
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
 }

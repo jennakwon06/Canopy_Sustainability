@@ -110,8 +110,8 @@ function fillListViewTable(results) {
 function fillRawDataTable(data) {
     var table = $(".rawDataTable");
 
-    var columns = ["name", "ticker", "address", "latitude", "longitude", "price", "revenue", "industry", "sector", "ghg1", "ghg2", "ghg3", "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged",
-    "totalWaste", "wasteRecycled", "wasteSentToLandfill", "totalEnergyConsumption", "isin"];
+    var columns = ["name", "ticker", "sid", "industry", "sector", "isin", "address", "latitude", "longitude", "price", "revenue", "ghg1", "ghg2", "ghg3", "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged",
+    "totalWaste", "wasteRecycled", "wasteSentToLandfill", "totalEnergyConsumption"];
 
     for (var i = 0; i <= data.length - 1; i++) {
         var tr = document.createElement('tr');
@@ -124,29 +124,27 @@ function fillRawDataTable(data) {
     }
 
     // attach data table
-    globalRawDataTable = table.DataTable({
-        dom: 'Bfrtip',
-        buttons: [
-            {
-                extend: 'copy',
-                filename: 'canopy_rawdata'
-            },
-            {
-                extend: 'csv',
-                filename: 'canopy_rawdata'
-            },
-            {
-                extend: 'excel',
-                filename: 'canopy_rawdata'
-            }
-        ],
-        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-        "scrollX": true,
-        "scrollX": "100%",
-        colReorder: true
-    });
-
-    $(".rawDataTable").css({"display": "none"});
+    //globalRawDataTable = table.DataTable({
+    //    dom: 'Bfrtip',
+    //    buttons: [
+    //        {
+    //            extend: 'copy',
+    //            filename: 'canopy_rawdata'
+    //        },
+    //        {
+    //            extend: 'csv',
+    //            filename: 'canopy_rawdata'
+    //        },
+    //        {
+    //            extend: 'excel',
+    //            filename: 'canopy_rawdata'
+    //        }
+    //    ],
+    //    "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    //    "scrollX": true,
+    //    "scrollX": "100%",
+    //    colReorder: true
+    //});
 }
 
 /**
