@@ -946,3 +946,8 @@ td.upper_line {
     fill:none;
     stroke-width: 3;
 }
+
+.leftNavBarMenu {
+    position: fixed;
+    left: 120px;
+}

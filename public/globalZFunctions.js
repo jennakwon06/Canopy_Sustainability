@@ -110,7 +110,7 @@ function fillListViewTable(results) {
 function fillRawDataTable(data) {
     var table = $(".rawDataTable");
 
-    var columns = ["name", "ticker", "sid", "industry", "sector", "isin", "address", "latitude", "longitude", "price", "revenue", "ghg1", "ghg2", "ghg3", "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged",
+    var columns = ["name", "ticker", "sid", "industry", "sector", "address", "latitude", "longitude", "price", "revenue", "ghg1", "ghg2", "ghg3", "totalWaterUse", "totalWaterWithdrawl", "totalWaterDischarged",
     "totalWaste", "wasteRecycled", "wasteSentToLandfill", "totalEnergyConsumption"];
 
     for (var i = 0; i <= data.length - 1; i++) {
